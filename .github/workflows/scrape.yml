@@ -1,24 +1,19 @@
-name: Scrape YanHH3D
+# .github/workflows/debug-scrape.yml
+name: Debug Scrape YanHH3D
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
 
 env:
   BASE_URL: 'https://yanhh3d.bz'
 
 jobs:
-  scrape:
+  debug:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    permissions:
-      contents: write
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,54 +25,24 @@ jobs:
           pip install playwright beautifulsoup4
           playwright install chromium
 
-      - name: Backup existing output (for diff)
-        run: |
-          if [ -f monplayer.json ]; then
-            cp monplayer.json monplayer.old.json
-            echo "OLD_ITEMS=$(python -c "import json; print(len(json.load(open('monplayer.old.json')).get('items',[])))")" >> $GITHUB_ENV
-          else
-            echo "OLD_ITEMS=0" >> $GITHUB_ENV
-            touch monplayer.old.json
-          fi
-
-      - name: Run scraper
+      - name: Run debug scraper
         run: python scraper.py
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
 
-      - name: Compare outputs (smart diff)
-        id: diff
+      - name: Show log summary
         run: |
-          NEW_ITEMS=$(python -c "import json; print(len(json.load(open('monplayer.json')).get('items',[])))")
-          echo "NEW_ITEMS=$NEW_ITEMS" >> $GITHUB_ENV
-          
-          # So sánh nội dung thực (bỏ qua formatting)
-          if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "✅ No content changes detected — skipping commit"
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "📝 Content changed: $OLD_ITEMS → $NEW_ITEMS items"
-          fi
+          echo "=== Candidate slugs found ==="
+          grep "✅ Candidate:" log.txt 2>/dev/null || echo "(none in log)"
+          echo ""
+          echo "=== All hrefs sample ==="
+          grep "• /" log.txt 2>/dev/null | head -20 || echo "(none)"
 
-      - name: Commit only if content changed
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add monplayer.json
-          git commit -m "🤖 Update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} items"
-          git push origin HEAD:${{ github.ref_name }}
-          echo "✅ Pushed new version"
-
-      - name: Skip commit (no changes)
-        if: steps.diff.outputs.changed == 'false'
-        run: echo "ℹ️  Output unchanged — no commit needed"
-
-      - name: Upload artifact
+      - name: Upload debug files
         uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: monplayer-output
-          path: monplayer.json
-          retention-days: 3
+          name: debug-files
+          path: |
+            debug_listing.html
+            monplayer.json
+          retention-days: 5
