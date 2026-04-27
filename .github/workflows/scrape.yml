@@ -1,48 +1,166 @@
-# .github/workflows/debug-scrape.yml
-name: Debug Scrape YanHH3D
+# .github/workflows/scrape.yml
+name: Scrape YanHH3D
 
 on:
   workflow_dispatch:
+    inputs:
+      pages:
+        description: "So trang listing (1-5)"
+        required: false
+        default: "2"
+      max_episodes:
+        description: "So tap toi da / phim"
+        required: false
+        default: "50"
+  schedule:
+    - cron: '0 */6 * * *'
+  push:
+    paths:
+      - 'scraper.py'
+      - '.github/workflows/scrape.yml'
 
 env:
   BASE_URL: 'https://yanhh3d.bz'
+  MAX_PAGES: ${{ github.event.inputs.pages || '2' }}
+  MAX_EP_PER_FILM: ${{ github.event.inputs.max_episodes || '50' }}
 
 jobs:
-  debug:
+  scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
+    permissions:
+      contents: write
     steps:
-      - name: Checkout
+      - name: 📦 Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Python
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install deps + Playwright
+      - name: 📥 Install dependencies
         run: |
-          pip install playwright beautifulsoup4
+          pip install --upgrade pip
+          pip install playwright beautifulsoup4 lxml
           playwright install chromium
+          playwright install-deps chromium
 
-      - name: Run debug scraper
+      - name: 🧪 Backup existing output
+        run: |
+          if [ -f monplayer.json ]; then
+            cp monplayer.json monplayer.old.json
+            OLD_COUNT=$(python -c "import json; print(len(json.load(open('monplayer.old.json')).get('items',[])))")
+            echo "OLD_ITEMS=$OLD_COUNT" >> $GITHUB_ENV
+            echo "📊 Existing: $OLD_COUNT movies"
+          else
+            echo "OLD_ITEMS=0" >> $GITHUB_ENV
+            touch monplayer.old.json
+            echo "📊 No existing output"
+          fi
+
+      - name: 🕷️ Run scraper
         run: python scraper.py
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
+          MAX_PAGES: ${{ env.MAX_PAGES }}
+          MAX_EP_PER_FILM: ${{ env.MAX_EP_PER_FILM }}
 
-      - name: Show log summary
+      - name: 📊 Show results
         run: |
-          echo "=== Candidate slugs found ==="
-          grep "✅ Candidate:" log.txt 2>/dev/null || echo "(none in log)"
-          echo ""
-          echo "=== All hrefs sample ==="
-          grep "• /" log.txt 2>/dev/null | head -20 || echo "(none)"
+          if [ -f monplayer.json ]; then
+            NEW_COUNT=$(python -c "import json; print(len(json.load(open('monplayer.json')).get('items',[])))")
+            echo "NEW_ITEMS=$NEW_COUNT" >> $GITHUB_ENV
+            echo ""
+            echo "═══════════════════════════════════════"
+            echo "  📈 RESULTS: $OLD_ITEMS → $NEW_COUNT movies"
+            echo "═══════════════════════════════════════"
+            echo ""
+            echo "🎬 First 3 movies:"
+            python -c "
+            import json
+            d = json.load(open('monplayer.json'))
+            for i, item in enumerate(d.get('items',[])[:3], 1):
+                print(f\"  {i}. {item.get('title', 'N/A')}\")
+                streams = item.get('streams', [])
+                print(f\"     → {len(streams)} streams\")
+                if streams:
+                    print(f\"     → First: {streams[0].get('url', 'N/A')[:80]}...\")
+            "
+            echo ""
+          else
+            echo "❌ monplayer.json not created!"
+            exit 1
+          fi
 
-      - name: Upload debug files
+      - name: 🔍 Validate streams
+        run: |
+          python -c "
+          import json
+          import sys
+          
+          d = json.load(open('monplayer.json'))
+          items = d.get('items', [])
+          
+          if not items:
+              print('⚠️  WARNING: No movies in output!')
+              sys.exit(0)  # Don't fail, just warn
+          
+          total_streams = sum(len(i.get('streams', [])) for i in items)
+          print(f'✅ Total: {len(items)} movies, {total_streams} streams')
+          
+          # Check for valid URLs
+          valid_urls = 0
+          for item in items:
+              for s in item.get('streams', []):
+                  url = s.get('url', '')
+                  if '.m3u8' in url or '.mp4' in url:
+                      valid_urls += 1
+          
+          print(f'✅ Valid stream URLs: {valid_urls}/{total_streams}')
+          
+          if valid_urls == 0:
+              print('⚠️  WARNING: No valid .m3u8/.mp4 URLs found!')
+          "
+
+      - name: 💾 Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Check if content changed (ignore formatting)
+          if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
+              echo "✅ No content changes — skipping commit"
+              echo "CHANGED=false" >> $GITHUB_ENV
+          else
+              git add monplayer.json
+              git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
+              git push origin HEAD:${{ github.ref_name }} --verbose
+              echo "✅ Successfully pushed to ${{ github.ref_name }}"
+              echo "CHANGED=true" >> $GITHUB_ENV
+          fi
+
+      - name: 📤 Upload artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: debug-files
+          name: monplayer-output
           path: |
-            debug_listing.html
             monplayer.json
-          retention-days: 5
+            monplayer.old.json
+          retention-days: 7
+
+      - name: 🎉 Summary
+        run: |
+          echo "═══════════════════════════════════════"
+          echo "  ✅ WORKFLOW COMPLETE"
+          echo "═══════════════════════════════════════"
+          echo ""
+          echo "📊 Movies: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }}"
+          echo "💾 Updated: ${{ env.CHANGED == 'true' && 'Yes' || 'No' }}"
+          echo ""
+          echo "🔗 Raw JSON URL:"
+          echo "https://raw.githubusercontent.com/${{ github.repository }}/main/monplayer.json"
+          echo ""
