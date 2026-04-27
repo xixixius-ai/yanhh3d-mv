@@ -52,4 +52,30 @@ jobs:
             -H "User-Agent: Mozilla/5.0" \
             -L "${{ env.BASE_URL }}/moi-cap-nhat"
 
-      - name:
+      - name: Run scraper
+        run: python scraper.py
+        env:
+          YANHH_BASE_URL: ${{ env.BASE_URL }}
+          CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
+
+      - name: Validate output
+        run: |
+          test -f monplayer.json || { echo "No output"; exit 1; }
+          python -m json.tool monplayer.json > /dev/null && echo "JSON OK"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: debug-output
+          path: monplayer.json
+          retention-days: 7
+
+      - name: Commit result
+        if: success()
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add monplayer.json
+          git diff --cached --quiet && echo "No changes" || \
+            (git commit -m "Auto update monplayer.json" && git push)
