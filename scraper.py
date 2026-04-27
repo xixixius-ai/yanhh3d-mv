@@ -20,6 +20,8 @@ def main():
         b = p.chromium.launch(headless=True)
         c = b.new_context(viewport={"width": 1920, "height": 1080})
         pg = c.new_page()
+        
+        print("📥 Loading listing...")
         pg.goto(URL, wait_until="networkidle", timeout=30000)
         time.sleep(2)
         
@@ -48,8 +50,10 @@ def main():
                 ep_href = ep.get_attribute("href")
                 if "/sever" in ep_href.lower(): continue
                 ep_url = BASE + ep_href if ep_href.startswith("/") else ep_href
+                
                 pg.goto(ep_url, wait_until="networkidle", timeout=20000)
                 time.sleep(0.3)
+                
                 stream = get_stream(pg.content())
                 if stream:
                     label = ep.text_content().strip() or f"Tập {ep_href.split('/tap-')[-1]}"
