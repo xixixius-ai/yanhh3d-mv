@@ -18,16 +18,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Cần để git diff hoạt động đúng
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install deps
+      - name: Install deps + Playwright
         run: |
-          pip install playwright
+          pip install -r requirements.txt
           playwright install chromium
 
       - name: Run scraper
@@ -35,45 +35,27 @@ jobs:
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
 
-      - name: 📊 Show output preview
+      - name: Preview output
         run: |
-          echo "=== monplayer.json preview ==="
-          head -20 monplayer.json
-          echo "=== File size ==="
-          ls -lh monplayer.json
+          echo "=== First 30 lines ==="
+          head -30 monplayer.json
+          echo "=== Film count ==="
+          python -c "import json; d=json.load(open('monplayer.json')); print(f'Films: {len(d.get(\"items\",[]))}')"
 
-      - name: 🔍 Git status debug
+      - name: Commit & push (force with timestamp)
         run: |
-          echo "=== Git status ==="
-          git status
-          echo "=== Git diff ==="
-          git diff monplayer.json || echo "(no diff or new file)"
-          echo "=== Current branch ==="
-          git branch -a
-          echo "=== Remote URL ==="
-          git remote -v
-
-      - name: 💾 Force commit & push
-        run: |
-          set -e  # Dừng ngay nếu lỗi
-          
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Luôn add file
           git add monplayer.json
-          
-          # Commit với timestamp để luôn có thay đổi
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          git commit -m "🤖 Auto-update: $TIMESTAMP" || echo "⚠️ Nothing to commit (file unchanged)"
-          
-          # Push với explicit branch
-          echo "📤 Pushing to branch: ${{ github.ref_name }}"
-          git push origin HEAD:${{ github.ref_name }} --verbose
-          
-          echo "✅ Push complete!"
+          if ! git diff --staged --quiet; then
+            git commit -m "🤖 Auto-update: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push origin HEAD:${{ github.ref_name }} --verbose
+            echo "✅ Pushed successfully"
+          else
+            echo "⚠️ No changes detected (shouldn't happen with timestamp)"
+          fi
 
-      - name: 📤 Upload artifact (backup)
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
