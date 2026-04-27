@@ -1,5 +1,4 @@
-# .github/workflows/scrape.yml
-name: 🕷️ Scrape YanHH3D → MonPlayer
+name: Scrape YanHH3D
 
 on:
   schedule:
@@ -7,15 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       pages:
-        description: "Số trang listing cần crawl (1-10)"
+        description: "So trang listing (1-10)"
         required: false
         default: "5"
-        type: string
       debug:
-        description: "Bật debug mode (log chi tiết HTML)"
+        description: "Bat debug mode"
         required: false
         default: "false"
-        type: boolean
   push:
     paths:
       - "scraper.py"
@@ -23,76 +20,36 @@ on:
 
 env:
   BASE_URL: "https://yanhh3d.bz"
-  USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-  MAX_PAGES: ${{ github.event.inputs.pages || '5' }}
-  DEBUG_SCRAPER: ${{ github.event.inputs.debug || 'false' }}
+  MAX_PAGES: "5"
+  DEBUG_SCRAPER: "false"
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 30
-
     steps:
-      - name: 📦 Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🐍 Setup Python 3.11
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      - name: 📦 Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install requests beautifulsoup4 lxml
+      - name: Install deps
+        run: pip install requests beautifulsoup4 lxml
 
-      - name: 🔍 Debug: Test listing page
+      - name: Set env from inputs
         run: |
-          echo "🧪 Testing: ${{ env.BASE_URL }}/moi-cap-nhat"
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "User-Agent: ${{ env.USER_AGENT }}" \
-            -L "${{ env.BASE_URL }}/moi-cap-nhat")
-          echo "📡 HTTP Status: $STATUS"
-          if [ "$STATUS" = "403" ]; then
-            echo "❌ 403 Forbidden - có thể cần cookie CF_CLEARANCE"
-            exit 1
-          elif [ "$STATUS" = "200" ]; then
-            echo "✅ OK"
-          fi
+          echo "MAX_PAGES=${{ github.event.inputs.pages || '5' }}" >> $GITHUB_ENV
+          echo "DEBUG_SCRAPER=${{ github.event.inputs.debug || 'false' }}" >> $GITHUB_ENV
 
-      - name: 🕷️ Run scraper
+      - name: Test connection
         run: |
-          echo "🚀 Running scraper..."
-          python scraper.py
-        env:
-          YANHH_BASE_URL: ${{ env.BASE_URL }}
-          CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
+          echo "Testing ${{ env.BASE_URL }}"
+          curl -s -o /dev/null -w "Status: %{http_code}\n" \
+            -H "User-Agent: Mozilla/5.0" \
+            -L "${{ env.BASE_URL }}/moi-cap-nhat"
 
-      - name: ✅ Validate JSON
-        run: |
-          if [ ! -f "monplayer.json" ]; then
-            echo "❌ monplayer.json not found"
-            exit 1
-          fi
-          python -m json.tool monplayer.json > /dev/null && echo "✅ JSON valid" || exit 1
-          echo "📊 Films: $(python -c "import json; print(len(json.load(open('monplayer.json'))['items']))")"
-
-      - name: 📤 Upload artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: monplayer-debug-${{ github.run_number }}
-          path: monplayer.json
-          retention-days: 7
-
-      - name: 💾 Commit result
-        if: success()
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          if [ -s monplayer.json ] && ! git diff --quiet monplayer.json; then
-            git add monplayer.json
-            git commit -m "🤖 Auto-update: $(date '+%Y-%m-%d') - $(python -c "import json; print(len(json.load(open('monplayer.json'))['items']))") phim"
-            git push
-          fi
+      - name:
