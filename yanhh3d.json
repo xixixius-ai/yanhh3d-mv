@@ -1,0 +1,360 @@
+{
+  "id": "yanhh3d",
+  "name": "YanHH3D - Hoạt Hình Trung Quốc",
+  "url": "https://yanhh3d.bz",
+  "color": "#1a1a2e",
+  "image": {
+    "url": "https://yanhh3d.bz/logo.png",
+    "type": "cover"
+  },
+  "description": "Tuyển tập phim hoạt hình Trung Quốc mới nhất, thuyết minh chất lượng cao, cập nhật hàng ngày.",
+  "share": {
+    "url": "https://yanhh3d.bz"
+  },
+  "notice": {
+    "closeable": true,
+    "icon": "https://yanhh3d.bz/notice-icon.png",
+    "id": "notice-yanhh3d",
+    "link": "https://facebook.com/yanhh3d.net",
+    "text": "Cập nhật tên miền mới: YanHH3D.bz"
+  },
+  "sorts": [
+    {
+      "text": "Mới cập nhật",
+      "type": "radio",
+      "url": "https://yanhh3d.bz/api/sort/newest"
+    },
+    {
+      "text": "Loại phim",
+      "type": "dropdown",
+      "value": [
+        {
+          "text": "Hoạt Hình 3D",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/3d"
+        },
+        {
+          "text": "Hoạt Hình 2D",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/2d"
+        },
+        {
+          "text": "Hoạt Hình 4K",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/4k"
+        },
+        {
+          "text": "Đã hoàn thành",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/completed"
+        },
+        {
+          "text": "Đang chiếu",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/ongoing"
+        },
+        {
+          "text": "Phim lẻ | OVA",
+          "type": "radio",
+          "url": "https://yanhh3d.bz/api/type/ova"
+        }
+      ]
+    },
+    {
+      "text": "Thể loại",
+      "type": "dropdown",
+      "value": [
+        {
+          "text": "Huyền Huyễn",
+          "url": "https://yanhh3d.bz/api/genre/huyen-huyen"
+        },
+        {
+          "text": "Xuyên Không",
+          "url": "https://yanhh3d.bz/api/genre/xuyen-khong"
+        },
+        {
+          "text": "Trùng Sinh",
+          "url": "https://yanhh3d.bz/api/genre/trung-sinh"
+        },
+        {
+          "text": "Tiên Hiệp",
+          "url": "https://yanhh3d.bz/api/genre/tien-hiep"
+        },
+        {
+          "text": "Cổ Trang",
+          "url": "https://yanhh3d.bz/api/genre/co-trang"
+        },
+        {
+          "text": "Hài Hước",
+          "url": "https://yanhh3d.bz/api/genre/hai-huoc"
+        },
+        {
+          "text": "Kiếm Hiệp",
+          "url": "https://yanhh3d.bz/api/genre/kiem-hiep"
+        },
+        {
+          "text": "Hiện Đại",
+          "url": "https://yanhh3d.bz/api/genre/hien-dai"
+        }
+      ]
+    }
+  ],
+  "grid_number": 3,
+  "channels": [
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tien-nghich-1775962789.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/tien-nghich"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/dau-pha-thuong-khung-phan-5-6-1761998684.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/the-gioi-hoan-my-thuyet-minh-tieng-viet"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/muc-than-ky-1775968014.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/muc-than-ky"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/gia-thien-1775728054.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/gia-thien"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/pham-nhan-tu-tien-1775382966.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/pham-nhan-tu-tien"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/thon-phe-tinh-khong"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/kiem-lai-phan-2-1770955370.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/kiem-lai-phan-2"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/dau-la-dai-luc-2-tuyet-the-duong-mon-1775816257.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/dau-la-dai-luc-2-tuyet-the-duong-mon"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "",
+      "name": "Unknown",
+      "description": "Unknown",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/than-an-vuong-toa-1776925955.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Full",
+        "position": "top-left",
+        "color": "#6c757d",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/than-an-vuong-toa"
+      },
+      "enable_detail": true
+    }
+  ],
+  "load_more": {
+    "remote_data": {
+      "url": "https://yanhh3d.bz/api/movies",
+      "external": false
+    },
+    "paging": {
+      "page_key": "page",
+      "size_key": "limit"
+    },
+    "pageInfo": {
+      "current_page": 1,
+      "total": 50,
+      "per_page": 60,
+      "last_page": 5
+    }
+  },
+  "remote_data": {
+    "url": "https://yanhh3d.bz/api/movies",
+    "external": false
+  },
+  "_meta": {
+    "generated_at": "2026-04-27T19:05:23.254159Z",
+    "source": "https://yanhh3d.bz",
+    "scraper_version": "1.0.0"
+  }
+}
