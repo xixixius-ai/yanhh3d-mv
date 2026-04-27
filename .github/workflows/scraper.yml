@@ -1,69 +1,98 @@
-name: 🎬 YanHH3D Auto Sync
+name: YanHH3D Scraper → MonPlayer JSON
 
 on:
+  # Chạy tự động mỗi 6 tiếng
   schedule:
-    - cron: '0 */6 * * *'        # Chạy tự động mỗi 6 tiếng
-  workflow_dispatch:             # Cho phép bấm nút chạy thủ công
+    - cron: "0 */6 * * *"
+
+  # Cho phép chạy thủ công từ tab Actions
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Số trang tối đa cần crawl"
+        required: false
+        default: "10"
+
+  # Chạy khi push code mới vào main
   push:
-    branches:
-      - main                     # Chạy khi bạn update code vào nhánh main
+    branches: [main]
+    paths:
+      - "scraper.py"
 
 jobs:
-  build:
+  scrape:
+    name: Crawl & Build JSON
     runs-on: ubuntu-latest
-    
-    # Cấp quyền ghi để Action có thể push file JSON lên repo
+    timeout-minutes: 30
+
     permissions:
-      contents: write
+      contents: write   # cần để commit file JSON trở lại repo
 
     steps:
-      - name: 📥 Checkout Repository
+      # ── 1. Checkout repo ──────────────────────────────
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0         # Lấy toàn bộ lịch sử để tránh lỗi khi push
 
-      - name: 🐍 Setup Python
+      # ── 2. Setup Python ───────────────────────────────
+      - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.11"
+          cache: pip
 
-      - name: 📦 Install Dependencies
+      # ── 3. Cài dependencies ───────────────────────────
+      - name: Install dependencies
         run: |
-          pip install cloudscraper beautifulsoup4 lxml
-          # Cloudscraper giúp vượt qua màn hình chờ của Cloudflare
+          pip install --upgrade pip
+          pip install requests beautifulsoup4 lxml
 
-      - name: 🕷️ Run Scraper
+      # ── 4. Chạy scraper ───────────────────────────────
+      - name: Run scraper
         env:
-          OUTPUT_PATH: yanhh3d.json
-        run: python scraper.py
-
-      - name: 🔍 Check Result
+          MAX_PAGES: ${{ github.event.inputs.max_pages || '10' }}
         run: |
-          if [ -f yanhh3d.json ]; then
-            echo "✅ File yanhh3d.json đã được tạo."
-            ls -lh yanhh3d.json
-          else
-            echo "❌ Lỗi: File yanhh3d.json không tồn tại!"
-            exit 1
-          fi
+          python -c "
+          import os, importlib.util
+          spec = importlib.util.spec_from_file_location('scraper', 'scraper.py')
+          mod = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          mod.MAX_PAGES = int(os.getenv('MAX_PAGES', '10'))
+          mod.main()
+          "
 
-      - name: 📤 Commit and Push Changes
+      # ── 5. Kiểm tra output ────────────────────────────
+      - name: Validate output JSON
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          # Add file và kiểm tra có thay đổi không
-          git add yanhh3d.json
-          
-          # Nếu không có gì thay đổi thì thoát, tránh tạo commit rỗng gây lỗi
-          if git diff --staged --quiet; then
-            echo "⏭️ Không có dữ liệu mới, bỏ qua commit."
+          python -c "
+          import json, sys
+          try:
+              data = json.load(open('monplayer.json', encoding='utf-8'))
+              count = len(data.get('items', []))
+              print(f'OK: {count} phim')
+              sys.exit(0 if count > 0 else 1)
+          except Exception as e:
+              print(f'FAIL: {e}')
+              sys.exit(1)
+          "
+
+      # ── 6. Upload artifact ────────────────────────────
+      - name: Upload monplayer.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: monplayer-json
+          path: monplayer.json
+          retention-days: 7
+
+      # ── 7. Commit & push JSON về repo ─────────────────
+      - name: Commit updated JSON
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add monplayer.json
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi, bỏ qua commit."
           else
-            git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M')"
-            
-            # Pull bản mới nhất về trước khi push để tránh lỗi 'rejected'
-            git pull origin main --rebase
-            
-            # Force push để đảm bảo cập nhật
-            git push origin main --force
+            TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M UTC")
+            git commit -m "chore: update monplayer.json [${TIMESTAMP}]"
+            git push
           fi
