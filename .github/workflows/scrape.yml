@@ -1,54 +1,18 @@
 name: Scrape YanHH3D
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
-
-env:
-  BASE_URL: 'https://yanhh3d.bz'
-
+on: [workflow_dispatch, schedule]
+schedule: [{cron: "0 */6 * * *"}]
 jobs:
-  scrape:
+  run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    permissions:
-      contents: write
+    permissions: {contents: write}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install deps
-        run: |
-          pip install playwright beautifulsoup4
-          playwright install chromium
-          playwright install-deps chromium
-
-      - name: Run scraper
-        run: python scraper.py
-        env:
-          YANHH_BASE_URL: ${{ env.BASE_URL }}
-
-      - name: Commit if changed
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install playwright && playwright install chromium
+      - run: python scraper.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
         if: success()
         with:
-          commit_message: "🤖 Auto-update monplayer.json"
-          file_pattern: "monplayer.json"
-          branch: ${{ github.ref_name }}
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
-          skip_fetch: true
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: monplayer
-          path: monplayer.json
-          retention-days: 3
+          commit_message: "🤖 Update 20 phim mới"
+          file_pattern: monplayer.json
