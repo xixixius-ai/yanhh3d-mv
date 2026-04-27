@@ -1,27 +1,31 @@
 """
-scraper.py — Crawl yanhh3d.bz → output MonPlayer JSON
-Hỗ trợ cả phim lẻ (1 link) và phim bộ (nhiều tập).
+scraper.py — Crawl yanhh3d.bz → MonPlayer JSON
+Cấu trúc URL thực:
+  - Listing : https://yanhh3d.bz/moi-cap-nhat  (có ?page=N)
+  - Phim    : https://yanhh3d.bz/{slug}
+  - Tập     : https://yanhh3d.bz/{slug}/tap-{N}
+              hoặc   https://yanhh3d.bz/sever2/{slug}/tap-{N}
 """
 
 import json
 import re
 import time
 import logging
+from dataclasses import dataclass, field
 from pathlib import Path
-from dataclasses import dataclass, field, asdict
 from typing import Optional
 
 import requests
 from bs4 import BeautifulSoup
 
-# ──────────────────────────────────────────────
-# Config
-# ──────────────────────────────────────────────
-BASE_URL = "https://yanhh3d.bz"
-OUTPUT_FILE = "monplayer.json"
-MAX_PAGES = 10          # số trang danh sách phim tối đa
-DELAY = 1.5             # giây giữa mỗi request (tránh bị ban)
-TIMEOUT = 15
+# ── Config ────────────────────────────────────────────────────────────────────
+BASE_URL         = "https://yanhh3d.bz"
+LIST_URL         = f"{BASE_URL}/moi-cap-nhat"
+OUTPUT_FILE      = "monplayer.json"
+MAX_PAGES        = 5      # số trang listing
+DELAY            = 1.5    # giây giữa request
+TIMEOUT          = 15
+MAX_EP_PER_FILM  = 999    # tập tối đa / phim
 
 HEADERS = {
     "User-Agent": (
@@ -30,6 +34,7 @@ HEADERS = {
         "Chrome/124.0.0.0 Safari/537.36"
     ),
     "Referer": BASE_URL,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
 }
 
@@ -40,172 +45,157 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-
-# ──────────────────────────────────────────────
-# Data models
-# ──────────────────────────────────────────────
+# ── Models ────────────────────────────────────────────────────────────────────
 @dataclass
 class Stream:
     name: str
     url: str
-
 
 @dataclass
 class MovieItem:
     title: str
     image: str
     description: str = ""
-    streams: list[Stream] = field(default_factory=list)
+    streams: list = field(default_factory=list)
 
-
-@dataclass
-class MonPlayerSource:
-    name: str = "YanHH3D — yanhh3d.bz"
-    items: list[MovieItem] = field(default_factory=list)
-
-
-# ──────────────────────────────────────────────
-# HTTP helper
-# ──────────────────────────────────────────────
+# ── HTTP ──────────────────────────────────────────────────────────────────────
 session = requests.Session()
 session.headers.update(HEADERS)
 
-
-def get(url: str, retries: int = 3) -> Optional[BeautifulSoup]:
+def get(url, retries=3):
     for attempt in range(retries):
         try:
-            r = session.get(url, timeout=TIMEOUT)
+            r = session.get(url, timeout=TIMEOUT, allow_redirects=True)
             r.raise_for_status()
             return BeautifulSoup(r.text, "html.parser")
         except requests.RequestException as e:
-            log.warning(f"[attempt {attempt+1}] GET {url} → {e}")
-            time.sleep(DELAY * (attempt + 1))
-    log.error(f"Bỏ qua URL sau {retries} lần thử: {url}")
+            wait = DELAY * (attempt + 1)
+            log.warning(f"[{attempt+1}/{retries}] {url} → {e} | retry {wait}s")
+            time.sleep(wait)
+    log.error(f"Bỏ qua: {url}")
     return None
 
+# ── Step 1: Listing ───────────────────────────────────────────────────────────
+SKIP_PATHS = {
+    "dang-nhap", "dang-ky", "lien-he", "the-loai",
+    "moi-cap-nhat", "lich-phim", "tim-kiem",
+    "3d", "2d", "4k",
+}
 
-# ──────────────────────────────────────────────
-# Step 1: Lấy danh sách link phim từ trang listing
-# ──────────────────────────────────────────────
-def get_movie_links(page: int = 1) -> list[str]:
-    """Crawl trang danh sách, trả về list URL chi tiết phim."""
-    # Thử các pattern URL phổ biến của site phim VN
-    candidates = [
-        f"{BASE_URL}/phim-moi/page/{page}",
-        f"{BASE_URL}/page/{page}",
-        f"{BASE_URL}/?page={page}",
-    ]
+def get_movie_slugs(page=1):
+    url = LIST_URL if page == 1 else f"{LIST_URL}?page={page}"
+    soup = get(url)
+    if not soup:
+        return []
 
-    for url in candidates:
-        soup = get(url)
-        if soup is None:
+    slugs = []
+    seen = set()
+
+    for a in soup.find_all("a", href=True):
+        href = a["href"].strip()
+        if not href.startswith("/"):
             continue
+        parts = href.strip("/").split("/")
+        if not parts or not parts[0]:
+            continue
+        if parts[0] in SKIP_PATHS:
+            continue
+        if "tap-" in href or "sever" in href:
+            continue
+        if any(c in href for c in ["#", "?", "javascript:"]):
+            continue
+        if href not in seen:
+            seen.add(href)
+            slugs.append(href)
 
-        links: list[str] = []
+    log.info(f"  Trang {page}: {len(slugs)} phim")
+    return slugs
 
-        # Pattern 1: thẻ <a> trong grid/list phim
-        for a in soup.select("div.film-item a, div.movie-item a, article a, .item a"):
-            href = a.get("href", "")
-            if href and href.startswith("/") and len(href) > 2:
-                links.append(BASE_URL + href)
-            elif href.startswith(BASE_URL):
-                links.append(href)
+# ── Step 2: Episode list ──────────────────────────────────────────────────────
+def get_episode_urls(slug):
+    soup = get(BASE_URL + slug)
+    if not soup:
+        return []
 
-        # Deduplicate, giữ thứ tự
-        seen: set[str] = set()
-        unique: list[str] = []
-        for lnk in links:
-            if lnk not in seen and lnk != BASE_URL + "/":
-                seen.add(lnk)
-                unique.append(lnk)
+    episodes = []
+    seen = set()
 
-        if unique:
-            log.info(f"  Trang {page}: tìm thấy {len(unique)} phim ({url})")
-            return unique
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        if "/tap-" not in href:
+            continue
+        full = href if href.startswith("http") else BASE_URL + href
+        # canonical: bỏ /sever2/ để tránh trùng
+        canonical = re.sub(r"https?://[^/]+/sever\d+/", BASE_URL + "/", full)
+        if canonical in seen:
+            continue
+        seen.add(canonical)
+        label = a.get_text(strip=True)
+        if not label:
+            m = re.search(r"/tap-(.+?)(?:/|$)", href)
+            label = m.group(1) if m else "?"
+        episodes.append((f"Tập {label}", full))
 
-    log.warning(f"Không tìm thấy phim ở trang {page}")
-    return []
+    def ep_num(item):
+        m = re.search(r"/tap-(\d+)", item[1])
+        return int(m.group(1)) if m else 0
 
+    episodes.sort(key=ep_num)
+    return episodes[:MAX_EP_PER_FILM]
 
-# ──────────────────────────────────────────────
-# Step 2: Extract m3u8 / mp4 từ trang phim
-# ──────────────────────────────────────────────
-def extract_streams(soup: BeautifulSoup, page_url: str) -> list[Stream]:
-    streams: list[Stream] = []
+# ── Step 3: Extract stream URL ────────────────────────────────────────────────
+def extract_stream_url(soup):
     html = str(soup)
 
-    # --- Tìm trực tiếp trong HTML/JS ---
-    # Pattern m3u8
-    m3u8_urls = re.findall(
-        r'https?://[^\s\'"<>]+\.m3u8(?:\?[^\s\'"<>]*)?', html
-    )
-    # Pattern mp4
-    mp4_urls = re.findall(
-        r'https?://[^\s\'"<>]+\.mp4(?:\?[^\s\'"<>]*)?', html
-    )
+    # m3u8
+    for url in re.findall(r'https?://[^\s\'"\\<>]+\.m3u8(?:\?[^\s\'"\\<>]*)?', html):
+        return url
 
-    seen: set[str] = set()
+    # mp4
+    for url in re.findall(r'https?://[^\s\'"\\<>]+\.mp4(?:\?[^\s\'"\\<>]*)?', html):
+        return url
 
-    for i, url in enumerate(m3u8_urls):
-        if url not in seen:
-            seen.add(url)
-            streams.append(Stream(name=f"Server {i+1} (HLS)", url=url))
+    # JS file/source/src key
+    for url in re.findall(
+        r'(?:file|source|src)\s*[=:]\s*["\']([^"\']+\.(?:m3u8|mp4)[^"\']*)["\']', html
+    ):
+        return url
 
-    for i, url in enumerate(mp4_urls):
-        if url not in seen:
-            seen.add(url)
-            streams.append(Stream(name=f"MP4 {i+1}", url=url))
+    # iframe
+    for iframe in soup.find_all("iframe", src=True):
+        src = iframe["src"]
+        if src and src not in ("#", "about:blank", ""):
+            return src
 
-    # --- Tìm iframe embed (player ngoài) ---
-    if not streams:
-        for iframe in soup.find_all("iframe"):
-            src = iframe.get("src", "") or iframe.get("data-src", "")
-            if src and ("player" in src or "embed" in src or "watch" in src):
-                streams.append(Stream(name="Embed Player", url=src))
+    return ""
 
-    # --- Tìm trong thẻ <source> ---
-    for source in soup.find_all("source"):
-        src = source.get("src", "")
-        if src and src not in seen:
-            seen.add(src)
-            label = source.get("label", source.get("size", "Video"))
-            streams.append(Stream(name=str(label), url=src))
-
-    return streams
-
-
-# ──────────────────────────────────────────────
-# Step 3: Lấy thông tin chi tiết 1 phim
-# ──────────────────────────────────────────────
-def scrape_movie(url: str) -> Optional[MovieItem]:
-    soup = get(url)
-    if soup is None:
+# ── Step 4: Scrape 1 phim ─────────────────────────────────────────────────────
+def scrape_film(slug):
+    film_url = BASE_URL + slug
+    soup = get(film_url)
+    if not soup:
         return None
 
-    # --- Title ---
+    # Title
     title = ""
-    for selector in ["h1.film-title", "h1.title", "h1", ".movie-title", "title"]:
-        tag = soup.select_one(selector)
+    for sel in ["h1", ".film-title", ".title-film", "title"]:
+        tag = soup.select_one(sel)
         if tag:
             title = tag.get_text(strip=True)
-            # Bỏ suffix tên site
-            title = re.sub(r"\s*[–|-]\s*yanhh3d.*$", "", title, flags=re.I)
-            title = re.sub(r"\s*\|\s*yanhh3d.*$", "", title, flags=re.I)
+            title = re.sub(r"\s*[-–|]\s*yanhh3d.*$", "", title, flags=re.I).strip()
             if title:
                 break
     if not title:
-        title = url.split("/")[-1].replace("-", " ").title()
+        title = slug.strip("/").replace("-", " ").title()
 
-    # --- Thumbnail ---
+    # Thumbnail
     image = ""
-    for selector in [
+    for sel in [
         "meta[property='og:image']",
-        ".film-poster img",
-        ".movie-poster img",
-        "img.poster",
-        "img.thumbnail",
+        ".film-poster img", ".poster img",
+        "img.thumb", "img.poster",
     ]:
-        tag = soup.select_one(selector)
+        tag = soup.select_one(sel)
         if tag:
             image = tag.get("content") or tag.get("src") or ""
             if image:
@@ -213,99 +203,86 @@ def scrape_movie(url: str) -> Optional[MovieItem]:
                     image = BASE_URL + image
                 break
 
-    # --- Description ---
+    # Description
     desc = ""
-    for selector in [
+    for sel in [
         "meta[name='description']",
         "meta[property='og:description']",
-        ".film-content",
-        ".description",
-        ".overview",
+        ".film-content p", ".description",
     ]:
-        tag = soup.select_one(selector)
+        tag = soup.select_one(sel)
         if tag:
-            desc = tag.get("content") or tag.get_text(strip=True)
+            desc = (tag.get("content") or tag.get_text(strip=True) or "")[:300]
             if desc:
-                desc = desc[:200]
                 break
 
-    # --- Streams ---
-    # Phim bộ: tìm danh sách tập
-    episodes = soup.select("ul.list-episode a, .episodes a, .ep-item a, a.episode-link")
+    # Episodes
+    episodes = get_episode_urls(slug)
+    streams = []
 
-    if episodes:
-        # Phim bộ — crawl từng tập
-        streams: list[Stream] = []
-        for ep in episodes:
-            ep_name = ep.get_text(strip=True) or "Tập"
-            ep_url = ep.get("href", "")
-            if ep_url:
-                if ep_url.startswith("/"):
-                    ep_url = BASE_URL + ep_url
-                # Lấy stream từ trang tập
-                ep_soup = get(ep_url)
-                time.sleep(DELAY)
-                if ep_soup:
-                    ep_streams = extract_streams(ep_soup, ep_url)
-                    if ep_streams:
-                        streams.append(Stream(name=ep_name, url=ep_streams[0].url))
-                    else:
-                        streams.append(Stream(name=ep_name, url=ep_url))
+    if not episodes:
+        # Phim lẻ
+        url = extract_stream_url(soup) or film_url
+        streams.append(Stream(name="Xem phim", url=url))
+        log.info(f"  ✓ [lẻ]  {title[:55]}")
     else:
-        # Phim lẻ — lấy stream từ trang hiện tại
-        streams = extract_streams(soup, url)
-        if not streams:
-            # Fallback: dùng URL trang phim
-            streams = [Stream(name="Xem phim", url=url)]
+        # Phim bộ
+        for ep_name, ep_url in episodes:
+            ep_soup = get(ep_url)
+            time.sleep(DELAY)
+            if ep_soup:
+                url = extract_stream_url(ep_soup) or ep_url
+                streams.append(Stream(name=ep_name, url=url))
+        log.info(f"  ✓ [bộ]  {title[:50]} — {len(streams)} tập")
 
-    log.info(f"  ✓ {title[:60]} — {len(streams)} stream(s)")
     return MovieItem(title=title, image=image, description=desc, streams=streams)
 
-
-# ──────────────────────────────────────────────
-# Main
-# ──────────────────────────────────────────────
+# ── Main ──────────────────────────────────────────────────────────────────────
 def main():
-    log.info("═" * 50)
+    log.info("═" * 55)
     log.info("  YanHH3D → MonPlayer JSON Scraper")
-    log.info("═" * 50)
+    log.info("═" * 55)
 
-    source = MonPlayerSource()
-
+    all_slugs = []
     for page in range(1, MAX_PAGES + 1):
-        log.info(f"\n[Trang {page}/{MAX_PAGES}]")
-        movie_links = get_movie_links(page)
-
-        if not movie_links:
-            log.info("Hết phim, dừng lại.")
+        slugs = get_movie_slugs(page)
+        if not slugs:
+            log.info(f"Hết phim ở trang {page}.")
             break
+        all_slugs.extend(slugs)
+        time.sleep(DELAY)
 
-        for link in movie_links:
-            movie = scrape_movie(link)
-            if movie and movie.streams:
-                source.items.append(movie)
-            time.sleep(DELAY)
+    log.info(f"\nTổng: {len(all_slugs)} phim — crawl chi tiết...\n")
 
-    # Xuất JSON
+    items = []
+    for i, slug in enumerate(all_slugs, 1):
+        log.info(f"[{i}/{len(all_slugs)}] {slug}")
+        film = scrape_film(slug)
+        if film and film.streams:
+            items.append(film)
+        time.sleep(DELAY)
+
     output = {
-        "name": source.name,
+        "name": "YanHH3D — Hoạt Hình 3D/4K Thuyết Minh",
         "items": [
             {
-                "title": item.title,
-                "image": item.image,
-                "description": item.description,
-                "streams": [asdict(s) for s in item.streams],
+                "title": f.title,
+                "image": f.image,
+                "description": f.description,
+                "streams": [{"name": s.name, "url": s.url} for s in f.streams],
             }
-            for item in source.items
+            for f in items
         ],
     }
 
-    out_path = Path(OUTPUT_FILE)
-    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+    Path(OUTPUT_FILE).write_text(
+        json.dumps(output, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
-    log.info("\n" + "═" * 50)
-    log.info(f"  Xong! {len(source.items)} phim → {OUTPUT_FILE}")
-    log.info("═" * 50)
+    log.info("\n" + "═" * 55)
+    log.info(f"  Xong! {len(items)} phim → {OUTPUT_FILE}")
+    log.info("═" * 55)
 
 
 if __name__ == "__main__":
