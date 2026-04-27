@@ -1,24 +1,36 @@
-name: 🎬 Sync YanHH3D
+name: 🎬 YanHH3D Scraper
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *' # 6 tiếng chạy 1 lần
+    - cron: '0 */4 * * *' # 4 tiếng/lần
 
 jobs:
-  build:
+  scrape_job:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Install Dependencies
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Libs
         run: pip install requests beautifulsoup4
+
       - name: Run Scraper
         run: python scraper.py
-      - name: Commit & Force Push
+
+      - name: Debug Output
+        run: cat yanhh3d.json
+
+      - name: Push to Repo
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add yanhh3d.json
-          git commit -m "Update data $(date)" || exit 0
+          # Commit ngay cả khi không đổi để đảm bảo file luôn "sống"
+          git commit -m "Update: $(date)" || exit 0
           git push origin main --force
