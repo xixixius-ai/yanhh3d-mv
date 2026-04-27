@@ -1,360 +1,90 @@
-{
-  "id": "yanhh3d",
-  "name": "YanHH3D - Hoạt Hình Trung Quốc",
-  "url": "https://yanhh3d.bz",
-  "color": "#1a1a2e",
-  "image": {
-    "url": "https://yanhh3d.bz/logo.png",
-    "type": "cover"
-  },
-  "description": "Tuyển tập phim hoạt hình Trung Quốc mới nhất, thuyết minh chất lượng cao, cập nhật hàng ngày.",
-  "share": {
-    "url": "https://yanhh3d.bz"
-  },
-  "notice": {
-    "closeable": true,
-    "icon": "https://yanhh3d.bz/notice-icon.png",
-    "id": "notice-yanhh3d",
-    "link": "https://facebook.com/yanhh3d.net",
-    "text": "Cập nhật tên miền mới: YanHH3D.bz"
-  },
-  "sorts": [
-    {
-      "text": "Mới cập nhật",
-      "type": "radio",
-      "url": "https://yanhh3d.bz/api/sort/newest"
-    },
-    {
-      "text": "Loại phim",
-      "type": "dropdown",
-      "value": [
-        {
-          "text": "Hoạt Hình 3D",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/3d"
-        },
-        {
-          "text": "Hoạt Hình 2D",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/2d"
-        },
-        {
-          "text": "Hoạt Hình 4K",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/4k"
-        },
-        {
-          "text": "Đã hoàn thành",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/completed"
-        },
-        {
-          "text": "Đang chiếu",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/ongoing"
-        },
-        {
-          "text": "Phim lẻ | OVA",
-          "type": "radio",
-          "url": "https://yanhh3d.bz/api/type/ova"
-        }
-      ]
-    },
-    {
-      "text": "Thể loại",
-      "type": "dropdown",
-      "value": [
-        {
-          "text": "Huyền Huyễn",
-          "url": "https://yanhh3d.bz/api/genre/huyen-huyen"
-        },
-        {
-          "text": "Xuyên Không",
-          "url": "https://yanhh3d.bz/api/genre/xuyen-khong"
-        },
-        {
-          "text": "Trùng Sinh",
-          "url": "https://yanhh3d.bz/api/genre/trung-sinh"
-        },
-        {
-          "text": "Tiên Hiệp",
-          "url": "https://yanhh3d.bz/api/genre/tien-hiep"
-        },
-        {
-          "text": "Cổ Trang",
-          "url": "https://yanhh3d.bz/api/genre/co-trang"
-        },
-        {
-          "text": "Hài Hước",
-          "url": "https://yanhh3d.bz/api/genre/hai-huoc"
-        },
-        {
-          "text": "Kiếm Hiệp",
-          "url": "https://yanhh3d.bz/api/genre/kiem-hiep"
-        },
-        {
-          "text": "Hiện Đại",
-          "url": "https://yanhh3d.bz/api/genre/hien-dai"
-        }
-      ]
-    }
-  ],
-  "grid_number": 3,
-  "channels": [
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/tien-nghich-1775962789.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/tien-nghich"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/dau-pha-thuong-khung-phan-5-6-1761998684.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/the-gioi-hoan-my-thuyet-minh-tieng-viet"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/muc-than-ky-1775968014.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/muc-than-ky"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/gia-thien-1775728054.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/gia-thien"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/pham-nhan-tu-tien-1775382966.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/pham-nhan-tu-tien"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/thon-phe-tinh-khong"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/kiem-lai-phan-2-1770955370.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/kiem-lai-phan-2"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/dau-la-dai-luc-2-tuyet-the-duong-mon-1775816257.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/dau-la-dai-luc-2-tuyet-the-duong-mon"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "",
-      "name": "Unknown",
-      "description": "Unknown",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/than-an-vuong-toa-1776925955.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#6c757d",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/than-an-vuong-toa"
-      },
-      "enable_detail": true
-    }
-  ],
-  "load_more": {
-    "remote_data": {
-      "url": "https://yanhh3d.bz/api/movies",
-      "external": false
-    },
-    "paging": {
-      "page_key": "page",
-      "size_key": "limit"
-    },
-    "pageInfo": {
-      "current_page": 1,
-      "total": 50,
-      "per_page": 60,
-      "last_page": 5
-    }
-  },
-  "remote_data": {
-    "url": "https://yanhh3d.bz/api/movies",
-    "external": false
-  },
-  "_meta": {
-    "generated_at": "2026-04-27T19:06:30.905546Z",
-    "source": "https://yanhh3d.bz",
-    "scraper_version": "1.0.0"
-  }
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os, re, json, time, logging
+from urllib.parse import urljoin
+import requests
+from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+CONFIG = {
+    "base_url": os.getenv("YANH_BASE_URL", "https://yanhh3d.bz"),
+    "output_file": os.getenv("OUTPUT_PATH", "yanhh3d.json"),
+    "max_pages": int(os.getenv("MAX_PAGES", "5")),
+    "items_per_page": int(os.getenv("ITEMS_PER_PAGE", "60")),
+    "timeout": 30
 }
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
+logger = logging.getLogger(__name__)
+
+def get_session():
+    s = requests.Session()
+    s.mount("https://", HTTPAdapter(max_retries=Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])))
+    s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"})
+    return s
+
+def slugify(text):
+    if not text: return "unknown"
+    text = re.sub(r'[àáạảãâầấậẩẫăằắặẳẵ]', 'a', text.lower())
+    text = re.sub(r'[èéẹẻẽêềếệểễ]', 'e', text)
+    text = re.sub(r'[ìíịỉĩ]', 'i', text)
+    text = re.sub(r'[òóọỏõôồốộổỗơờớợởỡ]', 'o', text)
+    text = re.sub(r'[ùúụủũưừứựửữ]', 'u', text)
+    text = re.sub(r'[ỳýỵỷỹ]', 'y', text)
+    text = re.sub(r'[đ]', 'd', text)
+    return re.sub(r'[^a-z0-9]+', '-', text.strip('-')) or 'movie'
+
+def parse_label(text):
+    m = re.search(r'(?:Tập\s*)?(\d+)(?:\s*/\s*(\d+))?', text or "")
+    if m:
+        return f"{m.group(1)}/{m.group(2)} [4K]" if m.group(2) else f"Tập {m.group(1)}"
+    return "Full"
+
+class YanHH3DScraper:
+    def __init__(self):
+        self.session = get_session()
+        self.base = CONFIG["base_url"].rstrip("/")
+
+    def fetch(self, url):
+        try:
+            r = self.session.get(url, timeout=CONFIG["timeout"])
+            r.raise_for_status()
+            r.encoding = "utf-8"
+            return BeautifulSoup(r.text, "html.parser")
+        except Exception as e:
+            logger.error(f"Fetch fail {url}: {e}")
+            return None
+
+    def scrape(self):
+        soup = self.fetch(self.base)
+        if not soup: return []
+        
+        items = []
+        # Selector phổ biến cho card phim trên các site hoạt hình VN
+        cards = soup.select("div.film-item, div.movie-item, li.item, div.col-md-2, div.col-xs-4")
+        if not cards:
+            # Fallback: tìm tất cả link có href chứa /phim/ hoặc /detail/
+            links = soup.select("a[href*='/phim/'], a[href*='/detail/'], a[href*='/xem/']")
+            for a in links[:CONFIG["items_per_page"]]:
+                title = a.get("title") or a.get_text(strip=True)
+                if len(title) < 3: continue
+                items.append({
+                    "id": slugify(title),
+                    "name": title,
+                    "description": title,
+                    "image": {"url": f"{self.base}/placeholder.jpg", "type": "cover", "width": 480, "height": 640},
+                    "type": "series",
+                    "display": "text-below",
+                    "label": {"text": "Mới", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
+                    "remote_data": {"url": urljoin(self.base, a["href"])},
+                    "enable_detail": True
+                })
+            return items
+
+        for card in cards[:CONFIG["items_per_page"]]:
+            a = card.find("a", href=True)
+            img = card.find("img")
+            if not a: continue
+            
+            title = a.get("title") or (a.find(["h3","span"]) and a.find(["h3","span
