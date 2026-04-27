@@ -1,4 +1,3 @@
-# .github/workflows/scrape.yml
 name: Scrape YanHH3D
 
 on:
@@ -79,16 +78,16 @@ jobs:
             echo "═══════════════════════════════════════"
             echo ""
             echo "🎬 First 3 movies:"
-            python -c "
-            import json
-            d = json.load(open('monplayer.json'))
-            for i, item in enumerate(d.get('items',[])[:3], 1):
-                print(f\"  {i}. {item.get('title', 'N/A')}\")
-                streams = item.get('streams', [])
-                print(f\"     → {len(streams)} streams\")
-                if streams:
-                    print(f\"     → First: {streams[0].get('url', 'N/A')[:80]}...\")
-            "
+            python << 'PYEOF'
+  import json
+  d = json.load(open('monplayer.json'))
+  for i, item in enumerate(d.get('items',[])[:3], 1):
+      print(f"  {i}. {item.get('title', 'N/A')}")
+      streams = item.get('streams', [])
+      print(f"     → {len(streams)} streams")
+      if streams:
+          print(f"     → First: {streams[0].get('url', 'N/A')[:80]}...")
+  PYEOF
             echo ""
           else
             echo "❌ monplayer.json not created!"
@@ -97,49 +96,35 @@ jobs:
 
       - name: 🔍 Validate streams
         run: |
-          python -c "
-          import json
-          import sys
-          
-          d = json.load(open('monplayer.json'))
-          items = d.get('items', [])
-          
-          if not items:
-              print('⚠️  WARNING: No movies in output!')
-              sys.exit(0)  # Don't fail, just warn
-          
-          total_streams = sum(len(i.get('streams', [])) for i in items)
-          print(f'✅ Total: {len(items)} movies, {total_streams} streams')
-          
-          # Check for valid URLs
-          valid_urls = 0
-          for item in items:
-              for s in item.get('streams', []):
-                  url = s.get('url', '')
-                  if '.m3u8' in url or '.mp4' in url:
-                      valid_urls += 1
-          
-          print(f'✅ Valid stream URLs: {valid_urls}/{total_streams}')
-          
-          if valid_urls == 0:
-              print('⚠️  WARNING: No valid .m3u8/.mp4 URLs found!')
-          "
+          python << 'PYEOF'
+  import json
+  import sys
+  d = json.load(open('monplayer.json'))
+  items = d.get('items', [])
+  if not items:
+      print('⚠️  WARNING: No movies in output!')
+      sys.exit(0)
+  total_streams = sum(len(i.get('streams', [])) for i in items)
+  print(f'✅ Total: {len(items)} movies, {total_streams} streams')
+  valid_urls = sum(1 for item in items for s in item.get('streams', []) if '.m3u8' in s.get('url', '') or '.mp4' in s.get('url', ''))
+  print(f'✅ Valid stream URLs: {valid_urls}/{total_streams}')
+  if valid_urls == 0:
+      print('⚠️  WARNING: No valid .m3u8/.mp4 URLs found!')
+  PYEOF
 
       - name: 💾 Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Check if content changed (ignore formatting)
           if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
-              echo "✅ No content changes — skipping commit"
-              echo "CHANGED=false" >> $GITHUB_ENV
+            echo "✅ No content changes — skipping commit"
+            echo "CHANGED=false" >> $GITHUB_ENV
           else
-              git add monplayer.json
-              git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
-              git push origin HEAD:${{ github.ref_name }} --verbose
-              echo "✅ Successfully pushed to ${{ github.ref_name }}"
-              echo "CHANGED=true" >> $GITHUB_ENV
+            git add monplayer.json
+            git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
+            git push origin HEAD:${{ github.ref_name }} --verbose
+            echo "✅ Successfully pushed to ${{ github.ref_name }}"
+            echo "CHANGED=true" >> $GITHUB_ENV
           fi
 
       - name: 📤 Upload artifact
@@ -163,4 +148,3 @@ jobs:
           echo ""
           echo "🔗 Raw JSON URL:"
           echo "https://raw.githubusercontent.com/${{ github.repository }}/main/monplayer.json"
-          echo ""
