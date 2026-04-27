@@ -1,70 +1,20 @@
 {
   "id": "yanhh3d",
-  "name": "YanHH3D",
-  "url": "https://yanhh3d.bz",
-  "color": "#1a1a2e",
-  "image": {
-    "url": "https://yanhh3d.bz/favicon.ico",
-    "type": "cover"
-  },
-  "description": "Hoạt hình Trung Quốc thuyết minh HD",
-  "sorts": [
+  "name": "YanHH3D - Hoạt Hình",
+  "description": "Kho hoạt hình 3D Trung Quốc thuyết minh chất lượng cao.",
+  "image": "https://yanhh3d.bz/favicon.ico",
+  "categories": [
     {
-      "text": "Mới cập nhật",
-      "url": "https://yanhh3d.bz/danh-sach/phim-moi"
+      "name": "🔥 Mới cập nhật",
+      "channels": []
     },
     {
-      "text": "Hoạt Hình 3D",
-      "url": "https://yanhh3d.bz/the-loai/hoat-hinh-3d"
+      "name": "🎭 Hoạt Hình 3D",
+      "channels": []
     },
     {
-      "text": "Hoạt Hình 2D",
-      "url": "https://yanhh3d.bz/the-loai/hoat-hinh-2d"
-    },
-    {
-      "text": "Hoàn thành",
-      "url": "https://yanhh3d.bz/trang-thai/hoan-thanh"
+      "name": "🌟 Phim Bộ Hoàn Thành",
+      "channels": []
     }
-  ],
-  "grid_number": 3,
-  "channels": [
-    {
-      "id": "thon-phe-tinh-khong",
-      "name": "Thôn Phệ Tinh Không",
-      "description": "Thôn Phệ Tinh Không",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "series",
-      "display": "text-below",
-      "label": {
-        "text": "Full",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://yanhh3d.bz/thon-phe-tinh-khong"
-      },
-      "enable_detail": true
-    }
-  ],
-  "load_more": {
-    "remote_data": {
-      "url": "https://yanhh3d.bz/danh-sach"
-    },
-    "paging": {
-      "page_key": "page",
-      "size_key": "limit"
-    },
-    "pageInfo": {
-      "current_page": 1,
-      "total": 5,
-      "per_page": 60,
-      "last_page": 5
-    }
-  }
+  ]
 }
