@@ -1,8 +1,8 @@
 """
-scraper.py — YanHH3D → MonPlayer (Aggressive Capture Mode)
-- Regex rộng để bắt MỌI .m3u8/.mp4 có thể
-- Log chi tiết HTML snippet khi tìm thấy stream để debug
-- Output chuẩn MonPlayer format
+scraper.py — YanHH3D → MonPlayer (HTML DUMP DEBUG MODE)
+- Lưu HTML listing page ra file để debug cấu trúc link
+- In ra tất cả href tìm được để phân tích pattern
+- Slug detection permissive: bắt mọi link có vẻ là phim
 """
 
 import json
@@ -20,9 +20,9 @@ from playwright.sync_api import sync_playwright, Page
 BASE_URL = "https://yanhh3d.bz"
 LIST_URL = f"{BASE_URL}/moi-cap-nhat"
 OUTPUT_FILE = "monplayer.json"
-MAX_PAGES = 2  # Giảm để test nhanh
+DEBUG_HTML_FILE = "debug_listing.html"
+MAX_PAGES = 1  # Chỉ test 1 trang
 DELAY = 2.0
-MAX_EP_PER_FILM = 50  # Giảm để test nhanh
 TIMEOUT = 30000
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -40,104 +40,96 @@ class MovieItem:
     description: str = ""
     streams: List[Stream] = field(default_factory=list)
 
-# ── Helper: Extract stream URL (AGGRESSIVE MODE) ─────────────────────────────
-def extract_stream_url(html: str, page_url: str) -> Optional[str]:
-    """
-    Bắt stream với regex RỘNG — ưu tiên tìm được link trước, filter sau
-    """
-    found_urls = []
-    
-    # 1. Direct .m3u8/.mp4 — pattern cực rộng, bắt cả URL có ký tự đặc biệt
-    pattern = r'(https?://[^\s\'"<>\\|{}]+?\.(m3u8|mp4)(?:[?&][^\s\'"<>#|{}]+)?)'
-    for m in re.finditer(pattern, html, re.I):
-        url = m.group(1).strip().replace('\\', '').replace('"', '').replace("'", "")
-        if url and url.startswith('http'):
-            found_urls.append(url)
-    
-    # 2. JS config patterns — cũng dùng pattern rộng
-    js_patterns = [
-        r'["\']?(?:file|src|source|url|data-url|data-src|data-file)["\']?\s*[:=]\s*["\']([^"\']+?\.(?:m3u8|mp4)[^"\']*)["\']',
-        r'sources\s*:\s*\[\s*\{[^}]*?(?:file|src)\s*[:=]\s*["\']([^"\']+?\.(?:m3u8|mp4)[^"\']*)["\']',
-        r'var\s+\w+\s*=\s*["\']([^"\']+?\.(?:m3u8|mp4)[^"\']*)["\']',
-    ]
-    for pattern in js_patterns:
-        for m in re.finditer(pattern, html, re.I | re.S):
-            url = m.group(1).strip()
-            if url and not url.startswith('http'):
-                url = urljoin(page_url, url)
-            if '.m3u8' in url.lower() or '.mp4' in url.lower():
-                found_urls.append(url)
-    
-    # 3. Filter: chỉ giữ URL hợp lệ (loại ads, nhưng giữ fbcdn)
-    valid_urls = []
-    for url in found_urls:
-        # Loại quảng cáo rõ ràng
-        if any(x in url.lower() for x in [
-            'googlesyndication', 'doubleclick', 'adservice', 
-            'advertising', 'banner', 'popunder'
-        ]):
-            continue
-        # Giữ Facebook CDN, streaming CDNs
-        valid_urls.append(url)
-    
-    if valid_urls:
-        # Log để debug: in URL đầu tiên + snippet HTML quanh nó
-        first_url = valid_urls[0]
-        log.info(f"✅ Found stream: {first_url[:120]}...")
-        
-        # In HTML snippet để biết context (chỉ khi debug)
-        if logging.getLogger().level <= logging.DEBUG:
-            idx = html.lower().find(first_url[:20].lower())
-            if idx > 0:
-                snippet = html[max(0, idx-200):idx+200].replace("\n", " ")[:400]
-                log.debug(f"📋 HTML context: ...{snippet}...")
-        
-        return first_url
-    
-    return None
-
-# ── Step 1: Get movie slugs (giữ nguyên logic cũ, chỉ log thêm) ──────────────
+# ── Step 1: Get slugs với DEBUG DUMP ─────────────────────────────────────────
 def get_movie_slugs(page: Page, page_num: int = 1) -> List[str]:
     url = LIST_URL if page_num == 1 else f"{LIST_URL}?page={page_num}"
     log.info(f"📄 Loading {url}")
     
     page.goto(url, wait_until="networkidle", timeout=TIMEOUT)
-    page.wait_for_timeout(2000)
+    page.wait_for_timeout(5000)  # Đợi 5 giây cho Livewire render
     
+    # 🔥 QUAN TRỌNG: Lưu toàn bộ HTML ra file để debug
+    html = page.content()
+    Path(DEBUG_HTML_FILE).write_text(html, encoding="utf-8")
+    log.info(f"💾 Saved full HTML to {DEBUG_HTML_FILE}")
+    
+    # 🔥 In ra TẤT CẢ href tìm được để phân tích pattern
+    log.info("🔍 ALL hrefs found on page (first 50):")
+    all_hrefs = []
+    for a in page.query_selector_all("a[href]"):
+        href = a.get_attribute("href") or ""
+        text = a.text_content().strip()[:30]
+        if href.startswith("/") and not href.startswith("//"):
+            all_hrefs.append((href, text))
+            if len(all_hrefs) <= 50:
+                log.info(f"   • {href:45s} → '{text}'")
+    
+    # 🔥 Tìm pattern có vẻ là slug phim
+    log.info("\n🎯 Potential movie slugs (permissive filter):")
     slugs = []
     seen = set()
+    
+    # Từ khóa cần LOẠI (utility pages)
     SKIP = {
         "moi-cap-nhat", "the-loai", "dang-nhap", "dang-ky", "lien-he",
         "tim-kiem", "lich-phim", "tag", "actor", "country", "year",
         "phim-le", "phim-bo", "danh-sach", "home", "login", "register",
-        "hoat-hinh-3d", "hoat-hinh-2d", "hoat-hinh-4k", "hoan-thanh", 
-        "dang-chieu", "vendor", "livewire", "cdn",
+        "vendor", "livewire", "cdn", "storage", "uploads", "ajax",
     }
     
-    for a in page.query_selector_all("a[href]"):
-        href = a.get_attribute("href") or ""
-        if not href.startswith("/"): continue
-        slug = href.strip("/")
-        if "/" in slug: continue
-        if slug in SKIP or slug in seen: continue
-        if "-" not in slug: continue
-        text = a.text_content().strip()
-        if len(text) < 3 or len(text) > 60: continue
+    for href, text in all_hrefs:
+        # Chuẩn hóa slug
+        slug = href.strip("/").split("/")[0]
+        if not slug or slug in SKIP or slug in seen:
+            continue
+        if slug.startswith("page") or slug.isdigit():
+            continue
+            
+        # Permissive: chấp nhận slug có hoặc không có dash
+        # Chỉ cần text hợp lý (3-60 ký tự, có chữ)
+        if len(text) < 3 or len(text) > 60:
+            continue
+        if not re.search(r"[a-zA-Z\u00C0-\u017F\u0102\u0110\u01A0\u01AF]", text):
+            continue
+            
         seen.add(slug)
         slugs.append(f"/{slug}")
-        if len(slugs) >= 25: break
+        log.info(f"   ✅ Candidate: /{slug:35s} → '{text}'")
     
-    log.info(f"✅ Page {page_num}: {len(slugs)} valid slugs")
-    return slugs
+    log.info(f"\n📊 Total candidate slugs: {len(slugs)}")
+    
+    # 🔥 Nếu vẫn 0 slug, in thêm info để debug
+    if not slugs:
+        log.warning("⚠️  Still 0 slugs! Checking for common patterns...")
+        # Tìm link có chứa "tap-"
+        tap_links = [h for h, t in all_hrefs if "tap-" in h.lower()]
+        if tap_links:
+            log.info(f"   Found {len(tap_links)} episode links (pattern: /slug/tap-N)")
+            log.info(f"   Sample: {tap_links[:3]}")
+            log.info("   → Site may use nested routes: /{slug}/tap-{N}")
+        # Tìm link có image/poster
+        poster_links = [h for h, t in all_hrefs if "poster" in t.lower() or "thumb" in t.lower()]
+        if poster_links:
+            log.info(f"   Found {len(poster_links)} links with poster/thumb text")
+    
+    return slugs[:25]  # Giới hạn để test nhanh
 
-# ── Step 2: Scrape film (với debug log chi tiết) ─────────────────────────────
+# ── Step 2: Scrape film (giữ nguyên, chỉ thêm log) ───────────────────────────
+def extract_stream_url(html: str, page_url: str) -> Optional[str]:
+    # Aggressive regex để bắt mọi .m3u8/.mp4
+    for m in re.finditer(r'(https?://[^\s\'"<>\\|{}]+?\.(m3u8|mp4)(?:[?&][^\s\'"<>#|{}]+)?)', html, re.I):
+        url = m.group(1).strip().replace('\\', '').replace('"', '').replace("'", "")
+        if url and url.startswith('http') and 'ads' not in url.lower():
+            return url
+    return None
+
 def scrape_film(page: Page, slug: str) -> Optional[MovieItem]:
     url = BASE_URL + slug
     log.info(f"🎬 Scraping {slug}")
     
     try:
         page.goto(url, wait_until="networkidle", timeout=TIMEOUT)
-        page.wait_for_timeout(1500)
+        page.wait_for_timeout(2000)
     except Exception as e:
         log.error(f"❌ Failed {slug}: {e}")
         return None
@@ -149,9 +141,7 @@ def scrape_film(page: Page, slug: str) -> Optional[MovieItem]:
         if el.count() > 0:
             title = el.text_content(timeout=5000) or ""
             break
-    title = re.sub(r"\s*[-–|]\s*yanhh?3d.*$", "", title, flags=re.I).strip()
-    if not title:
-        title = slug.strip("/").replace("-", " ").title()
+    title = re.sub(r"\s*[-–|]\s*yanhh?3d.*$", "", title, flags=re.I).strip() or slug.strip("/").replace("-", " ").title()
     
     # Image
     image = ""
@@ -163,15 +153,12 @@ def scrape_film(page: Page, slug: str) -> Optional[MovieItem]:
         except: pass
     if image and image.startswith("/"): image = BASE_URL + image
     
-    # Episodes
+    # Episodes: tìm link /tap-N
     episodes = []
-    seen_eps = set()
     for a in page.query_selector_all("a[href*='/tap-']"):
         href = a.get_attribute("href") or ""
         if "/sever" in href.lower(): continue
         full = href if href.startswith("http") else BASE_URL + href.rstrip("/")
-        if full in seen_eps: continue
-        seen_eps.add(full)
         label = a.text_content().strip() or f"Tập {href.split('/tap-')[-1].split('/')[0]}"
         if not re.search(r"t[ạa]p\s*\d+", label, re.I):
             m = re.search(r"(\d+)", label)
@@ -179,46 +166,35 @@ def scrape_film(page: Page, slug: str) -> Optional[MovieItem]:
         episodes.append((label, full))
     
     episodes.sort(key=lambda x: int(re.search(r"(\d+)", x[0]).group(1)) if re.search(r"(\d+)", x[0]) else 999)
-    log.info(f"  🔍 Found {len(episodes)} episodes for {title[:40]}")
+    log.info(f"  🔍 Found {len(episodes)} episode links")
     
-    # Streams: AGGRESSIVE MODE — bắt được là thêm
+    # Streams
     streams = []
-    
     if not episodes:
-        # Phim lẻ
-        log.info("  → Phim lẻ, extracting from main page...")
-        html = page.content()
-        url = extract_stream_url(html, url)
+        url = extract_stream_url(page.content(), url)
         if url:
             streams.append(Stream("Xem phim", url))
-            log.info(f"  ✅ [lẻ] Found stream for {title[:40]}")
+            log.info(f"  ✅ [lẻ] Found stream")
     else:
-        # Phim bộ — crawl 3 tập đầu để test nhanh
-        log.info(f"  → Phim bộ, testing first 3 episodes...")
-        for ep_name, ep_url in episodes[:min(3, MAX_EP_PER_FILM)]:
+        for ep_name, ep_url in episodes[:3]:  # Test 3 tập đầu
             try:
                 page.goto(ep_url, wait_until="networkidle", timeout=TIMEOUT)
                 page.wait_for_timeout(800)
-                html = page.content()
-                url = extract_stream_url(html, ep_url)
+                url = extract_stream_url(page.content(), ep_url)
                 if url:
                     streams.append(Stream(ep_name, url))
-                    log.info(f"  ✅ {ep_name}: {url[:80]}...")
-            except Exception as e:
-                log.warning(f"  ⚠️ Error crawling {ep_name}: {e}")
+                    log.info(f"  ✅ {ep_name}: {url[:70]}...")
+            except: pass
             time.sleep(0.5)
     
     if not streams:
-        log.warning(f"⚠️ No streams for '{title[:40]}' — skipping")
         return None
-        
     return MovieItem(title=title, image=image or f"{BASE_URL}/favicon.ico", description="", streams=streams)
 
 # ── Main ────────────────────────────────────────────────────────────────────
 def main():
     log.info("═" * 60)
-    log.info("  🎬 YanHH3D Scraper — Aggressive Capture Mode")
-    log.info(f"  Pages: {MAX_PAGES} | Max episodes/test: 3")
+    log.info("  🎬 YanHH3D Scraper — HTML DUMP DEBUG MODE")
     log.info("═" * 60)
     
     items = []
@@ -234,26 +210,28 @@ def main():
         all_slugs = []
         for i in range(1, MAX_PAGES + 1):
             slugs = get_movie_slugs(page, i)
-            if not slugs: break
+            if not slugs:
+                log.info("⚠️  No slugs found — check debug_listing.html")
+                break
             all_slugs.extend(slugs)
             time.sleep(DELAY)
-            
-        log.info(f"\n🎯 Total slugs: {len(all_slugs)} — testing stream capture...\n")
+        
+        if not all_slugs:
+            log.error("❌ Cannot proceed without slugs. Please check debug_listing.html")
+            browser.close()
+            return
         
         for i, slug in enumerate(all_slugs, 1):
             log.info(f"[{i}/{len(all_slugs)}] {slug}")
             item = scrape_film(page, slug)
             if item:
                 items.append(item)
-                log.info(f"  🎉 Added: {item.title} — {len(item.streams)} streams")
-                # Test xong 1 phim có stream thì dừng để verify output
-                if len(items) >= 1:
-                    log.info("✅ Got 1 movie with streams — stopping for test")
-                    break
+                log.info(f"  🎉 Added: {item.title}")
+                break  # Test 1 phim thôi
             time.sleep(DELAY)
         browser.close()
         
-    # Output JSON — minimal, chuẩn MonPlayer
+    # Output
     output = {
         "name": "YanHH3D — Hoạt Hình 3D/4K Thuyết Minh",
         "items": [
@@ -271,16 +249,7 @@ def main():
         encoding="utf-8"
     )
     
-    # Stats
-    total_streams = sum(len(i["streams"]) for i in output["items"])
-    log.info(f"\n✨ Exported: {len(items)} movies, {total_streams} streams → {OUTPUT_FILE}")
-    
-    # Preview first item
-    if output["items"]:
-        first = output["items"][0]
-        log.info(f"📋 Preview: '{first['title']}' — {len(first['streams'])} streams")
-        for s in first["streams"][:2]:
-            log.info(f"   • {s['name']}: {s['url'][:100]}...")
+    log.info(f"✨ Exported: {len(items)} movies → {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
