@@ -1,77 +1,51 @@
-name: Scrape YanHH3D (Top 20)
+name: Scrape YanHH3D
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */4 * * *'  # Chạy mỗi 4 tiếng (đủ cho top mới)
-  push:
-    paths:
-      - 'scraper.py'
-      - '.github/workflows/scrape.yml'
+    - cron: '0 */6 * * *'
 
 env:
   BASE_URL: 'https://yanhh3d.bz'
-  MAX_MOVIES: '20'
-  MAX_EP_PER_FILM: '500'
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # Nhanh hơn nhiều so với crawl toàn bộ
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
-      - name: 📦 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🐍 Setup Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: 📥 Install deps
+      - name: Install deps
         run: |
-          pip install playwright beautifulsoup4 lxml
+          pip install playwright beautifulsoup4
           playwright install chromium
           playwright install-deps chromium
 
-      - name: 🧪 Backup old
-        run: |
-          [ -f monplayer.json ] && cp monplayer.json monplayer.old.json || touch monplayer.old.json
-          echo "OLD=$(python -c "import json; print(len(json.load(open('monplayer.old.json')).get('items',[])))" 2>/dev/null || echo 0)" >> $GITHUB_ENV
-
-      - name: 🕷️ Run scraper
+      - name: Run scraper
         run: python scraper.py
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
-          MAX_MOVIES: ${{ env.MAX_MOVIES }}
-          MAX_EP_PER_FILM: ${{ env.MAX_EP_PER_FILM }}
 
-      - name: 📊 Show results
-        run: |
-          [ -f monplayer.json ] || exit 1
-          echo "NEW=$(python -c "import json; print(len(json.load(open('monplayer.json')).get('items',[])))")" >> $GITHUB_ENV
-          echo "✅ ${{ env.OLD }} → ${{ env.NEW }} movies"
-          python -c "
-          import json
-          d = json.load(open('monplayer.json'))
-          print(f'📅 Updated: {d.get(\"updated_at\")}')
-          for i, it in enumerate(d.get('items',[])[:3], 1):
-              print(f\"{i}. {it['title']} ({it['total_episodes']} eps)\")
-          "
-
-      - name: 💾 Auto-commit
+      - name: Commit if changed
         uses: stefanzweifel/git-auto-commit-action@v5
         if: success()
         with:
-          commit_message: "🤖 Top 20 Update: ${{ env.OLD }} → ${{ env.NEW }}"
+          commit_message: "🤖 Auto-update monplayer.json"
           file_pattern: "monplayer.json"
           branch: ${{ github.ref_name }}
           commit_user_name: "github-actions[bot]"
           commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           skip_fetch: true
 
-      - name: 📤 Upload
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
