@@ -17,7 +17,6 @@ on:
     paths:
       - "scraper.py"
       - ".github/workflows/scrape.yml"
-      - "requirements.txt"
 
 env:
   BASE_URL: "https://yanhh3d.bz"
@@ -36,10 +35,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"  # ✅ Giờ sẽ hoạt động vì có requirements.txt
+          # cache: "pip"  ← Đã bỏ để tránh lỗi thiếu requirements.txt
 
       - name: Install deps
-        run: pip install -r requirements.txt
+        run: pip install requests beautifulsoup4 lxml
 
       - name: Set env from inputs
         run: |
