@@ -3,16 +3,15 @@ name: 🎬 YanHH3D Auto Scraper
 
 on:
   schedule:
-    - cron: '0 3 * * *'        # Chạy tự động 10:00 AM giờ VN hàng ngày
-  workflow_dispatch:           # Cho phép nhấn nút chạy thủ công
+    - cron: '0 3 * * *'        # 10:00 AM giờ VN hàng ngày
+  workflow_dispatch:           # Chạy thủ công từ tab Actions
   push:
     paths:
       - 'scraper.py'
       - '.github/workflows/scraper.yml'
 
-# ⚠️ Quyền ghi file để workflow tự push kết quả về repo
 permissions:
-  contents: write
+  contents: write              # Cấp quyền push kết quả về repo
 
 jobs:
   scrape:
@@ -29,7 +28,6 @@ jobs:
           python-version: '3.11'
 
       - name: 📦 Install dependencies
-        # ✅ Cài trực tiếp, không cần file requirements.txt
         run: pip install requests beautifulsoup4 lxml
 
       - name: 🕷️ Run Scraper
@@ -41,7 +39,20 @@ jobs:
         run: python scraper.py
 
       - name: ✅ Validate JSON
+        # ✅ Dùng run: | để YAML parse đúng multiline, tránh lỗi heredoc
         run: |
-          python - << 'EOF'
-          import json, sys, os
-          path = os.getenv("OUTPUT_PATH", "yan
+          python -c "
+          import json
+          with open('yanhh3d.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          count = len(data.get('channels', []))
+          print(f'✅ JSON hợp lệ! Đã export {count} phim.')
+          "
+
+      - name: 📤 Commit & Push Result
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add yanhh3d.json
+          git commit -m "🤖 Auto-update: yanhh3d.json $(date +'%Y-%m-%d %H:%M')" || echo "⏭️ Không có thay đổi mới"
+          git push
