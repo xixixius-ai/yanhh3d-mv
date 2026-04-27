@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-logging.basicConfig(level=logging.INFO, format="%(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 logger = logging.getLogger(__name__)
 
 class YanHH3DScraper:
@@ -24,37 +24,36 @@ class YanHH3DScraper:
         try:
             response = self.session.get(url, timeout=20)
             if response.status_code != 200:
-                logger.error(f"⚠️ Lỗi kết nối {url} (Status: {response.status_code})")
+                logger.error(f"⚠️ Status {response.status_code} at {url}")
                 return []
 
             soup = BeautifulSoup(response.text, "html.parser")
             
-            # CẤU TRÚC THỰC TẾ: Các phim nằm trong thẻ .item
-            # Thường nằm trong các container như .list-films hoặc .items
-            cards = soup.select(".list-films .item, .items .item, .list-items .item")
+            # CẤU TRÚC CHÍNH XÁC CỦA YANHH3D:
+            # Mỗi bộ phim nằm trong thẻ <article> có class "item-list" hoặc tương tự
+            articles = soup.find_all('article')
             
-            # Nếu không tìm thấy bằng class cụ thể, quét toàn bộ .item có chứa link /phim/
-            if not cards:
-                cards = [i for i in soup.select(".item") if i.find("a", href=re.compile(r'/phim/'))]
-
-            for card in cards:
-                # 1. Tìm tiêu đề và link trong thẻ h3 (YanHH thường dùng h3 cho tên phim)
-                name_tag = card.select_one("h3 a, .title a, a[href*='/phim/']")
-                if not name_tag: continue
+            for art in articles:
+                # 1. Lấy tên và link từ thẻ <h2>
+                h2_tag = art.find('h2')
+                if not h2_tag: continue
+                a_tag = h2_tag.find('a')
+                if not a_tag: continue
                 
-                title = name_tag.get("title") or name_tag.get_text(strip=True)
-                href = name_tag.get("href")
+                title = a_tag.get_text(strip=True)
+                href = a_tag.get('href')
 
-                # 2. Tìm ảnh trong thẻ .poster hoặc .thumb
-                img_tag = card.find("img")
+                # 2. Lấy ảnh bìa
+                img_tag = art.find('img')
                 img_url = ""
                 if img_tag:
-                    # Ưu tiên các attribute lazyload
-                    img_url = img_tag.get("data-src") or img_tag.get("src") or img_tag.get("data-original")
+                    # Web này dùng Lazyload, ảnh thật nằm ở data-src hoặc src
+                    img_url = img_tag.get('data-src') or img_tag.get('src')
 
-                # 3. Tìm số tập (Label) - Thường trong thẻ .label hoặc .ep (Ví dụ: "Tập 20/40")
+                # 3. Lấy trạng thái (Số tập/HD)
+                # Thường nằm ở thẻ span trong .post-thumbnail hoặc các tag overlay
                 status = "HD"
-                status_tag = card.select_one(".label, .ep, .status, .label-ep")
+                status_tag = art.find('span', class_=re.compile(r'label|status|episode|quality'))
                 if status_tag:
                     status = status_tag.get_text(strip=True)
 
@@ -68,41 +67,43 @@ class YanHH3DScraper:
                     })
 
         except Exception as e:
-            logger.error(f"❌ Lỗi: {e}")
+            logger.error(f"❌ Error: {e}")
         
         return movies
 
     def run(self):
-        logger.info("🎬 Đang quét YanHH3D theo cấu trúc .list-films .item...")
+        logger.info("🎬 Đang quét YanHH3D (Cấu trúc Article)...")
         
-        # Các mục tiêu cụ thể
-        targets = [
+        # Cào các chuyên mục chính
+        cat_map = [
             ("Mới cập nhật", "/"),
             ("Hoạt Hình 3D", "/the-loai/hoat-hinh-3d"),
-            ("Hoàn thành", "/trang-thai/hoan-thanh")
+            ("Hoạt Hình 2D", "/the-loai/hoat-hinh-2d"),
+            ("Phim Hoàn Thành", "/trang-thai/hoan-thanh")
         ]
         
         categories = []
-        for name, path in targets:
-            logger.info(f"🔎 Quét danh mục: {name}")
+        for name, path in cat_map:
+            logger.info(f"🔎 Quét: {name}")
             channels = self.get_movies(path)
             categories.append({
                 "name": name,
                 "channels": channels
             })
 
+        # Định dạng JSON cho App
         output = {
             "id": "yanhh3d",
             "name": "YanHH3D",
             "categories": categories,
-            "created_at": os.popen('date').read().strip()
+            "updated_at": re.sub(r'\.\d+', '', os.popen('date -Iseconds').read().strip())
         }
 
         with open(self.output_file, "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
             
         total = sum(len(c['channels']) for c in categories)
-        logger.info(f"✅ Hoàn tất! Tìm thấy {total} phim.")
+        logger.info(f"✅ Thành công! Đã lấy được {total} phim.")
 
 if __name__ == "__main__":
     YanHH3DScraper().run()
