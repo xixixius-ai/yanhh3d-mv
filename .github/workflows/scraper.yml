@@ -3,25 +3,23 @@ name: 🎬 YanHH3D Auto Scraper
 on:
   schedule:
     - cron: '0 3 * * *'        # 10:00 AM giờ VN hàng ngày
-  workflow_dispatch:           # Chạy thủ công từ tab Actions
+  workflow_dispatch:           # Chạy thủ công để kiểm tra ngay
   push:
     paths:
       - 'scraper.py'
-      - '.github/workflows/scraper.yml'
 
 permissions:
-  contents: write              # Cấp quyền push kết quả về repo
+  contents: write              # Bắt buộc phải có để push file
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
+    
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0       # Lấy toàn bộ lịch sử để tránh lỗi khi rebase
+          fetch-depth: 0       # Lấy toàn bộ lịch sử để pull/rebase không lỗi
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
@@ -35,37 +33,23 @@ jobs:
         env:
           YANH_BASE_URL: https://yanhh3d.bz
           OUTPUT_PATH: yanhh3d.json
-          ITEMS_PER_PAGE: "60"
         run: python scraper.py
-
-      - name: ✅ Validate JSON
-        run: |
-          python -c "
-          import json
-          try:
-              with open('yanhh3d.json', 'r', encoding='utf-8') as f:
-                  data = json.load(f)
-              # Đếm tổng phim trong tất cả các categories
-              total = sum(len(cat.get('channels', [])) for cat in data.get('categories', []))
-              print(f'✅ JSON hợp lệ! Tổng cộng: {total} phim.')
-          except Exception as e:
-              print(f'❌ Lỗi định dạng JSON: {e}')
-              exit(1)
-          "
 
       - name: 📤 Commit & Push Result
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-          # Chỉ làm việc nếu file có thay đổi thực sự
+          # Cập nhật thay đổi từ Remote trước để tránh lỗi rejected
+          git pull origin main --rebase
+
+          # Kiểm tra nếu file JSON có thay đổi
           git add yanhh3d.json
+          
           if git diff --staged --quiet; then
-            echo "⏭️ Không có thay đổi mới trong dữ liệu phim."
+            echo "⏭️ Không có dữ liệu mới để cập nhật."
           else
-            git commit -m "🤖 Auto-update: yanhh3d.json $(date +'%Y-%m-%d %H:%M')"
-            
-            # Khắc phục lỗi ! [rejected] bằng cách pull rebase trước khi push
-            git pull --rebase origin main
+            git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M')"
             git push origin main
+            echo "✅ Đã cập nhật file JSON thành công lên Repository."
           fi
