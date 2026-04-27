@@ -1,83 +1,114 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os, json, logging, re
-import requests
+import cloudscraper
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
 
 class YanHH3DScraper:
     def __init__(self):
-        self.api_url = "https://yanhh3d.bz/wp-json/wp/v2/posts"
+        self.base_url = "https://yanhh3d.bz"
         self.output_file = "yanhh3d.json"
-        self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-        })
+        # Khởi tạo scraper giả lập trình duyệt để vượt Cloudflare
+        self.scraper = cloudscraper.create_scraper(
+            browser={
+                'browser': 'chrome',
+                'platform': 'windows',
+                'desktop': True
+            }
+        )
 
-    def get_movies_api(self, category_id=None):
-        movies = []
-        # Gọi API lấy 40 bài viết mới nhất
-        params = {
-            "per_page": 40,
-            "_embed": 1 # Lấy luôn ảnh đại diện và metadata
-        }
-        if category_id:
-            params["categories"] = category_id
-
+    def get_items(self, path):
+        items = []
+        url = urljoin(self.base_url, path)
         try:
-            r = self.session.get(self.api_url, params=params, timeout=20)
-            if r.status_code != 200:
-                logger.error(f"❌ API Error: {r.status_code}")
+            # Gửi request lấy HTML
+            response = self.scraper.get(url, timeout=30)
+            if response.status_code != 200:
+                logger.error(f"❌ Lỗi {response.status_code} tại {path}")
                 return []
-            
-            posts = r.json()
-            for post in posts:
-                # Lấy ảnh từ field _embedded
-                thumb = ""
-                if "_embedded" in post and "wp:featuredmedia" in post["_embedded"]:
-                    thumb = post["_embedded"]["wp:featuredmedia"][0].get("source_url", "")
 
-                movies.append({
-                    "name": post["title"]["rendered"],
-                    "slug": post["slug"],
-                    "thumb_url": thumb,
-                    "episode_current": "Update", # API thường không có field này sẵn, để mặc định
-                    "link_detail": post["link"]
+            soup = BeautifulSoup(response.text, "lxml")
+            
+            # Selector chính xác cho HalimThemes: mỗi phim bọc trong thẻ <article>
+            articles = soup.select("article.item, div.item-list, .halim-item")
+            
+            for art in articles:
+                # 1. Lấy link và tiêu đề
+                a_tag = art.select_one("a")
+                if not a_tag: continue
+                
+                href = a_tag.get('href', '')
+                title = a_tag.get('title') or art.select_one(".entry-title").get_text(strip=True) if art.select_one(".entry-title") else ""
+                
+                if not title or "/phim/" not in href: continue
+
+                # 2. Lấy ảnh (Lazy load attributes)
+                img_tag = art.select_one("img")
+                img_url = ""
+                if img_tag:
+                    img_url = img_tag.get('data-src') or img_tag.get('src') or img_tag.get('data-lazy-src')
+
+                # 3. Lấy nhãn tập phim (Badge)
+                status = "HD"
+                status_tag = art.select_one(".status, .label, .episode")
+                if status_tag:
+                    status = status_tag.get_text(strip=True)
+
+                items.append({
+                    "name": title,
+                    "slug": href.rstrip('/').split('/')[-1],
+                    "origin_name": title,
+                    "thumb_url": urljoin(self.base_url, img_url) if img_url else "",
+                    "poster_url": urljoin(self.base_url, img_url) if img_url else "",
+                    "episode_current": status,
+                    "quality": "HD",
+                    "lang": "Vietsub",
+                    "link_detail": urljoin(self.base_url, href)
                 })
         except Exception as e:
-            logger.error(f"⚠️ API Fetch Fail: {e}")
-        return movies
+            logger.error(f"⚠️ Lỗi fetch: {e}")
+        
+        return items
 
     def run(self):
-        logger.info("🚀 Đang truy vấn API YanHH3D...")
+        logger.info(f"🚀 Bắt đầu cào {self.base_url}...")
         
-        # WP-JSON API không cần cào HTML, cực kỳ ổn định
+        # Cấu trúc Category chuẩn cho Mon Player
         categories = [
-            {"name": "🔥 Mới cập nhật", "id": None},
-            {"name": "🎭 Hoạt Hình 3D", "id": 1}, # ID 1 thường là mặc định hoặc bạn có thể bỏ qua ID để lấy chung
+            {
+                "name": "🔥 Mới cập nhật",
+                "channels": self.get_items("/")
+            },
+            {
+                "name": "🎭 Hoạt Hình 3D",
+                "channels": self.get_items("/the-loai/hoat-hinh-3d")
+            },
+            {
+                "name": "🌟 Phim Hoàn Thành",
+                "channels": self.get_items("/trang-thai/hoan-thanh")
+            }
         ]
-        
-        final_categories = []
-        for cat in categories:
-            logger.info(f"🔎 Đang lấy dữ liệu mục: {cat['name']}")
-            channels = self.get_movies_api(cat['id'])
-            final_categories.append({
-                "name": cat['name'],
-                "channels": channels
-            })
 
-        output = {
+        # Filter bỏ những category rỗng
+        valid_categories = [c for c in categories if len(c["channels"]) > 0]
+
+        data = {
             "id": "yanhh3d",
-            "name": "YanHH3D",
-            "categories": final_categories
+            "name": "YanHH3D Hoạt Hình",
+            "image": "https://yanhh3d.bz/favicon.ico",
+            "categories": valid_categories
         }
 
+        # Lưu file JSON
         with open(self.output_file, "w", encoding="utf-8") as f:
-            json.dump(output, f, ensure_ascii=False, indent=2)
+            json.dump(data, f, ensure_ascii=False, indent=2)
             
-        total = sum(len(c['channels']) for c in final_categories)
-        logger.info(f"✅ Hoàn tất! Tìm thấy {total} phim.")
+        total = sum(len(c['channels']) for c in valid_categories)
+        logger.info(f"✅ Hoàn tất! Tìm thấy {total} phim. File: {self.output_file}")
 
 if __name__ == "__main__":
     YanHH3DScraper().run()
