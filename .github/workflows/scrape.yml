@@ -30,16 +30,19 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Bước 1: Lấy code từ repo
       - name: 📦 Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # Bước 2: Cài Python
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      # Bước 3: Cài thư viện
       - name: 📥 Install dependencies
         run: |
           pip install --upgrade pip
@@ -47,6 +50,7 @@ jobs:
           playwright install chromium
           playwright install-deps chromium
 
+      # Bước 4: Backup file cũ
       - name: 🧪 Backup existing output
         run: |
           if [ -f monplayer.json ]; then
@@ -60,6 +64,7 @@ jobs:
             echo "📊 No existing output"
           fi
 
+      # Bước 5: Chạy scraper chính
       - name: 🕷️ Run scraper
         run: python scraper.py
         env:
@@ -67,66 +72,75 @@ jobs:
           MAX_PAGES: ${{ env.MAX_PAGES }}
           MAX_EP_PER_FILM: ${{ env.MAX_EP_PER_FILM }}
 
-      - name: 📊 Show results
+      # Bước 6: Tạo script kiểm tra (cách này tránh lỗi YAML syntax)
+      - name: 📝 Create validation script
         run: |
-          if [ -f monplayer.json ]; then
-            NEW_COUNT=$(python -c "import json; print(len(json.load(open('monplayer.json')).get('items',[])))")
-            echo "NEW_ITEMS=$NEW_COUNT" >> $GITHUB_ENV
-            echo ""
-            echo "═══════════════════════════════════════"
-            echo "  📈 RESULTS: $OLD_ITEMS → $NEW_COUNT movies"
-            echo "═══════════════════════════════════════"
-            echo ""
-            echo "🎬 First 3 movies:"
-            python << 'PYEOF'
-  import json
-  d = json.load(open('monplayer.json'))
-  for i, item in enumerate(d.get('items',[])[:3], 1):
-      print(f"  {i}. {item.get('title', 'N/A')}")
-      streams = item.get('streams', [])
-      print(f"     → {len(streams)} streams")
-      if streams:
-          print(f"     → First: {streams[0].get('url', 'N/A')[:80]}...")
-  PYEOF
-            echo ""
-          else
-            echo "❌ monplayer.json not created!"
-            exit 1
-          fi
+          cat > check_output.py << 'EOF'
+          import json
+          import sys
 
-      - name: 🔍 Validate streams
-        run: |
-          python << 'PYEOF'
-  import json
-  import sys
-  d = json.load(open('monplayer.json'))
-  items = d.get('items', [])
-  if not items:
-      print('⚠️  WARNING: No movies in output!')
-      sys.exit(0)
-  total_streams = sum(len(i.get('streams', [])) for i in items)
-  print(f'✅ Total: {len(items)} movies, {total_streams} streams')
-  valid_urls = sum(1 for item in items for s in item.get('streams', []) if '.m3u8' in s.get('url', '') or '.mp4' in s.get('url', ''))
-  print(f'✅ Valid stream URLs: {valid_urls}/{total_streams}')
-  if valid_urls == 0:
-      print('⚠️  WARNING: No valid .m3u8/.mp4 URLs found!')
-  PYEOF
+          # Đọc file mới
+          with open('monplayer.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
 
+          items = data.get('items', [])
+          new_count = len(items)
+          
+          # Đọc số cũ từ env (nếu có)
+          old_count = int('${{ env.OLD_ITEMS }}') if '${{ env.OLD_ITEMS }}' else 0
+
+          print(f"\n{'='*50}")
+          print(f"  📈 RESULTS: {old_count} → {new_count} movies")
+          print(f"{'='*50}\n")
+
+          if new_count == 0:
+              print("⚠️ WARNING: No movies found in new output!")
+              sys.exit(0) # Không fail, chỉ cảnh báo
+
+          # In 3 phim đầu
+          print("🎬 First 3 movies:")
+          for i, item in enumerate(items[:3], 1):
+              title = item.get('title', 'N/A')
+              streams = item.get('streams', [])
+              print(f"  {i}. {title}")
+              print(f"     → {len(streams)} streams")
+              if streams:
+                  url = streams[0].get('url', 'N/A')
+                  print(f"     → Link: {url[:80]}...")
+
+          # Kiểm tra link hợp lệ
+          valid = sum(1 for it in items for s in it.get('streams', []) if '.m3u8' in s.get('url', '') or '.mp4' in s.get('url', ''))
+          total = sum(len(it.get('streams', [])) for it in items)
+          print(f"\n✅ Valid Streams: {valid}/{total}")
+          
+          # Ghi kết quả ra env để bước sau dùng
+          with open(os.environ['GITHUB_ENV'], 'a') as env_file:
+              env_file.write(f"NEW_ITEMS={new_count}\n")
+          EOF
+
+      # Bước 7: Chạy script kiểm tra
+      - name: 🔍 Validate Output
+        run: python check_output.py
+
+      # Bước 8: Commit nếu có thay đổi
       - name: 💾 Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # So sánh nội dung (bỏ qua field "name" để tránh lỗi timestamp nếu có)
           if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
-            echo "✅ No content changes — skipping commit"
-            echo "CHANGED=false" >> $GITHUB_ENV
+              echo "✅ No content changes — skipping commit"
+              echo "CHANGED=false" >> $GITHUB_ENV
           else
-            git add monplayer.json
-            git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
-            git push origin HEAD:${{ github.ref_name }} --verbose
-            echo "✅ Successfully pushed to ${{ github.ref_name }}"
-            echo "CHANGED=true" >> $GITHUB_ENV
+              git add monplayer.json
+              git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
+              git push origin HEAD:${{ github.ref_name }} --verbose
+              echo "✅ Pushed to ${{ github.ref_name }}"
+              echo "CHANGED=true" >> $GITHUB_ENV
           fi
 
+      # Bước 9: Upload artifact
       - name: 📤 Upload artifact
         uses: actions/upload-artifact@v4
         if: always()
@@ -136,15 +150,3 @@ jobs:
             monplayer.json
             monplayer.old.json
           retention-days: 7
-
-      - name: 🎉 Summary
-        run: |
-          echo "═══════════════════════════════════════"
-          echo "  ✅ WORKFLOW COMPLETE"
-          echo "═══════════════════════════════════════"
-          echo ""
-          echo "📊 Movies: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }}"
-          echo "💾 Updated: ${{ env.CHANGED == 'true' && 'Yes' || 'No' }}"
-          echo ""
-          echo "🔗 Raw JSON URL:"
-          echo "https://raw.githubusercontent.com/${{ github.repository }}/main/monplayer.json"
