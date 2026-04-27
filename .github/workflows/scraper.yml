@@ -1,55 +1,24 @@
-name: 🎬 YanHH3D Auto Scraper
-
+name: 🎬 Sync YanHH3D
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'        # 10:00 AM giờ VN hàng ngày
-  workflow_dispatch:           # Chạy thủ công
-  push:
-    paths:
-      - 'scraper.py'
+    - cron: '0 */6 * * *' # 6 tiếng chạy 1 lần
 
 jobs:
-  scrape:
+  build:
     runs-on: ubuntu-latest
-    # Cấp quyền ghi trực tiếp trong code
     permissions:
       contents: write
-    
     steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🐍 Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: 📦 Install dependencies
-        run: pip install requests beautifulsoup4 lxml
-
-      - name: 🕷️ Run Scraper
-        env:
-          YANH_BASE_URL: https://yanhh3d.bz
-          OUTPUT_PATH: yanhh3d.json
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: pip install requests beautifulsoup4
+      - name: Run Scraper
         run: python scraper.py
-
-      - name: 📤 Force Push Result
+      - name: Commit & Force Push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
-          # Force add file JSON
-          git add -f yanhh3d.json
-          
-          # Commit bất chấp có thay đổi hay không (dùng --allow-empty nếu cần)
-          # Ở đây ta dùng || true để tránh dừng workflow nếu không có gì mới
-          git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          
-          # Pull bản mới nhất về, ưu tiên bản của Action (strategy-option=theirs)
-          git pull origin main --rebase -X theirs
-          
-          # Push cưỡng ép lên nhánh chính
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add yanhh3d.json
+          git commit -m "Update data $(date)" || exit 0
           git push origin main --force
