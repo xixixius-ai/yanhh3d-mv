@@ -53,11 +53,9 @@ jobs:
             cp monplayer.json monplayer.old.json
             OLD_COUNT=$(python -c "import json; print(len(json.load(open('monplayer.old.json')).get('items',[])))")
             echo "OLD_ITEMS=$OLD_COUNT" >> $GITHUB_ENV
-            echo "📊 Existing: $OLD_COUNT movies"
           else
             echo "OLD_ITEMS=0" >> $GITHUB_ENV
             touch monplayer.old.json
-            echo "📊 No existing output"
           fi
 
       - name: 🕷️ Run scraper
@@ -70,47 +68,25 @@ jobs:
       - name: 📝 Create validation script
         run: |
           cat > check_output.py << 'EOF'
-          import json
-          import sys
-          import os
-
+          import json, sys, os
           with open('monplayer.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
-
           items = data.get('items', [])
           new_count = len(items)
-          
           old_count = 0
           if '${{ env.OLD_ITEMS }}':
-              try:
-                  old_count = int('${{ env.OLD_ITEMS }}')
-              except:
-                  pass
-
-          print(f"\n{'='*50}")
-          print(f"  📈 RESULTS: {old_count} → {new_count} movies")
-          print(f"{'='*50}\n")
-
-          if new_count == 0:
-              print("⚠️ WARNING: No movies found!")
-              with open(os.environ['GITHUB_ENV'], 'a') as env_file:
-                  env_file.write(f"NEW_ITEMS={new_count}\n")
-              sys.exit(0)
-
-          print("🎬 First 3 movies:")
-          for i, item in enumerate(items[:3], 1):
-              title = item.get('title', 'N/A')
-              streams = item.get('streams', [])
-              print(f"  {i}. {title}")
-              print(f"     → {len(streams)} streams")
-              if streams:
-                  url = streams[0].get('url', 'N/A')
-                  print(f"     → Link: {url[:80]}...")
-
-          valid = sum(1 for it in items for s in it.get('streams', []) if '.m3u8' in s.get('url', '') or '.mp4' in s.get('url', ''))
-          total = sum(len(it.get('streams', [])) for it in items)
-          print(f"\n✅ Valid Streams: {valid}/{total}")
-          
+              try: old_count = int('${{ env.OLD_ITEMS }}')
+              except: pass
+          print(f"\n{'='*50}\n  📈 RESULTS: {old_count} → {new_count} movies\n{'='*50}\n")
+          if new_count > 0:
+              print("🎬 First 3 movies:")
+              for i, item in enumerate(items[:3], 1):
+                  print(f"  {i}. {item.get('title')}")
+                  streams = item.get('streams', [])
+                  print(f"     → {len(streams)} streams")
+                  if streams: print(f"     → {streams[0].get('url', '')[:80]}...")
+              valid = sum(1 for it in items for s in it.get('streams', []) if '.m3u8' in s.get('url','') or '.mp4' in s.get('url',''))
+              print(f"\n✅ Valid Streams: {valid}/{sum(len(it.get('streams',[])) for it in items)}")
           with open(os.environ['GITHUB_ENV'], 'a') as env_file:
               env_file.write(f"NEW_ITEMS={new_count}\n")
           EOF
@@ -118,19 +94,22 @@ jobs:
       - name: 🔍 Validate Output
         run: python check_output.py
 
-      - name: 💾 Commit & push if changed
+      - name: 💾 Auto-commit with rebase (FIXED)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
+          # Sync với remote trước
+          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+          
           if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
-              echo "✅ No content changes — skipping commit"
+              echo "✅ No changes — skip commit"
               echo "CHANGED=false" >> $GITHUB_ENV
           else
               git add monplayer.json
               git commit -m "🤖 Auto-update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} movies"
-              git push origin HEAD:${{ github.ref_name }} --verbose
-              echo "✅ Pushed to ${{ github.ref_name }}"
+              git push origin HEAD:${{ github.ref_name }} --force-with-lease
+              echo "✅ Pushed"
               echo "CHANGED=true" >> $GITHUB_ENV
           fi
 
@@ -139,7 +118,5 @@ jobs:
         if: always()
         with:
           name: monplayer-output
-          path: |
-            monplayer.json
-            monplayer.old.json
+          path: monplayer.json
           retention-days: 7
