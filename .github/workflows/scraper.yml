@@ -1,62 +1,47 @@
-# .github/workflows/scraper.yml
-name: 🎬 YanHH3D JSON Scraper
+# 📁 Lưu tại: .github/workflows/scraper.yml
+name: 🎬 YanHH3D Auto Scraper
 
 on:
   schedule:
-    # Chạy tự động lúc 3AM UTC hàng ngày (10AM VN)
-    - cron: '0 3 * * *'
-  workflow_dispatch:  # Cho phép chạy thủ công từ GitHub UI
+    - cron: '0 3 * * *'        # Chạy tự động 10:00 AM giờ VN hàng ngày
+  workflow_dispatch:           # Cho phép nhấn nút chạy thủ công
   push:
     paths:
       - 'scraper.py'
-      - 'requirements.txt'
       - '.github/workflows/scraper.yml'
+
+# ⚠️ Quyền ghi file để workflow tự push kết quả về repo
+permissions:
+  contents: write
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
+
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: 📦 Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        # ✅ Cài trực tiếp, không cần file requirements.txt
+        run: pip install requests beautifulsoup4 lxml
 
-      - name: 🕷️ Run scraper
+      - name: 🕷️ Run Scraper
         env:
-          YANH_BASE_URL: ${{ vars.YANH_BASE_URL || 'https://yanhh3d.bz' }}
-          OUTPUT_PATH: ${{ vars.OUTPUT_PATH || 'yanhh3d.json' }}
-          MAX_PAGES: ${{ vars.MAX_PAGES || '5' }}
-          ITEMS_PER_PAGE: ${{ vars.ITEMS_PER_PAGE || '60' }}
-        run: |
-          python scraper.py
+          YANH_BASE_URL: https://yanhh3d.bz
+          OUTPUT_PATH: yanhh3d.json
+          MAX_PAGES: "5"
+          ITEMS_PER_PAGE: "60"
+        run: python scraper.py
 
-      - name: ✅ Validate JSON output
+      - name: ✅ Validate JSON
         run: |
-          python -c "import json; json.load(open('yanhh3d.json')); print('✅ JSON valid')"
-
-      - name: 📤 Commit & push result
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add yanhh3d.json
-          git commit -m "🤖 Auto-update: yanhh3d.json $(date +'%Y-%m-%d %H:%M')" || exit 0
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🚨 Notify on failure
-        if: failure()
-        run: |
-          echo "❌ Scraper failed at $(date)" >> failure.log
-          # Có thể tích hợp Telegram/Discord webhook ở đây
+          python - << 'EOF'
+          import json, sys, os
+          path = os.getenv("OUTPUT_PATH", "yan
