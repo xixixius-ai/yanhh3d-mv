@@ -45,7 +45,32 @@ jobs:
           pip install --upgrade pip
           pip install requests beautifulsoup4 lxml
 
-      # ── 4. Chạy scraper ───────────────────────────────
+      # ── 4. Debug listing HTML ─────────────────────────
+      - name: Debug listing HTML
+        run: |
+          python -c "
+          import requests
+          from bs4 import BeautifulSoup
+
+          headers = {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+              'Accept-Language': 'vi-VN,vi;q=0.9',
+          }
+          r = requests.get('https://yanhh3d.bz/moi-cap-nhat', headers=headers, timeout=15)
+
+          print('=== STATUS:', r.status_code)
+          print('=== FINAL URL:', r.url)
+          print()
+          print('=== HTML (first 3000 chars):')
+          print(r.text[:3000])
+          print()
+          print('=== ALL <a href> (first 40):')
+          soup = BeautifulSoup(r.text, 'html.parser')
+          for a in soup.find_all('a', href=True)[:40]:
+              print(' ', repr(a['href']), '|', a.get_text(strip=True)[:50])
+          "
+
+      # ── 5. Chạy scraper ───────────────────────────────
       - name: Run scraper
         env:
           MAX_PAGES: ${{ github.event.inputs.max_pages || '10' }}
@@ -59,7 +84,7 @@ jobs:
           mod.main()
           "
 
-      # ── 5. Kiểm tra output ────────────────────────────
+      # ── 6. Kiểm tra output ────────────────────────────
       - name: Validate output JSON
         run: |
           python -c "
@@ -76,7 +101,7 @@ jobs:
               sys.exit(1)
           "
 
-      # ── 6. Upload artifact ────────────────────────────
+      # ── 7. Upload artifact ────────────────────────────
       - name: Upload monplayer.json
         uses: actions/upload-artifact@v4
         with:
@@ -84,7 +109,7 @@ jobs:
           path: monplayer.json
           retention-days: 7
 
-      # ── 7. Commit & push JSON về repo ─────────────────
+      # ── 8. Commit & push JSON về repo ─────────────────
       - name: Commit updated JSON
         run: |
           git config user.name  "github-actions[bot]"
