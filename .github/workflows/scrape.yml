@@ -2,55 +2,60 @@ name: Scrape YanHH3D
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
       pages:
-        description: "So trang listing (1-10)"
+        description: 'Number of pages to crawl (1-10)'
         required: false
-        default: "5"
+        default: '5'
+        type: string
       debug:
-        description: "Bat debug mode"
+        description: 'Enable debug mode'
         required: false
-        default: "false"
+        default: 'false'
+        type: boolean
   push:
     paths:
-      - "scraper.py"
-      - ".github/workflows/scrape.yml"
+      - 'scraper.py'
+      - '.github/workflows/scrape.yml'
 
 env:
-  BASE_URL: "https://yanhh3d.bz"
-  MAX_PAGES: "5"
-  DEBUG_SCRAPER: "false"
+  BASE_URL: 'https://yanhh3d.bz'
+  MAX_PAGES: '5'
+  DEBUG_SCRAPER: 'false'
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          # cache: "pip"  ← Đã bỏ để tránh lỗi thiếu requirements.txt
+          python-version: '3.11'
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install requests beautifulsoup4 lxml
 
-      - name: Set env from inputs
+      - name: Apply manual inputs if triggered
         run: |
-          echo "MAX_PAGES=${{ github.event.inputs.pages || '5' }}" >> $GITHUB_ENV
-          echo "DEBUG_SCRAPER=${{ github.event.inputs.debug || 'false' }}" >> $GITHUB_ENV
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "MAX_PAGES=${{ github.event.inputs.pages }}" >> $GITHUB_ENV
+            echo "DEBUG_SCRAPER=${{ github.event.inputs.debug }}" >> $GITHUB_ENV
+          fi
 
-      - name: Test connection
+      - name: Test site connection
         run: |
-          echo "Testing ${{ env.BASE_URL }}"
-          curl -s -o /dev/null -w "Status: %{http_code}\n" \
+          echo "Checking ${BASE_URL}/moi-cap-nhat"
+          curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" \
             -H "User-Agent: Mozilla/5.0" \
-            -L "${{ env.BASE_URL }}/moi-cap-nhat"
+            -L "${BASE_URL}/moi-cap-nhat"
 
       - name: Run scraper
         run: python scraper.py
@@ -58,24 +63,32 @@ jobs:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
           CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
 
-      - name: Validate output
+      - name: Validate JSON output
         run: |
-          test -f monplayer.json || { echo "No output"; exit 1; }
-          python -m json.tool monplayer.json > /dev/null && echo "JSON OK"
+          if [ ! -f monplayer.json ]; then
+            echo "ERROR: monplayer.json not found"
+            exit 1
+          fi
+          python -m json.tool monplayer.json > /dev/null && echo "JSON is valid" || exit 1
 
-      - name: Upload artifact
+      - name: Upload debug artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: debug-output
+          name: monplayer-output
           path: monplayer.json
           retention-days: 7
 
-      - name: Commit result
+      - name: Commit and push if changed
         if: success()
         run: |
-          git config user.email "action@github.com"
-          git config user.name "GitHub Action"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add monplayer.json
-          git diff --cached --quiet && echo "No changes" || \
-            (git commit -m "Auto update monplayer.json" && git push)
+          if git diff --staged --quiet; then
+            echo "No changes detected in monplayer.json"
+          else
+            git commit -m "chore: auto-update monplayer.json"
+            git push origin HEAD:${{ github.ref_name }}
+            echo "Successfully pushed to ${{ github.ref_name }}"
+          fi
