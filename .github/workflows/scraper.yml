@@ -3,23 +3,24 @@ name: 🎬 YanHH3D Auto Scraper
 on:
   schedule:
     - cron: '0 3 * * *'        # 10:00 AM giờ VN hàng ngày
-  workflow_dispatch:           # Chạy thủ công để kiểm tra ngay
+  workflow_dispatch:           # Chạy thủ công
   push:
     paths:
       - 'scraper.py'
 
-permissions:
-  contents: write              # Bắt buộc phải có để push file
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # Cấp quyền ghi trực tiếp trong code
+    permissions:
+      contents: write
     
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0       # Lấy toàn bộ lịch sử để pull/rebase không lỗi
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
@@ -35,21 +36,20 @@ jobs:
           OUTPUT_PATH: yanhh3d.json
         run: python scraper.py
 
-      - name: 📤 Commit & Push Result
+      - name: 📤 Force Push Result
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-          # Cập nhật thay đổi từ Remote trước để tránh lỗi rejected
-          git pull origin main --rebase
-
-          # Kiểm tra nếu file JSON có thay đổi
-          git add yanhh3d.json
+          # Force add file JSON
+          git add -f yanhh3d.json
           
-          if git diff --staged --quiet; then
-            echo "⏭️ Không có dữ liệu mới để cập nhật."
-          else
-            git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M')"
-            git push origin main
-            echo "✅ Đã cập nhật file JSON thành công lên Repository."
-          fi
+          # Commit bất chấp có thay đổi hay không (dùng --allow-empty nếu cần)
+          # Ở đây ta dùng || true để tránh dừng workflow nếu không có gì mới
+          git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          
+          # Pull bản mới nhất về, ưu tiên bản của Action (strategy-option=theirs)
+          git pull origin main --rebase -X theirs
+          
+          # Push cưỡng ép lên nhánh chính
+          git push origin main --force
