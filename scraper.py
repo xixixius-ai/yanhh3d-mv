@@ -1,14 +1,14 @@
 """
-scraper.py — YanHH3D → MonPlayer (FIXED SELECTOR v3)
-- Selector chính xác: .film-poster-ahref
-- Bắt stream aggressive
-- Output chuẩn MonPlayer
+scraper.py — YanHH3D → MonPlayer JSON
+Selector: .film-poster-ahref
+Output: monplayer.json chuẩn MonPlayer format
 """
 
 import json
 import re
 import time
 import logging
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Optional
@@ -16,13 +16,13 @@ from urllib.parse import urljoin
 
 from playwright.sync_api import sync_playwright, Page
 
-# ── Config ────────────────────────────────────────────────────────────────────
-BASE_URL = "https://yanhh3d.bz"
+# ── Config ───────────────────────────────────────────────────────────────────
+BASE_URL = os.getenv("YANHH_BASE_URL", "https://yanhh3d.bz")
 LIST_URL = f"{BASE_URL}/moi-cap-nhat"
 OUTPUT_FILE = "monplayer.json"
-MAX_PAGES = 2
+MAX_PAGES = int(os.getenv("MAX_PAGES", "2"))
+MAX_EP_PER_FILM = int(os.getenv("MAX_EP_PER_FILM", "50"))
 DELAY = 2.0
-MAX_EP_PER_FILM = 50
 TIMEOUT = 30000
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -44,11 +44,11 @@ class MovieItem:
 def extract_stream_url(html: str, page_url: str) -> Optional[str]:
     for m in re.finditer(r'(https?://[^\s\'"<>\\|{}]+?\.(m3u8|mp4)(?:[?&][^\s\'"<>#|{}]+)?)', html, re.I):
         url = m.group(1).strip().replace('\\', '').replace('"', '').replace("'", "")
-        if url and url.startswith('http') and 'ads' not in url.lower():
+        if url and url.startswith('http') and 'ads' not in url.lower() and 'google' not in url.lower():
             return url
     return None
 
-# ── Step 1: Get slugs với SELECTOR CHÍNH XÁC ─────────────────────────────────
+# ── Step 1: Get slugs với selector .film-poster-ahref ────────────────────────
 def get_movie_slugs(page: Page, page_num: int = 1) -> List[str]:
     url = LIST_URL if page_num == 1 else f"{LIST_URL}?page={page_num}"
     log.info(f"📄 Loading {url}")
@@ -59,7 +59,6 @@ def get_movie_slugs(page: Page, page_num: int = 1) -> List[str]:
     slugs = []
     seen = set()
     
-    # 🔥 SELECTOR: .film-poster-ahref
     for a in page.query_selector_all(".film-poster-ahref[href]"):
         href = a.get_attribute("href") or ""
         title = a.get_attribute("title") or ""
@@ -170,7 +169,8 @@ def scrape_film(page: Page, slug: str) -> Optional[MovieItem]:
 # ── Main ────────────────────────────────────────────────────────────────────
 def main():
     log.info("═" * 60)
-    log.info("  🎬 YanHH3D Scraper — FIXED SELECTOR")
+    log.info("  🎬 YanHH3D Scraper — Ready to run")
+    log.info(f"  Pages: {MAX_PAGES} | Max episodes: {MAX_EP_PER_FILM}")
     log.info("═" * 60)
     
     items = []
@@ -201,12 +201,12 @@ def main():
             if item:
                 items.append(item)
                 log.info(f"  🎉 Added: {item.title} — {len(item.streams)} streams")
-                if len(items) >= 5:  # Test 5 phim
+                if len(items) >= 5:
                     break
             time.sleep(DELAY)
         browser.close()
         
-    # Output
+    # Output JSON
     output = {
         "name": "YanHH3D — Hoạt Hình 3D/4K Thuyết Minh",
         "items": [
@@ -224,7 +224,7 @@ def main():
         encoding="utf-8"
     )
     
-    log.info(f"✨ Exported: {len(items)} movies, {sum(len(i['streams']) for i in output['items'])} streams")
+    log.info(f"✨ Exported: {len(items)} movies, {sum(len(i['streams']) for i in output['items'])} streams → {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
