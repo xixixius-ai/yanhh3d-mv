@@ -1,4 +1,3 @@
-# 📁 Lưu tại: .github/workflows/scraper.yml
 name: 🎬 YanHH3D Auto Scraper
 
 on:
@@ -21,6 +20,8 @@ jobs:
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0       # Lấy toàn bộ lịch sử để tránh lỗi khi rebase
 
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5
@@ -34,25 +35,37 @@ jobs:
         env:
           YANH_BASE_URL: https://yanhh3d.bz
           OUTPUT_PATH: yanhh3d.json
-          MAX_PAGES: "5"
           ITEMS_PER_PAGE: "60"
         run: python scraper.py
 
       - name: ✅ Validate JSON
-        # ✅ Dùng run: | để YAML parse đúng multiline, tránh lỗi heredoc
         run: |
           python -c "
           import json
-          with open('yanhh3d.json', 'r', encoding='utf-8') as f:
-              data = json.load(f)
-          count = len(data.get('channels', []))
-          print(f'✅ JSON hợp lệ! Đã export {count} phim.')
+          try:
+              with open('yanhh3d.json', 'r', encoding='utf-8') as f:
+                  data = json.load(f)
+              # Đếm tổng phim trong tất cả các categories
+              total = sum(len(cat.get('channels', [])) for cat in data.get('categories', []))
+              print(f'✅ JSON hợp lệ! Tổng cộng: {total} phim.')
+          except Exception as e:
+              print(f'❌ Lỗi định dạng JSON: {e}')
+              exit(1)
           "
 
       - name: 📤 Commit & Push Result
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          
+          # Chỉ làm việc nếu file có thay đổi thực sự
           git add yanhh3d.json
-          git commit -m "🤖 Auto-update: yanhh3d.json $(date +'%Y-%m-%d %H:%M')" || echo "⏭️ Không có thay đổi mới"
-          git push
+          if git diff --staged --quiet; then
+            echo "⏭️ Không có thay đổi mới trong dữ liệu phim."
+          else
+            git commit -m "🤖 Auto-update: yanhh3d.json $(date +'%Y-%m-%d %H:%M')"
+            
+            # Khắc phục lỗi ! [rejected] bằng cách pull rebase trước khi push
+            git pull --rebase origin main
+            git push origin main
+          fi
