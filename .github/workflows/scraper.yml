@@ -1,124 +1,155 @@
-name: YanHH3D Scraper → MonPlayer JSON
+name: 🕷️ Scrape YanHH3D → MonPlayer
 
 on:
-  # Chạy tự động mỗi 6 tiếng
   schedule:
-    - cron: "0 */6 * * *"
-
-  # Cho phép chạy thủ công từ tab Actions
+    - cron: "0 */6 * * *"  # Mỗi 6 tiếng
   workflow_dispatch:
     inputs:
-      max_pages:
-        description: "Số trang tối đa cần crawl"
+      pages:
+        description: "Số trang listing cần crawl (1-10)"
         required: false
-        default: "10"
-
-  # Chạy khi push code mới vào main
+        default: "5"
+        type: string
+      debug:
+        description: "Bật debug mode (log chi tiết HTML)"
+        required: false
+        default: "false"
+        type: boolean
   push:
-    branches: [main]
     paths:
       - "scraper.py"
+      - ".github/workflows/scrape.yml"
+
+env:
+  BASE_URL: "https://yanhh3d.bz"
+  USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  MAX_PAGES: ${{ github.event.inputs.pages || '5' }}
+  DEBUG_SCRAPER: ${{ github.event.inputs.debug || 'false' }}
+  # Nếu có Cloudflare cookie, thêm vào Secrets repo: CF_CLEARANCE=xxx
 
 jobs:
   scrape:
-    name: Crawl & Build JSON
     runs-on: ubuntu-latest
     timeout-minutes: 30
-
-    permissions:
-      contents: write   # cần để commit file JSON trở lại repo
-
+    
     steps:
-      # ── 1. Checkout repo ──────────────────────────────
-      - name: Checkout
+      - name: 📦 Checkout repo
         uses: actions/checkout@v4
 
-      # ── 2. Setup Python ───────────────────────────────
-      - name: Setup Python 3.11
+      - name: 🐍 Setup Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      # ── 3. Cài dependencies ───────────────────────────
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: |
           pip install --upgrade pip
           pip install requests beautifulsoup4 lxml
 
-      # ── 4. Debug listing HTML ─────────────────────────
-      - name: Debug listing HTML
+      - name: 🔍 Debug: Test listing page accessibility
         run: |
-          python -c "
-          import requests
-          from bs4 import BeautifulSoup
+          echo "🧪 Testing connection to ${{ env.BASE_URL }}/moi-cap-nhat ..."
+          
+          # Test với curl để xem status code thực
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "User-Agent: ${{ env.USER_AGENT }}" \
+            -H "Referer: ${{ env.BASE_URL }}" \
+            -L "${{ env.BASE_URL }}/moi-cap-nhat")
+          echo "📡 HTTP Status: $STATUS"
+          
+          if [ "$STATUS" = "403" ]; then
+            echo "❌ Bị chặn 403 - có thể do Cloudflare/anti-bot"
+            echo "💡 Giải pháp: Thêm cookie cf_clearance vào repo Secrets"
+            exit 1
+          elif [ "$STATUS" = "200" ]; then
+            echo "✅ Kết nối thành công"
+            # In sample HTML để debug selector
+            curl -s -H "User-Agent: ${{ env.USER_AGENT }}" "${{ env.BASE_URL }}/moi-cap-nhat" | \
+              grep -oP 'href=["\']\K/[^"\']+' | \
+              grep -v -E '(tap-|sever|login|register|\?|#|\.css|\.js)' | \
+              head -20 | sort -u
+          else
+            echo "⚠️ Status lạ: $STATUS"
+          fi
 
-          headers = {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-              'Accept-Language': 'vi-VN,vi;q=0.9',
-          }
-          r = requests.get('https://yanhh3d.bz/moi-cap-nhat', headers=headers, timeout=15)
-
-          print('=== STATUS:', r.status_code)
-          print('=== FINAL URL:', r.url)
-          print()
-          print('=== HTML (first 3000 chars):')
-          print(r.text[:3000])
-          print()
-          print('=== ALL <a href> (first 40):')
-          soup = BeautifulSoup(r.text, 'html.parser')
-          for a in soup.find_all('a', href=True)[:40]:
-              print(' ', repr(a['href']), '|', a.get_text(strip=True)[:50])
-          "
-
-      # ── 5. Chạy scraper ───────────────────────────────
-      - name: Run scraper
+      - name: 🕷️ Run scraper
+        run: |
+          echo "🚀 Starting scraper with MAX_PAGES=${{ env.MAX_PAGES }} DEBUG=${{ env.DEBUG_SCRAPER }}"
+          python scraper.py
         env:
-          MAX_PAGES: ${{ github.event.inputs.max_pages || '10' }}
-        run: |
-          python -c "
-          import os, importlib.util
-          spec = importlib.util.spec_from_file_location('scraper', 'scraper.py')
-          mod = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(mod)
-          mod.MAX_PAGES = int(os.getenv('MAX_PAGES', '10'))
-          mod.main()
-          "
+          YANHH_BASE_URL: ${{ env.BASE_URL }}
+          CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
 
-      # ── 6. Kiểm tra output ────────────────────────────
-      - name: Validate output JSON
+      - name: ✅ Validate JSON output
         run: |
-          python -c "
-          import json, sys
-          try:
-              data = json.load(open('monplayer.json', encoding='utf-8'))
-              count = len(data.get('items', []))
-              if count == 0:
-                  print('WARNING: 0 phim — kiểm tra selector hoặc site có đổi HTML không')
-              else:
-                  print(f'OK: {count} phim')
-          except Exception as e:
-              print(f'FAIL: {e}')
-              sys.exit(1)
-          "
+          echo "🔍 Validating monplayer.json..."
+          
+          if [ ! -f "monplayer.json" ]; then
+            echo "❌ File output không tồn tại!"
+            exit 1
+          fi
+          
+          # Kiểm tra JSON valid
+          python -m json.tool monplayer.json > /dev/null && echo "✅ JSON valid" || { echo "❌ JSON invalid"; exit 1; }
+          
+          # Đếm số phim và streams
+          FILM_COUNT=$(python -c "import json; d=json.load(open('monplayer.json')); print(len(d.get('items',[])))")
+          STREAM_COUNT=$(python -c "import json; d=json.load(open('monplayer.json')); print(sum(len(i.get('streams',[])) for i in d.get('items',[])))")
+          
+          echo "📊 Result: $FILM_COUNT phim, $STREAM_COUNT streams"
+          
+          if [ "$FILM_COUNT" = "0" ]; then
+            echo "⚠️  WARNING: Không có phim nào trong output! Kiểm tra log scraper."
+            # Không fail hard để vẫn upload artifact cho debug
+          fi
+          
+          # Kiểm tra URL stream có chứa .m3u8 hoặc .mp4
+          INVALID_URLS=$(python -c "
+          import json
+          d = json.load(open('monplayer.json'))
+          bad = []
+          for item in d.get('items',[]):
+              for s in item.get('streams',[]):
+                  url = s.get('url','')
+                  if '.m3u8' not in url and '.mp4' not in url and url:
+                      bad.append(f\"{item['title']}: {url[:50]}\")
+          print('\n'.join(bad[:10]))  # max 10 sample
+          ")
+          if [ -n "$INVALID_URLS" ]; then
+            echo "⚠️  WARNING: Một số URL có thể không phải stream trực tiếp:"
+            echo "$INVALID_URLS"
+          fi
 
-      # ── 7. Upload artifact ────────────────────────────
-      - name: Upload monplayer.json
+      - name: 📤 Upload artifact (for debugging)
         uses: actions/upload-artifact@v4
+        if: always()  # upload cả khi fail để debug
         with:
-          name: monplayer-json
-          path: monplayer.json
+          name: monplayer-debug-${{ github.run_number }}
+          path: |
+            monplayer.json
           retention-days: 7
 
-      # ── 8. Commit & push JSON về repo ─────────────────
-      - name: Commit updated JSON
+      - name: 💾 Commit & push result
+        if: success()
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add monplayer.json
-          if git diff --cached --quiet; then
-            echo "Không có thay đổi, bỏ qua commit."
-          else
-            TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M UTC")
-            git commit -m "chore: update monplayer.json [${TIMESTAMP}]"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Chỉ commit nếu có thay đổi
+          if [ -s monplayer.json ] && ! git diff --quiet monplayer.json; then
+            git add monplayer.json
+            git commit -m "🤖 Auto-update: $(date '+%Y-%m-%d %H:%M') - $(python -c "import json; print(len(json.load(open('monplayer.json'))['items']))") phim"
             git push
+            echo "✨ Đã push monplayer.json lên repo"
+          else
+            echo "ℹ️  Không có thay đổi mới trong monplayer.json"
           fi
+
+      - name: 📢 Notify result (optional)
+        if: always()
+        run: |
+          FILM_COUNT=$(python -c "import json; print(len(json.load(open('monplayer.json'))['items']))" 2>/dev/null || echo "0")
+          echo "🎬 Scrape complete: $FILM_COUNT phim trong monplayer.json"
+          echo "🔗 Raw URL cho MonPlayer:"
+          echo "https://raw.githubusercontent.com/${{ github.repository }}/main/monplayer.json"
