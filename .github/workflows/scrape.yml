@@ -1,24 +1,20 @@
-name: Scrape YanHH3D
+name: Scrape YanHH3D — Test Mode
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
 
 env:
   BASE_URL: 'https://yanhh3d.bz'
 
 jobs:
-  scrape:
+  test-scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,54 +26,29 @@ jobs:
           pip install playwright beautifulsoup4
           playwright install chromium
 
-      - name: Backup existing output (for diff)
-        run: |
-          if [ -f monplayer.json ]; then
-            cp monplayer.json monplayer.old.json
-            echo "OLD_ITEMS=$(python -c "import json; print(len(json.load(open('monplayer.old.json')).get('items',[])))")" >> $GITHUB_ENV
-          else
-            echo "OLD_ITEMS=0" >> $GITHUB_ENV
-            touch monplayer.old.json
-          fi
-
-      - name: Run scraper
+      - name: Run scraper (test mode: 1 phim)
         run: python scraper.py
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
 
-      - name: Compare outputs (smart diff)
-        id: diff
+      - name: Show output
         run: |
-          NEW_ITEMS=$(python -c "import json; print(len(json.load(open('monplayer.json')).get('items',[])))")
-          echo "NEW_ITEMS=$NEW_ITEMS" >> $GITHUB_ENV
-          
-          # So sánh nội dung thực (bỏ qua formatting)
-          if diff -q <(python -m json.tool monplayer.old.json 2>/dev/null | grep -v '"name"') <(python -m json.tool monplayer.json | grep -v '"name"') > /dev/null 2>&1; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "✅ No content changes detected — skipping commit"
+          echo "=== monplayer.json ==="
+          cat monplayer.json
+          echo ""
+          echo "=== Stream URLs ==="
+          python -c "import json; d=json.load(open('monplayer.json')); [print(s['url']) for i in d.get('items',[]) for s in i.get('streams',[])]"
+
+      - name: Commit if has streams
+        run: |
+          HAS_STREAMS=$(python -c "import json; d=json.load(open('monplayer.json')); print('yes' if any(i.get('streams') for i in d.get('items',[])) else 'no')")
+          if [ "$HAS_STREAMS" = "yes" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add monplayer.json
+            git commit -m "test: aggressive stream capture — $(date -u +'%Y-%m-%d')"
+            git push origin HEAD:${{ github.ref_name }}
+            echo "✅ Pushed with streams"
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "📝 Content changed: $OLD_ITEMS → $NEW_ITEMS items"
+            echo "⚠️ No streams found — check logs above"
           fi
-
-      - name: Commit only if content changed
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add monplayer.json
-          git commit -m "🤖 Update: ${{ env.OLD_ITEMS }} → ${{ env.NEW_ITEMS }} items"
-          git push origin HEAD:${{ github.ref_name }}
-          echo "✅ Pushed new version"
-
-      - name: Skip commit (no changes)
-        if: steps.diff.outputs.changed == 'false'
-        run: echo "ℹ️  Output unchanged — no commit needed"
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: monplayer-output
-          path: monplayer.json
-          retention-days: 3
