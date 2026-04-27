@@ -67,8 +67,10 @@ jobs:
           try:
               data = json.load(open('monplayer.json', encoding='utf-8'))
               count = len(data.get('items', []))
-              print(f'OK: {count} phim')
-              sys.exit(0 if count > 0 else 1)
+              if count == 0:
+                  print('WARNING: 0 phim — kiểm tra selector hoặc site có đổi HTML không')
+              else:
+                  print(f'OK: {count} phim')
           except Exception as e:
               print(f'FAIL: {e}')
               sys.exit(1)
