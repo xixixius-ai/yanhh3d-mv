@@ -1,18 +1,35 @@
 name: Scrape YanHH3D
-on: [workflow_dispatch, schedule]
-schedule: [{cron: "0 */6 * * *"}]
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
 jobs:
-  run:
+  scrape:
     runs-on: ubuntu-latest
-    permissions: {contents: write}
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.11"}
-      - run: pip install playwright && playwright install chromium
-      - run: python scraper.py
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        if: success()
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Playwright & System Deps
+        run: |
+          pip install playwright
+          playwright install chromium
+          playwright install-deps chromium  # Quan trọng: cài thư viện hệ thống cho Linux
+
+      - name: Run Scraper
+        run: python scraper.py
+
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "🤖 Update 20 phim mới"
           file_pattern: monplayer.json
