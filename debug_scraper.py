@@ -94,4 +94,11 @@ def main():
         print(f"   • {iframe['src'][:100]}")
     
     # Print HTML snippet around "player" keyword
-    print("\n📋 HTML snippet around 'player
+    print("\n📋 HTML snippet around 'player' keyword:")
+    idx = html.lower().find("player")
+    if idx > 0:
+        snippet = html[max(0, idx-300):idx+400].replace("\n", " ")[:600]
+        print(f"   ...{snippet}...")
+
+if __name__ == "__main__":
+    main()
