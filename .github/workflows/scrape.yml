@@ -1,94 +1,62 @@
 name: Scrape YanHH3D
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
-      pages:
-        description: 'Number of pages to crawl (1-10)'
-        required: false
-        default: '5'
-        type: string
       debug:
-        description: 'Enable debug mode'
+        description: "Bat debug mode (xem HTML thuc te)"
         required: false
-        default: 'false'
+        default: "true"
         type: boolean
-  push:
-    paths:
-      - 'scraper.py'
-      - '.github/workflows/scrape.yml'
 
 env:
-  BASE_URL: 'https://yanhh3d.bz'
-  MAX_PAGES: '5'
-  DEBUG_SCRAPER: 'false'
+  BASE_URL: "https://yanhh3d.bz"
 
 jobs:
-  scrape:
+  debug-and-scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    permissions:
-      contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install deps
         run: pip install requests beautifulsoup4 lxml
 
-      - name: Apply manual inputs if triggered
+      - name: 🔍 Debug HTML Structure
+        if: github.event.inputs.debug == 'true'
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "MAX_PAGES=${{ github.event.inputs.pages }}" >> $GITHUB_ENV
-            echo "DEBUG_SCRAPER=${{ github.event.inputs.debug }}" >> $GITHUB_ENV
+          echo "=== 1. Listing page ==="
+          curl -s -H "User-Agent: Mozilla/5.0" "$BASE_URL/moi-cap-nhat" > listing.html
+          echo "Sample movie slugs:"
+          grep -oE 'href="/[^"]*"' listing.html | grep -v -E "(tap-|sever|login|register|\?|#)" | head -10
+          
+          echo ""
+          echo "=== 2. Episode page (kiem-lai-phan-2/tap-1) ==="
+          curl -s -H "User-Agent: Mozilla/5.0" "$BASE_URL/kiem-lai-phan-2/tap-1" > episode.html || echo "Page not found"
+          if [ -f episode.html ]; then
+            echo "Direct .m3u8/.mp4 found:"
+            grep -oE 'https?://[^"'\''[:space:]]*\.(m3u8|mp4)[^"'\''[:space:]]*' episode.html | head -5 || echo "(none)"
+            echo ""
+            echo "JS file/src patterns:"
+            grep -oE '(file|src|source|url)\s*[:=]\s*"[^"]*\.(m3u8|mp4)[^"]*"' episode.html | head -3 || echo "(none)"
           fi
 
-      - name: Test site connection
-        run: |
-          echo "Checking ${BASE_URL}/moi-cap-nhat"
-          curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" \
-            -H "User-Agent: Mozilla/5.0" \
-            -L "${BASE_URL}/moi-cap-nhat"
+      - name: Upload debug files
+        if: github.event.inputs.debug == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-html-output
+          path: |
+            listing.html
+            episode.html
+          retention-days: 3
 
       - name: Run scraper
         run: python scraper.py
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
-          CF_CLEARANCE: ${{ secrets.CF_CLEARANCE }}
-
-      - name: Validate JSON output
-        run: |
-          if [ ! -f monplayer.json ]; then
-            echo "ERROR: monplayer.json not found"
-            exit 1
-          fi
-          python -m json.tool monplayer.json > /dev/null && echo "JSON is valid" || exit 1
-
-      - name: Upload debug artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: monplayer-output
-          path: monplayer.json
-          retention-days: 7
-
-      - name: Commit and push if changed
-        if: success()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add monplayer.json
-          if git diff --staged --quiet; then
-            echo "No changes detected in monplayer.json"
-          else
-            git commit -m "chore: auto-update monplayer.json"
-            git push origin HEAD:${{ github.ref_name }}
-            echo "Successfully pushed to ${{ github.ref_name }}"
-          fi
