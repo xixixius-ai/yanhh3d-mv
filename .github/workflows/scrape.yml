@@ -55,10 +55,12 @@ jobs:
             echo "⚠️ No changes detected (shouldn't happen with timestamp)"
           fi
 
-      - name: Upload artifact
+      - name: Upload debug files
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: monplayer-backup
-          path: monplayer.json
-          retention-days: 3
+          name: debug-output
+          path: |
+            monplayer.json
+            debug_dom.html
+          retention-days: 5
