@@ -4,11 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *'
-  push:
-    paths:
-      - 'scraper.py'
-      - 'requirements.txt'
-      - '.github/workflows/scrape.yml'
 
 env:
   BASE_URL: 'https://yanhh3d.bz'
@@ -22,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Cần để git diff hoạt động đúng
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,7 +27,7 @@ jobs:
 
       - name: Install deps
         run: |
-          pip install -r requirements.txt
+          pip install playwright
           playwright install chromium
 
       - name: Run scraper
@@ -38,27 +35,48 @@ jobs:
         env:
           YANHH_BASE_URL: ${{ env.BASE_URL }}
 
-      - name: Validate output
+      - name: 📊 Show output preview
         run: |
-          test -f monplayer.json || { echo "No output"; exit 1; }
-          python -m json.tool monplayer.json > /dev/null && echo "JSON valid"
-          python -c "import json; d=json.load(open('monplayer.json')); print('Films:', len(d.get('items',[]))); print('Streams:', sum(len(i.get('streams',[])) for i in d.get('items',[])))"
+          echo "=== monplayer.json preview ==="
+          head -20 monplayer.json
+          echo "=== File size ==="
+          ls -lh monplayer.json
 
-      - name: Upload artifact
+      - name: 🔍 Git status debug
+        run: |
+          echo "=== Git status ==="
+          git status
+          echo "=== Git diff ==="
+          git diff monplayer.json || echo "(no diff or new file)"
+          echo "=== Current branch ==="
+          git branch -a
+          echo "=== Remote URL ==="
+          git remote -v
+
+      - name: 💾 Force commit & push
+        run: |
+          set -e  # Dừng ngay nếu lỗi
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Luôn add file
+          git add monplayer.json
+          
+          # Commit với timestamp để luôn có thay đổi
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          git commit -m "🤖 Auto-update: $TIMESTAMP" || echo "⚠️ Nothing to commit (file unchanged)"
+          
+          # Push với explicit branch
+          echo "📤 Pushing to branch: ${{ github.ref_name }}"
+          git push origin HEAD:${{ github.ref_name }} --verbose
+          
+          echo "✅ Push complete!"
+
+      - name: 📤 Upload artifact (backup)
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: monplayer-output
+          name: monplayer-backup
           path: monplayer.json
-          retention-days: 7
-
-      - name: Commit result
-        if: success()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add monplayer.json
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: auto-update monplayer.json"
-            git push origin HEAD:${{ github.ref_name }}
-          fi
+          retention-days: 3
