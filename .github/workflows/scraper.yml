@@ -1,28 +1,69 @@
-name: 🎬 YanHH3D Scraper
+name: 🎬 YanHH3D Auto Sync
+
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */6 * * *'        # Chạy tự động mỗi 6 tiếng
+  workflow_dispatch:             # Cho phép bấm nút chạy thủ công
+  push:
+    branches:
+      - main                     # Chạy khi bạn update code vào nhánh main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # Cấp quyền ghi để Action có thể push file JSON lên repo
     permissions:
       contents: write
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Python
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0         # Lấy toàn bộ lịch sử để tránh lỗi khi push
+
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - name: Install Libs
-        run: pip install requests
-      - name: Run Scraper
-        run: python scraper.py
-      - name: Commit & Push
+
+      - name: 📦 Install Dependencies
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          pip install cloudscraper beautifulsoup4 lxml
+          # Cloudscraper giúp vượt qua màn hình chờ của Cloudflare
+
+      - name: 🕷️ Run Scraper
+        env:
+          OUTPUT_PATH: yanhh3d.json
+        run: python scraper.py
+
+      - name: 🔍 Check Result
+        run: |
+          if [ -f yanhh3d.json ]; then
+            echo "✅ File yanhh3d.json đã được tạo."
+            ls -lh yanhh3d.json
+          else
+            echo "❌ Lỗi: File yanhh3d.json không tồn tại!"
+            exit 1
+          fi
+
+      - name: 📤 Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add file và kiểm tra có thay đổi không
           git add yanhh3d.json
-          git commit -m "Auto Update $(date)" || exit 0
-          git push origin main --force
+          
+          # Nếu không có gì thay đổi thì thoát, tránh tạo commit rỗng gây lỗi
+          if git diff --staged --quiet; then
+            echo "⏭️ Không có dữ liệu mới, bỏ qua commit."
+          else
+            git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M')"
+            
+            # Pull bản mới nhất về trước khi push để tránh lỗi 'rejected'
+            git pull origin main --rebase
+            
+            # Force push để đảm bảo cập nhật
+            git push origin main --force
+          fi
