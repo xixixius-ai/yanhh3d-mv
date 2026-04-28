@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
+✅ Fix: Bắt cả .mp4 và .m3u8 streams
 ✅ Fix: Dùng raw.githubusercontent.com URLs
-✅ Fix: Chỉ bắt stream Thuyết Minh (loại Vietsub)
+✅ Fix: Chỉ lấy từ Thuyết Minh server (sever2)
 """
 
 import json
 import logging
 import os
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -20,30 +20,27 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 3,
+    "MAX_MOVIES": 2,
     "MAX_EPISODES": 3,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 15000,
-    "PLAYER_WAIT": 2000,  # ✅ Tăng thời gian chờ player
+    "PLAYER_WAIT": 2000,
     "EPISODE_DELAY": 200,
 }
 
-# ✅ Fix: Dùng raw.githubusercontent.com
 RAW_BASE = "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"
 
 def get_thuyet_minh_episodes(page):
     try:
-        # Click "Xem Thuyết Minh" và chờ đủ lâu để server switch
         try:
             btn = page.locator("text=Xem Thuyết Minh").first
             if btn.count() > 0 and btn.is_visible():
                 btn.click(timeout=3000)
-                page.wait_for_timeout(1500)  # ✅ Chờ lâu hơn để load server2
+                page.wait_for_timeout(1500)
         except: pass
 
         episodes = page.evaluate("""() => {
             const results = [], seen = new Set();
-            // Chỉ lấy links từ server2 (Thuyết Minh)
             document.querySelectorAll('a[href*="/sever2/"][href*="/tap-"]').forEach(a => {
                 const href = a.href;
                 if (!href || seen.has(href)) return;
@@ -51,7 +48,7 @@ def get_thuyet_minh_episodes(page):
                 let text = epName ? epName.innerText.trim() : a.innerText.trim();
                 if (!text) text = a.getAttribute('data-jp') || a.title || '';
                 text = text.trim();
-                if (!/^\\d+$/.test(text)) return;
+                if (!/^\d+$/.test(text)) return;
                 seen.add(href);
                 results.push({ name: text, url: href });
             });
@@ -64,65 +61,53 @@ def get_thuyet_minh_episodes(page):
         return []
 
 def get_stream_url(page, episode_url, episode_name):
-    """Chỉ bắt stream từ Thuyết Minh server (sever2)"""
+    """Bắt stream URL (cả .m3u8 và .mp4) từ Thuyết Minh server"""
     collected = []
     
     def on_response(response):
         url = response.url.lower()
-        # ✅ Chỉ bắt .m3u8 từ CDN + có trong request từ sever2
-        if response.status == 200 and ".m3u8" in url:
+        # ✅ Bắt cả .m3u8 VÀ .mp4
+        if response.status == 200 and (".m3u8" in url or ".mp4" in url):
             if any(cd in url for cd in ["fbcdn", "opstream", "streamtape", "cdn", "video", "media"]):
-                # ✅ Kiểm tra referer/request URL có chứa sever2 (Thuyết Minh)
                 req_url = response.request.url.lower()
                 if "sever2" in req_url or "sever2" in episode_url.lower():
                     collected.append({
                         "url": response.url,
-                        "referer": episode_url  # ✅ Dùng episode URL làm referer
+                        "referer": episode_url,
+                        "type": "mp4" if ".mp4" in url else "hls"
                     })
     
     page.on("response", on_response)
     try:
         page.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "font"] else route.continue_())
-        
-        # ✅ Load trang tập với wait_until networkidle để đảm bảo JS chạy xong
         page.goto(episode_url, wait_until="networkidle", timeout=CONFIG["TIMEOUT_DETAIL"])
         page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
-        
-        # ✅ Fallback: tìm trong video element nếu network không bắt được
         if not collected:
             try:
                 video = page.locator("video").first
                 if video.count() > 0:
                     src = video.get_attribute("src")
-                    if src and ".m3u8" in src:
-                        collected.append({"url": src, "referer": episode_url})
+                    if src and (".m3u8" in src or ".mp4" in src):
+                        collected.append({"url": src, "referer": episode_url, "type": "mp4" if ".mp4" in src else "hls"})
             except: pass
-            try:
-                source = page.locator("video source").first
-                if source.count() > 0:
-                    src = source.get_attribute("src")
-                    if src and ".m3u8" in src:
-                        collected.append({"url": src, "referer": episode_url})
-            except: pass
-                
     except Exception as e:
         logger.debug(f"Stream error {episode_name}: {e}")
     finally:
         page.remove_listener("response", on_response)
         page.route("**/*", lambda route: route.continue_())
-    
     return collected[0] if collected else None
 
 def build_detail_json(slug, episodes):
     streams_list = []
     for i, ep in enumerate(episodes):
+        stream_type = ep["stream"].get("type", "hls")
         stream_item = {
             "id": f"{slug}--0-{i}",
             "name": ep["name"],
             "stream_links": [{
                 "id": f"{slug}--0-{i}-default",
                 "name": "Mặc Định",
-                "type": "hls",
+                "type": stream_type,  # ✅ Lưu đúng type (hls hoặc mp4)
                 "default": False,
                 "url": ep["stream"]["url"],
                 "request_headers": [
@@ -148,7 +133,6 @@ def build_detail_json(slug, episodes):
     }
 
 def build_list_item(movie):
-    # ✅ Fix: Dùng raw.githubusercontent.com URL
     detail_url = f"{RAW_BASE}/ophim/detail/{movie['slug']}.json"
     return {
         "id": movie["slug"],
@@ -185,13 +169,13 @@ def scrape():
                     if (res.length >= {CONFIG["MAX_MOVIES"]}) return;
                     const a = card.querySelector('a.film-poster-ahref');
                     if (!a?.href) return;
-                    const slug = a.href.split('/').pop().replace(/\\/$/, '');
+                    const slug = a.href.split('/').pop().replace(/\/$/, '');
                     if (seen.has(slug)) return;
                     seen.add(slug);
                     const title = card.querySelector('.tick.ltr h4, .film-name')?.innerText.trim() || a.title || '';
                     if (!title) return;
                     let thumb = card.querySelector('img[data-src], img.film-poster-img')?.dataset.src || '';
-                    if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
+                    if (thumb && !thumb.startswith('http')) thumb = 'https://yanhh3d.bz' + thumb;
                     const badge = card.querySelector('.tick.tick-rate, .badge')?.innerText.trim() || '';
                     res.push({{ slug, title, thumb, badge }});
                 }});
@@ -244,7 +228,7 @@ def scrape():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "7.2"
+            "version": "7.3"
         }
     }
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
