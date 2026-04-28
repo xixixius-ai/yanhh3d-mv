@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Scraper yanhh3d.bz → MonPlayer JSON
-Chỉ lấy phim ĐÃ HOÀN THÀNH (số tập hiện tại = tổng tập)
+Scraper yanhh3d.bz → MonPlayer JSON (List View)
+Chỉ lấy phim ĐÃ HOÀN THÀNH, output đúng schema để app hiển thị ngay
 """
 
 import json
@@ -17,11 +17,11 @@ logger = logging.getLogger(__name__)
 
 CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
-    "LISTING_PATH": "/moi-cap-nhat",
+    "LISTING_PATH": "/",
     "MAX_MOVIES": 20,
     "REQUIRE_COMPLETE": True,
-    "OUTPUT_FILE": "monplayer.json",
-    "TIMEOUT": 30000,
+    "OUTPUT_FILE": "ophim.json",  # ✅ Đổi tên cho dễ nhận diện
+    "TIMEOUT": 45000,
 }
 
 SELECTORS = {
@@ -33,29 +33,25 @@ SELECTORS = {
 }
 
 def is_completed(episode_text: str) -> bool:
-    if not episode_text:
-        return False
-    if "hoàn tất" in episode_text.lower():
-        return True
+    if not episode_text: return False
+    if "hoàn tất" in episode_text.lower(): return True
     match = re.search(r'(\d+)\s*/\s*(\d+)', episode_text)
     if match:
-        current, total = int(match.group(1)), int(match.group(2))
-        return current >= total and total > 0
+        return int(match.group(1)) >= int(match.group(2)) > 0
     return False
 
-def parse_card(card) -> dict | None:
+def parse_card(card, index: int) -> dict | None:
     try:
         link_el = card.select_one(SELECTORS["link"])
-        if not link_el or not link_el.get("href"):
-            return None
-        link = link_el["href"]
-        if not link.startswith("http"):
-            link = CONFIG["BASE_URL"] + link
-
+        if not link_el or not link_el.get("href"): return None
+        
+        # Extract slug from URL for MonPlayer id
+        href = link_el["href"]
+        slug = href.rstrip("/").split("/")[-1] if href.startswith("http") else href.rstrip("/").split("/")[-1]
+        
         title_el = card.select_one(SELECTORS["title"])
         title = title_el.get_text(strip=True) if title_el else link_el.get("title", "").strip()
-        if not title:
-            return None
+        if not title: return None
 
         thumb_el = card.select_one(SELECTORS["thumb"])
         thumb = thumb_el.get("data-src") if thumb_el else None
@@ -64,14 +60,37 @@ def parse_card(card) -> dict | None:
 
         ep_el = card.select_one(SELECTORS["episode"])
         episode_text = ep_el.get_text(strip=True) if ep_el else ""
-
+        
         if CONFIG["REQUIRE_COMPLETE"] and not is_completed(episode_text):
             return None
 
+        # ✅ Format label text cho MonPlayer
+        label_text = episode_text if episode_text else "Hoàn tất"
+        if re.search(r'\d+/\d+', episode_text) and "hoàn tất" not in episode_text.lower():
+            label_text = f"Hoàn tất ({episode_text})"
+
         return {
-            "title": title,
-            "link": link,
-            "thumb": thumb or "",
+            "id": slug,
+            "name": title,
+            "description": "",  # Có thể scrape thêm sau
+            "image": {
+                "url": thumb or "",
+                "type": "cover",
+                "width": 480,
+                "height": 640
+            },
+            "type": "playlist",
+            "display": "text-below",
+            "label": {
+                "text": label_text,
+                "position": "top-left",
+                "color": "#35ba8b",
+                "text_color": "#ffffff"
+            },
+            "remote_data": {
+                "url": f"{CONFIG['BASE_URL']}/{slug}"  # ✅ Link gốc, app có thể dùng để redirect
+            },
+            "enable_detail": False  # ✅ Tạm tắt, bật khi có scraper detail
         }
     except Exception as e:
         logger.warning(f"Parse error: {e}")
@@ -91,6 +110,18 @@ def scrape():
         page = context.new_page()
 
         try:
+            page.set_extra_http_headers({
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.7,en;q=0.3",
+                "Referer": "https://www.google.com/",
+                "Upgrade-Insecure-Requests": "1",
+            })
+            page.add_init_script("""
+                Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+                Object.defineProperty(navigator, 'plugins', {get: () => [1,2,3]});
+                Object.defineProperty(navigator, 'languages', {get: () => ['vi-VN','vi','en-US','en']});
+            """)
+
             page.goto(url, wait_until="networkidle", timeout=CONFIG["TIMEOUT"])
             page.wait_for_selector(SELECTORS["card"], timeout=10000)
             page.wait_for_timeout(1500)
@@ -98,35 +129,27 @@ def scrape():
             soup = BeautifulSoup(page.content(), "lxml")
             cards = soup.select(SELECTORS["card"])
 
-            for card in cards:
-                if len(results) >= CONFIG["MAX_MOVIES"]:
-                    break
-                item = parse_card(card)
+            for i, card in enumerate(cards):
+                if len(results) >= CONFIG["MAX_MOVIES"]: break
+                item = parse_card(card, i)
                 if item:
                     results.append(item)
-                    logger.info(f"Added: {item['title']}")
+                    logger.info(f"Added: {item['name']}")
 
         except Exception as e:
             logger.error(f"Scrape failed: {e}")
         finally:
             browser.close()
 
+    # ✅ Output đúng MonPlayer list schema
     output = {
-        "name": "YanHH3D",
-        "items": [
-            {
-                "title": r["title"],
-                "image": r["thumb"],
-                "description": "",
-                "streams": []
-            }
-            for r in results
-        ],
-        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "grid_number": 3,
+        "channels": results,
         "meta": {
             "source": CONFIG["BASE_URL"],
             "total": len(results),
-            "completed_only": CONFIG["REQUIRE_COMPLETE"]
+            "completed_only": CONFIG["REQUIRE_COMPLETE"],
+            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         }
     }
 
