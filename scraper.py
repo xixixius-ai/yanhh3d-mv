@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
+✅ Fix: JavaScript startsWith() (không phải startswith)
 ✅ Fix: Bắt cả .mp4 và .m3u8 streams
 ✅ Fix: Dùng raw.githubusercontent.com URLs
-✅ Fix: Chỉ lấy từ Thuyết Minh server (sever2)
 """
 
 import json
@@ -20,8 +20,8 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 2,
-    "MAX_EPISODES": 3,
+    "MAX_MOVIES": 3,
+    "MAX_EPISODES": 2,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 15000,
     "PLAYER_WAIT": 2000,
@@ -48,7 +48,7 @@ def get_thuyet_minh_episodes(page):
                 let text = epName ? epName.innerText.trim() : a.innerText.trim();
                 if (!text) text = a.getAttribute('data-jp') || a.title || '';
                 text = text.trim();
-                if (!/^\d+$/.test(text)) return;
+                if (!/^\\d+$/.test(text)) return;
                 seen.add(href);
                 results.push({ name: text, url: href });
             });
@@ -66,7 +66,6 @@ def get_stream_url(page, episode_url, episode_name):
     
     def on_response(response):
         url = response.url.lower()
-        # ✅ Bắt cả .m3u8 VÀ .mp4
         if response.status == 200 and (".m3u8" in url or ".mp4" in url):
             if any(cd in url for cd in ["fbcdn", "opstream", "streamtape", "cdn", "video", "media"]):
                 req_url = response.request.url.lower()
@@ -107,7 +106,7 @@ def build_detail_json(slug, episodes):
             "stream_links": [{
                 "id": f"{slug}--0-{i}-default",
                 "name": "Mặc Định",
-                "type": stream_type,  # ✅ Lưu đúng type (hls hoặc mp4)
+                "type": stream_type,
                 "default": False,
                 "url": ep["stream"]["url"],
                 "request_headers": [
@@ -148,6 +147,10 @@ def build_list_item(movie):
 
 def scrape():
     logger.info(f"▶️ Bắt đầu scrape: {CONFIG['BASE_URL']}")
+    
+    # ✅ Fix: Khởi tạo channels trước try block
+    channels = []
+    
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -163,26 +166,28 @@ def scrape():
             home_page.goto(CONFIG["BASE_URL"], wait_until="networkidle", timeout=CONFIG["TIMEOUT_HOMEPAGE"])
             home_page.wait_for_selector(".flw-item.swiper-slide", state="attached", timeout=8000)
             home_page.wait_for_timeout(500)
+            
+            # ✅ Fix: startsWith() với chữ S hoa (JavaScript)
             movies = home_page.evaluate(f"""() => {{
                 const res = [], seen = new Set();
                 document.querySelectorAll('.flw-item.swiper-slide').forEach(card => {{
                     if (res.length >= {CONFIG["MAX_MOVIES"]}) return;
                     const a = card.querySelector('a.film-poster-ahref');
                     if (!a?.href) return;
-                    const slug = a.href.split('/').pop().replace(/\/$/, '');
+                    const slug = a.href.split('/').pop().replace(/\\/$/, '');
                     if (seen.has(slug)) return;
                     seen.add(slug);
                     const title = card.querySelector('.tick.ltr h4, .film-name')?.innerText.trim() || a.title || '';
                     if (!title) return;
                     let thumb = card.querySelector('img[data-src], img.film-poster-img')?.dataset.src || '';
-                    if (thumb && !thumb.startswith('http')) thumb = 'https://yanhh3d.bz' + thumb;
+                    if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
                     const badge = card.querySelector('.tick.tick-rate, .badge')?.innerText.trim() || '';
                     res.push({{ slug, title, thumb, badge }});
                 }});
                 return res;
             }}""")
             logger.info(f"✅ Tìm thấy {len(movies)} phim trending")
-            channels = []
+            
             detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
             detail_dir.mkdir(parents=True, exist_ok=True)
             for i, m in enumerate(movies):
@@ -214,6 +219,7 @@ def scrape():
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
         finally:
             browser.close()
+    
     list_output = {
         "id": "yanhh3d-thuyet-minh",
         "name": "YanHH3D - Thuyết Minh",
@@ -228,7 +234,7 @@ def scrape():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "7.3"
+            "version": "7.4"
         }
     }
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
