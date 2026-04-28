@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-✅ Cấu trúc JSON chuẩn như phim mẫu đang hoạt động
+✅ Cấu trúc CHUẨN 100% giống source mẫu đang hoạt động
 """
 
 import json
@@ -19,7 +19,7 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 10,
+    "MAX_MOVIES": 5,
     "MAX_EPISODES": 3,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 12000,
@@ -49,9 +49,9 @@ def get_thuyet_minh_episodes(page):
                 text = text.trim();
                 if (!/^\\d+$/.test(text)) return;
                 seen.add(href);
-                results.push({ name: `Tập ${text}`, url: href, number: text });
+                results.push({ name: text, url: href });
             });
-            results.sort((a, b) => parseInt(a.number) - parseInt(b.number));
+            results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
             return results;
         }""")
         return episodes
@@ -88,17 +88,12 @@ def get_stream_url(page, episode_url, episode_name):
         page.route("**/*", lambda route: route.continue_())
     return collected[0] if collected else None
 
-def build_detail_json(slug, title, episodes):
-    """
-    Xây dựng JSON detail CHUẨN như phim mẫu đang hoạt động.
-    Cấu trúc: sources → contents → streams → stream_links
-    """
-    # ✅ Tạo danh sách streams với cấu trúc chuẩn
+def build_detail_json(slug, episodes):
     streams_list = []
     for i, ep in enumerate(episodes):
         stream_item = {
             "id": f"{slug}--0-{i}",
-            "name": ep["name"].replace("Tập ", ""),  # Chỉ lấy số: "Tập 1" → "1"
+            "name": ep["name"],  # ✅ Chỉ giữ số: "1", "2"...
             "stream_links": [{
                 "id": f"{slug}--0-{i}-default",
                 "name": "Mặc Định",
@@ -113,23 +108,22 @@ def build_detail_json(slug, title, episodes):
         }
         streams_list.append(stream_item)
     
-    # ✅ Cấu trúc JSON CHUẨN (giống phim Luyện Khí)
     return {
         "sources": [
             {
                 "id": f"{slug}--0",
-                "name": "Thuyết Minh #1",  # ✅ Format: "Thuyết Minh #1" (không phải "Thuyết Minh")
+                "name": "Thuyết Minh #1",  # ✅ Format chuẩn: có #1
                 "contents": [
                     {
                         "id": f"{slug}--0",
                         "name": "",
                         "grid_number": 3,
-                        "streams": streams_list  # ✅ Mảng streams
+                        "streams": streams_list
                     }
                 ]
             }
         ],
-        "subtitle": "Thuyết Minh"  # ✅ Field này bắt buộc
+        "subtitle": "Thuyết Minh"
     }
 
 def build_list_item(movie):
@@ -137,7 +131,7 @@ def build_list_item(movie):
     return {
         "id": movie["slug"],
         "name": movie["title"],
-        "description": "",  # ✅ Field bắt buộc
+        "description": "",
         "image": {
             "url": movie["thumb"],
             "type": "cover",
@@ -213,8 +207,7 @@ def scrape():
                             if (idx + 1) % 25 == 0:
                                 logger.info(f"    ✅ Progress: {idx + 1}/{total_to_crawl}")
                         detail_page.wait_for_timeout(CONFIG["EPISODE_DELAY"])
-                    # ✅ Build detail JSON với cấu trúc CHUẨN
-                    detail_json = build_detail_json(m["slug"], m["title"], ep_data)
+                    detail_json = build_detail_json(m["slug"], ep_data)
                     detail_path = detail_dir / f"{m['slug']}.json"
                     with open(detail_path, "w", encoding="utf-8") as f:
                         json.dump(detail_json, f, ensure_ascii=False, indent=2)
@@ -227,18 +220,34 @@ def scrape():
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
         finally:
             browser.close()
+    
+    # ✅ List output CHUẨN với metadata đầy đủ
     list_output = {
+        "id": "yanhh3d-thuyet-minh",
+        "name": "YanHH3D - Thuyết Minh",
+        "url": f"{STATIC_BASE}/ophim" if STATIC_BASE else "https://yanhh3d.bz",
+        "color": "#004444",
+        "image": {
+            "url": "https://yanhh3d.bz/static/img/logo.png",
+            "type": "cover"
+        },
+        "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
         "grid_number": 3,
         "channels": channels,
+        "sorts": [
+            {"text": "Mới nhất", "type": "radio", "url": f"{STATIC_BASE}/ophim" if STATIC_BASE else ""}
+        ],
         "meta": {
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "6.4"
+            "version": "7.0"
         }
     }
+    
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
         json.dump(list_output, f, ensure_ascii=False, indent=2)
+    
     total_eps = sum(1 for _ in Path(detail_dir).glob("*.json"))
     logger.info(f"💾 Đã lưu: {CONFIG['LIST_FILE']} + {total_eps} detail files")
     return list_output
