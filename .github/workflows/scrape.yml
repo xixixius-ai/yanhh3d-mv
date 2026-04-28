@@ -1,23 +1,42 @@
 name: Scrape YanHH3D to MonPlayer
+
 on:
-  schedule: [{cron: '0 */4 * * *'}]
+  schedule:
+    - cron: '0 */4 * * *'
   workflow_dispatch:
-  push: {paths: ['scraper.py','requirements.txt','.github/workflows/run.yml']}
+  push:
+    paths:
+      - 'scraper.py'
+      - 'requirements.txt'
+      - '.github/workflows/scrape.yml'  # ⚠️ Đảm bảo tên file khớp với tên file workflow
+
 jobs:
   scrape:
     runs-on: ubuntu-22.04
-    permissions: {contents: write}
+    permissions:
+      contents: write
     timeout-minutes: 45
-    concurrency: {group: scrape-main, cancel-in-progress: true}
+    concurrency:
+      group: scrape-main
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4 {with: {fetch-depth: 0}}
-      - uses: actions/setup-python@v5 {with: {python-version: '3.11'}}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - run: |
           pip install -r requirements.txt
           playwright install chromium
           playwright install-deps chromium
+
       - run: python scraper.py
-        env: {PYTHONUNBUFFERED: 1}
+        env:
+          PYTHONUNBUFFERED: 1
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '🤖 Auto update MonPlayer (Thuyết Minh)'
