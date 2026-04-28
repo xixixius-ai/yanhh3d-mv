@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-Lấy 10 phim trending + crawl link .m3u8 (FB CDN/Dailymotion) cho từng tập.
+- Phân biệt Server Tabs vs Episode List
+- Lấy đúng danh sách tập + stream URL cho từng tập
+- Giới hạn số tập/movie để tránh timeout (có thể chỉnh trong CONFIG)
 """
 
 import json
@@ -17,61 +19,106 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_FILE": "ophim.json",
     "MAX_MOVIES": 10,
+    "MAX_EPISODES_PER_MOVIE": 20,  # ✅ Giới hạn số tập/movie để chạy nhanh
     "HOMEPAGE_TIMEOUT": 25000,
     "DETAIL_TIMEOUT": 12000,
-    "PLAYER_WAIT": 2500,
+    "PLAYER_WAIT": 2000,
 }
 
-def get_episode_list(page):
-    """Trích xuất danh sách tập từ trang chi tiết"""
+def get_servers_and_episodes(page):
+    """
+    Trả về dict: { server_name: [{name, url}, ...] }
+    Phân biệt rõ server tabs vs episode list
+    """
     try:
         return page.evaluate("""() => {
-            const eps = [];
-            const selectors = [
-                '.server-list .item a', '.epis-list a', '.list-ep a',
-                'a[href*="/tap"]', 'a[href*="/tap-"]', '.episode-item a'
-            ];
-            let links = [];
-            for (const s of selectors) {
-                const el = document.querySelectorAll(s);
-                if (el.length > 0) { links = [...el]; break; }
+            const result = {};
+            
+            // Bước 1: Tìm server tabs (thường là .server-list, .list-server, .os-server)
+            const serverTabs = document.querySelectorAll('.server-list .item, .list-server a, .os-server li, [data-server]');
+            const servers = [];
+            
+            if (serverTabs.length > 0) {
+                serverTabs.forEach(tab => {
+                    const name = (tab.innerText || tab.getAttribute('title') || '').trim();
+                    if (name && !/tập|episode|\\d+/i.test(name)) {  // Loại tên có số/tập
+                        servers.push({ name, el: tab });
+                    }
+                });
+            } else {
+                // Fallback: coi toàn trang là 1 server default
+                servers.push({ name: 'Default', el: document.body });
             }
-            if (links.length === 0) {
-                links = [...document.querySelectorAll('a')].filter(a => /tap|tập|episode|\\d+/i.test(a.href));
-            }
-            const seen = new Set();
-            links.forEach(a => {
-                const href = a.href;
-                const text = (a.innerText.trim() || a.title || '').replace(/\\s+/g, ' ');
-                if (href && text && !seen.has(href)) {
-                    seen.add(href);
-                    eps.push({ name: text, url: href });
+            
+            // Bước 2: Với mỗi server, tìm episode list
+            for (const server of servers) {
+                const episodes = [];
+                const container = server.el.closest('.server-content, .tab-content, .server-item') || document;
+                
+                // Selector ưu tiên cho episode list
+                const epSelectors = [
+                    '.epis_list a', '.episode-list a', '.list-ep a', 
+                    '.episodes a', '.episode-item a', 'a.ep-item',
+                    'a[href*="/tap-"]', 'a[href*="/tap/"]'
+                ];
+                
+                let epLinks = [];
+                for (const sel of epSelectors) {
+                    const found = container.querySelectorAll(sel);
+                    if (found.length > 0) { epLinks = [...found]; break; }
                 }
-            });
-            return eps.sort((a, b) => {
-                const na = parseInt(a.name.match(/\\d+/)?.[0] || 0);
-                const nb = parseInt(b.name.match(/\\d+/)?.[0] || 0);
-                return na - nb;
-            });
+                
+                // Fallback: tìm link có chữ 'tập' + số
+                if (epLinks.length === 0) {
+                    epLinks = [...(container.querySelectorAll('a') || [])].filter(a => {
+                        const text = (a.innerText || '').trim();
+                        const href = a.href || '';
+                        return /tập\\s*\\d+|tap\\s*\\d+/i.test(text) || /\\/tap-?\\d+/i.test(href);
+                    });
+                }
+                
+                // Lọc và format episodes
+                const seen = new Set();
+                epLinks.forEach(a => {
+                    const href = a.href;
+                    const text = (a.innerText.trim() || a.title || '').replace(/\\s+/g, ' ');
+                    if (!href || !text || seen.has(href)) return;
+                    // Chỉ lấy link có dạng "Tập X" hoặc chứa số
+                    if (!/tập|tap|\\d+/i.test(text)) return;
+                    seen.add(href);
+                    episodes.push({ name: text, url: href });
+                });
+                
+                // Sort tự nhiên theo số tập
+                episodes.sort((a, b) => {
+                    const na = parseInt(a.name.match(/\\d+/)?.[0] || 0);
+                    const nb = parseInt(b.name.match(/\\d+/)?.[0] || 0);
+                    return na - nb;
+                });
+                
+                if (episodes.length > 0) {
+                    result[server.name] = episodes;
+                }
+            }
+            
+            return result;
         }""")
     except Exception as e:
         logger.warning(f"Lỗi lấy danh sách tập: {e}")
-        return []
+        return {}
 
 def get_stream_url(detail_page, episode_url):
-    """Crawl trang tập phim để lấy link .m3u8 hoặc Dailymotion"""
+    """Crawl trang tập để lấy link .m3u8"""
     collected = []
     
-    # ✅ Callback function phải khai báo riêng để remove_listener hoạt động
     def on_response(response):
-        if response.status == 200 and ".m3u8" in response.url:
+        if response.status == 200 and ".m3u8" in response.url and "fbcdn" in response.url:
             collected.append(response.url)
     
-    # ✅ Register listener
     detail_page.on("response", on_response)
     
     try:
-        # Chặn resource thừa để load nhanh
+        # Chặn resource thừa
         def block_unnecessary(route):
             if route.request.resource_type in ["image", "stylesheet", "font"]:
                 route.abort()
@@ -82,35 +129,23 @@ def get_stream_url(detail_page, episode_url):
         detail_page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["DETAIL_TIMEOUT"])
         detail_page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
 
-        # Nếu không bắt được từ network, thử lấy từ DOM
+        # Fallback DOM nếu network không bắt được
         if not collected:
-            try:
-                video = detail_page.locator("video").first
-                if video.count() > 0:
-                    src = video.get_attribute("src")
-                    if src and (".m3u8" in src or "dailymotion" in src):
-                        collected.append(src)
-            except: pass
-            
-            try:
-                source = detail_page.locator("video source").first
-                if source.count() > 0:
-                    src = source.get_attribute("src")
-                    if src: collected.append(src)
-            except: pass
-            
-            try:
-                iframe = detail_page.locator("iframe[src*='dailymotion']").first
-                if iframe.count() > 0:
-                    collected.append(iframe.get_attribute("src"))
-            except: pass
+            for selector in ["video[src]", "video source[src]", "iframe[src*='dailymotion']"]:
+                try:
+                    el = detail_page.locator(selector).first
+                    if el.count() > 0:
+                        src = el.get_attribute("src")
+                        if src and (".m3u8" in src or "dailymotion" in src):
+                            collected.append(src)
+                            break
+                except: pass
                 
     except Exception as e:
         logger.warning(f"Không lấy được stream cho {episode_url}: {e}")
     finally:
-        # ✅ Remove listener đúng cách
         detail_page.remove_listener("response", on_response)
-        detail_page.route("**/*", lambda route: route.continue_())  # Restore route
+        detail_page.route("**/*", lambda route: route.continue_())
         
     return next((u for u in collected if u), None)
 
@@ -126,7 +161,7 @@ def scrape():
         detail_page = context.new_page()
 
         for pg in [home_page, detail_page]:
-            pg.set_extra_http_headers({"Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8", "Referer": "https://www.google.com/"})
+            pg.set_extra_http_headers({"Accept-Language": "vi-VN,vi;q=0.9", "Referer": "https://www.google.com/"})
             pg.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
 
         try:
@@ -163,19 +198,33 @@ def scrape():
                     detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=15000)
                     detail_page.wait_for_timeout(1500)
 
-                    episodes = get_episode_list(detail_page)
+                    # Lấy servers + episodes
+                    servers_eps = get_servers_and_episodes(detail_page)
+                    
+                    # Gộp tất cả episodes từ các server (ưu tiên server đầu tiên)
+                    all_episodes = []
+                    for server_name, episodes in servers_eps.items():
+                        for ep in episodes:
+                            ep["server"] = server_name  # Lưu server để debug
+                        all_episodes.extend(episodes)
+                        break  # ✅ Chỉ lấy server đầu tiên để tránh trùng
+                    
+                    # Giới hạn số tập + crawl stream
                     ep_data = []
-                    for ep in episodes:
+                    for ep in all_episodes[:CONFIG["MAX_EPISODES_PER_MOVIE"]]:
                         try:
                             stream = get_stream_url(detail_page, ep["url"])
                             if stream:
-                                ep_data.append({"name": ep["name"], "streams": [{"url": stream}]})
-                                logger.debug(f"  ✅ {ep['name']}: {stream[:60]}...")
+                                ep_data.append({
+                                    "name": ep["name"],
+                                    "streams": [{"url": stream}]
+                                })
+                                logger.debug(f"  ✅ {ep['name']}: {stream[:50]}...")
                             else:
                                 logger.warning(f"  ⚠️ {ep['name']}: Không lấy được stream")
                         except Exception as e:
                             logger.warning(f"  ❌ Lỗi tập {ep['name']}: {e}")
-                        detail_page.wait_for_timeout(500)
+                        detail_page.wait_for_timeout(400)  # Giảm tải
 
                     channels.append({
                         "id": m["slug"],
@@ -190,6 +239,8 @@ def scrape():
                         "total_episodes": len(ep_data),
                         "episodes": ep_data
                     })
+                    logger.info(f"  📦 {m['title']}: {len(ep_data)} episodes")
+
                 except Exception as e:
                     logger.error(f"❌ Lỗi phim {m['title']}: {e}")
                     continue
@@ -206,13 +257,14 @@ def scrape():
         "meta": {
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
+            "total_episodes": sum(c["total_episodes"] for c in channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "2.2"
+            "version": "3.0"
         }
     }
     with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    logger.info(f"💾 Đã lưu {len(channels)} phim ({sum(c['total_episodes'] for c in channels)} tập) vào {CONFIG['OUTPUT_FILE']}")
+    logger.info(f"💾 Đã lưu {len(channels)} phim ({output['meta']['total_episodes']} tập) vào {CONFIG['OUTPUT_FILE']}")
     return output
 
 if __name__ == "__main__":
