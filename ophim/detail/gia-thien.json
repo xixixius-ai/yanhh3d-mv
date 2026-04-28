@@ -8,77 +8,7 @@
           "id": "gia-thien--0",
           "name": "",
           "grid_number": 3,
-          "streams": [
-            {
-              "id": "gia-thien--0-0",
-              "name": "1",
-              "stream_links": [
-                {
-                  "id": "gia-thien--0-0-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/ca369aa0-5481-4703-8188-70213131894b.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "gia-thien--0-1",
-              "name": "2",
-              "stream_links": [
-                {
-                  "id": "gia-thien--0-1-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/0b188e2d-3abb-470a-828f-970d576fd92a.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "gia-thien--0-2",
-              "name": "3",
-              "stream_links": [
-                {
-                  "id": "gia-thien--0-2-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/6ff8fbaf-406c-47ab-99c8-b40c981dba5e.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "streams": []
         }
       ]
     }
