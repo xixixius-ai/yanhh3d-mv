@@ -1,19 +1,12 @@
 {
   "id": "yanhh3d-thuyet-minh",
   "name": "YanHH3D - Thuyết Minh",
-  "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim",
-  "color": "#004444",
-  "image": {
-    "url": "https://yanhh3d.bz/static/img/logo.png",
-    "type": "cover"
-  },
-  "description": "Phim thuyết minh chất lượng cao",
-  "grid_number": 3,
+  ...
   "channels": [
     {
-      "id": "test-manual",
-      "name": "Test Manual (3 tập)",
-      "description": "Test stream manually",
+      "id": "test-working",
+      "name": "🧪 TEST STREAM (Click xem được không)",
+      "description": "Test manual stream",
       "image": {
         "url": "https://yanhh3d.bz/storage/movies/tien-nghich-1775962789.png",
         "type": "cover",
@@ -23,18 +16,17 @@
       "type": "playlist",
       "display": "text-below",
       "label": {
-        "text": "Test",
+        "text": "TEST",
         "position": "top-left",
-        "color": "#35ba8b",
+        "color": "#ff0000",
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "ophim/detail/test-manual.json"
+        "url": "ophim/detail/test-working.json"
       },
       "enable_detail": true
-    }
-  ],
-  "sorts": [
-    {"text": "Mới nhất", "type": "radio", "url": ""}
+    },
+    
+    ... (giữ nguyên các phim cũ bên dưới)
   ]
 }
