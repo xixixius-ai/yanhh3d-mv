@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-✅ Cấu trúc CHUẨN 100% giống source mẫu đang hoạt động
+✅ Fix: Dùng raw.githubusercontent.com URLs
+✅ Fix: Chỉ bắt stream Thuyết Minh (loại Vietsub)
 """
 
 import json
@@ -19,28 +20,31 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 5,
+    "MAX_MOVIES": 3,
     "MAX_EPISODES": 3,
     "TIMEOUT_HOMEPAGE": 20000,
-    "TIMEOUT_DETAIL": 12000,
-    "PLAYER_WAIT": 1000,
-    "EPISODE_DELAY": 150,
+    "TIMEOUT_DETAIL": 15000,
+    "PLAYER_WAIT": 2000,  # ✅ Tăng thời gian chờ player
+    "EPISODE_DELAY": 200,
 }
 
-STATIC_BASE = os.getenv("BASE_URL_STATIC", "").rstrip("/")
+# ✅ Fix: Dùng raw.githubusercontent.com
+RAW_BASE = "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"
 
 def get_thuyet_minh_episodes(page):
     try:
+        # Click "Xem Thuyết Minh" và chờ đủ lâu để server switch
         try:
             btn = page.locator("text=Xem Thuyết Minh").first
             if btn.count() > 0 and btn.is_visible():
                 btn.click(timeout=3000)
-                page.wait_for_timeout(500)
+                page.wait_for_timeout(1500)  # ✅ Chờ lâu hơn để load server2
         except: pass
 
         episodes = page.evaluate("""() => {
             const results = [], seen = new Set();
-            document.querySelectorAll('a.ssl-item.ep-item, a[href*="/sever2/"][href*="/tap-"]').forEach(a => {
+            // Chỉ lấy links từ server2 (Thuyết Minh)
+            document.querySelectorAll('a[href*="/sever2/"][href*="/tap-"]').forEach(a => {
                 const href = a.href;
                 if (!href || seen.has(href)) return;
                 const epName = a.querySelector('.ep-name, .ssli-order');
@@ -60,32 +64,53 @@ def get_thuyet_minh_episodes(page):
         return []
 
 def get_stream_url(page, episode_url, episode_name):
+    """Chỉ bắt stream từ Thuyết Minh server (sever2)"""
     collected = []
+    
     def on_response(response):
         url = response.url.lower()
+        # ✅ Chỉ bắt .m3u8 từ CDN + có trong request từ sever2
         if response.status == 200 and ".m3u8" in url:
             if any(cd in url for cd in ["fbcdn", "opstream", "streamtape", "cdn", "video", "media"]):
-                collected.append({
-                    "url": response.url,
-                    "referer": response.request.headers.get("referer") or ""
-                })
+                # ✅ Kiểm tra referer/request URL có chứa sever2 (Thuyết Minh)
+                req_url = response.request.url.lower()
+                if "sever2" in req_url or "sever2" in episode_url.lower():
+                    collected.append({
+                        "url": response.url,
+                        "referer": episode_url  # ✅ Dùng episode URL làm referer
+                    })
     
     page.on("response", on_response)
     try:
         page.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "font"] else route.continue_())
-        page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_DETAIL"])
+        
+        # ✅ Load trang tập với wait_until networkidle để đảm bảo JS chạy xong
+        page.goto(episode_url, wait_until="networkidle", timeout=CONFIG["TIMEOUT_DETAIL"])
         page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
+        
+        # ✅ Fallback: tìm trong video element nếu network không bắt được
         if not collected:
             try:
-                src = page.locator("video[src*='.m3u8'], video source[src*='.m3u8']").first.get_attribute("src")
-                if src and ".m3u8" in src:
-                    collected.append({"url": src, "referer": ""})
+                video = page.locator("video").first
+                if video.count() > 0:
+                    src = video.get_attribute("src")
+                    if src and ".m3u8" in src:
+                        collected.append({"url": src, "referer": episode_url})
             except: pass
+            try:
+                source = page.locator("video source").first
+                if source.count() > 0:
+                    src = source.get_attribute("src")
+                    if src and ".m3u8" in src:
+                        collected.append({"url": src, "referer": episode_url})
+            except: pass
+                
     except Exception as e:
         logger.debug(f"Stream error {episode_name}: {e}")
     finally:
         page.remove_listener("response", on_response)
         page.route("**/*", lambda route: route.continue_())
+    
     return collected[0] if collected else None
 
 def build_detail_json(slug, episodes):
@@ -93,7 +118,7 @@ def build_detail_json(slug, episodes):
     for i, ep in enumerate(episodes):
         stream_item = {
             "id": f"{slug}--0-{i}",
-            "name": ep["name"],  # ✅ Chỉ giữ số: "1", "2"...
+            "name": ep["name"],
             "stream_links": [{
                 "id": f"{slug}--0-{i}-default",
                 "name": "Mặc Định",
@@ -109,46 +134,31 @@ def build_detail_json(slug, episodes):
         streams_list.append(stream_item)
     
     return {
-        "sources": [
-            {
+        "sources": [{
+            "id": f"{slug}--0",
+            "name": "Thuyết Minh #1",
+            "contents": [{
                 "id": f"{slug}--0",
-                "name": "Thuyết Minh #1",  # ✅ Format chuẩn: có #1
-                "contents": [
-                    {
-                        "id": f"{slug}--0",
-                        "name": "",
-                        "grid_number": 3,
-                        "streams": streams_list
-                    }
-                ]
-            }
-        ],
+                "name": "",
+                "grid_number": 3,
+                "streams": streams_list
+            }]
+        }],
         "subtitle": "Thuyết Minh"
     }
 
 def build_list_item(movie):
-    detail_url = f"{STATIC_BASE}/ophim/detail/{movie['slug']}.json" if STATIC_BASE else f"ophim/detail/{movie['slug']}.json"
+    # ✅ Fix: Dùng raw.githubusercontent.com URL
+    detail_url = f"{RAW_BASE}/ophim/detail/{movie['slug']}.json"
     return {
         "id": movie["slug"],
         "name": movie["title"],
         "description": "",
-        "image": {
-            "url": movie["thumb"],
-            "type": "cover",
-            "width": 480,
-            "height": 640
-        },
+        "image": {"url": movie["thumb"], "type": "cover", "width": 480, "height": 640},
         "type": "playlist",
         "display": "text-below",
-        "label": {
-            "text": movie["badge"] or "Trending",
-            "position": "top-left",
-            "color": "#35ba8b",
-            "text_color": "#ffffff"
-        },
-        "remote_data": {
-            "url": detail_url
-        },
+        "label": {"text": movie["badge"] or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
+        "remote_data": {"url": detail_url},
         "enable_detail": True
     }
 
@@ -195,7 +205,7 @@ def scrape():
                 logger.info(f"🔍 Xử lý: {m['title']} ({i+1}/{len(movies)})")
                 try:
                     detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=10000)
-                    detail_page.wait_for_timeout(800)
+                    detail_page.wait_for_timeout(1000)
                     ep_list = get_thuyet_minh_episodes(detail_page)
                     logger.info(f"  📋 Tìm thấy {len(ep_list)} episodes Thuyết Minh")
                     ep_data = []
@@ -220,34 +230,25 @@ def scrape():
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
         finally:
             browser.close()
-    
-    # ✅ List output CHUẨN với metadata đầy đủ
     list_output = {
         "id": "yanhh3d-thuyet-minh",
         "name": "YanHH3D - Thuyết Minh",
-        "url": f"{STATIC_BASE}/ophim" if STATIC_BASE else "https://yanhh3d.bz",
+        "url": f"{RAW_BASE}/ophim",
         "color": "#004444",
-        "image": {
-            "url": "https://yanhh3d.bz/static/img/logo.png",
-            "type": "cover"
-        },
+        "image": {"url": "https://yanhh3d.bz/static/img/logo.png", "type": "cover"},
         "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
         "grid_number": 3,
         "channels": channels,
-        "sorts": [
-            {"text": "Mới nhất", "type": "radio", "url": f"{STATIC_BASE}/ophim" if STATIC_BASE else ""}
-        ],
+        "sorts": [{"text": "Mới nhất", "type": "radio", "url": f"{RAW_BASE}/ophim"}],
         "meta": {
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "7.0"
+            "version": "7.2"
         }
     }
-    
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
         json.dump(list_output, f, ensure_ascii=False, indent=2)
-    
     total_eps = sum(1 for _ in Path(detail_dir).glob("*.json"))
     logger.info(f"💾 Đã lưu: {CONFIG['LIST_FILE']} + {total_eps} detail files")
     return list_output
