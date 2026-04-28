@@ -1,26 +1,50 @@
 {
   "id": "yanhh3d-thuyet-minh",
-  "name": "YanHH3D - Thuyết Minh",
+  "name": "YanHH3D - Thuyet Minh",
   "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim",
   "color": "#004444",
   "image": {
     "url": "https://yanhh3d.bz/static/img/logo.png",
     "type": "cover"
   },
-  "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
+  "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz",
   "grid_number": 3,
-  "channels": [],
+  "channels": [
+    {
+      "id": "muc-than-ky",
+      "name": "Mục Thần Ký",
+      "description": "",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/muc-than-ky-1775968014.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "80/130 [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/muc-than-ky.json"
+      },
+      "enable_detail": true
+    }
+  ],
   "sorts": [
     {
-      "text": "Mới nhất",
+      "text": "Moi nhat",
       "type": "radio",
       "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim"
     }
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 0,
-    "updated_at": "2026-04-28T23:51:58Z",
+    "total_items": 1,
+    "updated_at": "2026-04-28T23:59:48Z",
     "version": "1.0"
   }
 }
