@@ -1,4 +1,13 @@
 {
+  "id": "yanhh3d-thuyet-minh",
+  "name": "YanHH3D - Thuyết Minh",
+  "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim",
+  "color": "#004444",
+  "image": {
+    "url": "https://yanhh3d.bz/static/img/logo.png",
+    "type": "cover"
+  },
+  "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
   "grid_number": 3,
   "channels": [
     {
@@ -115,127 +124,19 @@
         "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/gia-thien.json"
       },
       "enable_detail": true
-    },
+    }
+  ],
+  "sorts": [
     {
-      "id": "pham-nhan-tu-tien",
-      "name": "Phàm Nhân Tu Tiên",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/pham-nhan-tu-tien-1775382966.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "PV - 13/06 Lên Sóng",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/pham-nhan-tu-tien.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "thon-phe-tinh-khong",
-      "name": "Thôn Phệ Tinh Không",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "221/260 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/thon-phe-tinh-khong.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "kiem-lai-phan-2",
-      "name": "Kiếm Lai Phần 2",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/kiem-lai-phan-2-1770955370.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "27/27 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/kiem-lai-phan-2.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "dau-la-dai-luc-2-tuyet-the-duong-mon",
-      "name": "Đấu La Đại Lục 2 - Tuyệt Thế Đường Môn",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/dau-la-dai-luc-2-tuyet-the-duong-mon-1775816257.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "150/156 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/dau-la-dai-luc-2-tuyet-the-duong-mon.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "than-an-vuong-toa",
-      "name": "Thần Ấn Vương Tọa",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/than-an-vuong-toa-1776925955.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "208/208 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/than-an-vuong-toa.json"
-      },
-      "enable_detail": true
+      "text": "Mới nhất",
+      "type": "radio",
+      "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim"
     }
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 10,
-    "updated_at": "2026-04-28T19:58:07Z",
-    "version": "6.4"
+    "total_items": 5,
+    "updated_at": "2026-04-28T20:05:26Z",
+    "version": "7.0"
   }
 }
