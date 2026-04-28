@@ -15,21 +15,47 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 90  # ✅ Tăng lên 90 phút cho crawl nhiều tập
+    timeout-minutes: 90
+    concurrency:
+      group: scrape-main
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-python@v5
-        with: {python-version: '3.11'}
+        with:
+          python-version: '3.11'
+
       - run: |
           pip install -r requirements.txt
           playwright install chromium
           playwright install-deps chromium
+
       - run: python scraper.py
-        env: {PYTHONUNBUFFERED: 1}
-      - run: python -c "import json; d=json.load(open('ophim.json')); print('OK:', len(d['channels']), 'phim,', sum(c['total_episodes'] for c in d['channels']), 'tập')"
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Validate JSON
+        run: |
+          python -c "import json; d=json.load(open('ophim.json')); print('List OK:', len(d['channels']), 'phim')"
+          python -c "
+          import json, os
+          detail_dir = 'ophim/detail'
+          if os.path.exists(detail_dir):
+              files = [f for f in os.listdir(detail_dir) if f.endswith('.json')]
+              print('Detail OK:', len(files), 'files')
+              if files:
+                  sample = json.load(open(os.path.join(detail_dir, files[0])))
+                  assert 'sources' in sample, 'Missing sources'
+                  print('Sample detail schema: OK')
+          "
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Auto update MonPlayer streams'
-          file_pattern: 'ophim.json'
+          commit_message: '🤖 Auto update MonPlayer data'
+          file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
+          push_options: '--force-with-lease'
