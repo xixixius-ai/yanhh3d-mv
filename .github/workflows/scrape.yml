@@ -1,14 +1,14 @@
-name: 🎬 Scrape YanHH3D → MonPlayer
+name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: '0 2 * * *'
   workflow_dispatch:
   push:
     paths:
-      - "scraper.py"
-      - "requirements.txt"
-      - ".github/workflows/run.yml"
+      - 'scraper.py'
+      - 'requirements.txt'
+      - '.github/workflows/run.yml'
 
 jobs:
   scrape:
@@ -17,13 +17,13 @@ jobs:
       contents: write
     timeout-minutes: 20
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -37,12 +37,13 @@ jobs:
           PYTHONUNBUFFERED: 1
 
       - name: Validate JSON
-        run: python -c 'import json; d=json.load(open("ophim.json")); assert "channels" in d; print("OK:", len(d["channels"]), "items")'
+        run: |
+          python -c "import json; data = json.load(open('ophim.json')); print('OK:', len(data['channels']), 'items')"
 
-      - name: Commit result
+      - name: Commit and push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Auto-update MonPlayer"
-          file_pattern: "ophim.json"
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: 'Auto update MonPlayer data'
+          file_pattern: 'ophim.json'
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
