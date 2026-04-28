@@ -1,81 +1,140 @@
-"""scraper.py — YanHH3D → MonPlayer | 20 phim mới nhất | Minimal"""
-import json, re, time, logging
-from pathlib import Path
+#!/usr/bin/env python3
+"""
+Scraper yanhh3d.bz → MonPlayer JSON
+Chỉ lấy phim ĐÃ HOÀN THÀNH (số tập hiện tại = tổng tập)
+"""
+
+import json
+import os
+import re
+import logging
+from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright
+from bs4 import BeautifulSoup
 
-BASE = "https://yanhh3d.bz"
-URL = f"{BASE}/moi-cap-nhat"
-OUT = "monplayer.json"
-MAX = 20
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+CONFIG = {
+    "BASE_URL": "https://yanhh3d.bz",
+    "LISTING_PATH": "/moi-cap-nhat",
+    "MAX_MOVIES": 20,
+    "REQUIRE_COMPLETE": True,
+    "OUTPUT_FILE": "monplayer.json",
+    "TIMEOUT": 30000,
+}
 
-def get_stream(html):
-    m = re.search(r'(https?://[^\s\'"<>]+?\.(m3u8|mp4)[^\s\'"<>]*)', html)
-    return m.group(1) if m and 'ads' not in m.group(1).lower() else None
+SELECTORS = {
+    "card": ".flw-item.swiper-slide",
+    "title": ".tick.ltr h4",
+    "link": "a.film-poster-ahref",
+    "thumb": "img.film-poster-img[data-src]",
+    "episode": ".tick.tick-rate",
+}
 
-def main():
-    items = []
+def is_completed(episode_text: str) -> bool:
+    if not episode_text:
+        return False
+    if "hoàn tất" in episode_text.lower():
+        return True
+    match = re.search(r'(\d+)\s*/\s*(\d+)', episode_text)
+    if match:
+        current, total = int(match.group(1)), int(match.group(2))
+        return current >= total and total > 0
+    return False
+
+def parse_card(card) -> dict | None:
+    try:
+        link_el = card.select_one(SELECTORS["link"])
+        if not link_el or not link_el.get("href"):
+            return None
+        link = link_el["href"]
+        if not link.startswith("http"):
+            link = CONFIG["BASE_URL"] + link
+
+        title_el = card.select_one(SELECTORS["title"])
+        title = title_el.get_text(strip=True) if title_el else link_el.get("title", "").strip()
+        if not title:
+            return None
+
+        thumb_el = card.select_one(SELECTORS["thumb"])
+        thumb = thumb_el.get("data-src") if thumb_el else None
+        if thumb and not thumb.startswith("http"):
+            thumb = CONFIG["BASE_URL"] + thumb
+
+        ep_el = card.select_one(SELECTORS["episode"])
+        episode_text = ep_el.get_text(strip=True) if ep_el else ""
+
+        if CONFIG["REQUIRE_COMPLETE"] and not is_completed(episode_text):
+            return None
+
+        return {
+            "title": title,
+            "link": link,
+            "thumb": thumb or "",
+        }
+    except Exception as e:
+        logger.warning(f"Parse error: {e}")
+        return None
+
+def scrape():
+    url = CONFIG["BASE_URL"] + CONFIG["LISTING_PATH"]
+    logger.info(f"Scraping: {url}")
+    results = []
+
     with sync_playwright() as p:
-        b = p.chromium.launch(headless=True)
-        c = b.new_context(viewport={"width": 1920, "height": 1080})
-        pg = c.new_page()
-        
-        print("📥 Loading listing...")
-        pg.goto(URL, wait_until="networkidle", timeout=30000)
-        time.sleep(2)
-        
-        # Lấy 20 phim mới nhất
-        for a in pg.query_selector_all(".film-poster-ahref[href]")[:MAX]:
-            href = a.get_attribute("href")
-            title = a.get_attribute("title") or href.strip("/").replace("-", " ").title()
-            if not href or "/" in href.strip("/").split("/")[-1]: continue
-            
-            # Crawl chi tiết phim
-            pg.goto(BASE + href, wait_until="networkidle", timeout=30000)
-            time.sleep(1)
-            
-            # Ảnh poster
-            poster = ""
-            try: poster = pg.locator("meta[property='og:image']").first.get_attribute("content")
-            except: pass
-            if not poster:
-                try: poster = pg.locator("img.film-poster-img").first.get_attribute("data-src") or pg.locator("img.film-poster-img").first.get_attribute("src")
-                except: pass
-            if poster and poster.startswith("/"): poster = BASE + poster
-            
-            # Danh sách tập + stream
-            streams = []
-            for ep in pg.query_selector_all("a[href*='/tap-']"):
-                ep_href = ep.get_attribute("href")
-                if "/sever" in ep_href.lower(): continue
-                ep_url = BASE + ep_href if ep_href.startswith("/") else ep_href
-                
-                pg.goto(ep_url, wait_until="networkidle", timeout=20000)
-                time.sleep(0.3)
-                
-                stream = get_stream(pg.content())
-                if stream:
-                    label = ep.text_content().strip() or f"Tập {ep_href.split('/tap-')[-1]}"
-                    streams.append({"name": label, "url": stream})
-            
-            if streams:
-                items.append({
-                    "title": title,
-                    "poster": poster or f"{BASE}/favicon.ico",
-                    "image": poster or f"{BASE}/favicon.ico",
-                    "streams": streams
-                })
-                logging.info(f"✓ {title[:40]} — {len(streams)} tập")
-            
-            if len(items) >= MAX: break
-        
-        b.close()
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+            viewport={"width": 1920, "height": 1080},
+        )
+        page = context.new_page()
+
+        try:
+            page.goto(url, wait_until="networkidle", timeout=CONFIG["TIMEOUT"])
+            page.wait_for_selector(SELECTORS["card"], timeout=10000)
+            page.wait_for_timeout(1500)
+
+            soup = BeautifulSoup(page.content(), "lxml")
+            cards = soup.select(SELECTORS["card"])
+
+            for card in cards:
+                if len(results) >= CONFIG["MAX_MOVIES"]:
+                    break
+                item = parse_card(card)
+                if item:
+                    results.append(item)
+                    logger.info(f"Added: {item['title']}")
+
+        except Exception as e:
+            logger.error(f"Scrape failed: {e}")
+        finally:
+            browser.close()
+
+    output = {
+        "name": "YanHH3D",
+        "items": [
+            {
+                "title": r["title"],
+                "image": r["thumb"],
+                "description": "",
+                "streams": []
+            }
+            for r in results
+        ],
+        "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "meta": {
+            "source": CONFIG["BASE_URL"],
+            "total": len(results),
+            "completed_only": CONFIG["REQUIRE_COMPLETE"]
+        }
+    }
+
+    with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
     
-    # Output JSON
-    json.dump({"name": "YanHH3D — 20 Phim Mới Nhất", "items": items}, 
-              open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    logging.info(f"✅ Done: {len(items)} phim → {OUT}")
+    logger.info(f"Saved {len(results)} movies to {CONFIG['OUTPUT_FILE']}")
+    return output
 
 if __name__ == "__main__":
-    main()
+    scrape()
