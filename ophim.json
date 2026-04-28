@@ -1,10 +1,81 @@
 {
   "grid_number": 3,
-  "channels": [],
+  "channels": [
+    {
+      "id": "pham-nhan-tu-tien",
+      "name": "Phàm Nhân Tu Tiên",
+      "description": "",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/pham-nhan-tu-tien-1775382966.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "PV - 13/06 Lên Sóng",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/pham-nhan-tu-tien"
+      },
+      "enable_detail": false
+    },
+    {
+      "id": "kiem-lai-phan-2",
+      "name": "Kiếm Lai Phần 2",
+      "description": "",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/kiem-lai-phan-2-1770955370.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "27/27 [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/kiem-lai-phan-2"
+      },
+      "enable_detail": false
+    },
+    {
+      "id": "than-an-vuong-toa",
+      "name": "Thần Ấn Vương Tọa",
+      "description": "",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/than-an-vuong-toa-1776925955.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "208/208 [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://yanhh3d.bz/than-an-vuong-toa"
+      },
+      "enable_detail": false
+    }
+  ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total": 0,
+    "total_items": 3,
     "completed_only": true,
-    "updated_at": "2026-04-28T16:31:19Z"
+    "updated_at": "2026-04-28T16:37:11Z",
+    "version": "1.0"
   }
 }
