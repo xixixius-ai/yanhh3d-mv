@@ -8,77 +8,7 @@
           "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0",
           "name": "",
           "grid_number": 3,
-          "streams": [
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0",
-              "name": "1",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/31b4888a-9f41-4642-a24c-87e72ecd9573.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/the-gioi-hoan-my-thuyet-minh-tieng-viet/tap-1"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1",
-              "name": "2",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/afc74bd8-ace3-42eb-a8c5-3cc39bb530c8.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/the-gioi-hoan-my-thuyet-minh-tieng-viet/tap-2"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-2",
-              "name": "3",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-2-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/a79ee0f3-0bc0-444d-9a81-9bf97fe034e6.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/the-gioi-hoan-my-thuyet-minh-tieng-viet/tap-3"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "streams": []
         }
       ]
     }
