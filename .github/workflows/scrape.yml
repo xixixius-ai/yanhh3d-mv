@@ -12,7 +12,9 @@ on:
 
 jobs:
   scrape:
-    runs-on: ubuntu-22.04  # ✅ Fix: ubuntu-24.04 thiếu libasound2
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write  # ✅ FIX: Cấp quyền commit & push cho GITHUB_TOKEN
     timeout-minutes: 20
     steps:
       - name: Checkout
