@@ -2,7 +2,7 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 */4 * * *'  # ✅ Chạy mỗi 4 giờ để refresh link expire
   workflow_dispatch:
   push:
     paths:
@@ -36,7 +36,6 @@ jobs:
       - run: python scraper.py
         env:
           PYTHONUNBUFFERED: 1
-          BASE_URL_STATIC: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
 
       - run: |
           python -c "import json; d=json.load(open('ophim.json')); print('List OK:', len(d['channels']), 'phim')"
@@ -46,10 +45,6 @@ jobs:
           if os.path.exists(detail_dir):
               files = [f for f in os.listdir(detail_dir) if f.endswith('.json')]
               print('Detail OK:', len(files), 'files')
-              if files:
-                  sample = json.load(open(os.path.join(detail_dir, files[0])))
-                  streams = sample['sources'][0]['contents'][0]['streams']
-                  print(f'Sample: {len(streams)} episodes (Thuyết Minh)')
           "
 
       - uses: stefanzweifel/git-auto-commit-action@v5
