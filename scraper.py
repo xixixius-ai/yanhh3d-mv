@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-✅ Fix: JavaScript startsWith() (không phải startswith)
-✅ Fix: Bắt cả .mp4 và .m3u8 streams
-✅ Fix: Dùng raw.githubusercontent.com URLs
+✅ Thuyết Minh = default server (không filter path)
+✅ Bắt stream sau khi click "Xem Thuyết Minh"
+✅ Dùng raw.githubusercontent.com URLs
 """
 
 import json
 import logging
-import os
 from datetime import datetime, timezone
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -20,28 +19,31 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 3,
-    "MAX_EPISODES": 2,
+    "MAX_MOVIES": 10,
+    "MAX_EPISODES": 50,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 15000,
-    "PLAYER_WAIT": 2000,
+    "PLAYER_WAIT": 2500,  # ✅ Tăng thời gian chờ JS load
     "EPISODE_DELAY": 200,
 }
 
 RAW_BASE = "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"
 
 def get_thuyet_minh_episodes(page):
+    """Lấy episodes sau khi click 'Xem Thuyết Minh'"""
     try:
+        # Click "Xem Thuyết Minh" và chờ JS switch server
         try:
             btn = page.locator("text=Xem Thuyết Minh").first
             if btn.count() > 0 and btn.is_visible():
                 btn.click(timeout=3000)
-                page.wait_for_timeout(1500)
+                page.wait_for_timeout(2000)  # ✅ Chờ đủ lâu để JS load episodes
         except: pass
 
         episodes = page.evaluate("""() => {
             const results = [], seen = new Set();
-            document.querySelectorAll('a[href*="/sever2/"][href*="/tap-"]').forEach(a => {
+            // ✅ Lấy tất cả episode links (không filter server path)
+            document.querySelectorAll('a.ssl-item.ep-item, a[href*="/tap-"]').forEach(a => {
                 const href = a.href;
                 if (!href || seen.has(href)) return;
                 const epName = a.querySelector('.ep-name, .ssli-order');
@@ -61,15 +63,16 @@ def get_thuyet_minh_episodes(page):
         return []
 
 def get_stream_url(page, episode_url, episode_name):
-    """Bắt stream URL (cả .m3u8 và .mp4) từ Thuyết Minh server"""
+    """Bắt stream URL sau khi click Thuyết Minh - không filter server path"""
     collected = []
     
     def on_response(response):
         url = response.url.lower()
+        # ✅ Bắt stream từ CDN (không quan tâm server path)
         if response.status == 200 and (".m3u8" in url or ".mp4" in url):
             if any(cd in url for cd in ["fbcdn", "opstream", "streamtape", "cdn", "video", "media"]):
-                req_url = response.request.url.lower()
-                if "sever2" in req_url or "sever2" in episode_url.lower():
+                # ✅ Chỉ lấy stream đầu tiên (tránh trùng)
+                if not collected:
                     collected.append({
                         "url": response.url,
                         "referer": episode_url,
@@ -81,6 +84,8 @@ def get_stream_url(page, episode_url, episode_name):
         page.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "font"] else route.continue_())
         page.goto(episode_url, wait_until="networkidle", timeout=CONFIG["TIMEOUT_DETAIL"])
         page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
+        
+        # Fallback: tìm trong video element
         if not collected:
             try:
                 video = page.locator("video").first
@@ -116,7 +121,6 @@ def build_detail_json(slug, episodes):
             }]
         }
         streams_list.append(stream_item)
-    
     return {
         "sources": [{
             "id": f"{slug}--0",
@@ -147,8 +151,6 @@ def build_list_item(movie):
 
 def scrape():
     logger.info(f"▶️ Bắt đầu scrape: {CONFIG['BASE_URL']}")
-    
-    # ✅ Fix: Khởi tạo channels trước try block
     channels = []
     
     with sync_playwright() as p:
@@ -166,8 +168,6 @@ def scrape():
             home_page.goto(CONFIG["BASE_URL"], wait_until="networkidle", timeout=CONFIG["TIMEOUT_HOMEPAGE"])
             home_page.wait_for_selector(".flw-item.swiper-slide", state="attached", timeout=8000)
             home_page.wait_for_timeout(500)
-            
-            # ✅ Fix: startsWith() với chữ S hoa (JavaScript)
             movies = home_page.evaluate(f"""() => {{
                 const res = [], seen = new Set();
                 document.querySelectorAll('.flw-item.swiper-slide').forEach(card => {{
@@ -187,7 +187,6 @@ def scrape():
                 return res;
             }}""")
             logger.info(f"✅ Tìm thấy {len(movies)} phim trending")
-            
             detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
             detail_dir.mkdir(parents=True, exist_ok=True)
             for i, m in enumerate(movies):
@@ -196,7 +195,7 @@ def scrape():
                     detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=10000)
                     detail_page.wait_for_timeout(1000)
                     ep_list = get_thuyet_minh_episodes(detail_page)
-                    logger.info(f"  📋 Tìm thấy {len(ep_list)} episodes Thuyết Minh")
+                    logger.info(f"  📋 Tìm thấy {len(ep_list)} episodes")
                     ep_data = []
                     total_to_crawl = min(len(ep_list), CONFIG["MAX_EPISODES"])
                     for idx, ep in enumerate(ep_list[:total_to_crawl]):
@@ -219,7 +218,6 @@ def scrape():
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
         finally:
             browser.close()
-    
     list_output = {
         "id": "yanhh3d-thuyet-minh",
         "name": "YanHH3D - Thuyết Minh",
@@ -234,7 +232,7 @@ def scrape():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "7.4"
+            "version": "7.5"
         }
     }
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
