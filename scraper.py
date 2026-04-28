@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
 """
 YanHH3D Scraper → MonPlayer JSON (Production Version)
-✅ Crawls homepage → movie detail → episodes → stream URLs
-✅ Extracts ALL quality streams from #list_sv a.btn3dsv data-src attribute
-✅ Filters: fbcdn.cloud .m3u8 only (skip play-fb-v8 proxy & short.icu)
-✅ Multi-quality stream_links: 1080, 4K, 4K-, 1080-
-✅ Outputs strict MonPlayer schema
-✅ Robust error handling, logging, and retry logic
+✅ Crawls homepage → episode page (tap-1) → episode list → stream URLs
+✅ #episodes-content chỉ có trên episode page, KHÔNG có trên movie detail page
+✅ Lấy episode list từ tab #top-comment (Thuyết Minh), bỏ sever2 (Vietsub)
+✅ Extracts ALL quality streams: 1080, 4K, 4K-, 1080- từ fbcdn.cloud .m3u8
+✅ Multi-quality stream_links trong MonPlayer schema
+✅ Robust error handling, logging, retry logic
 """
 
 import json
 import logging
 import os
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
-# 📝 Logging Configuration
+# ─── Logging ────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -25,23 +24,24 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ⚙️ Configuration
+# ─── Config ─────────────────────────────────────────────────────────────────
 CONFIG = {
-    "BASE_URL": "https://yanhh3d.bz",
-    "OUTPUT_DIR": "ophim",
-    "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 5,
+    "BASE_URL":     "https://yanhh3d.bz",
+    "OUTPUT_DIR":   "ophim",
+    "LIST_FILE":    "ophim.json",
+    "MAX_MOVIES":   5,
     "MAX_EPISODES": 2,
-    "TIMEOUT_NAV": 20000,
+    "TIMEOUT_NAV":  20000,
     "TIMEOUT_WAIT": 15000,
-    "USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "RAW_BASE": os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main")
+    "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main")
 }
 
-# Thứ tự ưu tiên chất lượng (label viết thường)
+# Thứ tự ưu tiên hiển thị (label viết thường)
 QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd"]
 
 
+# ─── Step 1: Homepage → movie list ──────────────────────────────────────────
 def get_trending_movies(page):
     """Extract trending movies from homepage"""
     try:
@@ -70,41 +70,87 @@ def get_trending_movies(page):
         }""")
         return movies
     except Exception as e:
-        logger.error(f"❌ Failed to get trending movies: {e}")
+        logger.error(f"Failed to get trending movies: {e}")
         return []
 
 
-def get_episodes(page):
-    """Extract episode links from movie detail page"""
-    try:
-        page.wait_for_selector(".ep-range, #episodes-content", state="attached", timeout=CONFIG["TIMEOUT_WAIT"])
+# ─── Step 2: Episode page → episode list ────────────────────────────────────
+def get_episodes(page, slug):
+    """
+    Lấy danh sách tập từ episode page (tap-1 hoặc tap tồn tại đầu tiên).
 
-        episodes = page.evaluate("""() => {
-            const results = [];
-            const items = document.querySelectorAll('.ep-range a.ssl-item.ep-item, #detail-ss-list a.ssl-item.ep-item');
-            for (const item of items) {
-                const href = item.href;
-                const text = item.querySelector('.ssli-order, .ep-name')?.innerText.trim() || item.title || '';
-                // Filter only numeric episodes (skip grouped like "1-5")
-                if (href && /^\\d+$/.test(text)) {
-                    results.push({ name: text, url: href });
+    Cấu trúc thực tế:
+    - #episodes-content chỉ có trên /slug/tap-N, KHÔNG có trên /slug
+    - Tab #top-comment = Thuyết Minh  -> URL dạng BASE_URL/slug/tap-N
+    - Tab #new-comment = Vietsub      -> URL dạng BASE_URL/sever2/slug/tap-N
+    - Chỉ lấy tab Thuyết Minh (#top-comment), bỏ sever2
+    """
+    for tap_num in [1, 2, 3]:
+        ep_url = f"{CONFIG['BASE_URL']}/{slug}/tap-{tap_num}"
+        try:
+            page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+            page.wait_for_selector("#episodes-content", state="attached", timeout=CONFIG["TIMEOUT_WAIT"])
+
+            episodes = page.evaluate("""() => {
+                const results = [];
+
+                // Chỉ lấy tab Thuyết Minh: div#top-comment
+                // Bỏ div#new-comment (Vietsub - sever2)
+                const pane = document.querySelector('#top-comment');
+                if (!pane) return results;
+
+                const items = pane.querySelectorAll('a.ssl-item.ep-item');
+                for (const item of items) {
+                    const href = item.href || '';
+                    const text = (
+                        item.querySelector('.ssli-order')?.innerText ||
+                        item.querySelector('.ep-name')?.innerText ||
+                        item.title ||
+                        ''
+                    ).trim();
+
+                    // Bỏ sever2 (Vietsub)
+                    if (href.includes('/sever2/')) continue;
+
+                    // Chỉ lấy tập số nguyên (bỏ "139 TL", "1-5", v.v.)
+                    if (href && /^\\d+$/.test(text)) {
+                        results.push({ name: text, url: href });
+                    }
                 }
-            }
-            // Sort ascending by episode number
-            return results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
-        }""")
-        return episodes
-    except Exception as e:
-        logger.error(f"❌ Failed to get episodes: {e}")
-        return []
+
+                // Sort tăng dần theo số tập
+                return results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+            }""")
+
+            if episodes:
+                logger.info(f"   📋 Lấy episode list từ {ep_url}")
+                return episodes
+
+        except PlaywrightTimeout:
+            logger.warning(f"   ⏱️ Timeout khi vào {ep_url}, thử tập tiếp...")
+            continue
+        except Exception as e:
+            logger.warning(f"   ⚠️ Lỗi khi vào {ep_url}: {e}")
+            continue
+
+    logger.error(f"Không lấy được episode list cho {slug}")
+    return []
 
 
+# ─── Step 3: Episode page → stream URLs ─────────────────────────────────────
 def get_stream_url(page, ep_url):
     """
-    Thu thập TẤT CẢ stream links từ #list_sv a.btn3dsv
-    ✅ Chỉ lấy fbcdn.cloud .m3u8 (link trực tiếp)
-    ❌ Bỏ qua: play-fb-v8/play/ (proxy), short.icu (shortlink)
-    Trả về list[dict{url, type, label}] hoặc None
+    Thu thập TẤT CA stream links từ #list_sv a.btn3dsv
+
+    Cấu trúc thực tế:
+    - LINK1: fbcdn.cloud .m3u8 - label "1080"    OK
+    - LINK2: yanhh3d.bz/play-fb-v8/play/ID       SKIP proxy
+    - LINK4: fbcdn.cloud .m3u8 - label "1080-"   OK
+    - LINK5: fbcdn.cloud .m3u8 - label "4K"      OK
+    - LINK6: fbcdn.cloud .m3u8 - label "4K-"     OK
+    - LINK9: short.icu/...     - label "Link10"  SKIP shortlink
+
+    Trả về list[{url, type, label}] hoặc None
     """
     try:
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -114,14 +160,14 @@ def get_stream_url(page, ep_url):
             const results = [];
             const btns = document.querySelectorAll('#list_sv a.btn3dsv');
             for (const btn of btns) {
-                const src   = btn.getAttribute('data-src') || '';
+                const src   = (btn.getAttribute('data-src') || '').trim();
                 const label = (btn.innerText || btn.textContent || '').trim();
 
-                // ✅ Ưu tiên: fbcdn.cloud .m3u8 trực tiếp (1080, 4K, 4K-, 1080-)
+                // OK: fbcdn.cloud .m3u8 (1080, 4K, 4K-, 1080-)
                 if (src.includes('fbcdn') && src.includes('.m3u8')) {
                     results.push({ url: src, type: 'hls', label: label });
                 }
-                // ✅ Fallback: .m3u8 hoặc .mp4 từ domain khác (tương lai)
+                // Fallback: .m3u8 / .mp4 tu domain khac
                 else if (
                     (src.includes('.m3u8') || src.includes('.mp4')) &&
                     !src.includes('play-fb-v8') &&
@@ -133,23 +179,24 @@ def get_stream_url(page, ep_url):
                         label: label
                     });
                 }
-                // ❌ Bỏ qua: play-fb-v8/play/ (HD proxy) và short.icu (shortlink)
+                // SKIP: play-fb-v8/play/ va short.icu
             }
             return results;
         }""")
 
         if streams and len(streams) > 0:
-            return streams  # list[dict], không phải single dict
+            return streams
 
         return None
 
     except Exception as e:
-        logger.debug(f"⚠️ Stream extraction failed for {ep_url}: {e}")
+        logger.debug(f"Stream extraction failed for {ep_url}: {e}")
         return None
 
 
+# ─── Helpers ─────────────────────────────────────────────────────────────────
 def _sort_streams(stream_list):
-    """Sort stream list theo thứ tự ưu tiên chất lượng"""
+    """Sort theo thu tu uu tien chat luong: 1080 → 4K → 4K- → 1080-"""
     def priority(s):
         lbl = (s.get("label") or "").strip().lower()
         try:
@@ -160,25 +207,23 @@ def _sort_streams(stream_list):
 
 
 def build_detail_json(slug, episodes):
-    """Build MonPlayer-compatible detail JSON với multi-quality stream_links"""
+    """Build MonPlayer-compatible detail JSON voi multi-quality stream_links"""
     streams = []
     for i, ep in enumerate(episodes):
-        raw_streams = ep.get("stream")  # list[dict{url, type, label}]
+        raw_streams = ep.get("stream")
         if not raw_streams:
             continue
 
-        # Sort: 1080 trước, rồi 4K, 4K-, 1080-
         sorted_streams = _sort_streams(raw_streams)
 
-        # Mỗi quality = 1 stream_link entry
         stream_links = []
         for j, s in enumerate(sorted_streams):
             label = s.get("label") or f"Link {j + 1}"
             stream_links.append({
                 "id":      f"{slug}--0-{i}-{j}",
-                "name":    label,       # "1080", "4K", "4K-", "1080-"
-                "type":    s["type"],   # "hls" hoặc "mp4"
-                "default": j == 0,      # link đầu tiên (1080) là default
+                "name":    label,
+                "type":    s["type"],
+                "default": j == 0,
                 "url":     s["url"],
                 "request_headers": [
                     {"key": "User-Agent", "value": CONFIG["USER_AGENT"]},
@@ -195,7 +240,7 @@ def build_detail_json(slug, episodes):
     return {
         "sources": [{
             "id":   f"{slug}--0",
-            "name": "Thuyết Minh #1",
+            "name": "Thuyet Minh #1",
             "contents": [{
                 "id":          f"{slug}--0",
                 "name":        "",
@@ -203,28 +248,28 @@ def build_detail_json(slug, episodes):
                 "streams":     streams
             }]
         }],
-        "subtitle": "Thuyết Minh"
+        "subtitle": "Thuyet Minh"
     }
 
 
 def build_list_item(movie):
     """Build MonPlayer-compatible list item"""
     return {
-        "id": movie["slug"],
-        "name": movie["title"],
+        "id":          movie["slug"],
+        "name":        movie["title"],
         "description": "",
         "image": {
-            "url": movie["thumb"],
-            "type": "cover",
-            "width": 480,
+            "url":    movie["thumb"],
+            "type":   "cover",
+            "width":  480,
             "height": 640
         },
-        "type": "playlist",
+        "type":    "playlist",
         "display": "text-below",
         "label": {
-            "text": movie["badge"] or "Trending",
-            "position": "top-left",
-            "color": "#35ba8b",
+            "text":       movie["badge"] or "Trending",
+            "position":   "top-left",
+            "color":      "#35ba8b",
             "text_color": "#ffffff"
         },
         "remote_data": {
@@ -234,10 +279,11 @@ def build_list_item(movie):
     }
 
 
+# ─── Main ────────────────────────────────────────────────────────────────────
 def scrape():
     """Main scraper orchestrator"""
-    logger.info("🚀 Starting YanHH3D → MonPlayer scraper...")
-    channels = []
+    logger.info("Starting YanHH3D to MonPlayer scraper...")
+    channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
 
@@ -250,88 +296,84 @@ def scrape():
         page = context.new_page()
 
         try:
-            # 1️⃣ Get trending movies
+            # 1) Homepage
             movies = get_trending_movies(page)
             if not movies:
-                logger.error("❌ No movies found. Exiting.")
+                logger.error("No movies found. Exiting.")
                 return
 
-            logger.info(f"✅ Found {len(movies)} movies. Processing up to {CONFIG['MAX_MOVIES']}...")
+            limit = min(len(movies), CONFIG["MAX_MOVIES"])
+            logger.info(f"Found {len(movies)} movies. Processing {limit}...")
 
-            # 2️⃣ Process each movie
-            for idx, movie in enumerate(movies[:CONFIG["MAX_MOVIES"]], 1):
-                logger.info(f"📖 [{idx}/{min(len(movies), CONFIG['MAX_MOVIES'])}] {movie['title']} ({movie['slug']})")
+            # 2) Xu ly tung phim
+            for idx, movie in enumerate(movies[:limit], 1):
+                logger.info(f"[{idx}/{limit}] {movie['title']} ({movie['slug']})")
                 try:
-                    # Go to detail page
-                    page.goto(
-                        f"{CONFIG['BASE_URL']}/{movie['slug']}",
-                        wait_until="domcontentloaded",
-                        timeout=CONFIG["TIMEOUT_NAV"]
-                    )
-
-                    # Get episodes
-                    episodes = get_episodes(page)
+                    # Goto tap-1 de lay episode list
+                    # KHONG goto movie detail page vi khong co #episodes-content
+                    episodes = get_episodes(page, movie["slug"])
                     if not episodes:
-                        logger.warning(f"⚠️ No episodes found for {movie['slug']}")
+                        logger.warning(f"No episodes found for {movie['slug']}")
                         continue
 
-                    logger.info(f"   📺 Found {len(episodes)} episodes. Extracting streams...")
+                    logger.info(f"   Found {len(episodes)} episodes. Extracting streams...")
 
-                    # Extract streams (limit to MAX_EPISODES for speed)
-                    ep_data = []
+                    # 3) Lay stream tung tap
+                    ep_data     = []
                     crawl_limit = min(len(episodes), CONFIG["MAX_EPISODES"])
+
                     for i in range(crawl_limit):
-                        ep = episodes[i]
-                        stream = get_stream_url(page, ep["url"])  # list hoặc None
+                        ep     = episodes[i]
+                        stream = get_stream_url(page, ep["url"])
+
                         if stream:
                             ep_data.append({"name": ep["name"], "stream": stream})
                             labels = [s["label"] for s in stream]
-                            logger.info(f"      🎞️  Tập {ep['name']}: {len(stream)} quality → {labels}")
+                            logger.info(f"      Tap {ep['name']}: {len(stream)} quality -> {labels}")
                         else:
-                            logger.warning(f"      ⚠️ Tập {ep['name']}: không tìm thấy stream")
+                            logger.warning(f"      Tap {ep['name']}: khong tim thay stream")
 
                         if (i + 1) % 10 == 0:
-                            logger.info(f"   ✅ Progress: {i + 1}/{crawl_limit} episodes processed")
+                            logger.info(f"   Progress: {i + 1}/{crawl_limit} processed")
 
-                        # Small delay to avoid rate limiting
                         page.wait_for_timeout(150)
 
-                    # Save detail JSON
+                    # 4) Luu detail JSON
                     if ep_data:
                         detail_json = build_detail_json(movie["slug"], ep_data)
                         detail_path = detail_dir / f"{movie['slug']}.json"
                         with open(detail_path, "w", encoding="utf-8") as f:
                             json.dump(detail_json, f, ensure_ascii=False, indent=2)
-                        logger.info(f"   💾 Saved {detail_path.name} ({len(ep_data)} episodes)")
+                        logger.info(f"   Saved {detail_path.name} ({len(ep_data)} episodes)")
                         channels.append(build_list_item(movie))
                     else:
-                        logger.warning(f"   ⚠️ No valid streams found for {movie['slug']}")
+                        logger.warning(f"   No valid streams for {movie['slug']}")
 
                 except Exception as e:
-                    logger.error(f"   ❌ Error processing {movie['slug']}: {e}")
+                    logger.error(f"   Error processing {movie['slug']}: {e}")
                     continue
 
         except Exception as e:
-            logger.error(f"❌ Critical scraper error: {e}")
+            logger.error(f"Critical scraper error: {e}")
         finally:
             browser.close()
 
-    # 3️⃣ Save list JSON
+    # 5) Luu list JSON
     list_output = {
-        "id": "yanhh3d-thuyet-minh",
-        "name": "YanHH3D - Thuyết Minh",
-        "url": f"{CONFIG['RAW_BASE']}/ophim",
-        "color": "#004444",
-        "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"},
-        "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
+        "id":          "yanhh3d-thuyet-minh",
+        "name":        "YanHH3D - Thuyet Minh",
+        "url":         f"{CONFIG['RAW_BASE']}/ophim",
+        "color":       "#004444",
+        "image":       {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"},
+        "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz",
         "grid_number": 3,
-        "channels": channels,
-        "sorts": [{"text": "Mới nhất", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
+        "channels":    channels,
+        "sorts":       [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
         "meta": {
-            "source": CONFIG["BASE_URL"],
+            "source":      CONFIG["BASE_URL"],
             "total_items": len(channels),
-            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "1.0"
+            "updated_at":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "version":     "1.0"
         }
     }
 
@@ -339,7 +381,7 @@ def scrape():
     with open(list_path, "w", encoding="utf-8") as f:
         json.dump(list_output, f, ensure_ascii=False, indent=2)
 
-    logger.info(f"✅ Scraper finished! Saved {list_path} + {len(channels)} detail files.")
+    logger.info(f"Scraper finished! Saved {list_path} + {len(channels)} detail files.")
     return list_output
 
 
