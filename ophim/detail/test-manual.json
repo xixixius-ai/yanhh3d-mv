@@ -1,0 +1,87 @@
+{
+  "sources": [
+    {
+      "id": "test-manual--0",
+      "name": "Thuyết Minh #1",
+      "contents": [
+        {
+          "id": "test-manual--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "test-manual--0-0",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "test-manual--0-0-default",
+                  "name": "Mặc Định",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/0a69bf74-f640-4acb-b651-e38c0e80dccd.m3u8",
+                  "request_headers": [
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "test-manual--0-1",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "test-manual--0-1-default",
+                  "name": "Mặc Định",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/fe42aac7-a381-4acc-b196-eca0ffee9f5f.m3u8",
+                  "request_headers": [
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "test-manual--0-2",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "test-manual--0-2-default",
+                  "name": "Mặc Định",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/8d727c5b-bc34-44de-af3d-f2825adef4b9.m3u8",
+                  "request_headers": [
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyết Minh"
+}
