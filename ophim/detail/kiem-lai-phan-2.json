@@ -2,40 +2,16 @@
   "sources": [
     {
       "id": "kiem-lai-phan-2--0",
-      "name": "Vietsub #1",
+      "name": "Thuyết Minh",
       "contents": [
         {
           "id": "kiem-lai-phan-2--0",
           "name": "",
           "grid_number": 3,
-          "streams": [
-            {
-              "id": "kiem-lai-phan-2--0-0",
-              "name": "27",
-              "stream_links": [
-                {
-                  "id": "kiem-lai-phan-2--0-0-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/208fd088-4567-4099-9556-fabcc7becb41.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "streams": []
         }
       ]
     }
   ],
-  "subtitle": "Vietsub"
+  "subtitle": "Thuyết Minh"
 }
