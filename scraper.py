@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 """
-Scraper yanhh3d.bz → MonPlayer JSON (List View)
-- Dùng page.evaluate() để trích xuất trong browser context (tránh vấn đề visibility)
-- Chỉ lấy phim hoàn thành (X/X hoặc "Hoàn tất")
-- Output đúng schema MonPlayer với cấu trúc nhiều lớp
+Scraper yanhh3d.bz → MonPlayer JSON
+Lấy 20 phim trending từ homepage, không filter, output đúng schema.
 """
 
 import json
-import os
-import re
 import logging
 from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright
@@ -18,27 +14,12 @@ logger = logging.getLogger(__name__)
 
 CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
-    "LISTING_PATH": "/",
-    "MAX_MOVIES": 20,
-    "REQUIRE_COMPLETE": True,
     "OUTPUT_FILE": "ophim.json",
+    "MAX_MOVIES": 20,
     "TIMEOUT": 30000,
 }
 
-def is_completed(episode_text: str) -> bool:
-    if not episode_text:
-        return False
-    if "hoàn tất" in episode_text.lower():
-        return True
-    match = re.search(r'(\d+)\s*/\s*(\d+)', episode_text)
-    if match:
-        return int(match.group(1)) >= int(match.group(2)) > 0
-    return False
-
 def scrape():
-    url = CONFIG["BASE_URL"] + CONFIG["LISTING_PATH"]
-    logger.info(f"Scraping: {url}")
-
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -47,73 +28,54 @@ def scrape():
         )
         page = context.new_page()
 
-        # Headers + stealth để tránh Cloudflare
+        # Stealth headers
         page.set_extra_http_headers({
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
             "Referer": "https://www.google.com/",
-            "Upgrade-Insecure-Requests": "1",
         })
         page.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
             Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3]});
-            Object.defineProperty(navigator, 'languages', {get: () => ['vi-VN', 'vi', 'en-US', 'en']});
         """)
 
         try:
-            page.goto(url, wait_until="networkidle", timeout=CONFIG["TIMEOUT"])
-            # Chờ element tồn tại trong DOM (không cần visible)
+            page.goto(CONFIG["BASE_URL"], wait_until="networkidle", timeout=CONFIG["TIMEOUT"])
             page.wait_for_selector(".flw-item.swiper-slide", state="attached", timeout=15000)
-            page.wait_for_timeout(2000)  # Đợi thêm cho JS render xong
+            page.wait_for_timeout(1500)
 
-            # ✅ Trích xuất dữ liệu TRONG browser context (tránh vấn đề parsing HTML sau)
-            movies = page.evaluate("""() => {
+            movies = page.evaluate(f"""() => {{
                 const results = [];
                 const cards = document.querySelectorAll('.flw-item.swiper-slide');
                 
-                cards.forEach(card => {
+                for (const card of cards) {{
+                    if (results.length >= {CONFIG["MAX_MOVIES"]}) break;
+                    
                     const linkEl = card.querySelector('a.film-poster-ahref');
-                    const titleEl = card.querySelector('.tick.ltr h4');
-                    const thumbEl = card.querySelector('img.film-poster-img');
-                    const epEl = card.querySelector('.tick.tick-rate');
+                    if (!linkEl || !linkEl.href) continue;
                     
-                    if (!linkEl || !linkEl.href) return;
+                    const slug = linkEl.href.split('/').pop().replace(/\\/$/, '');
                     
-                    const href = linkEl.href;
-                    const slug = href.split('/').pop().replace(/\\/$/, '');
+                    const titleEl = card.querySelector('.tick.ltr h4, .film-name');
                     const title = titleEl ? titleEl.innerText.trim() : linkEl.title || '';
-                    if (!title) return;
+                    if (!title) continue;
                     
+                    const thumbEl = card.querySelector('img[data-src], img.film-poster-img');
                     let thumb = thumbEl ? (thumbEl.dataset.src || thumbEl.src) : '';
-                    if (thumb && !thumb.startsWith('http')) {
+                    if (thumb && !thumb.startsWith('http')) {{
                         thumb = 'https://yanhh3d.bz' + thumb;
-                    }
+                    }}
                     
-                    const episodeText = epEl ? epEl.innerText.trim() : '';
+                    const epEl = card.querySelector('.tick.tick-rate, .badge');
+                    const badge = epEl ? epEl.innerText.trim() : '';
                     
-                    results.push({
-                        slug: slug,
-                        title: title,
-                        thumb: thumb,
-                        episode: episodeText
-                    });
-                });
-                
+                    results.push({{ slug, title, thumb, badge }});
+                }}
                 return results;
-            }""")
+            }}""")
 
-            # Lọc phim hoàn thành + format output
             channels = []
             for m in movies:
-                if CONFIG["REQUIRE_COMPLETE"] and not is_completed(m["episode"]):
-                    continue
-                if len(channels) >= CONFIG["MAX_MOVIES"]:
-                    break
-                
-                label_text = m["episode"] if m["episode"] else "Hoàn tất"
-                if re.search(r'\\d+/\\d+', m["episode"]) and "hoàn tất" not in m["episode"].lower():
-                    label_text = f"Hoàn tất ({m['episode']})"
-
                 channels.append({
                     "id": m["slug"],
                     "name": m["title"],
@@ -127,7 +89,7 @@ def scrape():
                     "type": "playlist",
                     "display": "text-below",
                     "label": {
-                        "text": label_text,
+                        "text": m["badge"] if m["badge"] else "Trending",
                         "position": "top-left",
                         "color": "#35ba8b",
                         "text_color": "#ffffff"
@@ -145,14 +107,12 @@ def scrape():
         finally:
             browser.close()
 
-    # ✅ Output đúng MonPlayer schema với cấu trúc nhiều lớp
     output = {
         "grid_number": 3,
         "channels": channels,
         "meta": {
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
-            "completed_only": CONFIG["REQUIRE_COMPLETE"],
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "version": "1.0"
         }
