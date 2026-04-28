@@ -37,8 +37,7 @@ jobs:
         env:
           PYTHONUNBUFFERED: 1
 
-      - name: Validate JSON
-        run: |
+      - run: |
           python -c "import json; d=json.load(open('ophim.json')); print('List OK:', len(d['channels']), 'phim')"
           python -c "
           import json, os
@@ -48,13 +47,13 @@ jobs:
               print('Detail OK:', len(files), 'files')
               if files:
                   sample = json.load(open(os.path.join(detail_dir, files[0])))
-                  assert 'sources' in sample, 'Missing sources'
-                  print('Sample detail schema: OK')
+                  streams = sample['sources'][0]['contents'][0]['streams']
+                  print(f'Sample: {len(streams)} episodes (Thuyết Minh)')
           "
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: '🤖 Auto update MonPlayer data'
+          commit_message: '🤖 Auto update MonPlayer (Thuyết Minh only)'
           file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
