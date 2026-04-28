@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-- Phân biệt Server Tabs vs Episode List
-- Lấy đúng danh sách tập + stream URL cho từng tập
-- Giới hạn số tập/movie để tránh timeout (có thể chỉnh trong CONFIG)
+- Lấy TOÀN BỘ tập (không giới hạn)
+- Tối ưu crawl nhanh: chặn resource thừa, wait ngắn
+- Output: mỗi phim có đầy đủ số tập để app hiển thị nút chọn
 """
 
 import json
@@ -19,43 +19,36 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_FILE": "ophim.json",
     "MAX_MOVIES": 10,
-    "MAX_EPISODES_PER_MOVIE": 20,  # ✅ Giới hạn số tập/movie để chạy nhanh
+    "MAX_EPISODES_PER_MOVIE": 9999,  # ✅ Lấy toàn bộ tập (không giới hạn)
     "HOMEPAGE_TIMEOUT": 25000,
-    "DETAIL_TIMEOUT": 12000,
-    "PLAYER_WAIT": 2000,
+    "DETAIL_TIMEOUT": 10000,
+    "EPISODE_TIMEOUT": 8000,
+    "PLAYER_WAIT": 1500,  # ✅ Giảm xuống để nhanh hơn
 }
 
 def get_servers_and_episodes(page):
-    """
-    Trả về dict: { server_name: [{name, url}, ...] }
-    Phân biệt rõ server tabs vs episode list
-    """
+    """Lấy danh sách episodes từ trang chi tiết phim"""
     try:
         return page.evaluate("""() => {
             const result = {};
-            
-            // Bước 1: Tìm server tabs (thường là .server-list, .list-server, .os-server)
-            const serverTabs = document.querySelectorAll('.server-list .item, .list-server a, .os-server li, [data-server]');
+            const serverTabs = document.querySelectorAll('.server-list .item, .list-server a, .os-server li');
             const servers = [];
             
             if (serverTabs.length > 0) {
                 serverTabs.forEach(tab => {
                     const name = (tab.innerText || tab.getAttribute('title') || '').trim();
-                    if (name && !/tập|episode|\\d+/i.test(name)) {  // Loại tên có số/tập
+                    if (name && !/tập|episode|\\d+/i.test(name)) {
                         servers.push({ name, el: tab });
                     }
                 });
             } else {
-                // Fallback: coi toàn trang là 1 server default
                 servers.push({ name: 'Default', el: document.body });
             }
             
-            // Bước 2: Với mỗi server, tìm episode list
             for (const server of servers) {
                 const episodes = [];
-                const container = server.el.closest('.server-content, .tab-content, .server-item') || document;
+                const container = server.el.closest('.server-content, .tab-content') || document;
                 
-                // Selector ưu tiên cho episode list
                 const epSelectors = [
                     '.epis_list a', '.episode-list a', '.list-ep a', 
                     '.episodes a', '.episode-item a', 'a.ep-item',
@@ -68,7 +61,6 @@ def get_servers_and_episodes(page):
                     if (found.length > 0) { epLinks = [...found]; break; }
                 }
                 
-                // Fallback: tìm link có chữ 'tập' + số
                 if (epLinks.length === 0) {
                     epLinks = [...(container.querySelectorAll('a') || [])].filter(a => {
                         const text = (a.innerText || '').trim();
@@ -77,19 +69,16 @@ def get_servers_and_episodes(page):
                     });
                 }
                 
-                // Lọc và format episodes
                 const seen = new Set();
                 epLinks.forEach(a => {
                     const href = a.href;
                     const text = (a.innerText.trim() || a.title || '').replace(/\\s+/g, ' ');
                     if (!href || !text || seen.has(href)) return;
-                    // Chỉ lấy link có dạng "Tập X" hoặc chứa số
                     if (!/tập|tap|\\d+/i.test(text)) return;
                     seen.add(href);
                     episodes.push({ name: text, url: href });
                 });
                 
-                // Sort tự nhiên theo số tập
                 episodes.sort((a, b) => {
                     const na = parseInt(a.name.match(/\\d+/)?.[0] || 0);
                     const nb = parseInt(b.name.match(/\\d+/)?.[0] || 0);
@@ -118,18 +107,16 @@ def get_stream_url(detail_page, episode_url):
     detail_page.on("response", on_response)
     
     try:
-        # Chặn resource thừa
         def block_unnecessary(route):
-            if route.request.resource_type in ["image", "stylesheet", "font"]:
+            if route.request.resource_type in ["image", "stylesheet", "font", "media"]:
                 route.abort()
             else:
                 route.continue_()
         detail_page.route("**/*", block_unnecessary)
         
-        detail_page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["DETAIL_TIMEOUT"])
+        detail_page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["EPISODE_TIMEOUT"])
         detail_page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
 
-        # Fallback DOM nếu network không bắt được
         if not collected:
             for selector in ["video[src]", "video source[src]", "iframe[src*='dailymotion']"]:
                 try:
@@ -198,20 +185,20 @@ def scrape():
                     detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=15000)
                     detail_page.wait_for_timeout(1500)
 
-                    # Lấy servers + episodes
                     servers_eps = get_servers_and_episodes(detail_page)
                     
-                    # Gộp tất cả episodes từ các server (ưu tiên server đầu tiên)
                     all_episodes = []
                     for server_name, episodes in servers_eps.items():
-                        for ep in episodes:
-                            ep["server"] = server_name  # Lưu server để debug
                         all_episodes.extend(episodes)
-                        break  # ✅ Chỉ lấy server đầu tiên để tránh trùng
+                        break  # Chỉ lấy server đầu tiên
                     
-                    # Giới hạn số tập + crawl stream
+                    # ✅ Crawl stream cho TOÀN BỘ tập (không giới hạn)
                     ep_data = []
-                    for ep in all_episodes[:CONFIG["MAX_EPISODES_PER_MOVIE"]]:
+                    total_eps = min(len(all_episodes), CONFIG["MAX_EPISODES_PER_MOVIE"])
+                    
+                    logger.info(f"  📦 {m['title']}: Sẽ crawl {total_eps} tập...")
+                    
+                    for idx, ep in enumerate(all_episodes[:total_eps]):
                         try:
                             stream = get_stream_url(detail_page, ep["url"])
                             if stream:
@@ -219,12 +206,13 @@ def scrape():
                                     "name": ep["name"],
                                     "streams": [{"url": stream}]
                                 })
-                                logger.debug(f"  ✅ {ep['name']}: {stream[:50]}...")
+                                if (idx + 1) % 10 == 0:
+                                    logger.info(f"    Progress: {idx + 1}/{total_eps} tập đã crawl")
                             else:
                                 logger.warning(f"  ⚠️ {ep['name']}: Không lấy được stream")
                         except Exception as e:
                             logger.warning(f"  ❌ Lỗi tập {ep['name']}: {e}")
-                        detail_page.wait_for_timeout(400)  # Giảm tải
+                        detail_page.wait_for_timeout(300)  # ✅ Giảm delay để nhanh hơn
 
                     channels.append({
                         "id": m["slug"],
@@ -239,7 +227,7 @@ def scrape():
                         "total_episodes": len(ep_data),
                         "episodes": ep_data
                     })
-                    logger.info(f"  📦 {m['title']}: {len(ep_data)} episodes")
+                    logger.info(f"  ✅ {m['title']}: Hoàn thành {len(ep_data)} tập")
 
                 except Exception as e:
                     logger.error(f"❌ Lỗi phim {m['title']}: {e}")
@@ -250,7 +238,6 @@ def scrape():
         finally:
             browser.close()
 
-    # 3️⃣ Xuất JSON
     output = {
         "grid_number": 3,
         "channels": channels,
@@ -259,7 +246,7 @@ def scrape():
             "total_items": len(channels),
             "total_episodes": sum(c["total_episodes"] for c in channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.0"
+            "version": "3.1"
         }
     }
     with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
