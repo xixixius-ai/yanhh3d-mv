@@ -1,7 +1,7 @@
 {
   "id": "yanhh3d-thuyet-minh",
   "name": "YanHH3D - Thuyết Minh",
-  "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim",
+  "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim",
   "color": "#004444",
   "image": {
     "url": "https://yanhh3d.bz/static/img/logo.png",
@@ -10,29 +10,6 @@
   "description": "Phim thuyết minh chất lượng cao từ YanHH3D.bz",
   "grid_number": 3,
   "channels": [
-    {
-      "id": "test-external",
-      "name": "🧪 TEST - Phim đang hoạt động",
-      "description": "Test từ source khác",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/tien-nghich-1775962789.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "TEST",
-        "position": "top-left",
-        "color": "#ff0000",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://media.hth4nh.eu.org/ophim/detail/cau-lac-bo-ban-bi-mat"
-      },
-      "enable_detail": true
-    },
     {
       "id": "tien-nghich",
       "name": "Tiên Nghịch",
@@ -101,65 +78,19 @@
         "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
       },
       "enable_detail": true
-    },
-    {
-      "id": "muc-than-ky",
-      "name": "Mục Thần Ký",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/muc-than-ky-1775968014.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "80/130 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/muc-than-ky.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "gia-thien",
-      "name": "Già Thiên",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/gia-thien-1775728054.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "160/208 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim/detail/gia-thien.json"
-      },
-      "enable_detail": true
     }
   ],
   "sorts": [
     {
       "text": "Mới nhất",
       "type": "radio",
-      "url": "https://xixixius-ai.github.io/yanhh3d-mv/ophim"
+      "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim"
     }
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 6,
-    "updated_at": "2026-04-28T20:24:14Z",
-    "version": "7.0"
+    "total_items": 3,
+    "updated_at": "2026-04-28T21:08:29Z",
+    "version": "7.2"
   }
 }

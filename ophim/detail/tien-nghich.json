@@ -18,10 +18,16 @@
                   "name": "Mặc Định",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/9632826f-d42f-4429-8460-37f020aa420c.m3u8",
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/d348f40d-b20e-4c65-94ad-53b5129b8982.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/tien-nghich/tap-1"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-1"
+                    }
                   ]
                 }
               ]
@@ -37,8 +43,14 @@
                   "default": false,
                   "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/95901df4-a0ab-4d10-8577-a47fdb22d273.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/tien-nghich/tap-2"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-2"
+                    }
                   ]
                 }
               ]
@@ -54,8 +66,14 @@
                   "default": false,
                   "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/70a84878-f807-4c8f-b12f-82e68249951f.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/tien-nghich/tap-3"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-3"
+                    }
                   ]
                 }
               ]

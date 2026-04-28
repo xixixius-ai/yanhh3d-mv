@@ -18,10 +18,16 @@
                   "name": "Mặc Định",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/47827cdf-4516-44ee-9101-9d879de7a7e1.m3u8",
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/51e5c4c1-4c63-4611-974d-f6a0da46d962.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-1"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-1"
+                    }
                   ]
                 }
               ]
@@ -37,8 +43,14 @@
                   "default": false,
                   "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/64c75609-2f2c-4ddb-88b5-f9d9a8627ff7.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-2"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-2"
+                    }
                   ]
                 }
               ]
@@ -54,8 +66,14 @@
                   "default": false,
                   "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/aedfad59-f97a-42b9-85c3-a13ed346615d.m3u8",
                   "request_headers": [
-                    {"key": "User-Agent", "value": "MonPlayer"},
-                    {"key": "Referer", "value": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-3"}
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-3"
+                    }
                   ]
                 }
               ]
