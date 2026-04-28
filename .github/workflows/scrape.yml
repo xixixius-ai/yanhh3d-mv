@@ -1,29 +1,48 @@
 name: 🎬 Scrape YanHH3D → MonPlayer
 
 on:
-  schedule: [{cron: "0 2 * * *"}]
+  schedule:
+    - cron: "0 2 * * *"
   workflow_dispatch:
-  push: {paths: ["scraper.py", "requirements.txt", ".github/workflows/run.yml"]}
+  push:
+    paths:
+      - "scraper.py"
+      - "requirements.txt"
+      - ".github/workflows/run.yml"
 
 jobs:
   scrape:
     runs-on: ubuntu-22.04
-    permissions: {contents: write}
+    permissions:
+      contents: write
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.11"}
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
           playwright install chromium
           playwright install-deps chromium
-      - run: python scraper.py
-        env: {PYTHONUNBUFFERED: 1}
-      - run: python -c "import json; d=json.load(open('ophim.json')); assert 'channels' in d; print(f'OK: {len(d[\"channels\"])} items')"
-      - uses: stefanzweifel/git-auto-commit-action@v5
+
+      - name: Run scraper
+        run: python scraper.py
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Validate JSON
+        run: python -c 'import json; d=json.load(open("ophim.json")); assert "channels" in d; print("OK:", len(d["channels"]), "items")'
+
+      - name: Commit result
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Auto-update: $(date '+%Y-%m-%d')"
+          commit_message: "🤖 Auto-update MonPlayer"
           file_pattern: "ophim.json"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
