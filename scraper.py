@@ -19,7 +19,7 @@ CONFIG = {
     "MAX_MOVIES": 10,
     "HOMEPAGE_TIMEOUT": 25000,
     "DETAIL_TIMEOUT": 12000,
-    "PLAYER_WAIT": 2500,  # Thời gian chờ player load JS
+    "PLAYER_WAIT": 2500,
 }
 
 def get_episode_list(page):
@@ -36,7 +36,6 @@ def get_episode_list(page):
                 const el = document.querySelectorAll(s);
                 if (el.length > 0) { links = [...el]; break; }
             }
-            // Fallback: tìm tất cả link có chữ 'tập' hoặc số
             if (links.length === 0) {
                 links = [...document.querySelectorAll('a')].filter(a => /tap|tập|episode|\\d+/i.test(a.href));
             }
@@ -49,7 +48,6 @@ def get_episode_list(page):
                     eps.push({ name: text, url: href });
                 }
             });
-            // Sort tự nhiên theo số tập
             return eps.sort((a, b) => {
                 const na = parseInt(a.name.match(/\\d+/)?.[0] || 0);
                 const nb = parseInt(b.name.match(/\\d+/)?.[0] || 0);
@@ -63,37 +61,57 @@ def get_episode_list(page):
 def get_stream_url(detail_page, episode_url):
     """Crawl trang tập phim để lấy link .m3u8 hoặc Dailymotion"""
     collected = []
+    
+    # ✅ Callback function phải khai báo riêng để remove_listener hoạt động
     def on_response(response):
         if response.status == 200 and ".m3u8" in response.url:
             collected.append(response.url)
-
-    listener = detail_page.on("response", on_response)
+    
+    # ✅ Register listener
+    detail_page.on("response", on_response)
+    
     try:
-        # Chặn tài nguyên thừa để load nhanh hơn
-        detail_page.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "stylesheet", "font"] else route.continue_())
+        # Chặn resource thừa để load nhanh
+        def block_unnecessary(route):
+            if route.request.resource_type in ["image", "stylesheet", "font"]:
+                route.abort()
+            else:
+                route.continue_()
+        detail_page.route("**/*", block_unnecessary)
         
         detail_page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["DETAIL_TIMEOUT"])
         detail_page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
 
-        # Nếu không bắt được từ network, thử lấy trực tiếp từ DOM
+        # Nếu không bắt được từ network, thử lấy từ DOM
         if not collected:
-            video_src = detail_page.locator("video").first.get_attribute("src")
-            if video_src: collected.append(video_src)
-            source_src = detail_page.locator("video source").first.get_attribute("src")
-            if source_src: collected.append(source_src)
+            try:
+                video = detail_page.locator("video").first
+                if video.count() > 0:
+                    src = video.get_attribute("src")
+                    if src and (".m3u8" in src or "dailymotion" in src):
+                        collected.append(src)
+            except: pass
             
-            # Kiểm tra Dailymotion iframe
-            iframe = detail_page.locator("iframe[src*='dailymotion']").first
-            if iframe.count() > 0:
-                collected.append(iframe.get_attribute("src"))
+            try:
+                source = detail_page.locator("video source").first
+                if source.count() > 0:
+                    src = source.get_attribute("src")
+                    if src: collected.append(src)
+            except: pass
+            
+            try:
+                iframe = detail_page.locator("iframe[src*='dailymotion']").first
+                if iframe.count() > 0:
+                    collected.append(iframe.get_attribute("src"))
+            except: pass
                 
     except Exception as e:
         logger.warning(f"Không lấy được stream cho {episode_url}: {e}")
     finally:
-        listener.remove_handle()
-        detail_page.route("**/*", lambda route: route.continue_())  # Restore
+        # ✅ Remove listener đúng cách
+        detail_page.remove_listener("response", on_response)
+        detail_page.route("**/*", lambda route: route.continue_())  # Restore route
         
-    # Trả về link hợp lệ đầu tiên (ưu tiên m3u8, fallback embed)
     return next((u for u in collected if u), None)
 
 def scrape():
@@ -107,7 +125,6 @@ def scrape():
         home_page = context.new_page()
         detail_page = context.new_page()
 
-        # Stealth setup
         for pg in [home_page, detail_page]:
             pg.set_extra_http_headers({"Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8", "Referer": "https://www.google.com/"})
             pg.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
@@ -142,33 +159,40 @@ def scrape():
             channels = []
             for i, m in enumerate(movies):
                 logger.info(f"🔍 Xử lý: {m['title']} ({i+1}/{len(movies)})")
-                detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=15000)
-                detail_page.wait_for_timeout(1500)
+                try:
+                    detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=15000)
+                    detail_page.wait_for_timeout(1500)
 
-                episodes = get_episode_list(detail_page)
-                ep_data = []
-                for ep in episodes:
-                    stream = get_stream_url(detail_page, ep["url"])
-                    detail_page.wait_for_timeout(600)  # Giảm tải
-                    if stream:
-                        ep_data.append({"name": ep["name"], "streams": [{"url": stream}]})
-                        logger.debug(f"  ✅ {ep['name']}: {stream[:60]}...")
-                    else:
-                        logger.warning(f"  ⚠️ {ep['name']}: Không lấy được stream")
+                    episodes = get_episode_list(detail_page)
+                    ep_data = []
+                    for ep in episodes:
+                        try:
+                            stream = get_stream_url(detail_page, ep["url"])
+                            if stream:
+                                ep_data.append({"name": ep["name"], "streams": [{"url": stream}]})
+                                logger.debug(f"  ✅ {ep['name']}: {stream[:60]}...")
+                            else:
+                                logger.warning(f"  ⚠️ {ep['name']}: Không lấy được stream")
+                        except Exception as e:
+                            logger.warning(f"  ❌ Lỗi tập {ep['name']}: {e}")
+                        detail_page.wait_for_timeout(500)
 
-                channels.append({
-                    "id": m["slug"],
-                    "name": m["title"],
-                    "description": "",
-                    "image": {"url": m["thumb"], "type": "cover", "width": 480, "height": 640},
-                    "type": "playlist",
-                    "display": "text-below",
-                    "label": {"text": m["badge"] or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
-                    "remote_data": {"url": f"{CONFIG['BASE_URL']}/{m['slug']}"},
-                    "enable_detail": True,
-                    "total_episodes": len(ep_data),
-                    "episodes": ep_data
-                })
+                    channels.append({
+                        "id": m["slug"],
+                        "name": m["title"],
+                        "description": "",
+                        "image": {"url": m["thumb"], "type": "cover", "width": 480, "height": 640},
+                        "type": "playlist",
+                        "display": "text-below",
+                        "label": {"text": m["badge"] or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
+                        "remote_data": {"url": f"{CONFIG['BASE_URL']}/{m['slug']}"},
+                        "enable_detail": True,
+                        "total_episodes": len(ep_data),
+                        "episodes": ep_data
+                    })
+                except Exception as e:
+                    logger.error(f"❌ Lỗi phim {m['title']}: {e}")
+                    continue
 
         except Exception as e:
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
@@ -183,7 +207,7 @@ def scrape():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "2.1"
+            "version": "2.2"
         }
     }
     with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
