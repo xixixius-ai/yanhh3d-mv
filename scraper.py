@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Scraper yanhh3d.bz → MonPlayer JSON (Optimized)
-✅ Click "Xem Thuyết Minh" → crawl episodes từ server2
-✅ Tối ưu: giới hạn episodes + giảm wait + skip stream nếu cần
-✅ Output: list + detail đúng schema MonPlayer
+Scraper yanhh3d.bz → MonPlayer JSON
+✅ Click "Xem Thuyết Minh" → crawl episodes từ server2 (dub)
+✅ Fix: remote_data.url dùng absolute path cho GitHub Pages
 """
 
 import json
 import logging
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,18 +21,19 @@ CONFIG = {
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
     "MAX_MOVIES": 10,
-    "MAX_EPISODES": 50,              # ✅ Giảm từ 9999 → 50 (đủ dùng, chạy nhanh)
+    "MAX_EPISODES": 3,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 12000,
-    "PLAYER_WAIT": 1000,             # ✅ Giảm từ 2000 → 1000ms
-    "EPISODE_DELAY": 150,            # ✅ Giảm delay giữa các episode crawl
-    "SKIP_STREAM_CRAWL": False,      # ✅ Set True để test nhanh (chỉ lấy danh sách tập, không crawl stream)
+    "PLAYER_WAIT": 1000,
+    "EPISODE_DELAY": 150,
+    "SKIP_STREAM_CRAWL": False,
 }
 
+# ✅ Lấy base URL static từ env (GitHub Pages)
+STATIC_BASE = os.getenv("BASE_URL_STATIC", "").rstrip("/")
+
 def get_thuyet_minh_episodes(page):
-    """Click 'Xem Thuyết Minh' → lấy episodes từ server2 (dub)."""
     try:
-        # Click nút "Xem Thuyết Minh"
         try:
             btn = page.locator("text=Xem Thuyết Minh").first
             if btn.count() > 0 and btn.is_visible():
@@ -62,9 +63,7 @@ def get_thuyet_minh_episodes(page):
         return []
 
 def get_stream_url(page, episode_url, episode_name):
-    """Crawl trang tập để lấy link .m3u8 (tối ưu nhanh)."""
     if CONFIG["SKIP_STREAM_CRAWL"]:
-        # Return placeholder URL để test schema
         return {"url": "https://example.com/placeholder.m3u8", "referer": CONFIG["BASE_URL"]}
     
     collected = []
@@ -72,17 +71,13 @@ def get_stream_url(page, episode_url, episode_name):
         url = response.url.lower()
         if response.status == 200 and ".m3u8" in url:
             if any(cd in url for cd in ["fbcdn", "opstream", "streamtape", "cdn", "video", "media"]):
-                collected.append({
-                    "url": response.url,
-                    "referer": response.request.headers.get("referer") or ""
-                })
+                collected.append({"url": response.url, "referer": response.request.headers.get("referer") or ""})
     
     page.on("response", on_response)
     try:
         page.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "font"] else route.continue_())
         page.goto(episode_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_DETAIL"])
         page.wait_for_timeout(CONFIG["PLAYER_WAIT"])
-        
         if not collected:
             try:
                 src = page.locator("video[src*='.m3u8'], video source[src*='.m3u8']").first.get_attribute("src")
@@ -94,21 +89,16 @@ def get_stream_url(page, episode_url, episode_name):
     finally:
         page.remove_listener("response", on_response)
         page.route("**/*", lambda route: route.continue_())
-    
     return collected[0] if collected else None
 
-def build_detail_json(slug: str, episodes: list) -> dict:
+def build_detail_json(slug, episodes):
     streams = []
     for i, ep in enumerate(episodes):
         ep_id = f"{slug}--0-{i}"
         streams.append({
-            "id": ep_id,
-            "name": ep["name"],
+            "id": ep_id, "name": ep["name"],
             "stream_links": [{
-                "id": f"{ep_id}-default",
-                "name": "Mặc Định",
-                "type": "hls",
-                "default": False,
+                "id": f"{ep_id}-default", "name": "Mặc Định", "type": "hls", "default": False,
                 "url": ep["stream"]["url"],
                 "request_headers": [
                     {"key": "User-Agent", "value": "MonPlayer"},
@@ -118,34 +108,26 @@ def build_detail_json(slug: str, episodes: list) -> dict:
         })
     return {
         "sources": [{
-            "id": f"{slug}--0",
-            "name": "Thuyết Minh",
-            "contents": [{
-                "id": f"{slug}--0",
-                "name": "",
-                "grid_number": 3,
-                "streams": streams
-            }]
+            "id": f"{slug}--0", "name": "Thuyết Minh",
+            "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]
         }],
         "subtitle": "Thuyết Minh"
     }
 
-def build_list_item(movie: dict) -> dict:
+def build_list_item(movie):
+    # ✅ Fix: Dùng absolute URL nếu có STATIC_BASE, ngược lại dùng relative path đúng cấu trúc
+    detail_url = f"{STATIC_BASE}/ophim/detail/{movie['slug']}.json" if STATIC_BASE else f"ophim/detail/{movie['slug']}.json"
     return {
-        "id": movie["slug"],
-        "name": movie["title"],
-        "description": "",
+        "id": movie["slug"], "name": movie["title"], "description": "",
         "image": {"url": movie["thumb"], "type": "cover", "width": 480, "height": 640},
-        "type": "playlist",
-        "display": "text-below",
+        "type": "playlist", "display": "text-below",
         "label": {"text": movie["badge"] or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
-        "remote_data": {"url": f"detail/{movie['slug']}.json"},
+        "remote_data": {"url": detail_url},  # ✅ URL đã fix
         "enable_detail": True
     }
 
 def scrape():
     logger.info(f"▶️ Bắt đầu scrape: {CONFIG['BASE_URL']}")
-    
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -154,17 +136,13 @@ def scrape():
         )
         home_page = context.new_page()
         detail_page = context.new_page()
-
         for pg in [home_page, detail_page]:
             pg.set_extra_http_headers({"Accept-Language": "vi-VN,vi;q=0.9", "Referer": "https://www.google.com/"})
             pg.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined});")
-
         try:
-            # 1️⃣ Lấy trending từ homepage
             home_page.goto(CONFIG["BASE_URL"], wait_until="networkidle", timeout=CONFIG["TIMEOUT_HOMEPAGE"])
             home_page.wait_for_selector(".flw-item.swiper-slide", state="attached", timeout=8000)
             home_page.wait_for_timeout(500)
-
             movies = home_page.evaluate(f"""() => {{
                 const res = [], seen = new Set();
                 document.querySelectorAll('.flw-item.swiper-slide').forEach(card => {{
@@ -184,24 +162,18 @@ def scrape():
                 return res;
             }}""")
             logger.info(f"✅ Tìm thấy {len(movies)} phim trending")
-
-            # 2️⃣ Xử lý từng phim
             channels = []
             detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
             detail_dir.mkdir(parents=True, exist_ok=True)
-            
             for i, m in enumerate(movies):
                 logger.info(f"🔍 Xử lý: {m['title']} ({i+1}/{len(movies)})")
                 try:
                     detail_page.goto(f"{CONFIG['BASE_URL']}/{m['slug']}", wait_until="domcontentloaded", timeout=10000)
                     detail_page.wait_for_timeout(800)
-
                     ep_list = get_thuyet_minh_episodes(detail_page)
                     logger.info(f"  📋 Tìm thấy {len(ep_list)} episodes Thuyết Minh")
-                    
                     ep_data = []
                     total_to_crawl = min(len(ep_list), CONFIG["MAX_EPISODES"])
-                    
                     for idx, ep in enumerate(ep_list[:total_to_crawl]):
                         stream = get_stream_url(detail_page, ep["url"], ep["name"])
                         if stream:
@@ -209,39 +181,28 @@ def scrape():
                             if (idx + 1) % 25 == 0:
                                 logger.info(f"    ✅ Progress: {idx + 1}/{total_to_crawl}")
                         detail_page.wait_for_timeout(CONFIG["EPISODE_DELAY"])
-
                     detail_json = build_detail_json(m["slug"], ep_data)
                     detail_path = detail_dir / f"{m['slug']}.json"
                     with open(detail_path, "w", encoding="utf-8") as f:
                         json.dump(detail_json, f, ensure_ascii=False, indent=2)
                     logger.info(f"  💾 Detail: {detail_path} ({len(ep_data)}/{len(ep_list)} tập)")
-
                     channels.append(build_list_item(m))
-
                 except Exception as e:
                     logger.error(f"❌ Lỗi phim {m['title']}: {e}", exc_info=True)
                     continue
-
         except Exception as e:
             logger.error(f"❌ Lỗi tổng: {e}", exc_info=True)
         finally:
             browser.close()
-
-    # 3️⃣ Xuất list JSON
     list_output = {
-        "grid_number": 3,
-        "channels": channels,
+        "grid_number": 3, "channels": channels,
         "meta": {
-            "source": CONFIG["BASE_URL"],
-            "total_items": len(channels),
-            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "6.2"
+            "source": CONFIG["BASE_URL"], "total_items": len(channels),
+            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "6.3"
         }
     }
-    
     with open(CONFIG["LIST_FILE"], "w", encoding="utf-8") as f:
         json.dump(list_output, f, ensure_ascii=False, indent=2)
-    
     total_eps = sum(1 for _ in Path(detail_dir).glob("*.json"))
     logger.info(f"💾 Đã lưu: {CONFIG['LIST_FILE']} + {total_eps} detail files")
     return list_output
