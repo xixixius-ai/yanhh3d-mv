@@ -20,20 +20,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/tien-nghich"
+        "url": "detail/tien-nghich.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 138",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/9632826f-d42f-4429-8460-37f020aa420c.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new",
@@ -54,20 +43,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/dau-pha-thuong-khung-phan-5-thuyet-minh-new"
+        "url": "detail/dau-pha-thuong-khung-phan-5-thuyet-minh-new.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 196",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/47827cdf-4516-44ee-9101-9d879de7a7e1.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet",
@@ -88,20 +66,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/the-gioi-hoan-my-thuyet-minh-tieng-viet"
+        "url": "detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 266",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/23fccf05-6e4b-406b-9401-133b3dc7827b.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "muc-than-ky",
@@ -122,20 +89,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/muc-than-ky"
+        "url": "detail/muc-than-ky.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 80",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/5bd16e6a-591d-420e-9821-5d02e99f3e6d.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "gia-thien",
@@ -156,20 +112,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/gia-thien"
+        "url": "detail/gia-thien.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 160",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/9804b0c2-2f54-4888-995c-e22de458e902.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "pham-nhan-tu-tien",
@@ -190,11 +135,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/pham-nhan-tu-tien"
+        "url": "detail/pham-nhan-tu-tien.json"
       },
-      "enable_detail": true,
-      "total_episodes": 0,
-      "episodes": []
+      "enable_detail": true
     },
     {
       "id": "thon-phe-tinh-khong",
@@ -215,20 +158,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/thon-phe-tinh-khong"
+        "url": "detail/thon-phe-tinh-khong.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 221",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/b88f7af0-48f0-4d2b-b3b6-4a212edd95de.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "kiem-lai-phan-2",
@@ -249,20 +181,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/kiem-lai-phan-2"
+        "url": "detail/kiem-lai-phan-2.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 27 End",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/208fd088-4567-4099-9556-fabcc7becb41.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "dau-la-dai-luc-2-tuyet-the-duong-mon",
@@ -283,20 +204,9 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/dau-la-dai-luc-2-tuyet-the-duong-mon"
+        "url": "detail/dau-la-dai-luc-2-tuyet-the-duong-mon.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 150",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/74b6e3fb-f580-4035-b674-309a3eab2306.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     },
     {
       "id": "than-an-vuong-toa",
@@ -317,27 +227,15 @@
         "text_color": "#ffffff"
       },
       "remote_data": {
-        "url": "https://yanhh3d.bz/than-an-vuong-toa"
+        "url": "detail/than-an-vuong-toa.json"
       },
-      "enable_detail": true,
-      "total_episodes": 1,
-      "episodes": [
-        {
-          "name": "Tập 208 End",
-          "streams": [
-            {
-              "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/9cc33692-6669-4a77-a7f1-71a51da12a24.m3u8"
-            }
-          ]
-        }
-      ]
+      "enable_detail": true
     }
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
     "total_items": 10,
-    "total_episodes": 9,
-    "updated_at": "2026-04-28T17:19:38Z",
-    "version": "3.1"
+    "updated_at": "2026-04-28T17:32:29Z",
+    "version": "4.1"
   }
 }
