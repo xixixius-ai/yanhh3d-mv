@@ -1,15 +1,19 @@
-name: Scrape YanHH3D
+name: 🎬 Scrape YanHH3D
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scraper.py"
+      - "requirements.txt"
+      - ".github/workflows/run.yml"
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,19 +21,27 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install Playwright & System Deps
+      - name: Install deps
         run: |
-          pip install playwright
+          pip install -r requirements.txt
           playwright install chromium
-          playwright install-deps chromium  # Quan trọng: cài thư viện hệ thống cho Linux
+          playwright install-deps chromium
 
-      - name: Run Scraper
+      - name: Run scraper
         run: python scraper.py
+        env:
+          PYTHONUNBUFFERED: 1
 
-      - name: Auto Commit
+      - name: Validate JSON
+        run: |
+          python -c "import json; d=json.load(open('monplayer.json')); assert 'items' in d; print(f'OK: {len(d[\"items\"])} items')"
+
+      - name: Commit result
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Update 20 phim mới"
-          file_pattern: monplayer.json
+          commit_message: "🤖 Auto-update: $(date '+%Y-%m-%d')"
+          file_pattern: "monplayer.json"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
