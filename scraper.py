@@ -2,7 +2,7 @@
 """
 Scraper yanhh3d.bz → MonPlayer JSON
 ✅ Click "Xem Thuyết Minh" → crawl episodes từ server2 (dub)
-✅ Chỉ lấy stream .m3u8 từ FB CDN / CDN chung
+✅ Fix: dùng .trim() thay vì .strip() trong JS
 ✅ Output: list + detail đúng schema MonPlayer
 """
 
@@ -42,37 +42,33 @@ def get_thuyet_minh_episodes(page):
         except Exception as e:
             logger.debug(f"  ⚠️ Không click được nút: {e}")
 
-        # Bước 2: Lấy episodes từ server2 (URL chứa /sever2/ và /tap-)
+        # Bước 2: Lấy episodes từ server2
         episodes = page.evaluate("""() => {
             const results = [];
             const seen = new Set();
             
-            // Selector chính xác: links có class ep-item + href chứa sever2 và tap
+            // Selector: links có class ep-item hoặc href chứa sever2 + tap
             document.querySelectorAll('a.ssl-item.ep-item, a[href*="/sever2/"][href*="/tap-"]').forEach(a => {
                 const href = a.href;
                 if (!href || seen.has(href)) return;
                 
-                // Lấy số tập từ text hoặc data-jp
+                // Lấy text từ ep-name hoặc ssli-order
                 const epName = a.querySelector('.ep-name, .ssli-order');
                 let text = epName ? epName.innerText.trim() : a.innerText.trim();
                 if (!text) text = a.getAttribute('data-jp') || a.title || '';
                 
-                // Chỉ lấy nếu text là số hoặc dạng "Tập X"
-                if (!/^\\d+$|^tập\\s*\\d+|^ep\\s*\\d+/i.test(text)) return;
+                // ✅ FIX: Dùng trim() thay vì strip() (JS không có strip)
+                text = text.trim();
+                
+                // Chỉ lấy nếu text là số thuần (1, 2, 138...)
+                if (!/^\\d+$/.test(text)) return;
                 
                 seen.add(href);
-                results.push({ 
-                    name: text.replace(/^tập\\s*/i, '').replace(/^ep\\s*/i, '').strip(), 
-                    url: href 
-                });
+                results.push({ name: text, url: href });
             });
             
-            // Sort theo số
-            results.sort((a, b) => {
-                const na = parseInt(a.name) || 0;
-                const nb = parseInt(b.name) || 0;
-                return na - nb;
-            });
+            // Sort theo số tập (numeric sort)
+            results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
             
             return results;
         }""")
@@ -279,7 +275,7 @@ def scrape():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "6.0"
+            "version": "6.1"
         }
     }
     
