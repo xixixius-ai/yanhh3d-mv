@@ -54,29 +54,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "id": "tien-nghich--0-2",
-              "name": "3",
-              "stream_links": [
-                {
-                  "id": "tien-nghich--0-2-default",
-                  "name": "Mặc Định",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/70a84878-f807-4c8f-b12f-82e68249951f.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "MonPlayer"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-3"
-                    }
-                  ]
-                }
-              ]
             }
           ]
         }
