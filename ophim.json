@@ -11,6 +11,29 @@
   "grid_number": 3,
   "channels": [
     {
+      "id": "test-external",
+      "name": "🧪 TEST - Phim đang hoạt động",
+      "description": "Test từ source khác",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tien-nghich-1775962789.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "TEST",
+        "position": "top-left",
+        "color": "#ff0000",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://media.hth4nh.eu.org/ophim/detail/cau-lac-bo-ban-bi-mat"
+      },
+      "enable_detail": true
+    },
+    {
       "id": "tien-nghich",
       "name": "Tiên Nghịch",
       "description": "",
@@ -135,7 +158,7 @@
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 5,
+    "total_items": 6,
     "updated_at": "2026-04-28T20:24:14Z",
     "version": "7.0"
   }
