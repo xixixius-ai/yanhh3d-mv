@@ -19,8 +19,8 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 10,
-    "MAX_EPISODES": 50,
+    "MAX_MOVIES": 3,
+    "MAX_EPISODES": 3,
     "TIMEOUT_HOMEPAGE": 20000,
     "TIMEOUT_DETAIL": 15000,
     "PLAYER_WAIT": 2500,  # ✅ Tăng thời gian chờ JS load
