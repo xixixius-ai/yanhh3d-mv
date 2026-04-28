@@ -1,26 +1,121 @@
 {
   "id": "yanhh3d-thuyet-minh",
   "name": "YanHH3D - Thuyết Minh",
-  "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim",
-  "color": "#004444",
-  "image": {
-    "url": "https://yanhh3d.bz/static/img/logo.png",
-    "type": "cover"
-  },
-  "description": "Phim thuyết minh chất lượng cao",
   "grid_number": 3,
-  "channels": [],
-  "sorts": [
+  "channels": [
     {
-      "text": "Mới nhất",
-      "type": "radio",
-      "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim"
+      "id": "gia-thien",
+      "name": "Già Thiên",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/gia-thien-1775728054.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/gia-thien.json"
+      }
+    },
+    {
+      "id": "thon-phe-tinh-khong",
+      "name": "Thôn Phệ Tinh Không",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/thon-phe-tinh-khong.json"
+      }
+    },
+    {
+      "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet",
+      "name": "Thế Giới Hoàn Mỹ",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
+      }
+    },
+    {
+      "id": "tien-kiem-ky-hiep-truyen-phan-3",
+      "name": "Tiên Kiếm Kỳ Hiệp Truyện 3",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tien-kiem-ky-hiep-truyen-phan-3.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tien-kiem-ky-hiep-truyen-phan-3.json"
+      }
+    },
+    {
+      "id": "bach-luyen-thanh-than-thuyet-minh",
+      "name": "Bách Luyện Thành Thần",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/bach-luyen-thanh-than-1764739370.png",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/bach-luyen-thanh-than-thuyet-minh.json"
+      }
+    },
+    {
+      "id": "kiem-lai-phan-2",
+      "name": "Kiếm Lai Phần 2",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/kiem-lai-phan-2-1770955370.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/kiem-lai-phan-2.json"
+      }
+    },
+    {
+      "id": "nhat-nhan-chi-ha-phan-6",
+      "name": "Nhất Nhân Chi Hạ Phần 6",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/nhat-nhan-chi-ha-phan-6.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/nhat-nhan-chi-ha-phan-6.json"
+      }
+    },
+    {
+      "id": "suu-than-ky",
+      "name": "Sưu Thần Ký",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/suu-than-ky.png",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/suu-than-ky.json"
+      }
+    },
+    {
+      "id": "huyen-gioi-chi-mon",
+      "name": "Huyền Giới Chi Môn",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/huyen-gioi-chi-mon-1764123975.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/huyen-gioi-chi-mon.json"
+      }
+    },
+    {
+      "id": "su-huynh-a-su-huynh",
+      "name": "Sư Huynh A Sư Huynh",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/su-huynh-a-su-huynh-1760182771.jpg",
+        "type": "cover"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/su-huynh-a-su-huynh.json"
+      }
     }
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 0,
-    "updated_at": "2026-04-28T23:17:18Z",
-    "version": "10.0"
+    "updated_at": "2026-04-28T23:24:20.168929+00:00"
   }
 }
