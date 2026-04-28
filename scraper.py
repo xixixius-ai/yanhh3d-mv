@@ -20,8 +20,8 @@ CONFIG = {
     "BASE_URL": "https://yanhh3d.bz",  # ✅ Domain chính xác từ HTML
     "OUTPUT_DIR": "ophim",
     "LIST_FILE": "ophim.json",
-    "MAX_MOVIES": 10,
-    "MAX_EPISODES": 2,
+    "MAX_MOVIES": 3,
+    "MAX_EPISODES": 6,
     "TIMEOUT_DETAIL": 15000,
     "PLAYER_WAIT": 2000,
     "EPISODE_DELAY": 200,
