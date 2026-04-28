@@ -54,6 +54,29 @@
                   ]
                 }
               ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2-default",
+                  "name": "Mặc Định",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/aedfad59-f97a-42b9-85c3-a13ed346615d.m3u8",
+                  "request_headers": [
+                    {
+                      "key": "User-Agent",
+                      "value": "MonPlayer"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz/sever2/dau-pha-thuong-khung-phan-5-thuyet-minh-new/tap-3"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
