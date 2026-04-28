@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 90
+    timeout-minutes: 45
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -36,6 +36,7 @@ jobs:
       - run: python scraper.py
         env:
           PYTHONUNBUFFERED: 1
+          BASE_URL_STATIC: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
 
       - run: |
           python -c "import json; d=json.load(open('ophim.json')); print('List OK:', len(d['channels']), 'phim')"
@@ -53,7 +54,7 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: '🤖 Auto update MonPlayer (Thuyết Minh only)'
+          commit_message: '🤖 Auto update MonPlayer (Thuyết Minh)'
           file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
