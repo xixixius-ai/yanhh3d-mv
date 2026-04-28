@@ -15,35 +15,21 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 20
+    timeout-minutes: 90  # ✅ Tăng lên 90 phút cho crawl nhiều tập
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
           pip install -r requirements.txt
           playwright install chromium
           playwright install-deps chromium
-
-      - name: Run scraper
-        run: python scraper.py
-        env:
-          PYTHONUNBUFFERED: 1
-
-      - name: Validate JSON
-        run: |
-          python -c "import json; data = json.load(open('ophim.json')); print('OK:', len(data['channels']), 'items')"
-
-      - name: Commit and push
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - run: python scraper.py
+        env: {PYTHONUNBUFFERED: 1}
+      - run: python -c "import json; d=json.load(open('ophim.json')); print('OK:', len(d['channels']), 'phim,', sum(c['total_episodes'] for c in d['channels']), 'tập')"
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Auto update MonPlayer data'
+          commit_message: 'Auto update MonPlayer streams'
           file_pattern: 'ophim.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
