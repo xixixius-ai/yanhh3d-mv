@@ -7,79 +7,9 @@
     "url": "https://yanhh3d.bz/static/img/logo.png",
     "type": "cover"
   },
-  "description": "Phim thuyết minh chất lượng cao từ YanHH3D",
+  "description": "Phim thuyết minh chất lượng cao",
   "grid_number": 3,
-  "channels": [
-    {
-      "id": "gia-thien",
-      "name": "Già Thiên",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/gia-thien-1775728054.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "4K TM-VS",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/gia-thien.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "thon-phe-tinh-khong",
-      "name": "Thôn Phệ Tinh Không",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "4K TM-VS",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/thon-phe-tinh-khong.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet",
-      "name": "Thế Giới Hoàn Mỹ",
-      "description": "",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "4K TM-VS",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
-      },
-      "enable_detail": true
-    }
-  ],
+  "channels": [],
   "sorts": [
     {
       "text": "Mới nhất",
@@ -89,8 +19,8 @@
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 3,
-    "updated_at": "2026-04-28T23:02:38Z",
-    "version": "12.0"
+    "total_items": 0,
+    "updated_at": "2026-04-28T23:17:18Z",
+    "version": "10.0"
   }
 }
