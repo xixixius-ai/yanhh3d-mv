@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Scraper yanhh3d.bz → MonPlayer JSON
-Lấy 20 phim trending từ homepage, không filter, output đúng schema.
+Lấy 20 phim trending, có debug log để kiểm tra dữ liệu.
 """
 
 import json
@@ -9,7 +9,7 @@ import logging
 from datetime import datetime, timezone
 from playwright.sync_api import sync_playwright
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 CONFIG = {
@@ -28,7 +28,6 @@ def scrape():
         )
         page = context.new_page()
 
-        # Stealth headers
         page.set_extra_http_headers({
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
@@ -46,6 +45,7 @@ def scrape():
 
             movies = page.evaluate(f"""() => {{
                 const results = [];
+                const seen = new Set();
                 const cards = document.querySelectorAll('.flw-item.swiper-slide');
                 
                 for (const card of cards) {{
@@ -55,6 +55,8 @@ def scrape():
                     if (!linkEl || !linkEl.href) continue;
                     
                     const slug = linkEl.href.split('/').pop().replace(/\\/$/, '');
+                    if (!slug || seen.has(slug)) continue;  // ✅ Tránh trùng
+                    seen.add(slug);
                     
                     const titleEl = card.querySelector('.tick.ltr h4, .film-name');
                     const title = titleEl ? titleEl.innerText.trim() : linkEl.title || '';
@@ -74,9 +76,13 @@ def scrape():
                 return results;
             }}""")
 
+            logger.debug(f"Raw movies from page: {len(movies)}")
+            for i, m in enumerate(movies):
+                logger.debug(f"  [{i+1}] {m['slug']} - {m['title'][:40]}...")
+
             channels = []
             for m in movies:
-                channels.append({
+                channel = {
                     "id": m["slug"],
                     "name": m["title"],
                     "description": "",
@@ -98,11 +104,14 @@ def scrape():
                         "url": f"{CONFIG['BASE_URL']}/{m['slug']}"
                     },
                     "enable_detail": False
-                })
+                }
+                channels.append(channel)
                 logger.info(f"Added: {m['title']}")
 
+            logger.debug(f"Total channels built: {len(channels)}")
+
         except Exception as e:
-            logger.error(f"Scrape failed: {e}")
+            logger.error(f"Scrape failed: {e}", exc_info=True)
             channels = []
         finally:
             browser.close()
@@ -118,10 +127,15 @@ def scrape():
         }
     }
 
+    # ✅ Ghi file với encoding rõ ràng + verify
     with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     
-    logger.info(f"Saved {len(channels)} movies to {CONFIG['OUTPUT_FILE']}")
+    # ✅ Verify file vừa ghi
+    with open(CONFIG["OUTPUT_FILE"], "r", encoding="utf-8") as f:
+        verify = json.load(f)
+    logger.info(f"✅ Saved {len(verify['channels'])} movies to {CONFIG['OUTPUT_FILE']}")
+    
     return output
 
 if __name__ == "__main__":
