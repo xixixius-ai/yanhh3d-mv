@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """
 YanHH3D Scraper → MonPlayer JSON (Production Version)
-DEBUG VERSION - in ra title/url/html khi timeout để chẩn đoán CF block
+Chiến lược stream URL:
+  1. short.icu → follow redirect → lấy abyss.to embed URL (ưu tiên #1)
+  2. fbcdn.cloud m3u8 → dùng trực tiếp làm fallback (Mon player không đọc được thì bỏ qua)
+  3. play-fb-v8 → bỏ qua (proxy site chặn)
 """
 
 import json
 import logging
 import os
 import random
+import re
 import time
+import urllib.request
+import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -37,12 +43,13 @@ CONFIG = {
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
-    # Sau khi deploy worker.js lên Cloudflare, thay URL này
-    # Ví dụ: "https://yanhh3d-proxy.yourname.workers.dev"
-    "PROXY_BASE":   os.getenv("PROXY_BASE", ""),
+    # Không dùng PROXY_BASE nữa - đã bị chặn
+    # Abyss embed là nguồn ưu tiên, fbcdn là fallback
 }
 
-QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd"]
+# Abyss.to: Mon player đọc được qua embed URL dạng https://abyss.to/e/<id>
+# Ưu tiên label theo thứ tự này khi chọn stream tốt nhất
+QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd", "link10"]
 
 EXTRA_HEADERS = {
     "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -55,6 +62,13 @@ EXTRA_HEADERS = {
     "Sec-Fetch-Site":            "none",
     "Sec-Fetch-User":            "?1",
     "Upgrade-Insecure-Requests": "1",
+}
+
+SHORT_ICU_HEADERS = {
+    "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
+    "Referer":         "https://yanhh3d.bz/",
 }
 
 
@@ -75,7 +89,6 @@ def _apply_stealth(page):
 
 
 def _debug_page(page, label):
-    """In ra title + url + 800 ký tự đầu HTML để chẩn đoán CF block"""
     try:
         title   = page.title()
         url_now = page.url
@@ -88,7 +101,6 @@ def _debug_page(page, label):
 
 
 def _wait_for_cf(page, selector, timeout):
-    """Chờ CF challenge tự resolve rồi mới chờ selector thật"""
     try:
         page.wait_for_function(
             """() => !document.title.includes('Just a moment') &&
@@ -101,13 +113,59 @@ def _wait_for_cf(page, selector, timeout):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-def _proxy_url(stream_url):
-    """Wrap stream URL qua Cloudflare Worker proxy nếu PROXY_BASE được set"""
-    proxy_base = CONFIG.get("PROXY_BASE", "").rstrip("/")
-    if not proxy_base:
-        return stream_url
-    from urllib.parse import quote
-    return f"{proxy_base}?url={quote(stream_url, safe='')}"
+# ── Abyss.to resolver ─────────────────────────────────────────────────────────
+def resolve_short_icu(short_url: str) -> str | None:
+    """
+    Follow redirect của short.icu để lấy URL đích thực.
+    short.icu/xxxxx → redirect → abyss.to/e/<id> hoặc URL khác
+    Trả về URL cuối cùng sau redirect, hoặc None nếu thất bại.
+    """
+    try:
+        req = urllib.request.Request(short_url, headers=SHORT_ICU_HEADERS, method="GET")
+        # Không follow redirect tự động, bắt thủ công để lấy Location header
+        opener = urllib.request.build_opener(urllib.request.HTTPRedirectHandler())
+
+        # Tắt auto-redirect để bắt được 301/302
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, req, fp, code, msg, headers, newurl):
+                return None
+
+        no_redirect_opener = urllib.request.build_opener(NoRedirect())
+        try:
+            with no_redirect_opener.open(req, timeout=10) as resp:
+                # Nếu không redirect (200 thẳng)
+                final_url = resp.url
+                logger.info(f"   short.icu → no redirect → {final_url}")
+                return final_url
+        except urllib.error.HTTPError as e:
+            if e.code in (301, 302, 303, 307, 308):
+                location = e.headers.get("Location", "")
+                if location:
+                    logger.info(f"   short.icu → {e.code} → {location}")
+                    # Nếu redirect tiếp, follow một lần nữa
+                    if "short.icu" in location:
+                        return resolve_short_icu(location)
+                    return location
+            raise
+    except Exception as e:
+        logger.warning(f"   resolve_short_icu failed for {short_url}: {e}")
+        return None
+
+
+def normalize_abyss_url(url: str) -> str | None:
+    """
+    Chuẩn hóa abyss.to URL về dạng embed mà Mon player đọc được.
+    abyss.to/v/<id>  → abyss.to/e/<id>
+    abyss.to/e/<id>  → giữ nguyên
+    """
+    if not url or "abyss.to" not in url:
+        return None
+    # Đổi /v/ thành /e/ nếu cần
+    url = re.sub(r"abyss\.to/v/", "abyss.to/e/", url)
+    # Đảm bảo có https://
+    if not url.startswith("http"):
+        url = "https://" + url
+    return url
 
 
 # ── Step 1: Homepage → movie list ────────────────────────────────────────────
@@ -145,15 +203,12 @@ def get_trending_movies(page):
 
 
 # ── Step 1b: Detail page → latest episode URL ────────────────────────────────
-# Homepage không có link tap-X → vào /slug, parse a[href*="/tap-"] lọc bỏ sever2
-# Lấy link có số tập lớn nhất (tập mới nhất), dùng làm entry point cho episode list
 def get_latest_ep_url(page, slug):
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
         _human_delay(300, 700)
         page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _debug_page(page, f"detail-{slug}")
-
         _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
 
         latest_url = page.evaluate(f"""() => {{
@@ -240,34 +295,83 @@ def get_episodes(page, slug):
 
 # ── Step 3: Episode page → stream URLs ───────────────────────────────────────
 def get_stream_url(page, ep_url):
+    """
+    Trả về list stream, ưu tiên:
+      - abyss.to embed (type: embed) — Mon player đọc tốt nhất
+      - fbcdn.cloud m3u8 (type: hls)  — fallback nếu không có abyss
+    Bỏ qua: play-fb-v8 (proxy bị chặn)
+    """
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, "#list_sv", CONFIG["TIMEOUT_WAIT"])
 
-        streams = page.evaluate("""() => {
+        raw_buttons = page.evaluate("""() => {
             const results = [];
             const btns = document.querySelectorAll('#list_sv a.btn3dsv');
             for (const btn of btns) {
                 const src   = (btn.getAttribute('data-src') || '').trim();
-                const label = (btn.innerText || btn.textContent || '').trim();
-
-                if (src.includes('fbcdn') && src.includes('.m3u8')) {
-                    results.push({ url: src, type: 'hls', label: label });
-                } else if (
-                    (src.includes('.m3u8') || src.includes('.mp4')) &&
-                    !src.includes('play-fb-v8') &&
-                    !src.includes('short.icu')
-                ) {
-                    results.push({
-                        url:   src,
-                        type:  src.includes('.m3u8') ? 'hls' : 'mp4',
-                        label: label
-                    });
-                }
+                const label = (btn.innerText || btn.textContent || '').trim().toLowerCase();
+                if (src) results.push({ src, label });
             }
             return results;
         }""")
+
+        streams = []
+
+        for btn in raw_buttons:
+            src   = btn["src"]
+            label = btn["label"]
+
+            # ── Abyss.to qua short.icu redirect (ưu tiên #1) ──────────────
+            if "short.icu" in src:
+                logger.info(f"      Resolving short.icu: {src}")
+                resolved = resolve_short_icu(src)
+                if resolved:
+                    abyss_url = normalize_abyss_url(resolved)
+                    if abyss_url:
+                        streams.append({
+                            "url":   abyss_url,
+                            "type":  "embed",
+                            "label": label or "abyss",
+                        })
+                        logger.info(f"      → abyss embed: {abyss_url}")
+                    else:
+                        # Không phải abyss, nhưng vẫn là embed URL khác
+                        streams.append({
+                            "url":   resolved,
+                            "type":  "embed",
+                            "label": label or "link-ext",
+                        })
+                        logger.info(f"      → embed (non-abyss): {resolved}")
+                else:
+                    logger.warning(f"      short.icu resolve failed: {src}")
+                continue
+
+            # ── fbcdn.cloud HLS (fallback #2) ─────────────────────────────
+            if "fbcdn" in src and src.endswith(".m3u8"):
+                streams.append({
+                    "url":   src,
+                    "type":  "hls",
+                    "label": label or "fb-hls",
+                })
+                continue
+
+            # ── Bỏ qua play-fb-v8 (proxy bị chặn) ───────────────────────
+            if "play-fb-v8" in src:
+                logger.debug(f"      Skipping play-fb-v8: {src}")
+                continue
+
+            # ── Các loại khác: m3u8/mp4 từ domain lạ ────────────────────
+            if src.endswith(".m3u8"):
+                streams.append({"url": src, "type": "hls",  "label": label})
+            elif src.endswith(".mp4"):
+                streams.append({"url": src, "type": "mp4",  "label": label})
+
+        if streams:
+            abyss_count = sum(1 for s in streams if s["type"] == "embed")
+            hls_count   = sum(1 for s in streams if s["type"] == "hls")
+            logger.info(f"      Streams: {abyss_count} embed + {hls_count} hls")
 
         return streams if streams else None
 
@@ -279,12 +383,23 @@ def get_stream_url(page, ep_url):
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def _sort_streams(stream_list):
+    """
+    Sắp xếp: embed (abyss) lên trước, sau đó theo quality label.
+    """
     def priority(s):
+        # Embed lên đầu tiên
+        if s.get("type") == "embed":
+            lbl = (s.get("label") or "").strip().lower()
+            try:
+                return (0, QUALITY_PRIORITY.index(lbl))
+            except ValueError:
+                return (0, 50)
+        # HLS sau
         lbl = (s.get("label") or "").strip().lower()
         try:
-            return QUALITY_PRIORITY.index(lbl)
+            return (1, QUALITY_PRIORITY.index(lbl))
         except ValueError:
-            return 99
+            return (1, 99)
     return sorted(stream_list, key=priority)
 
 
@@ -303,7 +418,7 @@ def build_detail_json(slug, episodes):
                 "name":    label,
                 "type":    s["type"],
                 "default": j == 0,
-                "url":     _proxy_url(s["url"]),  # wrap qua proxy nếu PROXY_BASE được set
+                "url":     s["url"],
             })
         streams.append({
             "id":           f"{slug}--0-{i}",
@@ -355,7 +470,7 @@ def build_list_item(movie):
 def scrape():
     logger.info("Starting YanHH3D to MonPlayer scraper...")
     logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND - using fallback'}")
-    logger.info(f"PROXY_BASE: {CONFIG['PROXY_BASE'] or '(not set - stream URLs will be direct)'}")
+    logger.info("Stream priority: abyss.to embed > fbcdn.cloud HLS")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -411,8 +526,8 @@ def scrape():
 
                         if stream:
                             ep_data.append({"name": ep["name"], "stream": stream})
-                            labels = [s["label"] for s in stream]
-                            logger.info(f"      Tap {ep['name']}: {len(stream)} quality -> {labels}")
+                            labels = [f"{s['type']}:{s['label']}" for s in stream]
+                            logger.info(f"      Tap {ep['name']}: {len(stream)} streams → {labels}")
                         else:
                             logger.warning(f"      Tap {ep['name']}: no stream found")
 
@@ -452,7 +567,7 @@ def scrape():
             "source":      CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version":     "1.0"
+            "version":     "1.1"
         }
     }
 
