@@ -31,8 +31,8 @@ CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
-    "MAX_MOVIES":   5,
-    "MAX_EPISODES": 2,
+    "MAX_MOVIES":   3,
+    "MAX_EPISODES": 3,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -99,6 +99,9 @@ def _wait_for_cf(page, selector, timeout):
 
 
 # ── Step 1: Homepage → movie list ────────────────────────────────────────────
+# FIX: extract thêm latestEpUrl từ poster link (.film-poster-ahref)
+# Poster link trỏ thẳng đến tập mới nhất (vd: /tien-nghich/tap-138)
+# Title link trỏ đến detail page (vd: /tien-nghich) → KHÔNG có episode list
 def get_trending_movies(page):
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -110,18 +113,25 @@ def get_trending_movies(page):
             const items = document.querySelectorAll('.flw-item');
             for (const item of items) {
                 if (results.length >= 10) break;
-                const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
-                if (!link?.href) continue;
 
-                const slug = link.href.split('/').pop().replace(/\\/$/, '');
-                const title = link.innerText.trim() || link.title || '';
+                const posterLink = item.querySelector('.film-poster-ahref');
+                const titleLink  = item.querySelector('.film-detail h3 a');
+
+                if (!titleLink?.href) continue;
+
+                const slug  = titleLink.href.split('/').filter(Boolean).pop();
+                const title = (titleLink.innerText || titleLink.title || '').trim();
                 if (!title || slug.includes('search')) continue;
 
                 let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || '';
                 if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
 
                 const badge = item.querySelector('.tick.tick-rate, .fdi-item')?.innerText.trim() || '';
-                results.push({ slug, title, thumb, badge });
+
+                // Poster link trỏ thẳng đến tập mới nhất (/slug/tap-X)
+                const latestEpUrl = posterLink?.href || null;
+
+                results.push({ slug, title, thumb, badge, latestEpUrl });
             }
             return results;
         }""")
@@ -132,77 +142,18 @@ def get_trending_movies(page):
         return []
 
 
-# ── Step 1b: Movie detail page → latest episode URL ──────────────────────────
-def get_latest_episode_url(page, slug):
-    """
-    Goto /slug (movie detail page) → tìm link tập mới nhất đang active.
-    Site không dùng tap-1; số tập thật nằm trên detail page.
-    """
-    detail_url = f"{CONFIG['BASE_URL']}/{slug}"
-    try:
-        _human_delay(300, 700)
-        page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, f"detail-{slug}")
-
-        # Chờ block episodes xuất hiện (selector linh hoạt)
-        _wait_for_cf(page, "#episodes-content, .ss-list, .episodes-list, a.ssl-item", CONFIG["TIMEOUT_WAIT"])
-
-        latest_url = page.evaluate("""() => {
-            // Thử lấy link active/current trước
-            const active = document.querySelector(
-                'a.ssl-item.ep-item.active, a.ssl-item.active, a.ep-item.active'
-            );
-            if (active?.href) return active.href;
-
-            // Fallback: lấy link tập cuối cùng trong danh sách (số lớn nhất)
-            const allLinks = Array.from(document.querySelectorAll('a.ssl-item.ep-item, a.ep-item'));
-            if (!allLinks.length) return null;
-
-            // Lọc bỏ sever2, lấy link có số tập lớn nhất
-            const valid = allLinks
-                .filter(a => a.href && !a.href.includes('/sever2/'))
-                .map(a => ({
-                    href: a.href,
-                    num: parseInt((a.href.match(/tap-(\\d+)/) || [])[1] || '0')
-                }))
-                .filter(a => a.num > 0)
-                .sort((a, b) => b.num - a.num);
-
-            return valid.length ? valid[0].href : null;
-        }""")
-
-        if latest_url:
-            logger.info(f"   Latest episode URL: {latest_url}")
-        else:
-            logger.warning(f"   Cannot find latest episode URL for {slug}")
-            _debug_page(page, f"no-ep-url-{slug}")
-
-        return latest_url
-
-    except PlaywrightTimeout:
-        logger.warning(f"   Timeout on detail page for {slug}")
-        _debug_page(page, f"detail-timeout-{slug}")
-        return None
-    except Exception as e:
-        logger.warning(f"   Error on detail page for {slug}: {e}")
-        _debug_page(page, f"detail-error-{slug}")
-        return None
-
-
-# ── Step 2: Episode page → full episode list ──────────────────────────────────
-def get_episodes(page, slug):
-    """
-    1. Goto /slug → lấy URL tập mới nhất (số tập thật, không hardcode tap-1)
-    2. Goto URL đó → lấy toàn bộ episode list từ #top-comment
-    """
-    latest_url = get_latest_episode_url(page, slug)
-    if not latest_url:
+# ── Step 2: Episode page → episode list ──────────────────────────────────────
+# FIX: dùng latestEpUrl lấy từ homepage, không hardcode tap-1 hay ghé detail page
+# latestEpUrl là URL tập thật (vd: /tien-nghich/tap-138) → có #episodes-content
+def get_episodes(page, slug, latest_ep_url):
+    if not latest_ep_url:
+        logger.warning(f"   No latestEpUrl for {slug}, skipping")
         return []
 
     try:
         _human_delay(400, 800)
-        page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, f"ep-page-{slug}")
+        page.goto(latest_ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _debug_page(page, f"ep-{slug}")
         _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
 
         episodes = page.evaluate("""() => {
@@ -228,19 +179,19 @@ def get_episodes(page, slug):
         }""")
 
         if episodes:
-            logger.info(f"   Got {len(episodes)} episodes from {latest_url}")
+            logger.info(f"   Got {len(episodes)} episodes from {latest_ep_url}")
         else:
-            logger.warning(f"   No episodes found at {latest_url}")
+            logger.warning(f"   No episodes found at {latest_ep_url}")
             _debug_page(page, f"no-ep-list-{slug}")
 
         return episodes
 
     except PlaywrightTimeout:
-        logger.warning(f"   Timeout at episode page for {slug}")
+        logger.warning(f"   Timeout at {latest_ep_url}")
         _debug_page(page, f"ep-timeout-{slug}")
         return []
     except Exception as e:
-        logger.warning(f"   Error at episode page for {slug}: {e}")
+        logger.warning(f"   Error at {latest_ep_url}: {e}")
         _debug_page(page, f"ep-error-{slug}")
         return []
 
@@ -403,9 +354,10 @@ def scrape():
             logger.info(f"Found {len(movies)} movies. Processing {limit}...")
 
             for idx, movie in enumerate(movies[:limit], 1):
-                logger.info(f"[{idx}/{limit}] {movie['title']} ({movie['slug']})")
+                logger.info(f"[{idx}/{limit}] {movie['title']} ({movie['slug']}) | latestEpUrl={movie.get('latestEpUrl')}")
                 try:
-                    episodes = get_episodes(page, movie["slug"])
+                    # FIX: truyền latestEpUrl thay vì để get_episodes tự đoán tap-1
+                    episodes = get_episodes(page, movie["slug"], movie.get("latestEpUrl"))
                     if not episodes:
                         logger.warning(f"No episodes found for {movie['slug']}")
                         continue
