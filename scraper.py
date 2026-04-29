@@ -36,7 +36,10 @@ CONFIG = {
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main")
+    "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
+    # Sau khi deploy worker.js lên Cloudflare, thay URL này
+    # Ví dụ: "https://yanhh3d-proxy.yourname.workers.dev"
+    "PROXY_BASE":   os.getenv("PROXY_BASE", ""),
 }
 
 QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd"]
@@ -96,6 +99,15 @@ def _wait_for_cf(page, selector, timeout):
     except Exception:
         pass
     page.wait_for_selector(selector, state="attached", timeout=timeout)
+
+
+def _proxy_url(stream_url):
+    """Wrap stream URL qua Cloudflare Worker proxy nếu PROXY_BASE được set"""
+    proxy_base = CONFIG.get("PROXY_BASE", "").rstrip("/")
+    if not proxy_base:
+        return stream_url
+    from urllib.parse import quote
+    return f"{proxy_base}?url={quote(stream_url, safe='')}"
 
 
 # ── Step 1: Homepage → movie list ────────────────────────────────────────────
@@ -291,7 +303,7 @@ def build_detail_json(slug, episodes):
                 "name":    label,
                 "type":    s["type"],
                 "default": j == 0,
-                "url":     s["url"]
+                "url":     _proxy_url(s["url"]),  # wrap qua proxy nếu PROXY_BASE được set
             })
         streams.append({
             "id":           f"{slug}--0-{i}",
@@ -343,6 +355,7 @@ def build_list_item(movie):
 def scrape():
     logger.info("Starting YanHH3D to MonPlayer scraper...")
     logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND - using fallback'}")
+    logger.info(f"PROXY_BASE: {CONFIG['PROXY_BASE'] or '(not set - stream URLs will be direct)'}")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
