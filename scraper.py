@@ -291,12 +291,7 @@ def build_detail_json(slug, episodes):
                 "name":    label,
                 "type":    s["type"],
                 "default": j == 0,
-                "url":     s["url"],
-                "request_headers": [
-                    {"key": "User-Agent", "value": CONFIG["USER_AGENT"]},
-                    {"key": "Referer",    "value": "https://www.facebook.com"},
-                    {"key": "Origin",     "value": "https://www.facebook.com"}
-                ]
+                "url":     s["url"]
             })
         streams.append({
             "id":           f"{slug}--0-{i}",
