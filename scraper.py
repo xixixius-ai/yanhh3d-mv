@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v1.5)
-Chiến lược stream URL (SIMPLIFIED):
+YanHH3D Scraper → MonPlayer JSON (v1.6)
+Chiến lược stream URL (ROBUST SIMPLIFIED):
   1. play-fb-v8 proxy → follow redirect → Facebook CDN mp4 (DUY NHẤT)
-  2. Bỏ hoàn toàn: abyss.to, fbcdn.cloud m3u8, short.icu, ffmpeg
+  2. Fix: Luôn lấy tập MỚI NHẤT (số lớn nhất), không phụ thuộc thứ tự HTML
+  3. Fix: resolve_play_fb_v8() bắt URL linh hoạt hơn, fallback parse JS
 """
 
 import json
@@ -36,8 +37,8 @@ CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
-    "MAX_MOVIES":   20,
-    "MAX_EPISODES": 5,
+    "MAX_MOVIES":   10,
+    "MAX_EPISODES": 10,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -108,7 +109,7 @@ def _wait_for_cf(page, selector, timeout):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-# ── play-fb-v8 resolver (CORE) ───────────────────────────────────────────────
+# ── play-fb-v8 resolver (ROBUST) ─────────────────────────────────────────────
 def resolve_play_fb_v8(proxy_url: str) -> str | None:
     """
     Follow redirect từ play-fb-v8 proxy → Facebook CDN mp4 thật
@@ -124,11 +125,11 @@ def resolve_play_fb_v8(proxy_url: str) -> str | None:
         opener = urllib.request.build_opener(NoRedirect())
         
         try:
-            with opener.open(req, timeout=15) as resp:
+            with opener.open(req, timeout=20) as resp:
                 # Trường hợp 1: HTTP redirect (302/301)
                 if resp.status in (301, 302, 303, 307, 308):
                     location = resp.headers.get("Location", "")
-                    if location and ('fbcdn' in location or 'facebook' in location):
+                    if location and _is_valid_fb_cdn(location):
                         logger.info(f"   ✓ play-fb-v8 redirect → {location[:100]}...")
                         return location
                 
@@ -142,34 +143,49 @@ def resolve_play_fb_v8(proxy_url: str) -> str | None:
                         try:
                             data = json.loads(content)
                             url = (data.get('url') or data.get('video_url') or 
-                                   data.get('stream_url') or data.get('src'))
-                            if url and 'fbcdn' in url:
+                                   data.get('stream_url') or data.get('src') or
+                                   data.get('file'))
+                            if url and _is_valid_fb_cdn(url):
                                 logger.info(f"   ✓ play-fb-v8 JSON → {url[:100]}...")
                                 return url
                         except json.JSONDecodeError:
                             pass
                     
-                    # Parse HTML/JS tìm URL mp4
+                    # Parse HTML/JS tìm URL mp4 — patterns mở rộng
                     url_patterns = [
+                        # Double quotes
                         r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r'"(https?://[^"]+fbcdn\.net[^"]+\.mp4[^"]*)"',
+                        # Single quotes
                         r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r"'(https?://[^']+fbcdn\.net[^']+\.mp4[^']*)'",
+                        # JS object properties
                         r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
                         r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        # data attributes
+                        r'data-url\s*=\s*["\']([^"\']*\.mp4[^"\']*)["\']',
                     ]
                     for pattern in url_patterns:
                         match = re.search(pattern, content, re.IGNORECASE)
                         if match:
-                            url = match.group(1)
-                            if 'fbcdn' in url or 'facebook' in url:
+                            url = match.group(1).replace('\\/', '/')  # Unescape
+                            if _is_valid_fb_cdn(url):
                                 logger.info(f"   ✓ play-fb-v8 HTML parse → {url[:100]}...")
                                 return url
+                    
+                    # Fallback: tìm bất kỳ URL nào chứa fbcdn + mp4
+                    fallback = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
+                    if fallback and _is_valid_fb_cdn(fallback.group(1)):
+                        logger.info(f"   ✓ play-fb-v8 fallback parse → {fallback.group(1)[:100]}...")
+                        return fallback.group(1)
                 
                 return None
                 
         except urllib.error.HTTPError as e:
             if e.code in (301, 302, 303, 307, 308):
                 location = e.headers.get("Location", "")
-                if location and ('fbcdn' in location or 'facebook' in location):
+                if location and _is_valid_fb_cdn(location):
                     logger.info(f"   ✓ play-fb-v8 HTTPError {e.code} → {location[:100]}...")
                     return location
             raise
@@ -177,6 +193,14 @@ def resolve_play_fb_v8(proxy_url: str) -> str | None:
     except Exception as e:
         logger.warning(f"   resolve_play_fb_v8 failed: {e}")
         return None
+
+
+def _is_valid_fb_cdn(url: str) -> bool:
+    """Kiểm tra URL có phải Facebook CDN hợp lệ không"""
+    if not url:
+        return False
+    url_lower = url.lower()
+    return ('fbcdn' in url_lower or 'facebook' in url_lower) and '.mp4' in url_lower
 
 
 # ── Step 1: Homepage → movie list ─────────────────────────────────────────────
@@ -227,7 +251,7 @@ def get_latest_ep_url(page, slug):
                     num:  parseInt((a.href.match(/tap-(\\d+)/) || [])[1] || '0')
                 }}))
                 .filter(a => a.num > 0)
-                .sort((a, b) => b.num - a.num);
+                .sort((a, b) => b.num - a.num);  // Sort DESC: lớn nhất trước
             return links.length ? links[0].href : null;
         }}""")
 
@@ -246,7 +270,7 @@ def get_latest_ep_url(page, slug):
         return None
 
 
-# ── Step 2: Episode list ───────────────────────────────────────────────────────
+# ── Step 2: Episode list (FIXED: luôn lấy tập MỚI NHẤT) ───────────────────────
 def get_episodes(page, slug):
     latest_url = get_latest_ep_url(page, slug)
     if not latest_url:
@@ -272,14 +296,15 @@ def get_episodes(page, slug):
                 ).trim();
                 if (href.includes('/sever2/')) continue;
                 if (href && /^\\d+$/.test(text)) {
-                    results.push({ name: text, url: href });
+                    results.push({ name: text, url: href, num: parseInt(text) });
                 }
             }
-            return results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+            // Sort DESC by episode number → tập mới nhất lên đầu
+            return results.sort((a, b) => b.num - a.num);
         }""")
 
         if episodes:
-            logger.info(f"   Got {len(episodes)} episodes from {latest_url}")
+            logger.info(f"   Got {len(episodes)} episodes from {latest_url} (sorted: newest first)")
         else:
             logger.warning(f"   No episodes found at {latest_url}")
             _debug_page(page, f"no-ep-list-{slug}")
@@ -293,12 +318,12 @@ def get_episodes(page, slug):
         return []
 
 
-# ── Step 3: Stream extraction (SIMPLIFIED) ─────────────────────────────────────
+# ── Step 3: Stream extraction (ROBUST) ─────────────────────────────────────────
 def get_stream_url(page, context, ep_url):
     """
     Trả về list stream:
       - Chỉ xử lý play-fb-v8 → Facebook CDN mp4
-      - Bỏ qua tất cả nguồn khác
+      - Retry logic + fallback patterns
     """
     try:
         _human_delay(200, 500)
@@ -316,9 +341,13 @@ def get_stream_url(page, context, ep_url):
             return results;
         }""")
 
+        # Ưu tiên: tìm button có label chứa "hd" hoặc "1080" trước
+        preferred = [b for b in raw_buttons if any(x in b["label"] for x in ["hd", "1080", "4k"])]
+        candidates = preferred if preferred else raw_buttons
+
         streams = []
 
-        for btn in raw_buttons:
+        for btn in candidates:
             src   = btn["src"]
             label = btn["label"]
 
@@ -327,19 +356,17 @@ def get_stream_url(page, context, ep_url):
                 logger.info(f"      Resolving play-fb-v8 ({label}): {src[:80]}...")
                 fb_cdn_url = resolve_play_fb_v8(src)
                 
-                if fb_cdn_url and ('.mp4' in fb_cdn_url or 'fbcdn' in fb_cdn_url):
+                if fb_cdn_url and _is_valid_fb_cdn(fb_cdn_url):
                     streams.append({
                         "url":   fb_cdn_url,
                         "type":  "mp4",
                         "label": f"fb-cdn-{label}" if label else "fb-cdn",
                     })
                     logger.info(f"      ✓ FB CDN mp4: {fb_cdn_url[:80]}...")
+                    break  # Found valid stream, stop searching
                 else:
                     logger.warning(f"      ✗ play-fb-v8 resolve failed or invalid URL")
-                # Break sau khi tìm được link đầu tiên (ưu tiên chất lượng cao nhất)
-                if streams:
-                    break
-            # Bỏ qua tất cả nguồn khác: abyss, fbcdn.cloud, short.icu, v.v.
+            # Bỏ qua tất cả nguồn khác
             else:
                 logger.debug(f"      Skip non play-fb-v8 source: {label}")
 
@@ -359,7 +386,7 @@ def get_stream_url(page, context, ep_url):
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def _sort_streams(stream_list):
     """Chỉ có 1 loại stream nên sort đơn giản"""
-    return stream_list  # Giữ nguyên thứ tự tìm được
+    return stream_list
 
 
 def build_detail_json(slug, episodes):
@@ -427,9 +454,9 @@ def build_list_item(movie):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 def scrape():
-    logger.info("Starting YanHH3D to MonPlayer scraper (v1.5 - SIMPLIFIED)...")
+    logger.info("Starting YanHH3D to MonPlayer scraper (v1.6 - ROBUST)...")
     logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND'}")
-    logger.info("Stream strategy: play-fb-v8 → Facebook CDN mp4 ONLY")
+    logger.info("Stream strategy: play-fb-v8 → Facebook CDN mp4 ONLY (newest episodes first)")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -473,12 +500,12 @@ def scrape():
                         logger.warning(f"No episodes found for {movie['slug']}")
                         continue
 
-                    logger.info(f"   Found {len(episodes)} episodes. Extracting streams...")
+                    logger.info(f"   Found {len(episodes)} episodes. Extracting streams for {CONFIG['MAX_EPISODES']} newest...")
                     ep_data     = []
                     crawl_limit = min(len(episodes), CONFIG["MAX_EPISODES"])
 
                     for i in range(crawl_limit):
-                        ep     = episodes[i]
+                        ep     = episodes[i]  # Already sorted: newest first
                         stream = get_stream_url(page, context, ep["url"])
                         if stream:
                             ep_data.append({"name": ep["name"], "stream": stream})
@@ -521,7 +548,7 @@ def scrape():
             "source":      CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version":     "1.5"
+            "version":     "1.6"
         }
     }
 
