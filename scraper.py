@@ -121,7 +121,7 @@ def _build_search_str(movie: dict, metadata: dict = None) -> str:
     parts = [
         movie.get("title", ""),
         " ".join(metadata.get("tags", [])) if metadata else "",
-        metadata.get("description", "") data else "",
+        metadata.get("description", "") if metadata else "",
         movie.get("slug", "").replace("-", " "),
         "hoạt hình trung quốc", "thuyết minh", "anime", "donghua"
     ]
@@ -435,8 +435,8 @@ def build_detail_json(slug, episodes, metadata: dict = None):
         "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}],
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
-        "tags": metadata.get("tags", []) data else [],
-        "description": metadata.get("description", "") data else "",
+        "tags": metadata.get("tags", []) if metadata else [],
+        "description": metadata.get("description", "") if metadata else "",
     }
     if metadata:
         data.get("year"): result["year"] = metadata["year"]
@@ -445,15 +445,15 @@ def build_detail_json(slug, episodes, metadata: dict = None):
     return result
 
 def build_list_item(movie: dict, metadata: dict = None):
-    thumb = movie.get("thumb") or (metadata.get("poster") data else "")
-    badge = movie.get("badge") or metadata.get("status", "") data else ""
+    thumb = movie.get("thumb") or (metadata.get("poster") if metadata else "")
+    badge = movie.get("badge") or metadata.get("status", "") if metadata else ""
     
     item = {
         "id": movie["slug"],
         "name": movie["title"],
         "search": _build_search_str(movie, metadata),
-        "keywords": metadata.get("tags", []) data else [],
-        "description": metadata.get("description", "") data else "",
+        "keywords": metadata.get("tags", []) if metadata else [],
+        "description": metadata.get("description", "") if metadata else "",
         "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
         "type": "playlist",
         "display": "text-below",
