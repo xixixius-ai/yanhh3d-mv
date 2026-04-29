@@ -15,13 +15,20 @@
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "link10",
+                  "type": "embed",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/3485b045-4131-4f53-9688-50f7dc8cc617.m3u8"
+                  "url": "https://abysscdn.com/?v=uXInOznJL"
                 },
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0-1",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/3485b045-4131-4f53-9688-50f7dc8cc617.m3u8"
+                },
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0-2",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
@@ -35,20 +42,27 @@
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "link10",
+                  "type": "embed",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/87f1e510-416f-4581-ac2e-2137fc18140c.m3u8"
+                  "url": "https://abysscdn.com/?v=IKKHhwlkd"
                 },
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-1",
-                  "name": "4K",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/87f1e510-416f-4581-ac2e-2137fc18140c.m3u8"
+                },
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-2",
+                  "name": "4k",
                   "type": "hls",
                   "default": false,
                   "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/615bc94c-33a2-4c5a-8ad6-6daaf7506057.m3u8"
                 },
                 {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-2",
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-3",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,

@@ -15,20 +15,27 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-0-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "link10",
+                  "type": "embed",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/a33fb7a4-630d-4fdd-a7ff-111bce55d08d.m3u8"
+                  "url": "https://abysscdn.com/?v=iFJhUcUZC"
                 },
                 {
                   "id": "gia-thien--0-0-1",
-                  "name": "4K",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/a33fb7a4-630d-4fdd-a7ff-111bce55d08d.m3u8"
+                },
+                {
+                  "id": "gia-thien--0-0-2",
+                  "name": "4k",
                   "type": "hls",
                   "default": false,
                   "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/ef11bc8f-fcf1-4577-85b0-104287c9b020.m3u8"
                 },
                 {
-                  "id": "gia-thien--0-0-2",
+                  "id": "gia-thien--0-0-3",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
@@ -42,13 +49,20 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-1-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "link10",
+                  "type": "embed",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/19751562-8a12-469d-ada6-f810622861e3.m3u8"
+                  "url": "https://abysscdn.com/?v=VF8v4II2D"
                 },
                 {
                   "id": "gia-thien--0-1-1",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/19751562-8a12-469d-ada6-f810622861e3.m3u8"
+                },
+                {
+                  "id": "gia-thien--0-1-2",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
