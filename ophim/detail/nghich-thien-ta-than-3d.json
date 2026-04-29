@@ -1,0 +1,86 @@
+{
+  "sources": [
+    {
+      "id": "nghich-thien-ta-than-3d--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "nghich-thien-ta-than-3d--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "nghich-thien-ta-than-3d--0-0",
+              "name": "35",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-0-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-1",
+              "name": "34",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNuLzKS-DwXwOQDquWdxKHcSWN1EMIXcWVZQC7cSM2MGnbInWcEsSGU6_mpsPa6z1HwEiWbmgxj27PZuIpgIp92w_e2HVmGbq4fVaTP8Eht5w.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=cCe4kWDxCt4Q7kNvwG8mVom&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDkyODkzMjk1ODM1ODAzLCJhc3NldF9hZ2VfZGF5cyI6NiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk3NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=9599a8b8bf93915&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84MTQ0NDI3QTlEQkMyRDFFQzk3NTUzMDhGNTk2NjhBRF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0NFNDVFMjc5REEwRTBEQjlFM0VBOUY2NEQ2NUM5OEI2X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa26q_p6fGmBRUCKAJDMywXQI571wo9cKQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=iSIO6t-wsHNJcf8TkoAE-A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFWMq_W1XsL4YjYKZ9fSgHNQp210Y5VzNAGaVi4_an0HY31yGASlZlhd6-jDrRmRisAvhXsn6fK&_nc_eui2=AeGPcoVVKMX3owtAGF4SQNZBuAy7AVKhy5m4DLsBUqHLmeL2hrpZ54KF4G6iZslt5Z3OKNKvoH1aKQr4II9haP6S&oh=00_Af0anGcHtmTTeHoWvDI5fxldZc0jJE_lmbte2QHHL0vXEQ&oe=69F75964&bitrate=1579149&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-2",
+              "name": "33",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMaWf-7jRGtcBG4OPmoqkjTGyUxvbmsHYvKkXhdO-Ayp7nl1Tl6LA9CfqEa_3z9jDLZ-KdN0uB5C9aS-3OnzQgAt0_SFh_rB45_28bJvnA1Ng.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=maX1PwGD5nkQ7kNvwFqysE1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMDA1MDI4MTk1NTMwMjE5LCJhc3NldF9hZ2VfZGF5cyI6MTMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDQ5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=62d2cbffc3a7622b&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85QTQxRUFEQkI3MERDNTYwOEVGMUJDODg2QjU3MDZCOV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzg5NEI5MzZCNkNEM0M0RUZBNEJEODY2QUM0RkZFQUE0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbW16vJq4TJAxUCKAJDMywXQJBmPXCj1woYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=azWJZHXaFI_fMWJi2WtXdQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGugIloyJVtTUHyaDAwki7QiJQphdH_g9DRMASh9divDkArtbw08TU-nb-xhW7pUeYDoevcT9SY&_nc_eui2=AeFqe8ZABN5hRSuGCxGl0SSbAqOnv1TdqkwCo6e_VN2qTFvCmNNrIVEi_yhy5nHK3uyLhAxWtd1toMx5AKepzAUN&oh=00_Af1y1ZvyXXNc72QL4_woIvprEcBvEyVVKZx6UB1ZRLOfaA&oe=69F7800E&bitrate=1407282&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-3",
+              "name": "32",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM8lNe_BitAw2-wqSnuUcemRiMqm4qyYSNeBPIla-waJhgYeNxaVtWy8XFqHvKef6FyzcSunDByo6XICUzIzfg_yAAJVoZa8KUYAJqXZ5sHCg.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=CF8lrhxZyacQ7kNvwGawcgF&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNzA0NTMwNDM0MjQ0Njk5LCJhc3NldF9hZ2VfZGF5cyI6MTMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDkwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=caa15faf67cc43a0&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yRDQ3MkYxMjZBNDdBMjkyQjBENTcwNTJBNjFDNEJBMV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzUyNDE3RkIwOURGRkIzOEM1NEU4MDVBMTk0NkQxNUFFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa2gdaw3ZCHBhUCKAJDMywXQJEIKPXCj1wYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=BRyUxKvz4flATI59tvYupg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEo_GuJc6GXm1sI4TqOlUm5CkETAwdgxYuN18AKV6Ro_keQyEdtSCBhh1Y7nE1N5SsDFyNLi11f&_nc_eui2=AeEYkWC3N551R9n4jjJZbTT-8Aheq2GgevDwCF6rYaB68O1iTw7YFFlbRIiUrA6uPXf2DRiT07ibDW3ZIrngWdvd&oh=00_Af2iS13_Bm0T7rI80eM4j4aOfe88jvypi1d5LHEjUDJ8qQ&oe=69F7A4ED&bitrate=1569663&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-4",
+              "name": "30",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-4-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "nghich-thien-ta-than-3d xem phim nghịch thiên tà thần 3d thuyết minh: trên đại lục thương vân, đại thổ y tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên thần dược thiên không. việc này đã khiến cho cả thiên hạ đều thèm muốn viên thần dược này, dẫn đến cái ch... nghich thien ta than 3d hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Nghịch Thiên Tà Thần 3D Thuyết Minh: Trên đại lục Thương Vân, Đại Thổ Y Tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên Thần Dược Thiên Không. Việc này đã khiến cho cả thiên hạ đều thèm muốn viên Thần Dược này, dẫn đến cái ch..."
+}

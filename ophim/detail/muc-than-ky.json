@@ -11,10 +11,23 @@
           "streams": [
             {
               "id": "muc-than-ky--0-0",
-              "name": "80",
+              "name": "81",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-0-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-1",
+              "name": "80",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-1-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -23,11 +36,11 @@
               ]
             },
             {
-              "id": "muc-than-ky--0-1",
+              "id": "muc-than-ky--0-2",
               "name": "79",
               "stream_links": [
                 {
-                  "id": "muc-than-ky--0-1-0",
+                  "id": "muc-than-ky--0-2-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -36,11 +49,11 @@
               ]
             },
             {
-              "id": "muc-than-ky--0-2",
+              "id": "muc-than-ky--0-3",
               "name": "78",
               "stream_links": [
                 {
-                  "id": "muc-than-ky--0-2-0",
+                  "id": "muc-than-ky--0-3-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -49,80 +62,15 @@
               ]
             },
             {
-              "id": "muc-than-ky--0-3",
-              "name": "77",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-3-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQNHSIi-pi9vd8GC2L0l4d5oWIkLWRDs6Tco-GQKZVOPVWOS-cI6oWf3bqkHiCXbio4iGJj9V4x6b_C6WEtDz1XEfylVgOSxv4gM8hsrbSliOQ.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=XtERvBF5K50Q7kNvwG1r4T5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNjMzOTg1ODQ0NTc0MjcxLCJhc3NldF9hZ2VfZGF5cyI6MjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo5ODMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=9ec4b890487a67ac&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yQjQ0MUM3MTIxQzU1REI0QkU4NTA0QTZFRTA2N0U5QV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdFNDQxQzk5NjBDQ0U4MTk4ODk4RjA5Q0FGQkQ0MUFFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb-4Kudv4bnBRUCKAJDMywXQI64UeuFHrgYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=MOkrjm55MNO5uDX2-KmVVA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF22G5_k_9vyE4uYaOiPv9aTObxbiDNxKAYVU9D9RSiitRRGq0WbFobemVjhBAsfRnhARaheS6j&_nc_eui2=AeH-76DLY7Bjrbd06OfM2r9yA4is34q2XZwDiKzfirZdnFue_jtYHyY79Lrcm4qW2l88sXfBn4VnYL6dPrgNY6mK&oh=00_Af1A4hScCb_xncsOTFb0x2Prmwk6suj7Z0PF9Ja-sRKnPQ&oe=69F7C362&bitrate=1970533&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
               "id": "muc-than-ky--0-4",
-              "name": "76",
+              "name": "77",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-4-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQP7vVfrXxgMxeXgP_F0ktsFEz1ZvKXNVgfm3qH4O4_kht1lGyvxiNFGwHxPEmkF1hb2YnHx6tbrGdmcqVk9rlkxSc5YCeM2wbuE2lBKQA.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=dI6EoRp0jdIQ7kNvwG-_IFN&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI5MjQzMTI4NjEyMDA4NCwiYXNzZXRfYWdlX2RheXMiOjMxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAyNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=DDld89Lw1MNHhMbhsgw1Hg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH2C4vDRCDR0-0aQ-Eptnu-Iyohp3G8x0zrynv4XtALvDG5R61aQslmB-5uUpTb1aoLJtKvFSmy&_nc_eui2=AeFrs9B3LnBT2eQkytbOHspmYqYkwy864RJipiTDLzrhEqs6m2rgcJEuH5hdyAlUCBXf7UFgqYpmICAGd0NdbZg6&oh=00_Af2XQVS2lxwl-7GObD5glEQR-6wAn9pc9TXBeSv_WSv-pg&oe=69F7B37D&bitrate=362731&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "muc-than-ky--0-5",
-              "name": "75",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-5-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPb1fw3_dwJ51IMe2O4-0RGlh5ev4Yniw-16gAgITF6Ba1AL1eEkMBOAK4VcuaB95NiiWTEYb9ss0LPICVF8jnJpF7mVIixNntCxrCAxQ.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=eg0KMWw5IaIQ7kNvwHqn2XY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjY2Nzc4OTk3ODUxNDA4NDgsImFzc2V0X2FnZV9kYXlzIjozOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk3NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=ZwBXfVKCnQ0o0r2e2jKI-Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFX5Fuywdva0fzU3FgmRMaJzEd8eTX_PbJGDNl3yNcVrq0Am1qBQ-iTXVn47CkP68porkqX2yXb&_nc_eui2=AeFYqCtPrA40GnZC5SMmNy2VkKZ-l8_WTBGQpn6Xz9ZMEV1wr_OaOAzbwzNdxtww4FNdLNV-2N6UGljS4rRl7wbT&oh=00_Af09UJ0xTpPxZpnjO8IoLNoFCMChj0gpngzX6ENJaWl4VQ&oe=69F755BF&bitrate=392468&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "muc-than-ky--0-6",
-              "name": "74",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-6-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPH_GyVX9olqcSrAEgzzkNQ5FPf175b4LRZiiMm5vxjLlRLGYq1vsQvQPqNZLajn-TamEMJFv4X0cajgGTgL59ReMJVXBaAlVP7n_IdZA.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=z1KX9OM-uKAQ7kNvwGnUpy2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYwNzczOTY5MDQ2MDQxNiwiYXNzZXRfYWdlX2RheXMiOjQ1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA0MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=6iw3Bt3ZJ6nwmb3AO_kxGw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEodGWfMUWKL6vTx5jdpFPj6mwx8gsJY1ME-9cBg-VRuwmWtKGVXpKMsR9r3V8kgfzcf6Gj9Lwa&_nc_eui2=AeGwG48hvoTkOedVdFLYMdIB5irs-mQhUTrmKuz6ZCFROsTQVqZKmC14FYrS9VINKPF03xsjRrxehHjHA7W7oIqZ&oh=00_Af34MCIYbq6tCti0_PW2LqOTqc2DRIvYIeZeldmJqYORog&oe=69F75EC7&bitrate=534294&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "muc-than-ky--0-7",
-              "name": "73",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-7-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQP_26h1Q_X3mqZUFTdAltsB5K0Kx-5y2K9NX06suZmw0-Lf7BVzGJmif9VDnr7o5t8hwGHoftQxdKjsZLBLKUXA7cBMKG7kT2mFYaV2Kw.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=tM6dou3B4CUQ7kNvwGg_88p&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ1MDYxOTM4Njc1NDk0NywiYXNzZXRfYWdlX2RheXMiOjUyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTg3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uce_NaIFBtdLIqQSEv6GIg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFhYI5Or0nLV0snEaV5ndlYU6GIcJKglZaXVgmGUtLniNs_ZRpBn-M9SRLiuNJasuQ55cCo2h9G&_nc_eui2=AeECOlM93TuNctGeYrAvRCY344pFgkBOKTXjikWCQE4pNYGdF7ykQ-_qqYWjL9VceXZoy2FwfdXUTv6D8l0ySxZK&oh=00_Af2BXwSeNw-yorZg-uR5_7YJln8Wp6r5Dpu1eBGFXS4xFA&oe=69F7CBE3&bitrate=414553&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "muc-than-ky--0-8",
-              "name": "72",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-8-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNxAg5dApaoFz8400_Ohq3vloZPSkitr9HkH9Hr7R9rCSZ0DuuV45rU5sUgavq2Zu_eKI2XSfYlbe-tU_yP4BqEr7uEGo0jYONlRtHR0A.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=0WLvy6HSnp4Q7kNvwFWR3g9&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk3MDAwODA5NzIwMTQwMCwiYXNzZXRfYWdlX2RheXMiOjU5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAzOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=xzCIOgrmeqqeAX8UkTWYSg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFkykl7NtyPM8S9kURTzwrWcNc-8wNrxq96w7JW8yw9npda6PhVFCG-s88BnZeGSVu7WTbClw0V&_nc_eui2=AeErsRffwR2dpVSO-NXSfGLC0ZVMOgDLwoXRlUw6AMvChXnvqczOA8PZ-otrqRWoyXkFn_C9_6_yk67bB5Bgtxt3&oh=00_Af3KCz3TCdG15WTAnuUlu6yfHWd_fEnnX5uhUBpZYMcfUA&oe=69F7F8A6&bitrate=404176&tag=sve_sd"
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQNHSIi-pi9vd8GC2L0l4d5oWIkLWRDs6Tco-GQKZVOPVWOS-cI6oWf3bqkHiCXbio4iGJj9V4x6b_C6WEtDz1XEfylVgOSxv4gM8hsrbSliOQ.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=XtERvBF5K50Q7kNvwG1r4T5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNjMzOTg1ODQ0NTc0MjcxLCJhc3NldF9hZ2VfZGF5cyI6MjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo5ODMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=9ec4b890487a67ac&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yQjQ0MUM3MTIxQzU1REI0QkU4NTA0QTZFRTA2N0U5QV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdFNDQxQzk5NjBDQ0U4MTk4ODk4RjA5Q0FGQkQ0MUFFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb-4Kudv4bnBRUCKAJDMywXQI64UeuFHrgYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=MOkrjm55MNO5uDX2-KmVVA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF22G5_k_9vyE4uYaOiPv9aTObxbiDNxKAYVU9D9RSiitRRGq0WbFobemVjhBAsfRnhARaheS6j&_nc_eui2=AeH-76DLY7Bjrbd06OfM2r9yA4is34q2XZwDiKzfirZdnFue_jtYHyY79Lrcm4qW2l88sXfBn4VnYL6dPrgNY6mK&oh=00_Af1A4hScCb_xncsOTFb0x2Prmwk6suj7Z0PF9Ja-sRKnPQ&oe=69F7C362&bitrate=1970533&tag=dash_h264-basic-gen2_720p"
                 }
               ]
             }
@@ -132,5 +80,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
+  "search": "muc-than-ky xem phim mục thần ký thuyết minh: tần mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ thiên ma giáo và được chọn là tiến sĩ thái học đầu tiên của diên khang quốc. trong cuộc chiến phản loạn của diên khang quốc, tần mục dấn thân vào... muc than ky hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Mục Thần Ký Thuyết Minh: Tần Mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ Thiên Ma Giáo và được chọn là tiến sĩ thái học đầu tiên của Diên Khang quốc. Trong cuộc chiến phản loạn của Diên Khang quốc, Tần Mục dấn thân vào..."
 }
