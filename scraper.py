@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (Production Version)
-DEBUG VERSION - in ra title/url/html khi timeout để chẩn đoán CF block
+YanHH3D Scraper → MonPlayer JSON (Production Version - FIXED)
+
+FIX ROOT CAUSE:
+  - URL pattern /slug/tap-1 KHÔNG tồn tại trên yanhh3d.bz
+  - Site dùng số tập thật: /tien-nghich/tap-138
+  - Episode list nằm trên MOVIE DETAIL PAGE /slug, không phải episode page
+
+FLOW MỚI:
+  1. Homepage → lấy movie slug từ .flw-item
+  2. Goto /slug (movie detail page)
+  3. Trên movie detail page → lấy episode list từ #top-comment tab
+  4. Với mỗi episode → lấy stream URL từ #list_sv
 """
 
 import json
@@ -14,12 +24,15 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
+# ── playwright-stealth (optional nhưng quan trọng) ───────────────────────────
 try:
     from playwright_stealth import stealth_sync
     HAS_STEALTH = True
 except ImportError:
     HAS_STEALTH = False
+    print("[WARN] playwright-stealth chưa cài. Chạy: pip install playwright-stealth")
 
+# ── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -27,6 +40,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# ── Config ───────────────────────────────────────────────────────────────────
 CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
@@ -42,15 +56,15 @@ CONFIG = {
 QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd"]
 
 EXTRA_HEADERS = {
-    "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Accept-Language":           "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding":           "gzip, deflate, br",
-    "Cache-Control":             "no-cache",
-    "Pragma":                    "no-cache",
-    "Sec-Fetch-Dest":            "document",
-    "Sec-Fetch-Mode":            "navigate",
-    "Sec-Fetch-Site":            "none",
-    "Sec-Fetch-User":            "?1",
+    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Cache-Control":   "no-cache",
+    "Pragma":          "no-cache",
+    "Sec-Fetch-Dest":  "document",
+    "Sec-Fetch-Mode":  "navigate",
+    "Sec-Fetch-Site":  "none",
+    "Sec-Fetch-User":  "?1",
     "Upgrade-Insecure-Requests": "1",
 }
 
@@ -65,27 +79,13 @@ def _apply_stealth(page):
     else:
         page.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            Object.defineProperty(navigator, 'plugins',   { get: () => [1, 2, 3] });
+            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             Object.defineProperty(navigator, 'languages', { get: () => ['vi-VN', 'vi', 'en-US'] });
             window.chrome = { runtime: {} };
         """)
 
 
-def _debug_page(page, label):
-    """In ra title + url + 800 ký tự đầu HTML để chẩn đoán CF block"""
-    try:
-        title   = page.title()
-        url_now = page.url
-        html    = page.content()[:800].replace('\n', ' ')
-        logger.info(f"   [DEBUG:{label}] title='{title}'")
-        logger.info(f"   [DEBUG:{label}] url='{url_now}'")
-        logger.info(f"   [DEBUG:{label}] html[:800]={html}")
-    except Exception as e:
-        logger.info(f"   [DEBUG:{label}] cannot read page: {e}")
-
-
 def _wait_for_cf(page, selector, timeout):
-    """Chờ CF challenge tự resolve rồi mới chờ selector thật"""
     try:
         page.wait_for_function(
             """() => !document.title.includes('Just a moment') &&
@@ -100,9 +100,9 @@ def _wait_for_cf(page, selector, timeout):
 
 # ── Step 1: Homepage → movie list ────────────────────────────────────────────
 def get_trending_movies(page):
+    """Extract trending movies from homepage - lấy slug từ film-poster-ahref"""
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, "homepage")
         _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
 
         movies = page.evaluate("""() => {
@@ -110,12 +110,21 @@ def get_trending_movies(page):
             const items = document.querySelectorAll('.flw-item');
             for (const item of items) {
                 if (results.length >= 10) break;
-                const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
+                
+                // Lấy link từ film-poster-ahref (movie detail page, không phải episode)
+                const posterLink = item.querySelector('.film-poster-ahref');
+                const detailLink = item.querySelector('.film-detail h3 a');
+                const link = posterLink || detailLink;
+                
                 if (!link?.href) continue;
 
-                const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                // Extract slug từ URL movie detail: /tien-nghich
+                const href = link.href;
+                const parts = href.split('/').filter(p => p);
+                const slug = parts[parts.length - 1];
+                
                 const title = link.innerText.trim() || link.title || '';
-                if (!title || slug.includes('search')) continue;
+                if (!title || !slug || slug.includes('search')) continue;
 
                 let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || '';
                 if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
@@ -128,70 +137,77 @@ def get_trending_movies(page):
         return movies
     except Exception as e:
         logger.error(f"Failed to get trending movies: {e}")
-        _debug_page(page, "homepage-error")
         return []
 
 
-# ── Step 2: Episode page → episode list ──────────────────────────────────────
+# ── Step 2: Movie detail page → episode list ─────────────────────────────────
 def get_episodes(page, slug):
     """
-    Goto /slug/tap-1 (episode page) để lấy episode list.
-    #episodes-content chỉ có trên episode page, KHÔNG có trên /slug.
-    Tab #top-comment = Thuyết Minh (lấy), #new-comment = Vietsub/sever2 (bỏ).
+    Lấy danh sách tập từ MOVIE DETAIL PAGE /slug.
+    
+    FIX: Episode list nằm trên /slug (movie detail), KHÔNG phải /slug/tap-N
+    Tab Thuyết Minh = #top-comment → lấy từ đây
     """
-    for tap_num in [1, 2, 3]:
-        ep_url = f"{CONFIG['BASE_URL']}/{slug}/tap-{tap_num}"
-        try:
-            _human_delay(400, 800)
-            page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+    movie_url = f"{CONFIG['BASE_URL']}/{slug}"
+    try:
+        _human_delay(400, 800)
+        page.goto(movie_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        
+        # Chờ episode container trên movie detail page
+        _wait_for_cf(page, "#episodes-content, #detail-ss-list", CONFIG["TIMEOUT_WAIT"])
 
-            # ── DEBUG: xem trang trả về gì trước khi wait selector ──
-            _debug_page(page, f"ep-{tap_num}")
-            # ─────────────────────────────────────────────────────────
+        episodes = page.evaluate("""() => {
+            const results = [];
+            
+            // Tìm tab Thuyết Minh (#top-comment) - đây là tab mặc định active
+            const pane = document.querySelector('#top-comment');
+            if (!pane) return results;
 
-            _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
-
-            episodes = page.evaluate("""() => {
-                const results = [];
-                const pane = document.querySelector('#top-comment');
-                if (!pane) return results;
-
-                const items = pane.querySelectorAll('a.ssl-item.ep-item');
-                for (const item of items) {
-                    const href = item.href || '';
-                    const text = (
-                        item.querySelector('.ssli-order')?.innerText ||
-                        item.querySelector('.ep-name')?.innerText ||
-                        item.title || ''
-                    ).trim();
-
-                    if (href.includes('/sever2/')) continue;
-                    if (href && /^\\d+$/.test(text)) {
-                        results.push({ name: text, url: href });
-                    }
+            // Lấy tất cả episode items trong tab Thuyết Minh
+            const items = pane.querySelectorAll('a.ssl-item.ep-item');
+            for (const item of items) {
+                const href = item.href || '';
+                
+                // Bỏ link sever2 (Vietsub) - chỉ lấy Thuyết Minh
+                if (href.includes('/sever2/')) continue;
+                
+                // Extract episode name/number
+                const order = item.querySelector('.ssli-order')?.innerText.trim();
+                const name = item.querySelector('.ep-name')?.innerText.trim();
+                const text = order || name || item.title || '';
+                
+                // Chỉ lấy tập có số (bỏ "139 TL", "51-55", v.v. nếu cần lọc thêm)
+                if (href && text && /^\\d+$/.test(text)) {
+                    results.push({ name: text, url: href });
                 }
-                return results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
-            }""")
+            }
+            
+            // Sort by episode number ascending
+            return results.sort((a, b) => parseInt(a.name) - parseInt(b.name));
+        }""")
 
-            if episodes:
-                logger.info(f"   Got {len(episodes)} episodes from {ep_url}")
-                return episodes
+        if episodes:
+            logger.info(f"   Got episode list from {movie_url} ({len(episodes)} eps)")
+            return episodes
+        else:
+            logger.warning(f"   No episodes found in #top-comment for {slug}")
+            return []
 
-        except PlaywrightTimeout:
-            logger.warning(f"   Timeout at {ep_url}")
-            _debug_page(page, f"timeout-tap{tap_num}")
-            continue
-        except Exception as e:
-            logger.warning(f"   Error at {ep_url}: {e}")
-            _debug_page(page, f"error-tap{tap_num}")
-            continue
-
-    logger.error(f"Cannot get episode list for {slug}")
-    return []
+    except PlaywrightTimeout:
+        logger.error(f"   Timeout loading {movie_url}")
+        return []
+    except Exception as e:
+        logger.error(f"   Error getting episodes for {slug}: {e}")
+        return []
 
 
 # ── Step 3: Episode page → stream URLs ───────────────────────────────────────
 def get_stream_url(page, ep_url):
+    """
+    Thu thập tất cả stream links từ #list_sv a.btn3dsv.
+    Chỉ lấy fbcdn.cloud .m3u8 (link trực tiếp).
+    Bỏ: play-fb-v8 (proxy), short.icu (shortlink).
+    """
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -204,12 +220,16 @@ def get_stream_url(page, ep_url):
                 const src   = (btn.getAttribute('data-src') || '').trim();
                 const label = (btn.innerText || btn.textContent || '').trim();
 
+                // Ưu tiên: fbcdn.cloud .m3u8 (direct HLS)
                 if (src.includes('fbcdn') && src.includes('.m3u8')) {
                     results.push({ url: src, type: 'hls', label: label });
-                } else if (
+                } 
+                // Fallback: .m3u8 hoặc .mp4 trực tiếp (không qua proxy/shortlink)
+                else if (
                     (src.includes('.m3u8') || src.includes('.mp4')) &&
                     !src.includes('play-fb-v8') &&
-                    !src.includes('short.icu')
+                    !src.includes('short.icu') &&
+                    src.startsWith('http')
                 ) {
                     results.push({
                         url:   src,
@@ -225,7 +245,6 @@ def get_stream_url(page, ep_url):
 
     except Exception as e:
         logger.debug(f"Stream extraction failed for {ep_url}: {e}")
-        _debug_page(page, "stream-error")
         return None
 
 
@@ -310,7 +329,8 @@ def build_list_item(movie):
 # ── Main ──────────────────────────────────────────────────────────────────────
 def scrape():
     logger.info("Starting YanHH3D to MonPlayer scraper...")
-    logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND - using fallback'}")
+    if not HAS_STEALTH:
+        logger.warning("playwright-stealth not found — CF may block. Install: pip install playwright-stealth")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -323,6 +343,7 @@ def scrape():
                 "--no-sandbox",
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
+                "--disable-web-security",
                 "--lang=vi-VN",
             ]
         )
@@ -339,6 +360,7 @@ def scrape():
         _apply_stealth(page)
 
         try:
+            # 1) Homepage → lấy movie list
             movies = get_trending_movies(page)
             if not movies:
                 logger.error("No movies found. Exiting.")
@@ -347,9 +369,11 @@ def scrape():
             limit = min(len(movies), CONFIG["MAX_MOVIES"])
             logger.info(f"Found {len(movies)} movies. Processing {limit}...")
 
+            # 2) Xử lý từng phim
             for idx, movie in enumerate(movies[:limit], 1):
                 logger.info(f"[{idx}/{limit}] {movie['title']} ({movie['slug']})")
                 try:
+                    # FIX: Lấy episode list từ MOVIE DETAIL PAGE /slug
                     episodes = get_episodes(page, movie["slug"])
                     if not episodes:
                         logger.warning(f"No episodes found for {movie['slug']}")
@@ -386,13 +410,18 @@ def scrape():
 
                 except Exception as e:
                     logger.error(f"   Error processing {movie['slug']}: {e}")
+                    import traceback
+                    logger.debug(traceback.format_exc())
                     continue
 
         except Exception as e:
             logger.error(f"Critical error: {e}")
+            import traceback
+            logger.debug(traceback.format_exc())
         finally:
             browser.close()
 
+    # 3) Lưu list JSON
     list_output = {
         "id":          "yanhh3d-thuyet-minh",
         "name":        "YanHH3D - Thuyet Minh",
