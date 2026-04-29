@@ -6,7 +6,7 @@
   "enable_search": true,
   "features": {
     "search": true,
-    "incremental": true,
+    "incremental": false,
     "parallel": true
   },
   "color": "#004444",
@@ -27,8 +27,8 @@
   "meta": {
     "source": "https://yanhh3d.bz",
     "total_items": 0,
-    "updated_at": "2026-04-29T20:54:12.842952+00:00",
+    "updated_at": "2026-04-29T21:00:23.313565+00:00",
     "version": "2.3",
-    "incremental": true
+    "incremental": false
   }
 }
