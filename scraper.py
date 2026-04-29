@@ -666,7 +666,7 @@ def scrape_movie(page, context, slug: str, max_episodes: int = None) -> tuple | 
         else:
             logger.warning(f"    ✗ Tap {ep['name']}: no stream")
     
-    if not ep_
+    if not ep_data:
         logger.warning(f"  No valid streams for {slug}")
         return None
     
