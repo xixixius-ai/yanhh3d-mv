@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v2.6)
-- ✅ RESTORED: Episode logic exactly matches v2.2 (proven stable)
-- ✅ Fixed: Path.mkdir() precedence, JS syntax, async lifecycle
+YanHH3D Scraper → MonPlayer JSON (v2.7)
+- ✅ RESTORED: Episode logic exactly matches v2.2
+- ✅ FIX ASYNC: Added networkidle wait + selector fallbacks for #list_sv
+- ✅ FIX PROXY: Enhanced resolver with auto-redirect, broader regex, asyncio.to_thread
 - ✅ Kept: Incremental, parallel (3 pages), anti-rate-limit, search flags
 """
 
@@ -115,44 +116,48 @@ def _build_search_str(movie: dict, metadata: dict = None) -> str:
 def _is_valid_fb_cdn(url: str) -> bool:
     if not url: return False
     u = url.lower()
-    return ('fbcdn' in u or 'facebook' in u) and '.mp4' in u
+    return ('fbcdn' in u or 'facebook' in u or 'video-sin' in u) and '.mp4' in u
 
 
 async def resolve_play_fb_v8_async(proxy_url: str) -> Optional[str]:
-    for attempt in range(CONFIG["RETRY_COUNT"] + 1):
-        try:
-            req = urllib.request.Request(proxy_url, headers=PLAY_FB_V8_HEADERS, method="GET")
-            with urllib.request.build_opener(urllib.request.HTTPRedirectHandler()).open(req, timeout=20) as resp:
-                if resp.status in (301, 302, 303, 307, 308):
-                    loc = resp.headers.get("Location", "")
-                    if loc and _is_valid_fb_cdn(loc): return loc
-                if resp.status == 200:
+    """✅ V2.7: Sync urllib wrapped in asyncio.to_thread + broader regex + auto-redirect"""
+    def _fetch():
+        for attempt in range(CONFIG["RETRY_COUNT"] + 1):
+            try:
+                req = urllib.request.Request(proxy_url, headers=PLAY_FB_V8_HEADERS, method="GET")
+                # Allow auto-redirect to catch direct FB CDN redirects
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    final_url = resp.url
+                    if _is_valid_fb_cdn(final_url):
+                        return final_url
+                    
                     content = resp.read().decode('utf-8', errors='ignore')
-                    if 'application/json' in resp.headers.get('Content-Type', ''):
-                        try:
-                            d = json.loads(content)
-                            url = d.get('url') or d.get('video_url') or d.get('stream_url') or d.get('src') or d.get('file')
-                            if url and _is_valid_fb_cdn(url): return url
-                        except: pass
-                    for pat in [r'"(https?://scontent-[^"]+\.mp4[^"]*)"', r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                                r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']', r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']']:
+                    # Broadened regex suite
+                    patterns = [
+                        r'"(https?://[^"]+\.mp4[^"]*)"',
+                        r"'(https?://[^']+\.mp4[^']*)'",
+                        r'url\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'data-src\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                    ]
+                    for pat in patterns:
                         m = re.search(pat, content, re.I)
                         if m:
                             url = m.group(1).replace('\\/', '/')
                             if _is_valid_fb_cdn(url): return url
-                    fb = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
-                    if fb and _is_valid_fb_cdn(fb.group(1)): return fb.group(1)
-                return None
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 403):
-                await asyncio.sleep(random.uniform(5, 12))
-                continue
-            if e.code in (301, 302, 303, 307, 308):
-                loc = e.headers.get("Location", "")
-                if loc and _is_valid_fb_cdn(loc): return loc
-        except Exception: pass
-        if attempt < CONFIG["RETRY_COUNT"]: await asyncio.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
-    return None
+                    return None
+            except urllib.error.HTTPError as e:
+                if e.code in (301, 302, 303, 307, 308):
+                    loc = e.headers.get("Location", "")
+                    if loc and _is_valid_fb_cdn(loc): return loc
+                if e.code in (429, 403):
+                    time.sleep(random.uniform(4, 8))
+                    continue
+            except Exception: pass
+            if attempt < CONFIG["RETRY_COUNT"]: time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
+        return None
+
+    return await asyncio.to_thread(_fetch)
 
 
 async def _wait_cf(page):
@@ -188,16 +193,14 @@ async def get_movie_metadata_async(page, slug: str) -> dict:
     return meta
 
 
-# ✅ V2.6: RESTORED EXACT V2.2 EPISODE LOGIC (Async)
+# ✅ V2.7: RESTORED V2.2 EPISODE LOGIC + ASYNC SAFETY
 async def get_episodes_async(page, slug: str) -> list:
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
-        # 1. Vào trang chi tiết, chờ load
         await page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
         await page.wait_for_selector(f"a[href*='/{slug}/tap-']", timeout=CONFIG["TIMEOUT_WAIT"])
         
-        # 2. Lấy link tập mới nhất (giống v2.2 get_latest_ep_url)
         latest_ep_url = await page.evaluate(f"""() => {{
             const links = Array.from(document.querySelectorAll('a[href*="/{slug}/tap-"]'))
                 .filter(a => !a.href.includes('/sever2/'))
@@ -207,12 +210,12 @@ async def get_episodes_async(page, slug: str) -> list:
         }}""")
         if not latest_ep_url: return []
         
-        # 3. Chuyển sang trang tập mới nhất
         await page.goto(latest_ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
-        await page.wait_for_selector("#episodes-content", timeout=CONFIG["TIMEOUT_WAIT"])
+        # ✅ Wait for network to settle before DOM query (fixes async race condition)
+        await page.wait_for_load_state('networkidle', timeout=10000)
+        await page.wait_for_selector("#top-comment", timeout=CONFIG["TIMEOUT_WAIT"])
         
-        # 4. Cào list tập từ #top-comment (giống v2.2 get_episodes)
         episodes = await page.evaluate("""() => {
             const results = [];
             const pane = document.querySelector('#top-comment');
@@ -236,23 +239,37 @@ async def get_stream_url_async(page, ep_url: str) -> Optional[list]:
     try:
         await page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
-        await page.wait_for_selector("#list_sv", timeout=CONFIG["TIMEOUT_WAIT"])
+        # ✅ Wait for networkidle to ensure JS-rendered buttons exist
+        await page.wait_for_load_state('networkidle', timeout=10000)
+        
+        # ✅ Fallback selectors if #list_sv changes
         btns = await page.evaluate("""() => {
             const r = [];
-            document.querySelectorAll('#list_sv a.btn3dsv').forEach(b => {
-                const s = (b.getAttribute('data-src') || '').trim();
-                const l = (b.innerText || b.textContent || '').trim().toLowerCase();
-                if (s) r.push({ src: s, label: l });
-            }); return r;
+            const containers = document.querySelectorAll('#list_sv, #servers, .server-list, .ps__-list');
+            containers.forEach(c => {
+                c.querySelectorAll('a.btn3dsv, a.btn, .server-item a').forEach(b => {
+                    const s = (b.getAttribute('data-src') || b.href || '').trim();
+                    const l = (b.innerText || b.textContent || '').trim().toLowerCase();
+                    if (s) r.push({ src: s, label: l });
+                });
+            });
+            return r;
         }""")
-        cands = [b for b in btns if any(x in b["label"] for x in ["hd", "1080", "4k"])] or btns
+        
+        if not btns:
+            logger.debug(f"   ⚠️ No stream buttons found on {ep_url}")
+            return None
+            
+        cands = [b for b in btns if any(x in b["label"] for x in ["hd", "1080", "4k", "fb"])] or btns
         for b in cands:
             if "play-fb-v8" in b["src"]:
                 url = await resolve_play_fb_v8_async(b["src"])
                 if url and _is_valid_fb_cdn(url):
                     return [{"url": url, "type": "mp4", "label": f"fb-cdn-{b['label']}" if b['label'] else "fb-cdn"}]
         return None
-    except: return None
+    except Exception as e:
+        logger.debug(f"   Stream extraction fail: {e}")
+        return None
 
 
 async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_episodes: int = None, incremental: bool = False) -> Optional[tuple]:
@@ -287,7 +304,9 @@ async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_ep
             consec_fail += 1
             ep_data.append({"name": ep["name"], "stream": [{"id": f"{slug}--0-{i}-err", "name": f"{ep['name']}(no stream)", "type": "error", "default": False, "url": "error:no_stream"}]})
             logger.warning(f"    ✗ Tap {ep['name']}: no stream (streak: {consec_fail})")
-            if consec_fail >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]: break
+            if consec_fail >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]: 
+                logger.warning(f"    ⛔ Fail limit reached. Stopping {slug}.")
+                break
     
     state.update_movie(slug, last_scraped=datetime.now(timezone.utc).isoformat(), last_episode=episodes[0]["name"])
     return build_detail_json(slug, ep_data, metadata), build_list_item(movie_info, metadata)
@@ -369,7 +388,7 @@ async def main_async():
     
     CONFIG.update({"OUTPUT_DIR": args.output, "MAX_MOVIES": args.max_movies, "MAX_EPISODES": args.max_episodes})
     incremental = args.incremental and not args.full_scan
-    logger.info(f"Starting v2.6 (Restored v2.2 logic | Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
+    logger.info(f"Starting v2.7 (Restored v2.2 logic | Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
     
     state = ScraperState(Path(CONFIG["OUTPUT_DIR"]) / ".state.json")
     (Path(CONFIG["OUTPUT_DIR"]) / "detail").mkdir(parents=True, exist_ok=True)
@@ -391,7 +410,7 @@ async def main_async():
     if args.full_scan: state.set_full_scan()
     else: state.save()
     
-    list_out = {"id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim", "search": True, "enable_search": True, "features": {"search": True, "incremental": incremental}, "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"}, "description": "Phim thuyet minh chat luong cao", "grid_number": 3, "channels": channels, "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}], "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.6", "incremental": incremental}}
+    list_out = {"id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim", "search": True, "enable_search": True, "features": {"search": True, "incremental": incremental}, "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"}, "description": "Phim thuyet minh chat luong cao", "grid_number": 3, "channels": channels, "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}], "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.7", "incremental": incremental}}
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: json.dump(list_out, f, ensure_ascii=False, indent=2)
     logger.info(f"✅ Done! {len(channels)} channels saved.")
 
