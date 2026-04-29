@@ -2,25 +2,29 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    # ✅ Chạy 1 lần/ngày lúc 3:00 AM UTC (10 AM VN) - giờ server rảnh
+    # ✅ Incremental mode: 1x/day, fast (~5-10 min)
     - cron: '0 3 * * *'
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'Scrape mode'
+        required: false
+        default: 'incremental'
+        type: choice
+        options:
+          - incremental
+          - full
+          - sequential
       max_movies:
-        description: 'Max movies to scrape (default: 50)'
+        description: 'Max movies (default: 50)'
         required: false
         default: '50'
         type: string
       max_episodes:
-        description: 'Max episodes per movie (empty = all)'
+        description: 'Max episodes/movie (empty = all)'
         required: false
         default: ''
         type: string
-      full_scan:
-        description: 'Full scan all episodes (ignore max_episodes)'
-        required: false
-        default: 'false'
-        type: boolean
   push:
     paths:
       - 'scraper.py'
@@ -32,8 +36,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    # ✅ Tăng timeout cho full scan (50 movies × ~30 eps × delay)
-    timeout-minutes: 90
+    timeout-minutes: 60
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -46,12 +49,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'  # ✅ Cache pip dependencies
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          # ✅ Cache Playwright browser để không download mỗi lần chạy
           if [ ! -d ~/.cache/ms-playwright ]; then
             playwright install chromium
             playwright install-deps chromium
@@ -59,30 +61,35 @@ jobs:
         env:
           PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
 
-      - name: Determine scrape scope
-        id: scope
+      - name: Determine flags
+        id: flags
         run: |
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            # Manual dispatch: dùng params từ input
-            echo "max_movies=${{ inputs.max_movies || 50 }}" >> $GITHUB_OUTPUT
-            echo "max_episodes=${{ inputs.max_episodes }}" >> $GITHUB_OUTPUT
-            echo "full_scan=${{ inputs.full_scan }}" >> $GITHUB_OUTPUT
-            echo "mode=full" >> $GITHUB_OUTPUT
-          else
-            # Scheduled: chạy nhẹ, chỉ 30 movies, 20 eps/movie
-            echo "max_movies=30" >> $GITHUB_OUTPUT
-            echo "max_episodes=20" >> $GITHUB_OUTPUT
-            echo "full_scan=false" >> $GITHUB_OUTPUT
-            echo "mode=scheduled" >> $GITHUB_OUTPUT
+          MODE="${{ inputs.mode || 'incremental' }}"
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            MODE="incremental"
           fi
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "incremental=$([ "$MODE" = "incremental" ] && echo "true" || echo "false")" >> $GITHUB_OUTPUT
+          echo "sequential=$([ "$MODE" = "sequential" ] && echo "true" || echo "false")" >> $GITHUB_OUTPUT
+          echo "full_scan=$([ "$MODE" = "full" ] && echo "true" || echo "false")" >> $GITHUB_OUTPUT
 
       - name: Run scraper
         run: |
           CMD="python scraper.py"
-          CMD="$CMD --max-movies ${{ steps.scope.outputs.max_movies }}"
+          CMD="$CMD --max-movies ${{ inputs.max_movies || 50 }}"
           
-          if [[ "${{ steps.scope.outputs.full_scan }}" != "true" && -n "${{ steps.scope.outputs.max_episodes }}" ]]; then
-            CMD="$CMD --max-episodes ${{ steps.scope.outputs.max_episodes }}"
+          if [[ -n "${{ inputs.max_episodes }}" ]]; then
+            CMD="$CMD --max-episodes ${{ inputs.max_episodes }}"
+          fi
+          
+          if [[ "${{ steps.flags.outputs.incremental }}" == "true" ]]; then
+            CMD="$CMD --incremental"
+          fi
+          if [[ "${{ steps.flags.outputs.full_scan }}" == "true" ]]; then
+            CMD="$CMD --full-scan"
+          fi
+          if [[ "${{ steps.flags.outputs.sequential }}" == "true" ]]; then
+            CMD="$CMD --sequential"
           fi
           
           echo "▶️ Running: $CMD"
@@ -99,6 +106,7 @@ jobs:
           path: |
             *.log
             ophim.json
+            ophim/.state.json
           retention-days: 7
 
       - name: Commit & push changes
@@ -108,11 +116,11 @@ jobs:
           commit_message: |
             🤖 Auto update MonPlayer (Thuyết Minh)
             
-            Mode: ${{ steps.scope.outputs.mode }}
-            Movies: ${{ steps.scope.outputs.max_movies }}
-            Episodes: ${{ steps.scope.outputs.max_episodes }}
+            Mode: ${{ steps.flags.outputs.mode }}
+            Parallel: ${{ steps.flags.outputs.sequential == 'false' }}
+            Movies: ${{ inputs.max_movies || 50 }}
             Run: ${{ github.run_id }}
-          file_pattern: 'ophim.json ophim/detail/*.json'
+          file_pattern: 'ophim.json ophim/detail/*.json ophim/.state.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
