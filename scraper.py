@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v2.3)
-- ✅ Fix: 100% Async Playwright (no sync/async mix)
-- ✅ Parallel scrape: Semaphore-based page sharing (60% faster, low overhead)
-- ✅ Incremental mode: .state.json tracks last_scraped
-- ✅ Smart batching & consecutive fail breaker
+YanHH3D Scraper → MonPlayer JSON (v2.4)
+Fixes:
+  - ✅ Fix browser.new_context() (was passing playwright instance instead of browser)
+  - ✅ Fix silent error swallowing in asyncio.gather
+  - ✅ Clean syntax: metadata: dict = None everywhere
+  - ✅ Keep all v2.3 features: async, parallel (3 pages), incremental, anti-rate-limit
 """
 
 import argparse
@@ -38,25 +39,25 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 CONFIG = {
-    "BASE_URL":         "https://yanhh3d.bz",
-    "OUTPUT_DIR":       "ophim",
-    "STATE_FILE":       "ophim/.state.json",
-    "LIST_FILE":        "ophim.json",
-    "MAX_MOVIES":       50,
-    "MAX_EPISODES":     None,
-    "TIMEOUT_NAV":      30000,
-    "TIMEOUT_WAIT":     20000,
-    "USER_AGENT":       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "RAW_BASE":         os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
-    "RETRY_COUNT":      2,
-    "RETRY_DELAY":      1.0,
-    "EP_DELAY_MIN":     1200,
-    "EP_DELAY_MAX":     2200,
-    "BATCH_SIZE":       10,
-    "BATCH_COOLDOWN":   8.0,
+    "BASE_URL":             "https://yanhh3d.bz",
+    "OUTPUT_DIR":           "ophim",
+    "STATE_FILE":           "ophim/.state.json",
+    "LIST_FILE":            "ophim.json",
+    "MAX_MOVIES":           50,
+    "MAX_EPISODES":         None,
+    "TIMEOUT_NAV":          30000,
+    "TIMEOUT_WAIT":         20000,
+    "USER_AGENT":           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "RAW_BASE":             os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
+    "RETRY_COUNT":          2,
+    "RETRY_DELAY":          1.0,
+    "EP_DELAY_MIN":         1200,
+    "EP_DELAY_MAX":         2200,
+    "BATCH_SIZE":           10,
+    "BATCH_COOLDOWN":       8.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
     "MAX_CONCURRENT_PAGES": 3,
-    "INCREMENTAL_HOURS": 24,
+    "INCREMENTAL_HOURS":    24,
 }
 
 EXTRA_HEADERS = {
@@ -75,7 +76,7 @@ PLAY_FB_V8_HEADERS = {
 }
 
 
-# ── State Management (Incremental Mode) ─────────────────────────────────────
+# ── State Management ────────────────────────────────────────────────────────
 class ScraperState:
     def __init__(self, state_path: str):
         self.path = Path(state_path)
@@ -310,7 +311,7 @@ async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_ep
     return list_item, detail_json
 
 
-# ── JSON Builders (FIXED SYNTAX) ────────────────────────────────────────────
+# ── JSON Builders (CLEAN SYNTAX) ────────────────────────────────────────────
 def build_detail_json(slug, episodes, metadata: dict = None):
     metadata = metadata or {}
     streams = []
@@ -346,7 +347,7 @@ def build_list_item(movie: dict, metadata: dict = None):
     }
 
 
-# ── Async Fetch & Process ───────────────────────────────────────────────────
+# ── Async Fetch & Parallel Processor ────────────────────────────────────────
 async def fetch_movies_async(page, args) -> list:
     url = f"{CONFIG['BASE_URL']}/tim-kiem?keyword={args.search}" if args.search else CONFIG["BASE_URL"]
     await page.goto(url, wait_until="domcontentloaded")
@@ -368,16 +369,25 @@ async def fetch_movies_async(page, args) -> list:
     }}""")
 
 
-async def process_movies_parallel(movies, state, args, p_instance):
+async def process_movies_parallel(movies, state, args, browser):
+    """✅ ĐÃ SỬA: Nhận browser object, tạo context đúng cách, log lỗi rõ ràng"""
     channels = []
     sem = asyncio.Semaphore(CONFIG["MAX_CONCURRENT_PAGES"])
     
     async def worker(movie):
         async with sem:
-            ctx = await p_instance.chromium.new_context(user_agent=CONFIG["USER_AGENT"], viewport={"width": 1280, "height": 720}, locale="vi-VN", timezone_id="Asia/Ho_Chi_Minh", extra_http_headers=EXTRA_HEADERS)
-            page = await ctx.new_page()
-            if HAS_STEALTH: await stealth_async(page)
             try:
+                # ✅ SỬA LỖI GỐC: browser.new_context() thay vì p.chromium.new_context()
+                ctx = await browser.new_context(
+                    user_agent=CONFIG["USER_AGENT"],
+                    viewport={"width": 1280, "height": 720},
+                    locale="vi-VN",
+                    timezone_id="Asia/Ho_Chi_Minh",
+                    extra_http_headers=EXTRA_HEADERS
+                )
+                page = await ctx.new_page()
+                if HAS_STEALTH: await stealth_async(page)
+                
                 res = await scrape_movie_async(page, movie, state, args.max_episodes, args.incremental and not args.full_scan)
                 if res:
                     li, dj = res
@@ -386,20 +396,27 @@ async def process_movies_parallel(movies, state, args, p_instance):
                     with open(p, "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
                     return li
             except Exception as e:
-                logger.error(f"  Error processing {movie.get('slug')}: {e}")
+                logger.error(f"  ❌ Worker error {movie.get('slug')}: {e}")
+                import traceback
+                traceback.print_exc()
             finally:
-                await ctx.close()
+                if 'ctx' in locals(): await ctx.close()
         return None
 
     tasks = [worker(m) for m in movies[:args.max_movies]]
-    for res in await asyncio.gather(*tasks, return_exceptions=True):
-        if res and isinstance(res, dict): channels.append(res)
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    for res in results:
+        if isinstance(res, Exception):
+            logger.error(f"Parallel task failed: {res}")
+        elif res and isinstance(res, dict):
+            channels.append(res)
     return channels
 
 
 # ── Main ────────────────────────────────────────────────────────────────────
 async def main_async():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer v2.3")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer v2.4")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -417,13 +434,14 @@ async def main_async():
     CONFIG["MAX_EPISODES"] = args.max_episodes
     
     incremental = args.incremental and not args.full_scan
-    logger.info(f"Starting v2.3 (Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']} pages)")
+    logger.info(f"Starting v2.4 (Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']} pages)")
     
     state = ScraperState(Path(CONFIG["OUTPUT_DIR"]) / ".state.json")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     
     async with async_playwright() as p:
+        # ✅ Khởi tạo browser 1 lần duy nhất
         browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage"])
         ctx = await browser.new_context(user_agent=CONFIG["USER_AGENT"], viewport={"width": 1280, "height": 720})
         page = await ctx.new_page()
@@ -437,7 +455,8 @@ async def main_async():
                 logger.info(f"Incremental filter: {len(movies)} movies to scrape.")
             
             if movies:
-                channels = await process_movies_parallel(movies, state, args, p)
+                # ✅ Truyền browser object vào processor
+                channels = await process_movies_parallel(movies, state, args, browser)
             else:
                 channels = []
                 logger.info("No movies to scrape.")
@@ -453,7 +472,7 @@ async def main_async():
         "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"},
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3, "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.3", "incremental": incremental}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.4", "incremental": incremental}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f:
         json.dump(list_out, f, ensure_ascii=False, indent=2)
