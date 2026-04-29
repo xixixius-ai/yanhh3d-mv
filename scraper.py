@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v1.3)
+YanHH3D Scraper → MonPlayer JSON (v1.4)
 Chiến lược stream URL:
   1. short.icu → abyss.to embed → Playwright extract m3u8/mp4 thật (ưu tiên #1)
-  2. fbcdn.cloud m3u8 → giữ nguyên làm fallback (Mon player tự xử)
-  3. Bỏ hoàn toàn: play-fb-v8, ffmpeg merge, proxy
+  2. play-fb-v8 proxy → follow redirect → Facebook CDN mp4 (ưu tiên #2)
+  3. fbcdn.cloud m3u8 → giữ nguyên làm fallback (Mon player tự xử)
+  4. Bỏ ffmpeg merge
 """
 
 import json
@@ -45,7 +46,7 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
 }
 
-QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd", "abyss", "link10"]
+QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd", "abyss", "link10", "fb-cdn"]
 
 EXTRA_HEADERS = {
     "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -61,6 +62,13 @@ EXTRA_HEADERS = {
 }
 
 SHORT_ICU_HEADERS = {
+    "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
+    "Referer":         "https://yanhh3d.bz/",
+}
+
+PLAY_FB_V8_HEADERS = {
     "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
@@ -133,6 +141,77 @@ def resolve_short_icu(short_url: str) -> str | None:
             raise
     except Exception as e:
         logger.warning(f"   resolve_short_icu failed for {short_url}: {e}")
+        return None
+
+
+# ── play-fb-v8 resolver (MỚI) ────────────────────────────────────────────────
+def resolve_play_fb_v8(proxy_url: str) -> str | None:
+    """
+    Follow redirect từ play-fb-v8 proxy → Facebook CDN mp4 thật
+    URL dạng: https://yanhh3d.bz/play-fb-v8/play/{video_id}
+    Trả về: https://scontent-*.xx.fbcdn.net/...mp4?...
+    """
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+
+    try:
+        req = urllib.request.Request(proxy_url, headers=PLAY_FB_V8_HEADERS, method="GET")
+        opener = urllib.request.build_opener(NoRedirect())
+        
+        try:
+            with opener.open(req, timeout=15) as resp:
+                # Nếu trả về 200, có thể là JSON hoặc redirect JS
+                if resp.status == 200:
+                    content_type = resp.headers.get('Content-Type', '')
+                    content = resp.read().decode('utf-8', errors='ignore')
+                    
+                    # Thử parse JSON
+                    if 'application/json' in content_type:
+                        try:
+                            data = json.loads(content)
+                            url = (data.get('url') or 
+                                   data.get('video_url') or 
+                                   data.get('stream_url') or
+                                   data.get('src'))
+                            if url:
+                                logger.info(f"   play-fb-v8 JSON → {url[:80]}...")
+                                return url
+                        except json.JSONDecodeError:
+                            pass
+                    
+                    # Thử tìm URL trong HTML/JS
+                    url_patterns = [
+                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r'url:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                    ]
+                    for pattern in url_patterns:
+                        match = re.search(pattern, content)
+                        if match:
+                            url = match.group(1)
+                            if 'fbcdn' in url or 'facebook' in url:
+                                logger.info(f"   play-fb-v8 HTML parse → {url[:80]}...")
+                                return url
+                
+                return None
+                
+        except urllib.error.HTTPError as e:
+            if e.code in (301, 302, 303, 307, 308):
+                location = e.headers.get("Location", "")
+                if location:
+                    logger.info(f"   play-fb-v8 {e.code} → {location[:100]}...")
+                    # Kiểm tra nếu là Facebook CDN
+                    if 'fbcdn' in location or 'facebook' in location:
+                        return location
+                    # Nếu vẫn là proxy, thử follow tiếp
+                    if 'play-fb-v8' in location:
+                        return resolve_play_fb_v8(location)
+            raise
+            
+    except Exception as e:
+        logger.warning(f"   resolve_play_fb_v8 failed for {proxy_url}: {e}")
         return None
 
 
@@ -320,8 +399,9 @@ def get_episodes(page, slug):
 def get_stream_url(page, context, ep_url):
     """
     Trả về list stream:
-      - abyss  → Playwright extract m3u8/mp4 thật  (type: hls/mp4)
-      - fbcdn  → giữ nguyên m3u8 URL               (type: hls, fallback)
+      - abyss      → Playwright extract m3u8/mp4 thật  (type: hls/mp4)
+      - play-fb-v8 → follow redirect → FB CDN mp4      (type: mp4)
+      - fbcdn      → giữ nguyên m3u8 URL               (type: hls, fallback)
     """
     try:
         _human_delay(200, 500)
@@ -377,14 +457,33 @@ def get_stream_url(page, context, ep_url):
                     streams.append({"url": resolved, "type": vtype, "label": label or "ext"})
                 continue
 
+            # ── play-fb-v8 proxy → Facebook CDN mp4 (MỚI) ─────────────────
+            if "play-fb-v8" in src:
+                logger.info(f"      Resolving play-fb-v8 ({label}): {src}")
+                fb_cdn_url = resolve_play_fb_v8(src)
+                if fb_cdn_url:
+                    # Kiểm tra xem có phải mp4 không
+                    if ".mp4" in fb_cdn_url or "fbcdn" in fb_cdn_url:
+                        streams.append({
+                            "url":   fb_cdn_url,
+                            "type":  "mp4",
+                            "label": f"fb-cdn-{label}" if label else "fb-cdn",
+                        })
+                        logger.info(f"      ✓ FB CDN mp4: {fb_cdn_url[:80]}...")
+                    else:
+                        # Fallback nếu không phải mp4
+                        streams.append({
+                            "url":   fb_cdn_url,
+                            "type":  "hls" if ".m3u8" in fb_cdn_url else "embed",
+                            "label": label or "fb-proxy",
+                        })
+                else:
+                    logger.warning("      play-fb-v8 resolve failed")
+                continue
+
             # ── fbcdn.cloud m3u8 → giữ nguyên làm fallback ───────────────
             if "fbcdn" in src and ".m3u8" in src:
                 streams.append({"url": src, "type": "hls", "label": label or "fb-hls"})
-                continue
-
-            # ── Bỏ qua play-fb-v8 ─────────────────────────────────────────
-            if "play-fb-v8" in src:
-                logger.debug("      Skip play-fb-v8")
                 continue
 
             # ── Nguồn khác ────────────────────────────────────────────────
@@ -405,12 +504,12 @@ def get_stream_url(page, context, ep_url):
         return None
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
 def _sort_streams(stream_list):
     """mp4/hls resolved lên đầu, embed xuống cuối, sau đó theo quality label"""
     def priority(s):
         type_rank = {"mp4": 0, "hls": 1, "embed": 2}.get(s.get("type", "embed"), 3)
-        lbl = re.sub(r"^abyss-", "", (s.get("label") or "").strip().lower())
+        lbl = re.sub(r"^(abyss|fb-cdn)-", "", (s.get("label") or "").strip().lower())
         try:
             quality_rank = QUALITY_PRIORITY.index(lbl)
         except ValueError:
@@ -484,9 +583,9 @@ def build_list_item(movie):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 def scrape():
-    logger.info("Starting YanHH3D to MonPlayer scraper (v1.3)...")
+    logger.info("Starting YanHH3D to MonPlayer scraper (v1.4)...")
     logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND'}")
-    logger.info("Stream priority: abyss extract > fbcdn m3u8 fallback")
+    logger.info("Stream priority: abyss extract > play-fb-v8 → FB CDN > fbcdn m3u8 fallback")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -578,7 +677,7 @@ def scrape():
             "source":      CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version":     "1.3"
+            "version":     "1.4"
         }
     }
 
