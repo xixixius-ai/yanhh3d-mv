@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v2.7)
-- ✅ RESTORED: Episode logic exactly matches v2.2
-- ✅ FIX ASYNC: Added networkidle wait + selector fallbacks for #list_sv
-- ✅ FIX PROXY: Enhanced resolver with auto-redirect, broader regex, asyncio.to_thread
-- ✅ Kept: Incremental, parallel (3 pages), anti-rate-limit, search flags
+YanHH3D Scraper → MonPlayer JSON (v2.2)
+- Anti-Rate-Limit: 2.5-4.5s delay + batch cooldown
+- 429/403 Handler: Auto-wait & retry
+- Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
+- Clean Syntax: Fix toàn bộ lỗi meta dict / if metadata / type hint
 """
 
 import argparse
-import asyncio
 import json
 import logging
 import os
@@ -18,14 +17,13 @@ import sys
 import time
 import urllib.request
 import urllib.error
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
 
-from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeout
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 try:
-    from playwright_stealth import stealth_async
+    from playwright_stealth import stealth_sync
     HAS_STEALTH = True
 except ImportError:
     HAS_STEALTH = False
@@ -38,185 +36,360 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 CONFIG = {
-    "BASE_URL":             "https://yanhh3d.bz",
-    "OUTPUT_DIR":           "ophim",
-    "STATE_FILE":           "ophim/.state.json",
-    "LIST_FILE":            "ophim.json",
-    "MAX_MOVIES":           50,
-    "MAX_EPISODES":         None,
-    "TIMEOUT_NAV":          30000,
-    "TIMEOUT_WAIT":         20000,
-    "USER_AGENT":           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "RAW_BASE":             os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
-    "RETRY_COUNT":          2,
-    "RETRY_DELAY":          1.0,
-    "EP_DELAY_MIN":         1200,
-    "EP_DELAY_MAX":         2200,
-    "BATCH_SIZE":           10,
-    "BATCH_COOLDOWN":       8.0,
+    "BASE_URL":     "https://yanhh3d.bz",
+    "OUTPUT_DIR":   "ophim",
+    "LIST_FILE":    "ophim.json",
+    "MAX_MOVIES":   50,
+    "MAX_EPISODES": None,
+    "TIMEOUT_NAV":  30000,
+    "TIMEOUT_WAIT": 20000,
+    "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
+    "RETRY_COUNT":  2,
+    "RETRY_DELAY":  1.0,
+    "EP_DELAY_MIN": 2500,
+    "EP_DELAY_MAX": 4500,
+    "BATCH_SIZE":   15,
+    "BATCH_COOLDOWN": 12.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
-    "MAX_CONCURRENT_PAGES": 3,
-    "INCREMENTAL_HOURS":    24,
 }
 
 EXTRA_HEADERS = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Cache-Control": "no-cache",
-    "Pragma": "no-cache",
+    "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language":           "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding":           "gzip, deflate, br",
+    "Cache-Control":             "no-cache",
+    "Pragma":                    "no-cache",
+    "Sec-Fetch-Dest":            "document",
+    "Sec-Fetch-Mode":            "navigate",
+    "Sec-Fetch-Site":            "none",
+    "Sec-Fetch-User":            "?1",
+    "Upgrade-Insecure-Requests": "1",
 }
 
 PLAY_FB_V8_HEADERS = {
-    "User-Agent": CONFIG["USER_AGENT"],
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
-    "Referer": "https://yanhh3d.bz/",
+    "Referer":         "https://yanhh3d.bz/",
 }
 
 
-class ScraperState:
-    def __init__(self, state_path: str):
-        self.path = Path(state_path)
-        self.data = self._load()
-    def _load(self) -> dict:
-        if self.path.exists():
-            try:
-                with open(self.path, "r", encoding="utf-8") as f: return json.load(f)
-            except Exception: pass
-        return {"movies": {}, "last_full_scan": None}
-    def save(self):
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.path, "w", encoding="utf-8") as f: json.dump(self.data, f, ensure_ascii=False, indent=2)
-    def get_movie(self, slug: str) -> dict: return self.data["movies"].get(slug, {})
-    def update_movie(self, slug: str, **kwargs):
-        if slug not in self.data["movies"]: self.data["movies"][slug] = {}
-        self.data["movies"][slug].update(kwargs)
-        self.data["movies"][slug]["updated_at"] = datetime.now(timezone.utc).isoformat()
-    def should_scrape(self, slug: str, incremental: bool) -> bool:
-        if not incremental: return True
-        last = self.get_movie(slug).get("last_scraped")
-        if not last: return True
-        try:
-            return (datetime.now(timezone.utc) - datetime.fromisoformat(last.replace("Z", "+00:00"))) < timedelta(hours=CONFIG["INCREMENTAL_HOURS"])
-        except: return True
-    def set_full_scan(self):
-        self.data["last_full_scan"] = datetime.now(timezone.utc).isoformat()
-        self.save()
+def _human_delay(min_ms=300, max_ms=900):
+    time.sleep(random.uniform(min_ms / 1000, max_ms / 1000))
+
+
+def _apply_stealth(page):
+    if HAS_STEALTH:
+        stealth_sync(page)
+    else:
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            Object.defineProperty(navigator, 'plugins',   { get: () => [1, 2, 3] });
+            Object.defineProperty(navigator, 'languages', { get: () => ['vi-VN', 'vi', 'en-US'] });
+            window.chrome = { runtime: {} };
+        """)
+
+
+def _debug_page(page, label):
+    try:
+        title   = page.title()
+        url_now = page.url
+        html    = page.content()[:800].replace('\n', ' ')
+        logger.info(f"   [DEBUG:{label}] title='{title}'")
+        logger.info(f"   [DEBUG:{label}] url='{url_now}'")
+        logger.info(f"   [DEBUG:{label}] html[:800]={html}")
+    except Exception as e:
+        logger.info(f"   [DEBUG:{label}] cannot read page: {e}")
+
+
+def _wait_for_cf(page, selector, timeout):
+    try:
+        page.wait_for_function(
+            """() => !document.title.includes('Just a moment') &&
+                    !document.querySelector('#challenge-running') &&
+                    document.readyState === 'complete'""",
+            timeout=15000
+        )
+    except Exception:
+        pass
+    page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
 def _build_search_str(movie: dict, metadata: dict = None) -> str:
     metadata = metadata or {}
-    return " ".join(filter(None, [
-        movie.get("title", ""), " ".join(metadata.get("tags", [])),
-        metadata.get("description", ""), movie.get("slug", "").replace("-", " "),
-        "hoạt hình trung quốc thuyết minh anime donghua"
-    ])).lower()
+    parts = [
+        movie.get("title", ""),
+        " ".join(metadata.get("tags", [])),
+        metadata.get("description", ""),
+        movie.get("slug", "").replace("-", " "),
+        "hoạt hình trung quốc", "thuyết minh", "anime", "donghua"
+    ]
+    return " ".join(p for p in parts if p).lower().strip()
+
+
+def get_movie_metadata(page, slug: str) -> dict:
+    detail_url = f"{CONFIG['BASE_URL']}/{slug}"
+    metadata = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
+    
+    try:
+        _human_delay(200, 400)
+        page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, "body", CONFIG["TIMEOUT_WAIT"])
+        
+        meta = page.evaluate("""() => {
+            const result = { description: "", tags: [], year: "", status: "", poster: "", total_episodes: "" };
+            const desc = document.querySelector('meta[name="description"]')?.content ||
+                        document.querySelector('meta[property="og:description"]')?.content || "";
+            result.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
+            
+            const genreLinks = document.querySelectorAll('.genres a, .film-info a[href*="/the-loai/"], .tick a');
+            for (const link of genreLinks) {
+                const text = link.innerText.trim();
+                if (text && text.length < 50 && !/tap|tập/i.test(text)) result.tags.push(text);
+            }
+            result.tags = [...new Set(result.tags)].slice(0, 10);
+            
+            const yearMatch = document.title.match(/(\d{4})/) || document.querySelector('.film-info')?.innerText?.match(/(\d{4})/);
+            if (yearMatch) result.year = yearMatch[1];
+            
+            const statusText = document.querySelector('.tick-rate, .badge, .status')?.innerText?.toLowerCase() || "";
+            if (/hoàn thành|end|completed/i.test(statusText)) result.status = "completed";
+            else if (/đang phát|ongoing|updating/i.test(statusText)) result.status = "ongoing";
+            
+            const poster = document.querySelector('meta[property="og:image"]')?.content ||
+                          document.querySelector('.film-poster img')?.src ||
+                          document.querySelector('.film-poster img')?.dataset.src || "";
+            result.poster = poster || "";
+            
+            const epInfo = document.querySelector('.total-episodes, .episode-count, .film-info .fdi-item')?.innerText || "";
+            const epMatch = epInfo.match(/(\d+)\s*(?:tập|ep)/i);
+            if (epMatch) result.total_episodes = epMatch[1];
+            return result;
+        }""")
+        
+        if not meta.get("description"):
+            html = page.content()
+            desc_match = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html, re.I)
+            if desc_match:
+                meta["description"] = desc_match.group(1).strip()[:500]
+            
+        logger.info(f"   Meta tags={meta['tags'][:3]}..., status={meta['status']}")
+        return meta
+    except Exception as e:
+        logger.warning(f"   Failed to extract metadata for {slug}: {e}")
+        return metadata
+
+
+def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
+    if retry_count is None:
+        retry_count = CONFIG["RETRY_COUNT"]
+    
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+
+    last_error = None
+    for attempt in range(retry_count + 1):
+        try:
+            req = urllib.request.Request(proxy_url, headers=PLAY_FB_V8_HEADERS, method="GET")
+            opener = urllib.request.build_opener(NoRedirect())
+            with opener.open(req, timeout=20) as resp:
+                if resp.status in (301, 302, 303, 307, 308):
+                    location = resp.headers.get("Location", "")
+                    if location and _is_valid_fb_cdn(location):
+                        return location
+                
+                if resp.status == 200:
+                    content_type = resp.headers.get('Content-Type', '')
+                    content = resp.read().decode('utf-8', errors='ignore')
+                    
+                    if 'application/json' in content_type:
+                        try:
+                            data = json.loads(content)
+                            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+                            if url and _is_valid_fb_cdn(url):
+                                return url
+                        except json.JSONDecodeError:
+                            pass
+                    
+                    url_patterns = [
+                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                    ]
+                    for pattern in url_patterns:
+                        match = re.search(pattern, content, re.IGNORECASE)
+                        if match:
+                            url = match.group(1).replace('\\/', '/')
+                            if _is_valid_fb_cdn(url):
+                                return url
+                    
+                    fallback = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
+                    if fallback and _is_valid_fb_cdn(fallback.group(1)):
+                        return fallback.group(1)
+                
+                logger.debug(f"   ⚠️ play-fb-v8 returned status {resp.status}")
+                return None
+                
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 403):
+                wait_time = random.uniform(5.0, 12.0)
+                logger.warning(f"   🛑 Server rate-limited ({e.code}). Waiting {wait_time:.1f}s...")
+                time.sleep(wait_time)
+                continue
+            if e.code in (301, 302, 303, 307, 308):
+                location = e.headers.get("Location", "")
+                if location and _is_valid_fb_cdn(location):
+                    return location
+            last_error = f"HTTPError {e.code}"
+        except Exception as e:
+            last_error = str(e)
+            
+        if attempt < retry_count:
+            delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
+            logger.debug(f"   Retry {attempt + 1}/{retry_count} in {delay}s...")
+            time.sleep(delay)
+            
+    logger.warning(f"   resolve_play_fb_v8 failed: {last_error}")
+    return None
+
 
 def _is_valid_fb_cdn(url: str) -> bool:
-    if not url: return False
-    u = url.lower()
-    return ('fbcdn' in u or 'facebook' in u or 'video-sin' in u) and '.mp4' in u
+    if not url:
+        return False
+    url_lower = url.lower()
+    return ('fbcdn' in url_lower or 'facebook' in url_lower) and '.mp4' in url_lower
 
 
-async def resolve_play_fb_v8_async(proxy_url: str) -> Optional[str]:
-    """✅ V2.7: Sync urllib wrapped in asyncio.to_thread + broader regex + auto-redirect"""
-    def _fetch():
-        for attempt in range(CONFIG["RETRY_COUNT"] + 1):
-            try:
-                req = urllib.request.Request(proxy_url, headers=PLAY_FB_V8_HEADERS, method="GET")
-                # Allow auto-redirect to catch direct FB CDN redirects
-                with urllib.request.urlopen(req, timeout=20) as resp:
-                    final_url = resp.url
-                    if _is_valid_fb_cdn(final_url):
-                        return final_url
-                    
-                    content = resp.read().decode('utf-8', errors='ignore')
-                    # Broadened regex suite
-                    patterns = [
-                        r'"(https?://[^"]+\.mp4[^"]*)"',
-                        r"'(https?://[^']+\.mp4[^']*)'",
-                        r'url\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'src\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'data-src\s*[:=]\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                    ]
-                    for pat in patterns:
-                        m = re.search(pat, content, re.I)
-                        if m:
-                            url = m.group(1).replace('\\/', '/')
-                            if _is_valid_fb_cdn(url): return url
-                    return None
-            except urllib.error.HTTPError as e:
-                if e.code in (301, 302, 303, 307, 308):
-                    loc = e.headers.get("Location", "")
-                    if loc and _is_valid_fb_cdn(loc): return loc
-                if e.code in (429, 403):
-                    time.sleep(random.uniform(4, 8))
-                    continue
-            except Exception: pass
-            if attempt < CONFIG["RETRY_COUNT"]: time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
-        return None
-
-    return await asyncio.to_thread(_fetch)
-
-
-async def _wait_cf(page):
-    try: await page.wait_for_function("() => !document.title.includes('Just a moment') && !document.querySelector('#challenge-running')", timeout=8000)
-    except: pass
-
-
-async def get_movie_metadata_async(page, slug: str) -> dict:
-    meta = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
+def search_movies(page, keyword: str) -> list[dict]:
     try:
-        await page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        await _wait_cf(page)
-        await page.wait_for_selector("body", timeout=10000)
-        m = await page.evaluate("""() => {
-            const r = { description: "", tags: [], year: "", status: "", poster: "", total_episodes: "" };
-            const desc = document.querySelector('meta[name="description"]')?.content || document.querySelector('meta[property="og:description"]')?.content || "";
-            r.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
-            document.querySelectorAll('.genres a, .film-info a[href*="/the-loai/"], .tick a').forEach(l => {
-                const t = l.innerText.trim(); if (t && t.length < 50 && !/tap|tập/i.test(t)) r.tags.push(t);
-            });
-            r.tags = [...new Set(r.tags)].slice(0, 10);
-            const y = document.title.match(/(\d{4})/) || document.querySelector('.film-info')?.innerText?.match(/(\d{4})/);
-            if (y) r.year = y[1];
-            const s = document.querySelector('.tick-rate, .badge, .status')?.innerText?.toLowerCase() || "";
-            r.status = /hoàn thành|end|completed/i.test(s) ? "completed" : (/đang phát|ongoing|updating/i.test(s) ? "ongoing" : "");
-            r.poster = document.querySelector('meta[property="og:image"]')?.content || document.querySelector('.film-poster img')?.src || document.querySelector('.film-poster img')?.dataset.src || "";
-            const ep = document.querySelector('.total-episodes, .episode-count, .film-info .fdi-item')?.innerText || "";
-            const em = ep.match(/(\d+)\s*(?:tập|ep)/i); if (em) r.total_episodes = em[1];
-            return r;
+        search_url = f"{CONFIG['BASE_URL']}/tim-kiem?keyword={keyword}"
+        page.goto(search_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
+        return page.evaluate("""() => {
+            const results = [];
+            const items = document.querySelectorAll('.flw-item');
+            for (const item of items) {
+                const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
+                if (!link?.href) continue;
+                const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                const title = link.innerText.trim() || link.title || '';
+                if (!title || slug.includes('search')) continue;
+                let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || 
+                           item.querySelector('img[data-src], img.film-poster-img')?.src || '';
+                if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
+                const badge = item.querySelector('.tick.tick-rate, .fdi-item')?.innerText.trim() || '';
+                results.push({ slug, title, thumb, badge });
+            }
+            return results;
         }""")
-        meta.update(m)
-    except Exception as e: logger.warning(f"   Metadata fail {slug}: {e}")
-    return meta
+    except Exception as e:
+        logger.error(f"   Search failed: {e}")
+        return []
 
 
-# ✅ V2.7: RESTORED V2.2 EPISODE LOGIC + ASYNC SAFETY
-async def get_episodes_async(page, slug: str) -> list:
+def list_all_movies(page, category_url: str = None) -> list[dict]:
+    url = category_url or f"{CONFIG['BASE_URL']}/danh-sach/hoat-hinh"
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
+        movies, page_num = [], 1
+        while len(movies) < 200:
+            batch = page.evaluate("""() => {
+                const results = [];
+                const items = document.querySelectorAll('.flw-item');
+                for (const item of items) {
+                    const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
+                    if (!link?.href) continue;
+                    const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                    const title = link.innerText.trim() || link.title || '';
+                    if (!title || slug.includes('search')) continue;
+                    let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || 
+                               item.querySelector('img[data-src], img.film-poster-img')?.src || '';
+                    if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
+                    const badge = item.querySelector('.tick.tick-rate, .fdi-item')?.innerText.trim() || '';
+                    results.push({ slug, title, thumb, badge });
+                }
+                return results;
+            }""")
+            if not batch:
+                break
+            movies.extend(batch)
+            next_btn = page.query_selector('a[title="Next"], .pagination li.active + li a')
+            if not next_btn:
+                break
+            page_num += 1
+            if page_num > 15:
+                break
+            next_btn.click()
+            _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
+            _human_delay(500, 1000)
+        return movies
+    except Exception as e:
+        logger.error(f"   List movies failed: {e}")
+        return []
+
+
+def get_trending_movies(page, limit: int = 50):
+    try:
+        page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _debug_page(page, "homepage")
+        _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
+        return page.evaluate(f"""() => {{
+            const results = [];
+            const items = document.querySelectorAll('.flw-item');
+            for (const item of items) {{
+                if (results.length >= {limit}) break;
+                const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
+                if (!link?.href) continue;
+                const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                const title = link.innerText.trim() || link.title || '';
+                if (!title || slug.includes('search')) continue;
+                let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || 
+                           item.querySelector('img[data-src], img.film-poster-img')?.src || '';
+                if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
+                const badge = item.querySelector('.tick.tick-rate, .fdi-item')?.innerText.trim() || '';
+                results.push({{ slug, title, thumb, badge }});
+            }}
+            return results;
+        }}""")
+    except Exception as e:
+        logger.error(f"Failed to get trending movies: {e}")
+        return []
+
+
+def get_latest_ep_url(page, slug):
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
-        await page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        await _wait_cf(page)
-        await page.wait_for_selector(f"a[href*='/{slug}/tap-']", timeout=CONFIG["TIMEOUT_WAIT"])
-        
-        latest_ep_url = await page.evaluate(f"""() => {{
+        _human_delay(300, 700)
+        page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _debug_page(page, f"detail-{slug}")
+        _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
+        return page.evaluate(f"""() => {{
             const links = Array.from(document.querySelectorAll('a[href*="/{slug}/tap-"]'))
                 .filter(a => !a.href.includes('/sever2/'))
                 .map(a => ({{ href: a.href, num: parseInt((a.href.match(/tap-(\\d+)/) || [])[1] || '0') }}))
                 .filter(a => a.num > 0).sort((a, b) => b.num - a.num);
             return links.length ? links[0].href : null;
         }}""")
-        if not latest_ep_url: return []
-        
-        await page.goto(latest_ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        await _wait_cf(page)
-        # ✅ Wait for network to settle before DOM query (fixes async race condition)
-        await page.wait_for_load_state('networkidle', timeout=10000)
-        await page.wait_for_selector("#top-comment", timeout=CONFIG["TIMEOUT_WAIT"])
-        
-        episodes = await page.evaluate("""() => {
+    except Exception as e:
+        logger.warning(f"   Error on detail page for {slug}: {e}")
+        return None
+
+
+def get_episodes(page, slug):
+    latest_url = get_latest_ep_url(page, slug)
+    if not latest_url:
+        return []
+    try:
+        _human_delay(400, 800)
+        page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _debug_page(page, f"ep-{slug}")
+        _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
+        episodes = page.evaluate("""() => {
             const results = [];
             const pane = document.querySelector('#top-comment');
             if (!pane) return results;
@@ -229,191 +402,274 @@ async def get_episodes_async(page, slug: str) -> list:
             }
             return results.sort((a, b) => b.num - a.num);
         }""")
+        logger.info(f"   Got {len(episodes)} episodes (sorted: newest first)")
         return episodes
-    except Exception as e: 
-        logger.warning(f"   Episode fetch fail {slug}: {e}")
+    except Exception as e:
+        logger.warning(f"   Error at {latest_url}: {e}")
         return []
 
 
-async def get_stream_url_async(page, ep_url: str) -> Optional[list]:
+def get_stream_url(page, context, ep_url):
     try:
-        await page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        await _wait_cf(page)
-        # ✅ Wait for networkidle to ensure JS-rendered buttons exist
-        await page.wait_for_load_state('networkidle', timeout=10000)
-        
-        # ✅ Fallback selectors if #list_sv changes
-        btns = await page.evaluate("""() => {
-            const r = [];
-            const containers = document.querySelectorAll('#list_sv, #servers, .server-list, .ps__-list');
-            containers.forEach(c => {
-                c.querySelectorAll('a.btn3dsv, a.btn, .server-item a').forEach(b => {
-                    const s = (b.getAttribute('data-src') || b.href || '').trim();
-                    const l = (b.innerText || b.textContent || '').trim().toLowerCase();
-                    if (s) r.push({ src: s, label: l });
-                });
-            });
-            return r;
+        _human_delay(200, 500)
+        page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, "#list_sv", CONFIG["TIMEOUT_WAIT"])
+        raw_buttons = page.evaluate("""() => {
+            const results = [];
+            const btns = document.querySelectorAll('#list_sv a.btn3dsv');
+            for (const btn of btns) {
+                const src = (btn.getAttribute('data-src') || '').trim();
+                const label = (btn.innerText || btn.textContent || '').trim().toLowerCase();
+                if (src) results.push({ src, label });
+            }
+            return results;
         }""")
-        
-        if not btns:
-            logger.debug(f"   ⚠️ No stream buttons found on {ep_url}")
-            return None
-            
-        cands = [b for b in btns if any(x in b["label"] for x in ["hd", "1080", "4k", "fb"])] or btns
-        for b in cands:
-            if "play-fb-v8" in b["src"]:
-                url = await resolve_play_fb_v8_async(b["src"])
-                if url and _is_valid_fb_cdn(url):
-                    return [{"url": url, "type": "mp4", "label": f"fb-cdn-{b['label']}" if b['label'] else "fb-cdn"}]
+        preferred = [b for b in raw_buttons if any(x in b["label"] for x in ["hd", "1080", "4k"])]
+        candidates = preferred if preferred else raw_buttons
+        for btn in candidates:
+            if "play-fb-v8" in btn["src"]:
+                fb_cdn_url = resolve_play_fb_v8(btn["src"])
+                if fb_cdn_url and _is_valid_fb_cdn(fb_cdn_url):
+                    return [{"url": fb_cdn_url, "type": "mp4", "label": f"fb-cdn-{btn['label']}" if btn['label'] else "fb-cdn"}]
         return None
     except Exception as e:
-        logger.debug(f"   Stream extraction fail: {e}")
+        logger.debug(f"Stream extraction failed: {e}")
         return None
-
-
-async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_episodes: int = None, incremental: bool = False) -> Optional[tuple]:
-    if max_episodes is None: max_episodes = CONFIG["MAX_EPISODES"]
-    slug = movie_info["slug"]
-    if not state.should_scrape(slug, incremental):
-        logger.info(f"  ⏭️ Skip {slug} (cached)")
-        return None
-    
-    logger.info(f"  Processing: {slug}")
-    metadata = await get_movie_metadata_async(page, slug)
-    metadata.update({"title": movie_info.get("title", slug), "thumb": movie_info.get("thumb", ""), "badge": movie_info.get("badge", "")})
-    
-    episodes = await get_episodes_async(page, slug)
-    if not episodes:
-        logger.warning(f"  No episodes for {slug}")
-        return None
-
-    ep_data, crawl_limit, consec_fail = [], len(episodes) if max_episodes is None else min(len(episodes), max_episodes), 0
-    for i in range(crawl_limit):
-        ep = episodes[i]
-        await asyncio.sleep(random.uniform(CONFIG["EP_DELAY_MIN"] / 1000, CONFIG["EP_DELAY_MAX"] / 1000))
-        if (i + 1) % CONFIG["BATCH_SIZE"] == 0:
-            await asyncio.sleep(CONFIG["BATCH_COOLDOWN"])
-            consec_fail = 0
-        
-        stream = await get_stream_url_async(page, ep["url"])
-        if stream:
-            ep_data.append({"name": ep["name"], "stream": stream})
-            consec_fail = 0
-        else:
-            consec_fail += 1
-            ep_data.append({"name": ep["name"], "stream": [{"id": f"{slug}--0-{i}-err", "name": f"{ep['name']}(no stream)", "type": "error", "default": False, "url": "error:no_stream"}]})
-            logger.warning(f"    ✗ Tap {ep['name']}: no stream (streak: {consec_fail})")
-            if consec_fail >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]: 
-                logger.warning(f"    ⛔ Fail limit reached. Stopping {slug}.")
-                break
-    
-    state.update_movie(slug, last_scraped=datetime.now(timezone.utc).isoformat(), last_episode=episodes[0]["name"])
-    return build_detail_json(slug, ep_data, metadata), build_list_item(movie_info, metadata)
 
 
 def build_detail_json(slug, episodes, metadata: dict = None):
     metadata = metadata or {}
-    streams = [{"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": [{"id": f"{slug}--0-{i}-{j}", "name": s.get("label") or f"Link {j+1}", "type": s["type"], "default": j==0, "url": s["url"]} for j, s in enumerate(ep.get("stream", []))]} for i, ep in enumerate(episodes) if ep.get("stream")]
-    res = {"sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}], "subtitle": "Thuyet Minh", "search": _build_search_str({"slug": slug, "title": slug}, metadata), "tags": metadata.get("tags", []), "description": metadata.get("description", "")}
-    for k in ["year", "status", "total_episodes"]:
-        if metadata.get(k): res[k] = metadata[k]
-    return res
+    streams = []
+    for i, ep in enumerate(episodes):
+        raw_streams = ep.get("stream")
+        if not raw_streams:
+            continue
+        stream_links = []
+        for j, s in enumerate(raw_streams):
+            stream_links.append({
+                "id": f"{slug}--0-{i}-{j}",
+                "name": s.get("label") or f"Link {j + 1}",
+                "type": s["type"],
+                "default": j == 0,
+                "url": s["url"],
+            })
+        streams.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": stream_links})
+    
+    result = {
+        "sources": [{
+            "id": f"{slug}--0",
+            "name": "Thuyet Minh #1",
+            "contents": [{
+                "id": f"{slug}--0",
+                "name": "",
+                "grid_number": 3,
+                "streams": streams
+            }]
+        }],
+        "subtitle": "Thuyet Minh",
+        "search": _build_search_str({"slug": slug, "title": slug}, metadata),
+        "tags": metadata.get("tags", []),
+        "description": metadata.get("description", ""),
+    }
+    if metadata.get("year"):
+        result["year"] = metadata["year"]
+    if metadata.get("status"):
+        result["status"] = metadata["status"]
+    if metadata.get("total_episodes"):
+        result["total_episodes"] = metadata["total_episodes"]
+    return result
 
-def build_list_item(movie: dict, metadata: dict = None):
+
+def build_list_item(movie: dict, meta dict = None):
     metadata = metadata or {}
-    return {"id": movie["slug"], "name": movie["title"], "search": _build_search_str(movie, metadata), "keywords": metadata.get("tags", []), "description": metadata.get("description", ""), "image": {"url": movie.get("thumb") or metadata.get("poster", ""), "type": "cover", "width": 480, "height": 640}, "type": "playlist", "display": "text-below", "label": {"text": movie.get("badge") or metadata.get("status", "") or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"}, "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"}, "enable_detail": True}
+    thumb = movie.get("thumb") or metadata.get("poster", "")
+    badge = movie.get("badge") or metadata.get("status", "")
+    
+    item = {
+        "id": movie["slug"],
+        "name": movie["title"],
+        "search": _build_search_str(movie, metadata),
+        "keywords": metadata.get("tags", []),
+        "description": metadata.get("description", ""),
+        "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
+        "type": "playlist",
+        "display": "text-below",
+        "label": {"text": badge or "Trending", "position": "top-left", "color": "#35ba8b", "text_color": "#ffffff"},
+        "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"},
+        "enable_detail": True
+    }
+    if metadata.get("year"):
+        item["year"] = metadata["year"]
+    if metadata.get("status"):
+        item["status"] = metadata["status"]
+    return item
 
 
-async def fetch_movies_async(page, args) -> list:
-    url = f"{CONFIG['BASE_URL']}/tim-kiem?keyword={args.search}" if args.search else CONFIG["BASE_URL"]
-    await page.goto(url, wait_until="domcontentloaded")
-    await _wait_cf(page)
-    limit = min(200, args.max_movies * 2)
-    return await page.evaluate(f"""() => {{
-        const r = [];
-        document.querySelectorAll('.flw-item').forEach(item => {{
-            if (r.length >= {limit}) return;
-            const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
-            if (!link?.href) return;
-            const slug = link.href.split('/').pop().replace(/\\/$/, '');
-            const title = link.innerText.trim() || link.title || '';
-            if (!title || slug.includes('search')) return;
-            let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || item.querySelector('img[data-src], img.film-poster-img')?.src || '';
-            if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
-            r.push({{ slug, title, thumb, badge: (item.querySelector('.tick.tick-rate, .fdi-item')?.innerText || '').trim() }});
-        }}); return r;
-    }}""")
+def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> tuple | None:
+    if max_episodes is None:
+        max_episodes = CONFIG["MAX_EPISODES"]
+    slug = movie_info["slug"]
+    logger.info(f"  Processing: {slug}")
+    
+    metadata = get_movie_metadata(page, slug)
+    metadata["title"] = movie_info.get("title", slug)
+    metadata["thumb"] = movie_info.get("thumb", "")
+    metadata["badge"] = movie_info.get("badge", "")
+    
+    episodes = get_episodes(page, slug)
+    if not episodes:
+        logger.warning(f"  No episodes found for {slug}")
+        return None
+
+    ep_data = []
+    crawl_limit = len(episodes) if max_episodes is None else min(len(episodes), max_episodes)
+    consecutive_fails = 0
+    
+    for i in range(crawl_limit):
+        ep = episodes[i]
+        _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
+        
+        if (i + 1) % CONFIG["BATCH_SIZE"] == 0:
+            logger.info(f"    🛑 Batch limit ({CONFIG['BATCH_SIZE']}). Cooling down {CONFIG['BATCH_COOLDOWN']}s...")
+            time.sleep(CONFIG["BATCH_COOLDOWN"])
+            consecutive_fails = 0
+            
+        stream = get_stream_url(page, context, ep["url"])
+        if stream:
+            ep_data.append({"name": ep["name"], "stream": stream})
+            logger.info(f"    ✓ Tap {ep['name']}: OK")
+            consecutive_fails = 0
+        else:
+            consecutive_fails += 1
+            ep_data.append({
+                "name": ep["name"],
+                "stream": [{
+                    "id": f"{slug}--0-{i}-err",
+                    "name": f"{ep['name']}(no stream)",
+                    "type": "error",
+                    "default": False,
+                    "url": "error:no_stream"
+                }]
+            })
+            logger.warning(f"    ✗ Tap {ep['name']}: marked as no stream (streak: {consecutive_fails})")
+            
+            if consecutive_fails >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
+                logger.warning(f"    ⛔ Consecutive fail limit reached ({consecutive_fails}). Stopping early.")
+                break
+    
+    detail_json = build_detail_json(slug, ep_data, metadata)
+    list_item = build_list_item(movie_info, metadata)
+    
+    success_count = sum(1 for ep in ep_data if any(s["type"] != "error" for s in ep["stream"]))
+    logger.info(f"  Saved {slug}.json ({success_count}/{len(ep_data)} playable)")
+    return list_item, detail_json
 
 
-async def process_movies_parallel(movies, state, args, browser):
-    channels = []
-    sem = asyncio.Semaphore(CONFIG["MAX_CONCURRENT_PAGES"])
-    async def worker(movie):
-        async with sem:
-            ctx = await browser.new_context(user_agent=CONFIG["USER_AGENT"], viewport={"width": 1280, "height": 720}, locale="vi-VN", timezone_id="Asia/Ho_Chi_Minh", extra_http_headers=EXTRA_HEADERS)
-            page = await ctx.new_page()
-            if HAS_STEALTH: await stealth_async(page)
-            try:
-                res = await scrape_movie_async(page, movie, state, args.max_episodes, args.incremental and not args.full_scan)
-                if res:
-                    dj, li = res
-                    p = Path(CONFIG["OUTPUT_DIR"]) / "detail" / f"{movie['slug']}.json"
-                    p.parent.mkdir(parents=True, exist_ok=True)
-                    with open(p, "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
-                    return li
-            except Exception as e:
-                logger.error(f"  ❌ Worker error {movie.get('slug')}: {e}")
-            finally:
-                await ctx.close()
-            return None
-
-    tasks = [worker(m) for m in movies[:args.max_movies]]
-    for res in await asyncio.gather(*tasks, return_exceptions=True):
-        if isinstance(res, dict): channels.append(res)
-        elif isinstance(res, Exception): logger.error(f"Task failed: {res}")
-    return channels
-
-
-async def main_async():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--search", type=str)
-    parser.add_argument("--slug", type=str)
+def main():
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v2.2")
+    parser.add_argument("--search", type=str, help="Search movies by keyword")
+    parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
+    parser.add_argument("--url", type=str, help="Scrape movie from full URL")
+    parser.add_argument("--list-all", action="store_true", help="List all movies from category")
+    parser.add_argument("--trending", action="store_true", help="Scrape trending (default)")
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
-    parser.add_argument("--max-episodes", type=int, default=None)
+    parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
-    parser.add_argument("--incremental", action="store_true")
-    parser.add_argument("--full-scan", action="store_true")
+    
     args = parser.parse_args()
+    CONFIG["OUTPUT_DIR"] = args.output
+    CONFIG["MAX_MOVIES"] = args.max_movies
+    CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    CONFIG.update({"OUTPUT_DIR": args.output, "MAX_MOVIES": args.max_movies, "MAX_EPISODES": args.max_episodes})
-    incremental = args.incremental and not args.full_scan
-    logger.info(f"Starting v2.7 (Restored v2.2 logic | Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
-    
-    state = ScraperState(Path(CONFIG["OUTPUT_DIR"]) / ".state.json")
-    (Path(CONFIG["OUTPUT_DIR"]) / "detail").mkdir(parents=True, exist_ok=True)
-    
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage"])
-        ctx = await browser.new_context(user_agent=CONFIG["USER_AGENT"], viewport={"width": 1280, "height": 720})
-        page = await ctx.new_page()
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v2.2 - ANTI-RATE-LIMIT + SMART BREAKER)...")
+    detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
+    detail_dir.mkdir(parents=True, exist_ok=True)
+    channels = []
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage", "--lang=vi-VN"])
+        context = browser.new_context(
+            user_agent=CONFIG["USER_AGENT"],
+            viewport={"width": 1280, "height": 720},
+            locale="vi-VN",
+            timezone_id="Asia/Ho_Chi_Minh",
+            extra_http_headers=EXTRA_HEADERS,
+            java_script_enabled=True
+        )
+        page = context.new_page()
+        _apply_stealth(page)
+
         try:
-            movies = await fetch_movies_async(page, args)
-            logger.info(f"Found {len(movies)} movies.")
-            if incremental:
-                movies = [m for m in movies if state.should_scrape(m["slug"], True)]
-                logger.info(f"Incremental filter: {len(movies)} to scrape.")
-            channels = await process_movies_parallel(movies, state, args, browser) if movies else []
+            def process_movie_list(movies):
+                for movie in movies[:args.max_movies]:
+                    try:
+                        res = scrape_movie(page, context, movie, args.max_episodes)
+                        if res:
+                            li, dj = res
+                            with open(detail_dir / f"{movie['slug']}.json", "w", encoding="utf-8") as f: 
+                                json.dump(dj, f, ensure_ascii=False, indent=2)
+                            channels.append(li)
+                    except Exception as e:
+                        logger.error(f"  Error processing {movie.get('slug', 'unknown')}: {e}")
+
+            if args.search:
+                movies = search_movies(page, args.search)
+                process_movie_list(movies)
+            elif args.slug:
+                fake_movie = {"slug": args.slug, "title": args.slug, "thumb": "", "badge": ""}
+                res = scrape_movie(page, context, fake_movie, args.max_episodes)
+                if res:
+                    li, dj = res
+                    with open(detail_dir / f"{args.slug}.json", "w", encoding="utf-8") as f: 
+                        json.dump(dj, f, ensure_ascii=False, indent=2)
+                    channels.append(li)
+            elif args.url:
+                slug = args.url.rstrip('/').split('/')[-1]
+                fake_movie = {"slug": slug, "title": slug, "thumb": "", "badge": ""}
+                res = scrape_movie(page, context, fake_movie, args.max_episodes)
+                if res:
+                    li, dj = res
+                    with open(detail_dir / f"{slug}.json", "w", encoding="utf-8") as f: 
+                        json.dump(dj, f, ensure_ascii=False, indent=2)
+                    channels.append(li)
+            elif args.list_all:
+                movies = list_all_movies(page)
+                process_movie_list(movies)
+            else:
+                movies = get_trending_movies(page, limit=max(50, args.max_movies))
+                logger.info(f"Found {len(movies)} trending movies. Processing {min(len(movies), args.max_movies)}...")
+                process_movie_list(movies)
+                
         finally:
-            await browser.close()
+            browser.close()
+
+    list_output = {
+        "id": "yanhh3d-thuyet-minh",
+        "name": "YanHH3D - Thuyet Minh",
+        "url": f"{CONFIG['RAW_BASE']}/ophim",
+        "search": True,
+        "enable_search": True,
+        "features": {"search": True},
+        "color": "#004444",
+        "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"},
+        "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz",
+        "grid_number": 3,
+        "channels": channels,
+        "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
+        "meta": {
+            "source": CONFIG["BASE_URL"],
+            "total_items": len(channels),
+            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "version": "2.2"
+        }
+    }
     
-    if args.full_scan: state.set_full_scan()
-    else: state.save()
-    
-    list_out = {"id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim", "search": True, "enable_search": True, "features": {"search": True, "incremental": incremental}, "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"}, "description": "Phim thuyet minh chat luong cao", "grid_number": 3, "channels": channels, "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}], "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.7", "incremental": incremental}}
-    with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: json.dump(list_out, f, ensure_ascii=False, indent=2)
-    logger.info(f"✅ Done! {len(channels)} channels saved.")
+    list_path = Path(CONFIG["LIST_FILE"])
+    with open(list_path, "w", encoding="utf-8") as f:
+        json.dump(list_output, f, ensure_ascii=False, indent=2)
+        
+    logger.info(f"✅ Done! Saved {list_path} + {len(channels)} detail files.")
 
 
-def main(): asyncio.run(main_async())
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()
