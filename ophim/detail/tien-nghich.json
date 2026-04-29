@@ -1,31 +1,31 @@
 {
-  "sources": [
-    {
-      "id": "test-abyss--0",
-      "name": "Thuyet Minh #1",
-      "contents": [
-        {
-          "id": "test-abyss--0",
-          "name": "",
-          "grid_number": 3,
-          "streams": [
-            {
-              "id": "test-abyss--0-0",
-              "name": "1",
-              "stream_links": [
-                {
-                  "id": "test-abyss--0-0-0",
-                  "name": "abyss-embed",
-                  "type": "embed",
-                  "default": true,
-                  "url": "https://abysscdn.com/?v=iFJhUcUZC"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "subtitle": "Thuyet Minh"
+  "sources": [{
+    "id": "test-fb--0",
+    "name": "Thuyet Minh #1",
+    "contents": [{
+      "id": "test-fb--0",
+      "name": "",
+      "grid_number": 3,
+      "streams": [{
+        "id": "test-fb--0-0",
+        "name": "1",
+        "stream_links": [{
+          "id": "test-fb--0-0-0",
+          "name": "fb-hls-full",
+          "type": "hls",
+          "default": true,
+          "url": "https://scontent-sin2-3-xx.fbcdn.cloud/stream/m3u8/cbcfc71d-62ad-4f31-a410-6892aa0c9b4c.m3u8",
+          "headers": {
+            "Referer": "https://yanhh3d.bz/",
+            "Origin": "https://yanhh3d.bz",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "Accept": "*/*",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors"
+          }
+        }]
+      }]
+    }]
+  }],
+  "subtitle": "Test"
 }
