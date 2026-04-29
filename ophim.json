@@ -6,15 +6,14 @@
   "enable_search": true,
   "features": {
     "search": true,
-    "incremental": true,
-    "parallel": true
+    "incremental": true
   },
   "color": "#004444",
   "image": {
     "url": "https://yanhh3d.bz/static/img/logo.png",
     "type": "cover"
   },
-  "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz",
+  "description": "Phim thuyet minh chat luong cao",
   "grid_number": 3,
   "channels": [],
   "sorts": [
@@ -27,7 +26,7 @@
   "meta": {
     "source": "https://yanhh3d.bz",
     "total_items": 0,
-    "updated_at": "2026-04-29T21:14:09.447736+00:00",
+    "updated_at": "2026-04-29T21:37:36.024564+00:00",
     "version": "2.4",
     "incremental": true
   }
