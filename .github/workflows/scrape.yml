@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
           playwright install chromium
           playwright install-deps chromium
-      - run: python [scraper.py](http://scraper.py)
+      - run: python scraper.py
         env:
           PYTHONUNBUFFERED: 1
       - uses: stefanzweifel/git-auto-commit-action@v5
