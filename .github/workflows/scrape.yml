@@ -7,7 +7,6 @@ on:
   push:
     paths:
       - 'scraper.py'
-      - 'requirements.txt'
       - '.github/workflows/scrape.yml'  # ⚠️ Đảm bảo tên file khớp với tên file workflow
 
 jobs:
