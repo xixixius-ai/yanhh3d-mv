@@ -2,7 +2,7 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    # ✅ Incremental mode: 1x/day, fast (~5-10 min)
+    # Chạy 1 lần/ngày lúc 3:00 AM UTC (10 AM VN)
     - cron: '0 3 * * *'
   workflow_dispatch:
     inputs:
@@ -40,6 +40,10 @@ jobs:
     concurrency:
       group: scrape-main
       cancel-in-progress: true
+    
+    # ✅ QUAN TRỌNG: Set biến môi trường toàn cục cho job để Playwright tìm đúng path
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
 
     steps:
       - uses: actions/checkout@v4
@@ -53,14 +57,13 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Cài đặt thư viện Python
           pip install -r requirements.txt
-          if [ ! -d ~/.cache/ms-playwright ]; then
-            playwright install chromium
-            playwright install-deps chromium
-          fi
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
-
+          
+          # ✅ CÀI ĐẶT BẮT BUỘC: Tải browser Chromium và dependencies hệ thống
+          # Flag --with-deps giúp cài luôn các lib Linux cần thiết (libnss3, etc.)
+          playwright install --with-deps
+          
       - name: Determine flags
         id: flags
         run: |
