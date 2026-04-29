@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v2.4 - PATCHED)
+YanHH3D Scraper → MonPlayer JSON (v2.4 - FINAL PATCH)
 Fixes:
-  - ✅ Fix JS SyntaxError: Thay Python ternary bằng JS ternary chuẩn
-  - ✅ Fix Timeout: Thêm fallback selector & chờ Cloudflare challenge
-  - ✅ Fix Parallel: Browser/Context lifecycle chuẩn Playwright async
-  - ✅ Keep: Incremental, anti-rate-limit, search flags
+  - ✅ Fix AttributeError: wrapped Path division before .mkdir()
+  - ✅ Fix JS SyntaxError: Python ternary → JS ternary
+  - ✅ Fix Timeout: fallback selectors + CF challenge wait
+  - ✅ Fix Parallel: correct tuple unpacking (detail, list_item)
 """
 
 import argparse
@@ -169,7 +169,6 @@ async def get_movie_metadata_async(page, slug: str) -> dict:
         await _wait_cf(page)
         await page.wait_for_selector("body", timeout=10000)
         
-        # ✅ ĐÃ SỬA CÚ PHÁP JS TERNARY
         m = await page.evaluate("""() => {
             const r = { description: "", tags: [], year: "", status: "", poster: "", total_episodes: "" };
             const desc = document.querySelector('meta[name="description"]')?.content || document.querySelector('meta[property="og:description"]')?.content || "";
@@ -201,7 +200,6 @@ async def get_episodes_async(page, slug: str) -> list:
         await page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
         
-        # ✅ FALLBACK SELECTORS nếu #top-comment đổi
         targets = ["#top-comment", ".ss-list", "#playlist", ".episodes-wrap", ".film-content"]
         active_sel = None
         for sel in targets:
@@ -287,6 +285,7 @@ async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_ep
             if consec_fail >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]: break
     
     state.update_movie(slug, last_scraped=datetime.now(timezone.utc).isoformat(), last_episode=episodes[0]["name"])
+    # ✅ Trả về (detail_json, list_item) để khớp worker
     return build_detail_json(slug, ep_data, metadata), build_list_item(movie_info, metadata)
 
 
@@ -335,7 +334,7 @@ async def process_movies_parallel(movies, state, args, browser):
             try:
                 res = await scrape_movie_async(page, movie, state, args.max_episodes, args.incremental and not args.full_scan)
                 if res:
-                    dj, li = res  # ✅ Đảo thứ tự trả về cho khớp hàm scrape
+                    dj, li = res  # ✅ Khớp thứ tự trả về
                     p = Path(CONFIG["OUTPUT_DIR"]) / "detail" / f"{movie['slug']}.json"
                     p.parent.mkdir(parents=True, exist_ok=True)
                     with open(p, "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
@@ -369,7 +368,8 @@ async def main_async():
     logger.info(f"Starting v2.4 (Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
     
     state = ScraperState(Path(CONFIG["OUTPUT_DIR"]) / ".state.json")
-    Path(CONFIG["OUTPUT_DIR"]) / "detail".mkdir(parents=True, exist_ok=True)
+    # ✅ ĐÃ SỬA: Thêm ngoặc () để ưu tiên phép chia Path trước khi gọi .mkdir()
+    (Path(CONFIG["OUTPUT_DIR"]) / "detail").mkdir(parents=True, exist_ok=True)
     
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage"])
