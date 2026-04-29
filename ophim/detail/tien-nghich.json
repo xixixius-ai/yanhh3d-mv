@@ -19,27 +19,6 @@
                   "type": "mp4",
                   "default": true,
                   "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNS0MjdC5w2F6Xdd4mAq6_FFNkFRKWtt7G4LzQabs0y1J4u8e1oxLNpAskbQ9G0P0e_4Y11bWJ-nTJkYwpGAm8Lcq88Gxcc8Z81zbLwIw.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=GLF3KLq9c7IQ7kNvwFi-NLi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQxODQ2NjI1MzIxMDc0OCwiYXNzZXRfYWdlX2RheXMiOjExMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk3MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=TSbj30FLLEEBgPC1gvur9Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFZyMOspkBpU4YpfiwJh5EDkpNv2nVhLBO8Y3indmhbbAQ7ggDgnjWwAR03tXnQfIiUyJUD_QCl&_nc_eui2=AeGrA6478FPn0MyJbOlfEQAhEaNFfDj8k3wRo0V8OPyTfFKF5mg89Rnk8txYkX9ODGd3GilF7AEHUTS2aJ0aNWM5&oh=00_Af1goHszmLXF11VJ3IwprHgXEcbDBtjnXfwU-Goo4zhJMw&oe=69F7452B&bitrate=378953&tag=sve_sd"
-                },
-                {
-                  "id": "tien-nghich--0-0-1",
-                  "name": "1080",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/68efc0d5-fb28-4fd0-aa26-35880eb31fd7.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-0-2",
-                  "name": "1080-",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/8598feb3-a4dd-4cbb-bc4a-e26b0397f67f.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-0-3",
-                  "name": "link10",
-                  "type": "embed",
-                  "default": false,
-                  "url": "https://abysscdn.com/?v=Yz-54ORo9"
                 }
               ]
             },
@@ -53,27 +32,45 @@
                   "type": "mp4",
                   "default": true,
                   "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPNrbuuswHMQWIrXCYew4mrAZGSnAGZsKMJNuorGJN_BFQFQ_E25hXg_4JekEjYysmzNspgs5OE7kNhSWa9s58IuOE8GbukS8rBeFhEhg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=BBmzrYaVwlcQ7kNvwFTluJe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODY3MDc0Nzc1OTQxMTY3LCJhc3NldF9hZ2VfZGF5cyI6MTEzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTIwMSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=LisdI7gHpcyiVsYttBd2Iw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGTFqDveZmjyy8JoEv0z94NnybRgNjSfJ-2Uxbp25lxjZCMdOnpEq16uejVsZuK04ZI53ApIsAA&_nc_eui2=AeF1YmOMfS4GeaML1jf0LNEmOAaTEp6VxTQ4BpMSnpXFNI2Va0lbadHUDbwIg5shkXrAxUVh-px-NfHO8HahMf5R&oh=00_Af3t_b6LmR89uJO_82MrxpcEmXxZQdkHrCCk4p2rsYD5Uw&oe=69F7512B&bitrate=334470&tag=sve_sd"
-                },
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-2",
+              "name": "58",
+              "stream_links": [
                 {
-                  "id": "tien-nghich--0-1-1",
-                  "name": "1080",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/687d5a4b-f15b-46bd-b5c7-8b7d388c2a36.m3u8"
-                },
+                  "id": "tien-nghich--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPkLxmsBkxITAwYfVuvWMEC56307R8JcbvHgvERC9tZZz054-teEx3qjxWznyu6LU4aYG-hSjBeaGsGvIuimm_qyE66UalTo1ZHDyNj2g.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=Wq7qy1M4tTcQ7kNvwGL2oFc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM2ODg0NzYwMTM5MjM2MiwiYXNzZXRfYWdlX2RheXMiOjExNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEyNDQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=MgHbdW8cIFqev0TN_2Ra4w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFSU6a7qK8H8i6mjS98Kyt4aOntez83LfvgUUaeBq0EnG1hnU-20YBH36NGsD9W5zwL5EaZKv9p&_nc_eui2=AeFOxomWZn81MDjbWTfBs5AZS5KDKHqOs3tLkoMoeo6zezH9Dotni7Z2LW0DWNaevyqZghBVrFjRCDS7DzqDK2Lg&oh=00_Af0P0237b5-fxO0P75l16ekwqeymcuMomuByErPD4fUF8Q&oe=69F7C12D&bitrate=348915&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-3",
+              "name": "59",
+              "stream_links": [
                 {
-                  "id": "tien-nghich--0-1-2",
-                  "name": "1080-",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/c6f76474-15ca-4170-a286-664bbced89ff.m3u8"
-                },
+                  "id": "tien-nghich--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM6ouSv-i54-Gx85ZCc_iHIW-B-Nk1fUxmzgs3SKgEf-mdspmcT60ap8bXdInIwoBqZRWYadfyY76DwtcwLLtntEp2cJZD4OnkEwYKXEg.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=QSTw41Mb_LoQ7kNvwF2jb2y&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NjM0ODA0Nzg2MzYwNzg5LCJhc3NldF9hZ2VfZGF5cyI6MTE0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA1NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=FskzBeAkYcYoQluoDWSK-w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGgbhmTgdzQiEMJWuNXc7g7oZ2KF75taFp7lXesNMd3k2zYWkhFRu3W9en-St_nJF4G_QbqdxPs&_nc_eui2=AeHEr3RIEHo6W637Ay3fk4Unp8ZhaWZjMg-nxmFpZmMyD_AnDlSAkchbDknSHrgW30hZ_nM7LMbB-2dvyvtp8X2-&oh=00_Af3botOu_e2LasgAwqCdvNJyosgCMCb2_h2PGw2qRF8qPQ&oe=69F7BF35&bitrate=580893&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-4",
+              "name": "60",
+              "stream_links": [
                 {
-                  "id": "tien-nghich--0-1-3",
-                  "name": "link10",
-                  "type": "embed",
-                  "default": false,
-                  "url": "https://abysscdn.com/?v=REGSQ7xyD"
+                  "id": "tien-nghich--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNDoq0H2AYWipM06EpjHyGjr7i9GiVvLHEkkOFlgj8K-nAabGOKg0hXoi8KiEtDEKMpS5KaZwkbkhzlog-gclU11DniEdw_Rw5W2VvdFg.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=tU0U_3QPymYQ7kNvwGnvTk5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzEyNjM3NTAxNjg5NzM3LCJhc3NldF9hZ2VfZGF5cyI6MTE0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTg4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=uf_VcXEjWeQgPZESKi4RQQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGMl7SCVRIdkHH_swin8ncymZFWN18VjtkBIFIFOzRmIxL2XlhMgdKUWMbcQ_5b_PlQJRUlyiNl&_nc_eui2=AeErM0daiPz3U0eAZ-zcFrx4xedeb_zdqQbF515v_N2pBnLhQlsb0H1PGcAuvIsnTAl_xzQr5x6HHMmWIo2nTvvo&oh=00_Af2zVtUC6HivD6ZN8NTkqeu9j6qgm-vUSDXwgrF6U89XQA&oe=69F79C2B&bitrate=492889&tag=sve_sd"
                 }
               ]
             }
