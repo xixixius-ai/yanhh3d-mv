@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v2.4 - FINAL PATCH)
-Fixes:
-  - ✅ Fix AttributeError: wrapped Path division before .mkdir()
-  - ✅ Fix JS SyntaxError: Python ternary → JS ternary
-  - ✅ Fix Timeout: fallback selectors + CF challenge wait
-  - ✅ Fix Parallel: correct tuple unpacking (detail, list_item)
+YanHH3D Scraper → MonPlayer JSON (v2.6)
+- ✅ RESTORED: Episode logic exactly matches v2.2 (proven stable)
+- ✅ Fixed: Path.mkdir() precedence, JS syntax, async lifecycle
+- ✅ Kept: Incremental, parallel (3 pages), anti-rate-limit, search flags
 """
 
 import argparse
@@ -46,7 +44,7 @@ CONFIG = {
     "MAX_MOVIES":           50,
     "MAX_EPISODES":         None,
     "TIMEOUT_NAV":          30000,
-    "TIMEOUT_WAIT":         15000,
+    "TIMEOUT_WAIT":         20000,
     "USER_AGENT":           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":             os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":          2,
@@ -168,23 +166,18 @@ async def get_movie_metadata_async(page, slug: str) -> dict:
         await page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
         await page.wait_for_selector("body", timeout=10000)
-        
         m = await page.evaluate("""() => {
             const r = { description: "", tags: [], year: "", status: "", poster: "", total_episodes: "" };
             const desc = document.querySelector('meta[name="description"]')?.content || document.querySelector('meta[property="og:description"]')?.content || "";
             r.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
-            
             document.querySelectorAll('.genres a, .film-info a[href*="/the-loai/"], .tick a').forEach(l => {
                 const t = l.innerText.trim(); if (t && t.length < 50 && !/tap|tập/i.test(t)) r.tags.push(t);
             });
             r.tags = [...new Set(r.tags)].slice(0, 10);
-            
             const y = document.title.match(/(\d{4})/) || document.querySelector('.film-info')?.innerText?.match(/(\d{4})/);
             if (y) r.year = y[1];
-            
             const s = document.querySelector('.tick-rate, .badge, .status')?.innerText?.toLowerCase() || "";
             r.status = /hoàn thành|end|completed/i.test(s) ? "completed" : (/đang phát|ongoing|updating/i.test(s) ? "ongoing" : "");
-            
             r.poster = document.querySelector('meta[property="og:image"]')?.content || document.querySelector('.film-poster img')?.src || document.querySelector('.film-poster img')?.dataset.src || "";
             const ep = document.querySelector('.total-episodes, .episode-count, .film-info .fdi-item')?.innerText || "";
             const em = ep.match(/(\d+)\s*(?:tập|ep)/i); if (em) r.total_episodes = em[1];
@@ -195,43 +188,55 @@ async def get_movie_metadata_async(page, slug: str) -> dict:
     return meta
 
 
+# ✅ V2.6: RESTORED EXACT V2.2 EPISODE LOGIC (Async)
 async def get_episodes_async(page, slug: str) -> list:
+    detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
-        await page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        # 1. Vào trang chi tiết, chờ load
+        await page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
+        await page.wait_for_selector(f"a[href*='/{slug}/tap-']", timeout=CONFIG["TIMEOUT_WAIT"])
         
-        targets = ["#top-comment", ".ss-list", "#playlist", ".episodes-wrap", ".film-content"]
-        active_sel = None
-        for sel in targets:
-            try:
-                await page.wait_for_selector(sel, timeout=4000)
-                active_sel = sel
-                break
-            except: continue
-        
-        if not active_sel:
-            logger.warning(f"   Episode container not found for {slug}")
-            return []
-            
-        return await page.evaluate(f"""() => {{
-            const res = [];
-            const pane = document.querySelector('{active_sel}'); if (!pane) return res;
-            pane.querySelectorAll('a.ssl-item.ep-item, .ep-item, .episode-item, a[href*="tap-"]').forEach(item => {{
-                const href = item.href || '';
-                const text = (item.querySelector('.ssli-order')?.innerText || item.querySelector('.ep-name')?.innerText || item.innerText || item.title || '').trim();
-                if (!href.includes('/sever2/') && /^\\d+$/.test(text)) res.push({{ name: text, url: href, num: parseInt(text) }});
-            }});
-            return res.sort((a, b) => b.num - a.num);
+        # 2. Lấy link tập mới nhất (giống v2.2 get_latest_ep_url)
+        latest_ep_url = await page.evaluate(f"""() => {{
+            const links = Array.from(document.querySelectorAll('a[href*="/{slug}/tap-"]'))
+                .filter(a => !a.href.includes('/sever2/'))
+                .map(a => ({{ href: a.href, num: parseInt((a.href.match(/tap-(\\d+)/) || [])[1] || '0') }}))
+                .filter(a => a.num > 0).sort((a, b) => b.num - a.num);
+            return links.length ? links[0].href : null;
         }}""")
-    except Exception as e: logger.warning(f"   Episode fetch fail {slug}: {e}")
-    return []
+        if not latest_ep_url: return []
+        
+        # 3. Chuyển sang trang tập mới nhất
+        await page.goto(latest_ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        await _wait_cf(page)
+        await page.wait_for_selector("#episodes-content", timeout=CONFIG["TIMEOUT_WAIT"])
+        
+        # 4. Cào list tập từ #top-comment (giống v2.2 get_episodes)
+        episodes = await page.evaluate("""() => {
+            const results = [];
+            const pane = document.querySelector('#top-comment');
+            if (!pane) return results;
+            const items = pane.querySelectorAll('a.ssl-item.ep-item');
+            for (const item of items) {
+                const href = item.href || '';
+                const text = (item.querySelector('.ssli-order')?.innerText || item.querySelector('.ep-name')?.innerText || item.title || '').trim();
+                if (href.includes('/sever2/')) continue;
+                if (href && /^\\d+$/.test(text)) results.push({ name: text, url: href, num: parseInt(text) });
+            }
+            return results.sort((a, b) => b.num - a.num);
+        }""")
+        return episodes
+    except Exception as e: 
+        logger.warning(f"   Episode fetch fail {slug}: {e}")
+        return []
 
 
 async def get_stream_url_async(page, ep_url: str) -> Optional[list]:
     try:
         await page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         await _wait_cf(page)
-        await page.wait_for_selector("#list_sv", timeout=10000)
+        await page.wait_for_selector("#list_sv", timeout=CONFIG["TIMEOUT_WAIT"])
         btns = await page.evaluate("""() => {
             const r = [];
             document.querySelectorAll('#list_sv a.btn3dsv').forEach(b => {
@@ -285,7 +290,6 @@ async def scrape_movie_async(page, movie_info: dict, state: ScraperState, max_ep
             if consec_fail >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]: break
     
     state.update_movie(slug, last_scraped=datetime.now(timezone.utc).isoformat(), last_episode=episodes[0]["name"])
-    # ✅ Trả về (detail_json, list_item) để khớp worker
     return build_detail_json(slug, ep_data, metadata), build_list_item(movie_info, metadata)
 
 
@@ -334,7 +338,7 @@ async def process_movies_parallel(movies, state, args, browser):
             try:
                 res = await scrape_movie_async(page, movie, state, args.max_episodes, args.incremental and not args.full_scan)
                 if res:
-                    dj, li = res  # ✅ Khớp thứ tự trả về
+                    dj, li = res
                     p = Path(CONFIG["OUTPUT_DIR"]) / "detail" / f"{movie['slug']}.json"
                     p.parent.mkdir(parents=True, exist_ok=True)
                     with open(p, "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
@@ -365,10 +369,9 @@ async def main_async():
     
     CONFIG.update({"OUTPUT_DIR": args.output, "MAX_MOVIES": args.max_movies, "MAX_EPISODES": args.max_episodes})
     incremental = args.incremental and not args.full_scan
-    logger.info(f"Starting v2.4 (Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
+    logger.info(f"Starting v2.6 (Restored v2.2 logic | Incremental={incremental}, Parallel={CONFIG['MAX_CONCURRENT_PAGES']})")
     
     state = ScraperState(Path(CONFIG["OUTPUT_DIR"]) / ".state.json")
-    # ✅ ĐÃ SỬA: Thêm ngoặc () để ưu tiên phép chia Path trước khi gọi .mkdir()
     (Path(CONFIG["OUTPUT_DIR"]) / "detail").mkdir(parents=True, exist_ok=True)
     
     async with async_playwright() as p:
@@ -388,7 +391,7 @@ async def main_async():
     if args.full_scan: state.set_full_scan()
     else: state.save()
     
-    list_out = {"id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim", "search": True, "enable_search": True, "features": {"search": True, "incremental": incremental}, "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"}, "description": "Phim thuyet minh chat luong cao", "grid_number": 3, "channels": channels, "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}], "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.4", "incremental": incremental}}
+    list_out = {"id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim", "search": True, "enable_search": True, "features": {"search": True, "incremental": incremental}, "color": "#004444", "image": {"url": f"{CONFIG['BASE_URL']}/static/img/logo.png", "type": "cover"}, "description": "Phim thuyet minh chat luong cao", "grid_number": 3, "channels": channels, "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}], "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).isoformat(), "version": "2.6", "incremental": incremental}}
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: json.dump(list_out, f, ensure_ascii=False, indent=2)
     logger.info(f"✅ Done! {len(channels)} channels saved.")
 
