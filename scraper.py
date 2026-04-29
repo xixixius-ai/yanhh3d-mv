@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v1.7)
+YanHH3D Scraper → MonPlayer JSON (v1.8)
 Features:
   - play-fb-v8 → Facebook CDN mp4 (DUY NHẤT)
   - Retry logic + fallback khi resolve fail
   - CLI: --search, --slug, --url, --list-all, --trending (default)
+  - NEW: Extract movie description + tags/genres
 """
 
 import argparse
@@ -39,8 +40,8 @@ CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
-    "MAX_MOVIES":   5,
-    "MAX_EPISODES": 2,
+    "MAX_MOVIES":   15,
+    "MAX_EPISODES": 10,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -111,6 +112,90 @@ def _wait_for_cf(page, selector, timeout):
     except Exception:
         pass
     page.wait_for_selector(selector, state="attached", timeout=timeout)
+
+
+# ── NEW: Extract movie metadata (description + tags) ─────────────────────────
+def get_movie_metadata(page, slug: str) -> dict:
+    """
+    Extract description and tags from movie detail page
+    Returns: {"description": str, "tags": list[str], "year": str, "status": str}
+    """
+    detail_url = f"{CONFIG['BASE_URL']}/{slug}"
+    metadata = {
+        "description": "",
+        "tags": [],
+        "year": "",
+        "status": "",
+        "episodes_count": ""
+    }
+    
+    try:
+        _human_delay(200, 400)
+        page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, "body", CONFIG["TIMEOUT_WAIT"])
+        
+        # Extract metadata via JavaScript
+        meta = page.evaluate("""() => {
+            const result = {
+                description: "",
+                tags: [],
+                year: "",
+                status: "",
+                episodes_count: ""
+            };
+            
+            // 1. Description: try multiple sources
+            const desc = document.querySelector('meta[name="description"]')?.content ||
+                        document.querySelector('meta[property="og:description"]')?.content ||
+                        document.querySelector('.description')?.innerText ||
+                        document.querySelector('.content')?.innerText ||
+                        "";
+            result.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
+            
+            // 2. Tags/Genres: from genre links
+            const genreLinks = document.querySelectorAll('.genres a, .film-info a[href*="/the-loai/"], .tick a');
+            for (const link of genreLinks) {
+                const text = link.innerText.trim();
+                if (text && text.length < 50 && !text.toLowerCase().includes('tap')) {
+                    result.tags.push(text);
+                }
+            }
+            // Dedupe tags
+            result.tags = [...new Set(result.tags)].slice(0, 10);
+            
+            // 3. Year: from title or info
+            const yearMatch = document.title.match(/(\\d{4})/) || 
+                             document.querySelector('.film-info')?.innerText?.match(/(\\d{4})/);
+            if (yearMatch) result.year = yearMatch[1];
+            
+            // 4. Status: ongoing/completed
+            const statusText = document.querySelector('.tick-rate, .badge, .status')?.innerText?.toLowerCase() || "";
+            if (statusText.includes("hoàn thành") || statusText.includes("end") || statusText.includes("completed")) {
+                result.status = "completed";
+            } else if (statusText.includes("đang phát") || statusText.includes("ongoing") || statusText.includes("updating")) {
+                result.status = "ongoing";
+            }
+            
+            // 5. Episode count hint
+            const epCount = document.querySelector('.total-episodes, .episode-count')?.innerText?.match(/\\d+/);
+            if (epCount) result.episodes_count = epCount[0];
+            
+            return result;
+        }""")
+        
+        # Fallback: parse from page content if JS eval fails
+        if not meta.get("description"):
+            html = page.content()
+            desc_match = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html, re.I)
+            if desc_match:
+                meta["description"] = desc_match.group(1).strip()[:500]
+        
+        logger.info(f"   Metadata: tags={meta['tags'][:3]}..., status={meta['status']}")
+        return meta
+        
+    except Exception as e:
+        logger.warning(f"   Failed to extract metadata for {slug}: {e}")
+        return metadata  # Return empty defaults
 
 
 # ── play-fb-v8 resolver (WITH RETRY) ─────────────────────────────────────────
@@ -253,7 +338,7 @@ def list_all_movies(page, category_url: str = None) -> list[dict]:
         movies = []
         page_num = 1
         
-        while len(movies) < 100:  # Limit to avoid infinite loop
+        while len(movies) < 100:
             batch = page.evaluate("""() => {
                 const results = [];
                 const items = document.querySelectorAll('.flw-item');
@@ -274,12 +359,11 @@ def list_all_movies(page, category_url: str = None) -> list[dict]:
                 break
             movies.extend(batch)
             
-            # Try next page
             next_btn = page.query_selector('a[title="Next"], .pagination li.active + li a')
             if not next_btn:
                 break
             page_num += 1
-            if page_num > 10:  # Max 10 pages
+            if page_num > 10:
                 break
             next_btn.click()
             _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
@@ -406,12 +490,11 @@ def get_episodes(page, slug):
         return []
 
 
-# ── Step 3: Stream extraction (WITH FALLBACK) ─────────────────────────────────
+# ── Step 3: Stream extraction ─────────────────────────────────────────────────
 def get_stream_url(page, context, ep_url):
     """
     Trả về list stream:
       - play-fb-v8 → Facebook CDN mp4 (với retry)
-      - Fallback: try next episode if current fails
     """
     try:
         _human_delay(200, 500)
@@ -429,7 +512,6 @@ def get_stream_url(page, context, ep_url):
             return results;
         }""")
 
-        # Ưu tiên quality labels
         preferred = [b for b in raw_buttons if any(x in b["label"] for x in ["hd", "1080", "4k"])]
         candidates = preferred if preferred else raw_buttons
 
@@ -464,7 +546,8 @@ def _sort_streams(stream_list):
     return stream_list
 
 
-def build_detail_json(slug, episodes):
+def build_detail_json(slug, episodes, metadata: dict = None):
+    """Build detail JSON with description + tags"""
     streams = []
     for i, ep in enumerate(episodes):
         raw_streams = ep.get("stream")
@@ -486,7 +569,9 @@ def build_detail_json(slug, episodes):
             "name":         ep["name"],
             "stream_links": stream_links
         })
-    return {
+    
+    # Build with metadata
+    result = {
         "sources": [{
             "id":   f"{slug}--0",
             "name": "Thuyet Minh #1",
@@ -499,13 +584,29 @@ def build_detail_json(slug, episodes):
         }],
         "subtitle": "Thuyet Minh"
     }
+    
+    # Add metadata if available
+    if metadata:
+        if metadata.get("description"):
+            result["description"] = metadata["description"]
+        if metadata.get("tags"):
+            result["tags"] = metadata["tags"]
+        if metadata.get("year"):
+            result["year"] = metadata["year"]
+        if metadata.get("status"):
+            result["status"] = metadata["status"]
+        if metadata.get("episodes_count"):
+            result["episodes_count"] = metadata["episodes_count"]
+    
+    return result
 
 
-def build_list_item(movie):
-    return {
+def build_list_item(movie, metadata: dict = None):
+    """Build list item with description + tags"""
+    item = {
         "id":          movie["slug"],
         "name":        movie["title"],
-        "description": "",
+        "description": metadata.get("description", "") if metadata else "",
         "image": {
             "url":    movie["thumb"],
             "type":   "cover",
@@ -525,15 +626,28 @@ def build_list_item(movie):
         },
         "enable_detail": True
     }
+    
+    # Add tags if available
+    if metadata and metadata.get("tags"):
+        item["tags"] = metadata["tags"]
+    if metadata and metadata.get("year"):
+        item["year"] = metadata["year"]
+    if metadata and metadata.get("status"):
+        item["status"] = metadata["status"]
+    
+    return item
 
 
 # ── Scrape single movie ───────────────────────────────────────────────────────
-def scrape_movie(page, context, slug: str, max_episodes: int = None) -> dict | None:
-    """Scrape a single movie by slug, return detail JSON"""
+def scrape_movie(page, context, slug: str, max_episodes: int = None) -> tuple | None:
+    """Scrape a single movie by slug, return (list_item, detail_json)"""
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
     
     logger.info(f"  Processing: {slug}")
+    
+    # Extract metadata first
+    metadata = get_movie_metadata(page, slug)
     
     episodes = get_episodes(page, slug)
     if not episodes:
@@ -552,13 +666,15 @@ def scrape_movie(page, context, slug: str, max_episodes: int = None) -> dict | N
         else:
             logger.warning(f"    ✗ Tap {ep['name']}: no stream")
     
-    if not ep_data:
+    if not ep_
         logger.warning(f"  No valid streams for {slug}")
         return None
     
-    detail_json = build_detail_json(slug, ep_data)
+    detail_json = build_detail_json(slug, ep_data, metadata)
+    list_item = build_list_item({"slug": slug, "title": metadata.get("title", slug), "thumb": metadata.get("thumb", ""), "badge": ""}, metadata)
+    
     logger.info(f"  Saved {slug}.json ({len(ep_data)}/{crawl_limit} episodes)")
-    return build_list_item({"slug": slug, "title": slug, "thumb": "", "badge": ""}), detail_json
+    return list_item, detail_json
 
 
 # ── Main scraper ──────────────────────────────────────────────────────────────
@@ -598,7 +714,7 @@ def scrape_trending(page, context, max_movies: int = None) -> list:
 
 # ── CLI Entry Point ───────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v1.7")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v1.8")
     parser.add_argument("--search", type=str, help="Search movies by keyword")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
@@ -607,6 +723,7 @@ def main():
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"], help="Max movies to scrape")
     parser.add_argument("--max-episodes", type=int, default=CONFIG["MAX_EPISODES"], help="Max episodes per movie")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"], help="Output directory")
+    parser.add_argument("--with-metadata", action="store_true", help="Extract description + tags (default: True)")
     
     args = parser.parse_args()
     
@@ -615,7 +732,7 @@ def main():
     CONFIG["MAX_MOVIES"] = args.max_movies
     CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D to MonPlayer scraper (v1.7 - CLI + RETRY)...")
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v1.8 - METADATA + CLI)...")
     logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND'}")
     
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -661,7 +778,6 @@ def main():
                     channels.append(list_item)
             
             elif args.url:
-                # Extract slug from URL
                 slug = args.url.rstrip('/').split('/')[-1]
                 result = scrape_movie(page, context, slug, args.max_episodes)
                 if result:
@@ -703,7 +819,7 @@ def main():
             "source":      CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version":     "1.7"
+            "version":     "1.8"
         }
     }
 
