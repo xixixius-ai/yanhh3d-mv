@@ -116,7 +116,7 @@ def _wait_for_cf(page, selector, timeout):
 
 
 # ── Search String Builder ────────────────────────────────────────────────────
-def _build_search_str(movie: dict, meta dict = None) -> str:
+def _build_search_str(movie: dict, metadata: dict) -> str:
     parts = [
         movie.get("title", ""),
         " ".join(metadata.get("tags", [])) if metadata else "",
@@ -404,7 +404,7 @@ def get_stream_url(page, context, ep_url):
 
 
 # ── JSON Builders ───────────────────────────────────────────────────────────
-def build_detail_json(slug, episodes, meta dict = None):
+def build_detail_json(slug, episodes, metadata: dict):
     streams = []
     for i, ep in enumerate(episodes):
         raw_streams = ep.get("stream")
@@ -427,13 +427,13 @@ def build_detail_json(slug, episodes, meta dict = None):
         "tags": metadata.get("tags", []) if metadata else [],
         "description": metadata.get("description", "") if metadata else "",
     }
-    if meta
+    if metadata:
         if metadata.get("year"): result["year"] = metadata["year"]
         if metadata.get("status"): result["status"] = metadata["status"]
         if metadata.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
     return result
 
-def build_list_item(movie: dict, meta dict = None):
+def build_list_item(movie: dict, metadata: dict):
     thumb = movie.get("thumb") or (metadata.get("poster") if metadata else "")
     badge = movie.get("badge") or metadata.get("status", "") if metadata else ""
     
@@ -450,7 +450,7 @@ def build_list_item(movie: dict, meta dict = None):
         "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"},
         "enable_detail": True
     }
-    if meta
+    if metadata:
         if metadata.get("year"): item["year"] = metadata["year"]
         if metadata.get("status"): item["status"] = metadata["status"]
     return item
