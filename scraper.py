@@ -439,7 +439,7 @@ def build_detail_json(slug, episodes, metadata: dict = None):
         "tags": metadata.get("tags", []) if metadata else [],
         "description": metadata.get("description", "") if metadata else "",
     }
-    if meta
+    if metadata:
         if metadata.get("year"): result["year"] = metadata["year"]
         if metadata.get("status"): result["status"] = metadata["status"]
         if metadata.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
@@ -463,7 +463,7 @@ def build_list_item(movie: dict, metadata: dict = None):
         "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"},
         "enable_detail": True
     }
-    if meta
+    if metadata:
         if metadata.get("year"): item["year"] = metadata["year"]
         if metadata.get("status"): item["status"] = metadata["status"]
     return item
