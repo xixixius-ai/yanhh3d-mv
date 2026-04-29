@@ -120,7 +120,7 @@ def _wait_for_cf(page, selector, timeout):
 def _build_search_str(movie: dict, metadata: dict = None) -> str:
     parts = [
         movie.get("title", ""),
-        " ".join(metadata.get("tags", [])) data else "",
+        " ".join(metadata.get("tags", [])) if metadata else "",
         metadata.get("description", "") data else "",
         movie.get("slug", "").replace("-", " "),
         "hoạt hình trung quốc", "thuyết minh", "anime", "donghua"
