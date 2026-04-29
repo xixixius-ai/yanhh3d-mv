@@ -1,24 +1,24 @@
 {
   "sources": [
     {
-      "id": "tien-nghich--0",
+      "id": "test-abyss--0",
       "name": "Thuyet Minh #1",
       "contents": [
         {
-          "id": "tien-nghich--0",
+          "id": "test-abyss--0",
           "name": "",
           "grid_number": 3,
           "streams": [
             {
-              "id": "tien-nghich--0-0",
-              "name": "56",
+              "id": "test-abyss--0-0",
+              "name": "1",
               "stream_links": [
                 {
-                  "id": "tien-nghich--0-0-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "id": "test-abyss--0-0-0",
+                  "name": "abyss-embed",
+                  "type": "embed",
                   "default": true,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/stream/m3u8/cbcfc71d-62ad-4f31-a410-6892aa0c9b4c.m3u8"
+                  "url": "https://abysscdn.com/?v=iFJhUcUZC"
                 }
               ]
             }
