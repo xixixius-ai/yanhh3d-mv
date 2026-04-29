@@ -1,0 +1,606 @@
+{
+  "sources": [
+    {
+      "id": "luyen-khi-10-van-nam-thuyet-minh--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "luyen-khi-10-van-nam-thuyet-minh--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-0",
+              "name": "341",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQMjclkbSIId7dxTFxJwgJ71l3_ZNT_0PmyPoh9GHByWMcuSh4jegzJ9lvqiZRflabsm9itmIHEDcKWwbZ8LQ4F8N6mL5Ew7cwXyZvryTCO7Nw.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=6puEjsKtrskQ7kNvwG9-tJz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMjkxNzI4MzQzMTA4Mzg4LCJhc3NldF9hZ2VfZGF5cyI6MSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ4NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=a33aae74c973e74a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wMTQ4RkZFMDU3QzRBMzc5RjM2RkM0Q0U1QUMwRjI4M19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0FBNEMyNDk2REUyQUZERTVDRjVGQ0VEQ0Y4QjAwMkIxX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbIrMyQvrTLBBUCKAJDMywXQH5lwo9cKPYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=4NcdkKTtuDon30bgY5snGA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEw1YvMJ3moRNi8ENV05P70-sz-RjjU13pR6HM8r61BLOUAITc1W3hIxZjsVghcY6Rcf95voOSM&_nc_eui2=AeHvC6pDciJSraKbYjGsMLgc2IKhzQ5d2__YgqHNDl3b_3X4uh3YMcRdptwigUQnbVzDy1kiNFzS--kD2sIiIXnb&oh=00_Af1ZiXBlO0QIxWfCSJD34M77GJHT5DtHOwA6tQF8OSTdWQ&oe=69F77D92&bitrate=2522321&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-1",
+              "name": "340",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQNJxd_YLcF3m4V0qL5iwsfZYVA1c1EOgtH3ag3lDUm7tEVSaZbRGx_f6c3x7Hx80rwYV4Cq8m_rnofNGOKjDF5a9ZfsNr7y_Zx9QXxM7ZOVEA.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=KCIxST68aNwQ7kNvwEKSpi-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMDIyOTg4NDE1MjQyNTgyLCJhc3NldF9hZ2VfZGF5cyI6NCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ4NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=ee7b7f59ba5dbe27&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wNTRCNzQ3ODM1ODA4ODNERTVFMzg2NjdCMTdDRjQ5N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzE5NDY2OTBGNjVGN0YzMzE4REUwMkFFOTRBQzE3MDhEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACasxYCetvmXBxUCKAJDMywXQH5OFHrhR64YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=5hkPxFSMt5Z_96DY6htWxQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGiW0Fyl2ksF2yw6hrzwRknuFA-Ozj1eyxBC59AZOwIjQWo65Fq4cHMiZg-HCAkXEQ5BPKtwkrn&_nc_eui2=AeFzSbpK0IoAUyE_2S0cnqly4eBHvqT0lkTh4Ee-pPSWRB_o1l4ghSUDSfJrisy0wO4v7dfCtttTF_eQIJnDaNG9&oh=00_Af1A1gBxag2uMhUipITBHNkXCNZRrFamd2fO2lrCN7laOA&oe=69F75DAD&bitrate=2493047&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-2",
+              "name": "339",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQN39w6n5ue9kwd18cCkQI43292Q7rklWQDiwy1g6V2XxRvKZKNw5M_kA5tK7GAtEXiYFpe3ztQaBGiUmL9ErFEzDSZY54TnzLpRdir_Fnxyqg.mp4?_nc_cat=105&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=rwYeGICWHe0Q7kNvwGJHb99&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5MjY4MzM2NDM1NTcyMjIsImFzc2V0X2FnZV9kYXlzIjo4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=2d37eb8ce04d31fd&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9GOTRCRDg3MDYyMTBEMkYxNTVBNjIyRjY5RkYzQkFCOV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0E1NDk5MUVGRTE3RTEwNDAzQjJCMUNDMzY2QzM0NjlBX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbMxbjh6LylAxUCKAJDMywXQH1ZmZmZmZoYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=BgaRVrLn_0zMDCF93QN9Sg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE37owBCdClFWN04AMZ5xpzrD3ROTJ4gkNjAfaHVa_881yCFuMRrtshnbdXGVs_w5YLBoc8UNBM&_nc_eui2=AeEF8GflT5GqkTfMXBhUN6DHb5eXXfh2UhBvl5dd-HZSELSY6N0hdupEh_N8mdj9Yo1FngkPzbbFvlLTcmHBrcnR&oh=00_Af0MAUcdnznokW-yM_y2nzZPXawxstJj9khc2Pl9oDoRrA&oe=69F7B1AB&bitrate=2780115&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-3",
+              "name": "338",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQN9FJmYTkQdIJt17Hf6qv1yqZrcancfJFMXBPiuSdiRt86njTDPkOnNetElESVyfdsSqiqlz-lloekHvd9HzDjXWlFCrlI2EY6XznXDIOI7cg.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=aFdhBEXdUIwQ7kNvwFvAnxx&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMDIyNTc0NTg4NjYyMTUzLCJhc3NldF9hZ2VfZGF5cyI6MTEsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0ODcsIndhdGNoX3RpbWVfcyI6MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=6d7605edaf01b342&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84OTQ3M0E0NDgwRDE5Q0I3RDE5QjNGNjVERjI5RjM5M19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzlENDREREU3QkQ2RTA3QTM5RTk4MTY2MkFBQTM2M0FEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaSxpz-quGXBxUCKAJDMywXQH5yj1wo9cMYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=WeSWxQ98UruzI02LZ5NY-A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG-ZQPpelYoL8V-VI9kIrpd31b3v5YCALH_DcTYejlMOGm6mw4hYjpdA-kbO6b_c_f5j5z9x1s0&_nc_eui2=AeGZ-fI-CjcqctEXp_liX7h1xCVDuYyvHQjEJUO5jK8dCIxhM_FC0fssKz_kHSu1IVnZ94L9DDpxeKh_TWEr--K4&oh=00_Af3McBtD6FS1pHUxjfow7wgthmSgiyVE9d6Z8zQbXbwtiA&oe=69F7C3CA&bitrate=2604217&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-4",
+              "name": "337",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNLCGrBE0pyKyMsR4v6N-3x6Ry2vNLYohHFscRwkHHkAS6WjPGsB_WhJMP9aTQes0922TAoZyhMBXsxZ5N6hr4ZZ--BbFpVS04ZlskytyOlTA.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=video-sin2-1.xx.fbcdn.net&_nc_ohc=DdPU2fOtAcoQ7kNvwF4OtQx&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjU5MjkwMzM3MDMyNjI0MSwiYXNzZXRfYWdlX2RheXMiOjExLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDMzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=32ce2fd8a90cdecb&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wNTQ0N0ExRjc1NEVBODBBNURFMzQzM0NBNTQ5MEU5OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzk2NERDNjREQUQ4MkE4NkYxMEE1OEZGOURBN0JBMzg1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbCg_ru2Ya9XhUCKAJDMywXQHsY9cKPXCkYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=3Y2UbKr79LEZ_NvTMtl5PA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHEOQSJnmMwsP-GtBkWlGOV4Q_A39xujP5GbTByFaPOOfTu8UGmcmla6GmMWt48cVOOrRuY3b_6&_nc_eui2=AeHRFvX0Q6dd7OlOBLgwZnooV1RfKv4cQrdXVF8q_hxCt1dtxb_Puqu47Tp3cu7A89eEVrF0SeFOrKPuNrN8iXXz&oh=00_Af0jQVz77_u9490ka5p4zvun8b8LpW-eH_wM63wK4ffvuw&oe=69F79DE0&bitrate=2007915&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-5",
+              "name": "336",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMOOZ9wQAJkUogFHG3jJADXJcFOKSugA9qTnqaM7GB35KisUhauH-0j-pC38cd3GrCxvC7M7cjtMXyRFiRIUOJlo6skoK5kTKWJv8gYzD-ZHA.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=Af_P1YeqSZUQ7kNvwFJGEkf&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5ODU4ODgyMDM4NzM2ODksImFzc2V0X2FnZV9kYXlzIjoxOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ5MCwid2F0Y2hfdGltZV9zIjowLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=3bc89feac1d762e5&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yQjQwNDYzRDhFODg1MkJDMEI2RjU3MTM4MTk2QzhBRV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzE1NEMzQkNBNTg0RkIzOThFMzU5MUMwMEZGMUVCM0JEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACay9vDCn6rAAxUCKAJDMywXQH6j1wo9cKQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=3kq1qoMXG4zf3LooV5Cm8g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFJxX_MLPbfkIMS_0W6j0I5lkGSSG0WG4kAxy-5_H15vTTGU5Ux6bPVf6kdzlln3a3i6IAP5wfN&_nc_eui2=AeHb8XXjNadN95OxdqvsUGyQ9wocg0l2GGr3ChyDSXYYakukz10p_MfqXydlMXuokitSTzaVkg-_YQiYf6c9Tnyz&oh=00_Af3Rj5EuHRAWZBrDcT3Lh0WjKTTb_gL8mj3bdGde66ks4A&oe=69F7FA1E&bitrate=2475013&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-6",
+              "name": "335",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQN5UFR53Lupq-Q04WzEeogFeEfQO4baMBUL4ZlaUykw6FZnxCq_OOWQH3m7rU8yIq4jLoiyloLynpJ_qXrrLu6vl2KvEdY-CWZjWu35rVhveA.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=DPhVbeLADckQ7kNvwFgQxaX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo0NDA1ODA4ODMzMDI1NTQ3LCJhc3NldF9hZ2VfZGF5cyI6MjIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0ODQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=3162ebc22baeedee&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8zRDQxM0U2ODI4OTNCREVBQTc0RUE5QUY1MTAwQTFCRF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0ExNDA4NUY5NkQyMDc2MTFBMzMzOUIwMDkzM0ZCQ0FEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaW2Ibn6cPTDxUCKAJDMywXQH5LhR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=xwzvkrI22npQRKr0yzkGdA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFPmf7n3IQzT0wftqKDj0SBqCrSzSBlucL_rS9RBJ5zVsytgrVBSv_uNTr-uMVE8cEZWbEQh9MX&_nc_eui2=AeGNWFqH0WpFg-_irwlvtvO3NEi_IdFn6uk0SL8h0Wfq6fQuk8Ty2XRyfN4kjO4snpOphb2vScA7CTGJmKkhIsfW&oh=00_Af15S72TmCFyl4Qr-CT8aWVfefx62I-U0jGqdpXoiE7i4g&oe=69F7CD8A&bitrate=2473153&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-7",
+              "name": "334",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMttJ62Tj12WkdlGF8scK9JRjDqooAytp0Z9yAUJeQPJ9DOcT8weqb6_-jfBaQkkfrIr6c2XwPE7JN2zcnH42gsnyJcB1VlfHLKj3GB9N3cYA.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=_HQz2djFHMkQ7kNvwFGDyR-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxOTQzMTc0NzE5NjMxNTk3LCJhc3NldF9hZ2VfZGF5cyI6MjUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NjcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=dacaff989f8f2f93&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FQzQ5M0NDOEVFN0Y2RkUxM0JBM0E2NUJCQjhCQzJCRl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzUxNDA2NzU1NTM0QjAyRUE1MjQ5MUU4QTc4Qjc2MUEwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbaw7Pu09PzBhUCKAJDMywXQH0-FHrhR64YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=CT9kUGA47OKUgXkZtczGEA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGhjBaVm2tEkLuibr6CP4wF9U5Lv6GfTTrp4IEGSv7MO6tq6sLLxjXCAvozBWHitSXxnYd2jlJz&_nc_eui2=AeEzkdFIe1Co6NZY6eEBqHxIpWzowKxeWpilbOjArF5amPcxKDOJ-S3mr-gfq0PLE16Vn-k0E-rlzIN_lpRR1K_X&oh=00_Af0YaqWfCpsU9N81IZsfftTWGCwlSZNXeUifOFr83k4YpA&oe=69F75090&bitrate=2913478&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-8",
+              "name": "333",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNLucF22uRYE_ZZytLGSmup831ZS9WKEcRa94sjWXBPNGFHRSY_dMQQcMoX7aSadJ-VFbUHRYB4FUjouOC5TW0N8-UnUo04Oy3HPh3bqg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=_w7adwNTuq8Q7kNvwHJVeDq&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTYwNTkzOTMzMTAzMTc0LCJhc3NldF9hZ2VfZGF5cyI6MjksInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=7P1xxsD4Fa69KnRLrjn-5A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFD_uRgbFIQnjIU17ydGc8e-EYOXaWUiBh-86d8wCVkWvDB8g0-K7Z18NNxn5kZB6nQTR68_xae&_nc_eui2=AeFmhCpXNG5oTqiCSpxk1undsJyf3puXQ-iwnJ_em5dD6PDorG8Y6TKNaC7S8nGVcsxxUBJ-L_uZTXfHc4o9v1o1&oh=00_Af1zLbZYdr-5hoNuHjpQRDeoCC7f0-mi74AUOQiWUL3log&oe=69F7E1CB&bitrate=442105&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-9",
+              "name": "332",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNZ4eLXvGuE3S-aBKUp4_E2vLzz3Z0PxAjvyrl0eeL3L4YkZJGbh0CINCnsDgmj6WjU6tBCpaD9UzNBat0g_uQP_J62uxbbCstD222uIw.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=iL8dmejwEKoQ7kNvwGYGEL4&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjEzNDA3OTUxNDA5NDM2OSwiYXNzZXRfYWdlX2RheXMiOjMyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=5KY7-BZ0tXmRIuJxwoOf_g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGAWhb-Odwmbxsz3DwPSyvEyxJlvHP-N3Bi2iszzrQ_2Hi8alL6OP4Dozlib8Xkx-Zv5l8Kb0SI&_nc_eui2=AeFL5MoAIbTVW25GGNaBNf0Pe2NI2713oBZ7Y0jbvXegFnIW98f-ANW8GDYzRkaqc3pwnywNWpE8aHIqo8yFjz6p&oh=00_Af3-mk760qaMECHbYH_rxybOlS6IT0Ir2wzzZJg47DHSow&oe=69F7E39D&bitrate=411827&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-10",
+              "name": "331",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNozqCx4UKz98pISde0alTRi2Wlaj8lK6R7Oye9od21xnexSv10W03Odr9U_5anc4HAY9s1-YR1JjU3zSP6gD1cFDnnOjw2bOZ03BqxSw.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=xc7vL0uJMVkQ7kNvwGu_XWV&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYxMTc5Mzg5MDE1NDAyMSwiYXNzZXRfYWdlX2RheXMiOjM2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=9ju3HqDWmZ6yUVhDrQ4X9g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGVQ63jSnEqofO3uRqhfXbqFObEC-W8As8DwixPAvA6uO_bD65RMI1WjivamRagkv07p6rAil1C&_nc_eui2=AeG2NNC6TcUPlDaUdyOmtrri79aB2FMtxMPv1oHYUy3Ewxsxl-LrrH8n697ykR0tQdjSrRBiTlMxkvcq73_IiAw3&oh=00_Af0-9lMHcm9ijtsW38lm8vW44-t66ecfSqjnL-_AhRe4eQ&oe=69F7D135&bitrate=461224&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-11",
+              "name": "330",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOTWxqmescCfHQNzzlvVenjzoCvJq8HkSL1204rPl-kegzVDoNVbXojRF8p8_r3jej1UhEv-fr5GVEmMZug3wV5zebiQI9i_MGWUyrI4w.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=5XyKsJ5LPoYQ7kNvwGpbTSY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE5OTkyNTM2ODY4NzUxMywiYXNzZXRfYWdlX2RheXMiOjM5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDkxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=tvSgxhzFDcJZL5xPGrFYUg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGSbE3u3hU7Xu6Ikb8RQ-raD9dthSbHqrJ4uphbdqjfiZBTZk_dledzb855sjS_jrhN9Z25Iz13&_nc_eui2=AeHdqaoHjOoIluoHogIhusMlkn6a6XUIo1qSfprpdQijWhKhTvZBvYxmX5u1uS7cnbvJnfQxsa7FyqWkvZZ36_Zt&oh=00_Af13-ouATJ6oK1cWWZTpKCTQSacRkQQXK_5_fhsbqpWnPA&oe=69F79301&bitrate=509051&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-12",
+              "name": "329",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQP4FvDMXwnnZu2MHx2J72qr6dFKQFVSJ7GPLs7tKNWP5-TDJADMPPzznYMFK_3Qk9-QQiFjzBdF9OwsJW4vIdp-S32PNB7tf5wCxenE9g.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=F6lxwTDbPi4Q7kNvwGsitx2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQyMjIzOTI2MjU1NjUxOSwiYXNzZXRfYWdlX2RheXMiOjQyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDgxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=s4jo9-ii6ArTEZ9OiqHimw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHbo2VHWpRgzlKOrHsPcArFGmD4lUXkeADjDPcBT8V2CeI7gj4Q6Jbq4EJRTK3GElYQ-wNvwQdQ&_nc_eui2=AeG1oHRshcTD11L_M3s23elKsXIQF0G9-xixchAXQb37GFki1OCZr7S5XdoN4slwRJtFIR5qUShSFZAWnu_9BvLt&oh=00_Af3MiilrZSZZtvvsS3DT2tySzHidha_wGdcCyejAGpUyjA&oe=69F77E66&bitrate=400173&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-13",
+              "name": "328",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQP_oUobMfTWUtv0b4tGPUcBshzZ8mW1nnB5lfVkSrHhYpItloNTKtwLEknPsmyu0wbgKOynztIGdGNyEqty1iFpBcZ-7STQuqOQWuA7IaRSkA.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=kfNfo9MwPwAQ7kNvwEowPIs&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NjAwNzcwMDY2OTA4NDMsImFzc2V0X2FnZV9kYXlzIjo0NiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUwMSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=d968013c3115dd07&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FQzRDRkNDODczRDU1M0I1ODIyNTlBMUQzNUNGREM4MV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzA4NEUwQzZDNTE5MkYwNDc0QjM1OTNFQjhDRThGMzk4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa26IaP68u0AxUCKAJDMywXQH9WZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=DeyURpnFggfqpTKB4jf4pw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHHcP6DYZSDD69ekG_jXnIZQKSVt822tNFKthbLYDH9RBXEu4WwNwQCOCg3OH2hTo_0ngyrDaqP&_nc_eui2=AeHDW3k_uPVoWjFCg6ugdk5OAaCL7UIEVUsBoIvtQgRVS8z2OjKf_4JtVkFVcDY5CF1Kh66v3K39G_6d0KnqNYBg&oh=00_Af0txLUrThOaVyZ80MdMc8rVZvNZNvirulwzRI7hJKctvQ&oe=69F751C9&bitrate=1456492&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-14",
+              "name": "327",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOD7mU6UvB_30933YQRrre82g11UTFqgpzz4B9bN-IZZpn9IzawqVcJO0WVCeK_gGMqHK1ixxauofA1nnjX5rdidAb5iacX98V1-1NT8A.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=u65YXrXGAw8Q7kNvwHHa1LW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ1OTEyNTkzNTc1MDA0MywiYXNzZXRfYWdlX2RheXMiOjQ5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=JHE-IrJ3-VP20Do4T04qsQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHI7-oeXhsqQ_UCjrTaV16lb8NpXei2_Hiu6_i04Cc0-hJgw5Geenkivjz5Vcz3ooKX0FmUpZ47&_nc_eui2=AeGIMefcgcI2BHkHyPZQK1A7uOdqv3wFMvm452q_fAUy-R6RBILhEEsy53SRgD-IFSmBUlEfVD7EVDmGyYBKX9W7&oh=00_Af2TDghZWewHmBrCOVDrjifQhceCAH8joktDXPyUPP2LLw&oe=69F74338&bitrate=541745&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-15",
+              "name": "326",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOrhaZiIwY3mqS5NjgCkp6hCihchUQM0obie79XXIUKMeFXK-nYotp7hHe7uiDXqC5vLuZRBX-5p-kxFFBueQURM2j9ZqreEhFmX2fWJg.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=loX5eE2X-0QQ7kNvwGWVJCu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjY1OTc0NzQ5NjMxOTM1MTksImFzc2V0X2FnZV9kYXlzIjo1MiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ3OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=C9yEiwMlSKVZiPI37vRErA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG4GBBAzX1f1_4F6CKdV0u3wyWeFE4uWUQhk5CyGwhS32qIDEcxl9rC5BwbWo0iKaTPdhw-SRHV&_nc_eui2=AeGs_8ZBsv3yuucQ_yODsMBhhytlB9CbGumHK2UH0Jsa6VdlF3h3e7pXl-7DDf_MVCwIOW6WUQiVc4RUW-kX047Z&oh=00_Af0hFdmdUyKP6HINd8aA_kOCfdOYu0a_YtABWoop1odk4A&oe=69F76266&bitrate=528954&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-16",
+              "name": "325",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM4ASznYgANGbs8_udqs6zMhmVQjfsHP2_WBJmj-yeWB09fa0_L69CRTIpDLqw2dUEqxFFFZBxX9jCekFSi5aIzyGaMKkHc4jFUy89RPw.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=zGIxovAnDKEQ7kNvwEHZ6v6&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTY3MzQxNDM3NzM0MTE3NywiYXNzZXRfYWdlX2RheXMiOjU2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDc1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=AQyo4pZlCIi61Pxqc8DMuQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFT7K1VXE1ydOnt1HLk81HNt_R-Zc7aUNQjg1nxrdTG9j7CQGx_yiTsLKEEKAhliwCtHP7QSnk-&_nc_eui2=AeF2yq8X07kRD1V54eolROjxNfOWb7ihwnU185ZvuKHCdTsOdxQWKe_S_7w16jltFSkEA0i8lTLuK_hKmjr29UYs&oh=00_Af3G1jTeeKgPQFPoNYWwa8w_AELOmxsDBi0EyNIEPV2shQ&oe=69F72413&bitrate=567107&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-17",
+              "name": "324",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOSMP238XaFTzC11u4V0sdCOEuoQ9Sd2V1ViqlRwJ4Q7iaxli5veC_AOQHz_h21xWfWUiyMPgW6Ov4qc1QuoM6xX0sjpO0JFbL_IL2OpQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=ARznCOWaTrsQ7kNvwEfv1Vi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM5NTg1ODg4MTg1NTI2MiwiYXNzZXRfYWdlX2RheXMiOjU5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDk1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=97EYp10lhBwch6Xy8MfnMg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEU5OTQwGVd0WY3ZEE3vD-OuRkIIQ1g5qQ4fnxcZ-6B8PPGSCuWGrtgA94ODPnAvkE1zjPbDfZV&_nc_eui2=AeFLDV4d4aA8KR5fWvTIAzgnGQNF3gdMR6MZA0XeB0xHo85eeMQ6b6aJ9VX2GZxw-t5V7yftLQ7ouGGGs8tSz8Rv&oh=00_Af0_eu2Hu6Vwlta-2-IWrFF9B3qu0IK3FcjciMBgQSn2Ng&oe=69F74625&bitrate=530067&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-18",
+              "name": "323",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-18-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMqe9R5mGxaXL6zMj46JJU1cgPUA30VkoRrxOomIakqJnJ4MyhbzDenqHqx60kIGvzbxQw2rbHpuiGkEl4QDF7AK4Y8oNv-Mrgfz8HfHQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=GHyeLvGTGGMQ7kNvwHZD1Fy&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTMwNzU3Njg0NDYwODk5NiwiYXNzZXRfYWdlX2RheXMiOjYzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTA4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=lZ14n99ytZPz-UGGajf49Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHaVodNEH0ddDvV1JsNV1kcYh3SO8qETXFxaJvuXj1jfueN2DRqHg3JHH9KuYiXpv4sa_OT242t&_nc_eui2=AeGFyaDVrojtCtBhygq9kvyIPkP1ukkcSNw-Q_W6SRxI3Nns92pmuRVsX9PDg_Fdh1Kx2TAuao4VROGpQyFsLN1g&oh=00_Af2kSBU5snAZ-h0oGeAWNIEv3EWJ8RGP9sJuoBuSFOQ_KQ&oe=69F75AE0&bitrate=490349&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-19",
+              "name": "322",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-19-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPzzwiUOMZvvY5d3-gSm6Gw_0FCKfBS0O0A9GoF27588mgAGB9X6itXKabXGpV1nh6YK9buFL3HSo1JLQYkv36jbvinfoqnsDdFTKfRYg.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=G2bBfyjPvzYQ7kNvwFG8GeP&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIzODQyMDIwMTc1MTY1OCwiYXNzZXRfYWdlX2RheXMiOjY3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDM0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=Zz59eCTpoMHx8R_3VCWGPw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGeGSiG3cpm3Wqqqkm5Xcc5absdSPdzSw0iN0ABQ2zuwI4H6z1J0z3EAbESgPHXzh9RG93eU0Dm&_nc_eui2=AeFDMeOmlRghG5dqaUJz76xNfsjtqbT8cB1-yO2ptPxwHd9b79X58zcIH8v1gUXDIaMEdT3To1d0-KROURfR0t7g&oh=00_Af28T7fla_uCiuiSRpp5EIEZKMF5O_QbK85miupGPW_ZCA&oe=69F76B14&bitrate=459699&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-20",
+              "name": "321",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-20-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM-K65m4ezNLdW6y24_eIvx0SE5pOyfJNlEF3w7-W6eQ_mXSQzipcL0XjCJej2fpaIe5pJ_eSiXfaWQ58G7IZiz1VHB4oUWYVlh0Ak8Kg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=u3YP8TO8M7MQ7kNvwFvup_l&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3NzM1OTI4MzU3MzE3NywiYXNzZXRfYWdlX2RheXMiOjcxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDM1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=iUxwyMskyN1KaFkDP5gDAA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFv-hKzXFMovfJ_jggc2SUY3cLb1k4LdAm666brYWkbCyB58MWjvcqYyecKmmggRGzasah3L3Vp&_nc_eui2=AeFd2_IVXrW-XFtus3ngOzB7mvRcJV5-ltSa9FwlXn6W1DDFa-gHGdC14L2L1TzrsSXSdnEaAxApZG4hW06aFlGy&oh=00_Af04SX5ZSb_SeNFUE16T6pCmVmVA_gzyCdy0uhXUcCpCug&oe=69F76CBB&bitrate=483333&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-21",
+              "name": "320",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-21-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOr6EfOEftbeYXMIoQJmBFbm7yqCzwXo8SQFH659YpMPsEktWgeD1obNgou4vvdcg73rAoSuZWKQ1AhgwPLXUKRSlb0wHZy8HzbzhuGWQ.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=Rp2whCqAxWoQ7kNvwHFyqn1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODk5ODIxMDE1OTcxNjUxLCJhc3NldF9hZ2VfZGF5cyI6NzQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo1MjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=UiLuPpEFyKrxRAAnHAH9LQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFZeF97zoP9w_n5Ynrpxudn8xrulkdbgvTRjoYnVkgygM1S1rIx9zRKS3D8TP9zly4vUIMggfgO&_nc_eui2=AeFqaScMJKXB_1HkTISppWP90nUuszcAr1XSdS6zNwCvVZjuFTe6N7IijZ_39uz2tdcbnZWL7aOZ61Bwkg3N8NEJ&oh=00_Af2Mop85yKPtFJTMOwU4qZ9znOV_VypObief3AOoMAoDCw&oe=69F7548F&bitrate=471638&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-22",
+              "name": "319",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-22-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN3NduivB6bGGB8IX7wbhWYCIlnzDnhRbAv-LJnd9wiqyYFvfO5F2tFD_gojCo0V5wZOc1eeW4V8eS8j74u0GlY2YOPrcFSL7koQVVi4g.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=bUoE3OWkgocQ7kNvwGlhxEA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI0NzEyNDU3NzM1ODg4MywiYXNzZXRfYWdlX2RheXMiOjc4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTIwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=dJTz6wFkBckBRpIC7Ayhwg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGe2xO6y8Fn8wMIAKAXlOVFyWbiGy1NDsGvwgEj9GMwmnrcdLK4q1ZAq2yn9O__fUYrMZYPet_8&_nc_eui2=AeGvSCeUnBVN1jcQEW-DgdRdeQxyny7t-qd5DHKfLu36p_kEw4giuIe5rFrFzW3Gm0NTeoy1Lvcc1ZbsDZmcdmOY&oh=00_Af1A1awArqJthXEZndHSrG3aGH6QBKsT0NrOS4XUozF10Q&oe=69F7670B&bitrate=541308&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-23",
+              "name": "318",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-23-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQMT5DfETBbJfWlq4UH_6LRZKWsiN0ytCodKM7bFE1PSvhJcQjZh19P9stYapusaXS7E1wQMsYuTPwN7NX-JyQcOcALepd3YoMuBe3R0DQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=i0dJOSqgAJUQ7kNvwH7e7mZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU1MzkwNzYyNTg5NjMyMSwiYXNzZXRfYWdlX2RheXMiOjgxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTQwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=demjIi9T04dtq6-Mz1wiJw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFzxzM5jCd5kTCDKNhilXXfPyQDKOjuDDKV5EkEu9sHsUZRx2C6o9umUA-rnlsXKqo8RJWLXBmy&_nc_eui2=AeFDW2i6cQDxn_eDI02vBIlzsTdigvZFzUexN2KC9kXNR_JOHkijxCWH-wdlI9v8sJQ3aJqG0Mm4uNc6-25bVhsO&oh=00_Af1i2ainy7qPsaITZYH2QIy9pzHp8UboHxXcB5EBrAachg&oe=69F75AFA&bitrate=502108&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-24",
+              "name": "317",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-24-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQObKWY6mbt2bGaLfbt-QToQgOTDmU5_XYKxObdHH4-l4pFZSRGddhye6OpCWsJTuMl6QQOn-ARj8pSQqRFcDkzPq2DRnXA6sQc9kBHcUg.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=RciuzNdCMroQ7kNvwHrI05L&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODg4ODM5MDIzNzU0NzQyLCJhc3NldF9hZ2VfZGF5cyI6ODUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo1MTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=4kXlW3aRt-jYEdfhDYtweQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHI9G5OrbSoPzQrXLkfcinR3u4MERG5x7a80XxUksMnaKa-FbtKOJKo54_1IEPSShCyRXhAOE6P&_nc_eui2=AeFjPKdE-D5YxNXMARLn1Ro2Yk8c1c5Xs69iTxzVzlezr8b6ICffbKVDbaRAQpR6bgCM8S_l-QmPbXa5IZEojHzj&oh=00_Af1mVdTc1JmEGuc5tL2jX9bB29PD15IRC4bt_sWEhibCQg&oe=69F768A2&bitrate=559086&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-25",
+              "name": "316",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-25-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNKJJUt5cZ9C01Io4vZekfpF-s8vf3RP6RCDr8FGji2YwOWcfP2C5e47e0ZHl4y4zN0TQQxhKf5QVx9aXZD5mlsF9I6vOhDt-36FxqIBg.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=_SRK2QJMdX4Q7kNvwGdTjv0&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIyMjAwODExMjcxMDUzOCwiYXNzZXRfYWdlX2RheXMiOjg4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTAyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=6UALCzkVLl-Bq3EpEu_Cgg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGf4v_Y6Se-v4M8Vfq11SgxCHLvMqd70ZlTvjbC3BqK4fl8iwW7ahGrfrPSAzVAV-KfPqKIdKKp&_nc_eui2=AeHkxmNRvijelavc3c28KuWjYQf88FjqJ5JhB_zwWOonkk8eofKskzNx-1YBeXfAj6M3aXezAnGKlL8vmggQWPIJ&oh=00_Af2P3ulSkK9cwVUGisduFlTpHKYfEWDyjcrQYyqBtdCfKg&oe=69F8470B&bitrate=436566&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-26",
+              "name": "315",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-26-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQO3lVSpKyhYDdYasu8UT0QNhdlLKFHwSu2NKbDUvmmHYj7r_GTEOlnr1ecgRoR-z_xEXf2FAjsg39mt0IQ_FfwwsCpj3FHwAjhE1P4Bqg.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=nkfdul-PVSsQ7kNvwFlSNpq&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYwMzA4MzQwMTAzODEzMCwiYXNzZXRfYWdlX2RheXMiOjkxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTEyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=1sjgFmI1zZ2LZNv6gZgsog&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG5qs3GSjvHUrtjm5J7X8YTQkppbnt3ky9qqLQGgQy-IDlP8rnas6fLve6yqLfcNiIe9_FtoDQ3&_nc_eui2=AeEiMDdjGP7vOXVhmVOltnnXBSAiDwNJ78sFICIPA0nvy4-3Yd6_BpsbSDuYw39O53DthSyacBusGHRhVZoqz5Xs&oh=00_Af2AWmCvxAxS_DHSA0cHOsM58ngLSihjUmNPAC4QxLckHQ&oe=69F76E0E&bitrate=432020&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-27",
+              "name": "314",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-27-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNH50gPaMPRs0-e5AwUOccTtvTBUM5kvlKu8GWcoRV5op5P9Vu61iDoyTODhnhbQEwMI51FcUaoFxjw1DyIcFHPBTKMWx3bXrnTZyN7zA.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=t7q92ePTmfQQ7kNvwEuHwVM&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU0ODc2MDkyOTcwOTc0MywiYXNzZXRfYWdlX2RheXMiOjk1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDQyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=frP7E28ty7LJireMBFGH1w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGD65_Q0rw0SwJNgtfc7JiBXvixiRNbm3j-Vo6Im7ewq317MJB_QRGfZo5pzrHtiBQub9oSR-SG&_nc_eui2=AeFArZnys57N24AB35p_eYZNo1UtPe8YgPejVS097xiA97CcvOdlhXR5h7Sswzg8hdbDofnGRxwGRqU0ghuehCLw&oh=00_Af1UfoCZ_8Pru6I9VP91EQ1cRcvoiQbAhPSntBx9eEHs4Q&oe=69F866C3&bitrate=464890&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-28",
+              "name": "313",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-28-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQP2jKjgjhFhN16wKngLbiocXybYJZNL6uk1z67bHqv-pwk5vxhkKDkn7l0s4IpCHvNexiRzSx9sN5M9O11hLeb1f2A8EKNdKCLQcO4QKg.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=ML_RIhuV39UQ7kNvwG8oscE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQwNTg2OTE0NDUyMTU2OSwiYXNzZXRfYWdlX2RheXMiOjk4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=HssBIbvQHLZ4a9D3nP4Xng&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF1vn79moCJ4nz7tImg3WBDS2Pm5De56zayhFwSjOUiqZlBw8WoRUOqgBqTb3zFDBEPe0wofBoM&_nc_eui2=AeHESmkeJPsCvLht1kvJsbtV76wicbkwzKbvrCJxuTDMpjIGq5RkseZfeHOOpSOqEo8hrWJ59Msi7DAbXpAlk_SX&oh=00_Af3VYOpkVoYNuXV6APhJ61z7-PBLHXvhi8V06sCpeyn_vg&oe=69F73F08&bitrate=526568&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-29",
+              "name": "312",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-29-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPB2NYiHyz2GG6UelPpfhIfwWoWARYiFfrRFDdbtCq-yh6tMWO0OGlXIzySOB5foQfzScrP8sP9UUOpL7FT5c5FWcnSJwK7QS0_Nizq7A.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=pk72lvG5KEcQ7kNvwFs6ib-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQyMTY1NTY4OTUxODQ0NywiYXNzZXRfYWdlX2RheXMiOjEwMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=07Gk4BJUSZnNQ-UfFhJaHQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF_DR3qJ-5KEvlb_zQk_Ii5K_VUc9kMt0cet4Ckybyfc3P686WCtJsD6sYSHlVzbb2auqxcVV9o&_nc_eui2=AeFJRNZD85VWWBAjblM4pnEpWSh1_FHLzT1ZKHX8UcvNPX53bP451g4pSbxlaI8wG4DaXIOD8nlA24v6HjrKVUq4&oh=00_Af22M-UI9UnglDyFNtQvKrZDrw7BQF3VzMFYki5czcCEAQ&oe=69F85F88&bitrate=503262&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-30",
+              "name": "311",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-30-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNRpCNK3sE3tAVdNQISRN_Q_-ITwar5v8wuNQy-PNdTAt_ZH4yVShQh_KTIGF968c5cnVydP-7c849V8xVdqw07rjPU5CGav1kiQiNs8Q.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=wc4pZ7mpV0sQ7kNvwGKxGoZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM5ODE0NzE2ODY4NTk1OCwiYXNzZXRfYWdlX2RheXMiOjEwNiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ1OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=I7tvcJoubf0FIAVNr7L2TQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF06Eim62qRTU36_4q7GOHWGLLrMSJE3o1_2AAOD1RAzZCXc98O3862WyS-g_zfx6gWNnLglYcl&_nc_eui2=AeG4XmK8brP64fywX5k-mHyRlCUmgD_w7W2UJSaAP_DtbfDqFGaHP-WDIgJH-5R_FJdCuptbX4IUMRlHtk6y_UAR&oh=00_Af3jQDdwJyOWMYAxGb8cmXYlGjxYDaKhzf6DkUqvwf0dkg&oe=69F786B7&bitrate=520085&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-31",
+              "name": "310",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-31-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPr_QHS4XJO9BFJ1mcTF_xa4f8rOjc7A5HMQyQuStS3w28lp_bSTRsFgnjKMkahipCYb6P2rS-mptm0sMa_3Y-5f2wB_kgNhdJLmS52qg.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=ZgskzfeCw6kQ7kNvwFeO7_l&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTIyNDEyMTYzNTQ0NDM2LCJhc3NldF9hZ2VfZGF5cyI6MTA5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDI1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=YTiDnerj2UBLsmQt_hPqLg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEH6q8eqZ9TEpQofC-STvW50G9GYiasI4btE-XNGxrwVOerf928-s8dpSgGQLVvzIgBr9pl2_mb&_nc_eui2=AeFxnhkr68Ej8ApM3TO1OcI54wtPkBLjeNnjC0-QEuN42fpvWrj5jx9yveCIw11Oeex5UAsOOJZAT8OvNHy8ajCQ&oh=00_Af3tY-aDnvJmZxL0yU5bzNwBeE_hv7X2GKzCDxIiFc2hNw&oe=69F7ED8A&bitrate=682311&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-32",
+              "name": "309",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-32-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPsEqdSxDl0TfzUze41opic1Kb7fx-9K9wdy33MpiJbaCztx2YobJMRNWWfX5pCoaKn3Zw_H-hxexsyst65Fdvu3eHc96sY-GA9YRMOhA.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=BbEOYjG2yy0Q7kNvwH0FPer&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM3NjIwMjMyMDEyMzE0MywiYXNzZXRfYWdlX2RheXMiOjExMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUwNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=PZlJlkIpwab6DobhgrWKtQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHsBVJqU1jXl9O-gt0l5WEoJblhZgryTR6UOzI51YjU9qoAYiRNzuLpFvgYqD66Yd9kGzqEXmiC&_nc_eui2=AeEidxEDOqTxUqVN00oBb4el86oUiTBztcfzqhSJMHO1x1DzQ-JT_verEleWVULylhamYfPPK2RcK4XYjg_zSRfF&oh=00_Af3qgX0X7X4fDhbRuvvkUkZGzOMLgCo38kbyjZ9RFNFXXg&oe=69F76D23&bitrate=627199&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-33",
+              "name": "308",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-33-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNYASNxWsRofPmiGttLac4IN_8hOSWZzPc2Ymxo6Z9H3-fLshRekYbMaR0EbCULvVl2m5ZYsanSz63kdKFcd82T99Rpaxxojm2ASI-msg.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=video-sin11-2.xx.fbcdn.net&_nc_ohc=vUgsbIDZqkoQ7kNvwHnAUbU&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4ODc3Njk3NTYzMTY2NiwiYXNzZXRfYWdlX2RheXMiOjExNiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ1NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=V2K2vtma9EitY9Hf4bYv6w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHQU_40yqpTb2WbO0DEjhLgW-x9L-ijttJTWltIZaQfJQwQ7caJBOH9OZsNQ2tlASKTi5zP4bRG&_nc_eui2=AeGKxePgwmPO0wrRNdGuip9j4Y2nAPErb8zhjacA8StvzH3-jHwbGG2qDwGCQP4lDuTBSDnqbw4f8W27_acPhlUU&oh=00_Af1Qprv0nK_84f8Gclr5YlTr-l1fJ2UX2UQTllTZt52iHg&oe=69F764AD&bitrate=592843&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-34",
+              "name": "307",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-34-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNDKiZHWhh4txgV50IpFhPLY7T8yAzANVjMJz4MWNS4_NAaHgWLLze-iVpYHs0VC_nMQY0ApQgT68EpfV78G2xFUMcyn712EF5l9fEYAA.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=mUpjCwqQAhwQ7kNvwFhImli&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzIuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODkyMzQ5MDk5ODQ5MDE2LCJhc3NldF9hZ2VfZGF5cyI6MTIwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDU5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=DXXz9ZOrZgE7uwQ4hUmulw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH13Vb4W499uwyqOqD2oYoeA0lmiGL8aiSeQ9apauTgX0dPtd5ldXXuD3d-US1h5nUARCkmUd0Y&_nc_eui2=AeHgbteeTDIIHxn0HI14VQfoB6eRISU9a9sHp5EhJT1r23FfwlGaWe6eP0sPXwzFMLRrvH-PsmFOrfPvNi8m1vrc&oh=00_Af2D720FC4vmXoEbGobuwQjWVDxUkv2lKEgW9cxeoizP9A&oe=69F865B5&bitrate=562182&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-35",
+              "name": "306",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-35-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM1QXTkaAP_vfcNJAQj_kV0E7iKVfbYabYNNSX9xvqC4hwAvE59HsB-065BYm5TbvFhfRZyBfHsvor4BcMJXkJ17q3dHBLFQaGPyZ7x6Q.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=lfRQxtVlE2UQ7kNvwEKaUxv&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4MDQzNzk5MzQ1Nzc2MCwiYXNzZXRfYWdlX2RheXMiOjEyMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUxNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=zmCDhgRr09PxEnun_iu2dw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEOHydT54il2_yFddIL6OSaBC-kUvT08BZdwo3E7Rs1_3a89GsEeMQQstfzNw0LcrYwTu3SxG7l&_nc_eui2=AeFdkgMWl32VRgifSLqbTZjtNl9a3FZBZeQ2X1rcVkFl5CpDEW2T-6vKQgZokzfBOzVEcj-KR_EIA8zHZTiDDtPc&oh=00_Af32Og24df2Ms-JHcqeMpvz10tdlAt2VKO5ds4jLZ-PviQ&oe=69F7809E&bitrate=493318&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-36",
+              "name": "305",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-36-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMFX0DB4B3n9PrFqojuLqYeLvr7UEgKTqC1qQVNoRtWQy_JT0TY_kyBLkkZjZ6g8-pV7Hnb5-yCDptM5DtxPXmxjZFBp6tAp9espjO4BA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=7TMyIq0CmF4Q7kNvwFAgScz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODMyMTI2Mzc5NjQ5NzgyLCJhc3NldF9hZ2VfZGF5cyI6MTI3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDk4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=bVL7eIGhDRDa-HGq87uimg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHkMhtIwIF9BpGQA4IfMI6rf1yzvNuuha5GDD8cClQpzIFYT3-2W1T3G8BN3QlZNyzcet0QxkyP&_nc_eui2=AeEdSutegDcmz-5gwbOYUdOYvJwNXMkoMpa8nA1cySgylqSqc237VCFmj6D08BrWBqHGJ_gJJ2aUPxSCgcpZhcgl&oh=00_Af0e21uEWG1JiZxkdUs1j9Q1IHK1QjRoKTFCDf7IpmJ8-Q&oe=69F87B22&bitrate=537007&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-37",
+              "name": "304",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-37-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOm3X0MlgHSv1Ns29kpFPCT3chf9DmUzLGMkv7gKs5eID9iyYAufAWhvx25RahZY8k1FwDX8URqFlLE2CSR6uSZQcmkAdSil27LsmrjEQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=cO4mu0D0COcQ7kNvwGhY2ib&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk2OTE5MzQ3NzE0NDU4MywiYXNzZXRfYWdlX2RheXMiOjEzMCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ3NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=0BTltDdME4Y59cfXRrVkuw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGruIIEnePkNe0SamSHEx5BHO8yKqZMyRtW3xZcJhTiaKe6Z5ij9PsbdjkcpGoIinWSWqzBHdr8&_nc_eui2=AeFGMPeQT3-FlUYB_0PK0G43mJ_RlC6vpL6Yn9GULq-kvjSQ-ytm6mBzJPX4kLwQn3BEq5dluUA2kgQMk6ynsmz8&oh=00_Af3-3zNbJcR1BO3TYuWji86YbU3rgKWiJYIRqkGIXGUShg&oe=69F78459&bitrate=682275&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-38",
+              "name": "303",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-38-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMpfgabHWTb3SyQm87-tUX7KXN_K93PxBLEFLrAJd1_zVBYdyHNdtD_qhryCeKJB9k5dZPBzwDBJa4lLhH7B_i3zYnrwDVJpRBuPWijrg.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=x6EcmlOV9P4Q7kNvwELOPW1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI3NzE4OTgyNDI0ODI5NiwiYXNzZXRfYWdlX2RheXMiOjEzNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ4NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=XRjuWxGzVjGW-9e9Vaa2Qg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHfRjfWVzJP8T58iElzHGe713A8px4S10Sk6bzde5mWjGRWCVZfuDIcPS8pdDjKmj3QMOZMVCfJ&_nc_eui2=AeHsL3TJtWAxJs59nfvr4ccVq14MQRJSQaurXgxBElJBq8vc0fyjKc-_aM_IK6EunVNgTl58bJgTBhsu-8pcqixP&oh=00_Af04V0b2QyJItftWtOKvu599jV4PQPT6TMR7fy2sv9ITNg&oe=69F85FA4&bitrate=541251&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-39",
+              "name": "302",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-39-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOiSksg317j6Dd3Saz7IM9LlYcUZNAFD3YKdQB3ir6opkMW3yGn3Oppl8H3bMLjAi56NIj-C70wd_nJHWW3KUGy1mjVmKIJqhcUHzSb1Q.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=EjF96qzsYBQQ7kNvwFhmWZw&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM5MTMzODYzNTk1OTI1OSwiYXNzZXRfYWdlX2RheXMiOjEzNywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ5NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=VegZX8F6VkkrZBkT8K_t2w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFmjSBG4b-LaPlu3BqdD_2hS-nTdHqxi9r52-mm1GiER0R90fkzsbu5r_CoqwQNt6PDR_VK6cku&_nc_eui2=AeGy0u1gsAvKtZQpsAQM_YwVb7UT7VnbbTVvtRPtWdttNU9Q3mSen13iVPz6ObY_yxT0GwQ0U4Jn-oauZdeLVTsw&oh=00_Af1Jixwna-3_q6ycsh0gLs6jHl42Xb73WbyP9RgGH10vzQ&oe=69F85FA0&bitrate=668750&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-40",
+              "name": "301",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-40-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-41",
+              "name": "300",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-41-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-42",
+              "name": "299",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-42-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-43",
+              "name": "298",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-43-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "luyen-khi-10-van-nam-thuyet-minh--0-44",
+              "name": "297",
+              "stream_links": [
+                {
+                  "id": "luyen-khi-10-van-nam-thuyet-minh--0-44-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "luyen-khi-10-van-nam-thuyet-minh xem phim luyện khí mười vạn năm thuyết minh: mười vạn năm trước thiên lam tông vang dội giới tu chân, đệ tử trong tông đều là những đứa con của trời, đánh đâu thắng đó. chỉ có khai sơn đệ tử từ dương vẫn luôn ở luyện khí kỳ, để đột phá tu v... luyen khi 10 van nam thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Luyện Khí Mười Vạn Năm Thuyết Minh: Mười vạn năm trước Thiên Lam Tông vang dội giới tu chân, đệ tử trong tông đều là những đứa con của trời, đánh đâu thắng đó. Chỉ có khai sơn đệ tử Từ Dương vẫn luôn ở Luyện Khí kỳ, để đột phá tu v..."
+}

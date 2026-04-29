@@ -1,0 +1,606 @@
+{
+  "sources": [
+    {
+      "id": "do-thi-co-tien-y--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "do-thi-co-tien-y--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "do-thi-co-tien-y--0-0",
+              "name": "170",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMTjlWytK4vgMkRrYg8NJmyI0FMfxedU1Q7uRXY3jmpyB5E8xvSL3drPm9LoCDgarYh-wtit_A35hUfd5wuHv1b4wBefusJ0-7wS_qhNUjl-A.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=daFSDd4inTwQ7kNvwEQ_36L&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNzk4MTY5NjI3MjI2NjYzLCJhc3NldF9hZ2VfZGF5cyI6MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ4NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=c599253a3d0297cb&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84MjQxOEY1OTMwQTU1NDIxNDFGOENGRUVFMDQ3MkQ5Rl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0YxNDY1REFENEM0NjVDMDQ0RTY0NjdGNDkyN0MwRTk5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbOyLeq9Lr4CRUCKAJDMywXQH5aPXCj1woYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=gpuB0CqcXZ1ewEv-Cvfb3w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH3HQuumBrlFy6ZVgf6NScwXk9u7512d_KU-7SNUFBocHX5p1cK0zXkGIc50wfhj-ZiEeqP8keW&_nc_eui2=AeERd3FRyXXns5oADdpkfkaNc7phfyq1ZyRzumF_KrVnJI0yczdruYBIUsi_dRejvnMPiheHV8vOAgQw0CGxzMc3&oh=00_Af1qWjznBKosmLGW_RoR_ZueFDA22I4q9F_3hz2IV0zmlg&oe=69F75716&bitrate=1179865&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-1",
+              "name": "169",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQMW1ZRg6lZ_QO0aQKr2iHIbS67j3zUg4fe3LQQknwOlumRnrlISjyhtaqys3xSLNjsxkL-l6gHf0ld1zSt1amESG2ErLGCRCGR1z_aod6h26g.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=3Lp4b0puZyYQ7kNvwEbuYII&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDYyNzU4Nzk4Njc4NjY3LCJhc3NldF9hZ2VfZGF5cyI6MywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=d79ff46189317ddb&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yQjQ1N0YwMzk5RUVGRkM2MTU3RDAzMjk1MUU5QjE4NV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzY1NDRGNzgzREQ5NzBBRjhCOTEwNzIyQzJBRTQ2RTg1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaW6rKp4peZBRUCKAJDMywXQHzD1wo9cKQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=KHx6EdqW2tVyT9Y6tP56Ig&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFd7SPwtkXWAtkrWBtFambrExA0_qDSf9e9nCcRho2eysWzcnbQfPrk8JnXfNksNTTN0LCFuI8Z&_nc_eui2=AeF0ZSWRZgQiwqWRHTkA_awgWkFWnX8003JaQVadfzTTcnagJKsfXELCfI4j6lghFC_ts0tV2U3I6sF7Sv5M-olX&oh=00_Af2P-r_ruhbTaVuv3hYXF1WOTsmKWR7D7zX32fL5TFBlRw&oe=69F76667&bitrate=1353808&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-2",
+              "name": "168",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQPTfGYBLX69z_XsbbYtT9VACD8_bbDTbQco-KJiEx-PzrUDem_4ZZFL9VIzsI5VaOxTMO95WsrmZ9HIrl7mlIABpYUrCBCyVpzvidlC_9494A.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=eRpRvOFrYgwQ7kNvwG4kbVT&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5MjY5NzI2NDY4ODExMDgsImFzc2V0X2FnZV9kYXlzIjo3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg2LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=17b8f3a18bc63a2a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FMTQ3ODZBM0I0NzUzQkEzRkFFOUZFREU0NjUxQkY4Nl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzMxNEYxNUQwMjM4OEM4Q0Y5REYwNDBENUM4NzFDN0I5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACao3au19MSlAxUCKAJDMywXQH5mZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=hyeioiu-Y91ljLCgavmivg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE_xr7GUQ2Xixt7S3op7OHXx7drmgeK8m80ranSWeLIVIL7LauwZKwWY2MEyWlC4BnTZH9AcUaF&_nc_eui2=AeEzrbffE9lxXHqK87-Hl-NBg0vJYYBntOiDS8lhgGe06KN7uLQ6sLgMRHO5_moF6rPdGFupIR5KhS-6PRWN4zDp&oh=00_Af3wAPYfSeFgMiozVZfmdo88jmMJ4USfaQOaJKfG1efISA&oe=69F7B1CB&bitrate=1036022&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-3",
+              "name": "167",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQN17-ciqaLeHZ-4GGvhh_A4VC5pvNE6FGPQvnkXpLEo0MHE7jLmglqPsZW_4G8IXDaHQJASWIT1FH19Ivpq_bx8VT6UeRxiB8ETuHgGpgPjnA.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=axSJlJTFJcEQ7kNvwHXYXLJ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMjc3MDU3MTgwNTYxNzAxLCJhc3NldF9hZ2VfZGF5cyI6MTAsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NjQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=39fd3d45dcf979bc&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yQzREM0QxQ0JFQTU2RTY4NjU5M0NCNEE3OUJCRjU5M19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdENDE3RUFBQzk1QTdCRUE3RjkzRTBBMTJEQzRFNkIzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbKxNe5wd7EBBUCKAJDMywXQH0AAAAAAAAYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=rxp-tpXKDk9Qnftxd_qz0w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHkyNXx1Zza0S4hULCWhVSnSx5r9dyiH7D7r3HSd5umDnWYhaYY18GoI7a0frHE_riKOnVcgtZO&_nc_eui2=AeHQGAZQw4huGNfAwVzn7T_h6t9MGLvhujXq30wYu-G6NWgqVEoHzsjmmEnPr70U00G8jnZC-C2vMubuLED4_xTG&oh=00_Af1kY6n6FhIUfVwwj2H5DnkgjsqN7PJDAyMcjiPmZwmT2Q&oe=69F80685&bitrate=1218331&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-4",
+              "name": "166",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMhzXNbRdZSf_ZDaTvkcpDIIIwUDEkeFOuZWcJadCRVZpW2igVFkPtneEtX2FojGx52x4nYQfS40KmgBgYRj5zPy5k9FsFq4P2rytdtE6b-TA.mp4?_nc_cat=105&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=9KgS9j3fg7cQ7kNvwHAB3yh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMjkwNDk0MDI2NDIxNDk1LCJhc3NldF9hZ2VfZGF5cyI6MTQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0ODgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=91d68aad69d6e3ff&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC83OTQyNTg0NTk2NDU3QUM2RUQ3MDk2QTFBODNCRkRCQ19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0U5NEREOUJBMzEyNTk5RjIxRjRBRjRGNTM1NTJBQThEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbu07zg0ezKBBUCKAJDMywXQH6Cj1wo9cMYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=k32m8dpduawwAncmcqT3uA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGOPkmKayujKEGz9ymBUTc9--BtrBuSp5AYUdpF9Rkxgv_5rRMx3qdECQRK1wkzyj8VpZ_tFk9j&_nc_eui2=AeEQH2EVxFsH86CxwXGS3Fbnyv5CJbGcSyXK_kIlsZxLJRngAFQA80EDTDFvRssBFVGjN7Ivgey2cNW6Vlmdm0iS&oh=00_Af0C4axtSMAzjyn5CuwB9ftUmC37YuvLohPJWVzrd8hFrQ&oe=69F8053F&bitrate=1495385&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-5",
+              "name": "165",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMOJwGC9TEHm_z6x2T1Le9k7wC7iV0e_6iwViTFErekl2av_NCH44yDxGHt5NFA2xoJxPIdfmdDZogxys7d3Fy0CZ3OioJD6wvrXEfZxaVgNg.mp4?_nc_cat=111&_nc_sid=5e9851&_nc_ht=video-sin6-1.xx.fbcdn.net&_nc_ohc=Weoc6K7Ue3wQ7kNvwEIVeCO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjgwMjk3MzY1OTM5MzQzNywiYXNzZXRfYWdlX2RheXMiOjE3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDk5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=aa21cd5c7b738ff3&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yODQwNUIwNUREQzBCQUExODRBNUM2NjZFRkE4NTA5Ql9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0EzNEFGN0M3NzdCRDVENjg4QTk0Rjc4NDAwRjExNUI3X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa6tqO-s8qcXxUCKAJDMywXQH83rhR64UgYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=pAuwwvpW2yuUmqUyLAx_Uw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGzGwbEYDl30SFVHhBY3fvMant1Jjf54ZojdFDtR1RlMAbelZz_Oj4kjwkGMb3MykoL7_8vieKm&_nc_eui2=AeEjI6554E5RB-Lj-6OH6g75LmG-6LgNzWUuYb7ouA3NZR_74dHl68Z7HQDcsuVBxS26yiwd-XQkuccdtDV5J2hb&oh=00_Af3NGO4pMq-GBoEIj-C_d5QTDFyXpKdG7FmdDQctvErqew&oe=69F79255&bitrate=1030527&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-6",
+              "name": "164",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOn8DZu_A19XrV5IGozq8zD8lJQ-n4zu4bXEbdc31Ly2nXNwG8HtjM9DtRmnDUw3KrGeLFkVLm7InmnuBejs6e1rxkEJ34VqdrCJXRP4N-lCg.mp4?_nc_cat=105&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=NZA78wYudM8Q7kNvwEApVma&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5MzQ0Njg2NzYxMzc1MDIsImFzc2V0X2FnZV9kYXlzIjoyMCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ3OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=5b1e8a89261cc882&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9BMjQyRTNFMjIwREE4NjZCRDYzQjQzNzdCMTFBRDk4Ql9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzEzNEYzNDc5QzI0QzI1NjQwMjQxMzY1RTQxQUEzRDg2X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa8yPWXnvmoAxUCKAJDMywXQH3-FHrhR64YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=ba21wuZEmNTC7iOTPhfTBQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHChGPJg0WZzKYxa_nmUzIMe0xIvsNkIIwzeUWDJZfoBr7znvhP-_wXXKuWXkBcqG6e4bFuoKge&_nc_eui2=AeHcgG8GCbdoux9cBigdaenigAIVwpu8ZF6AAhXCm7xkXnCwe2tG0ubof6NDEFqr6qm0yq4RCSDoxBvJ2B8DI1Tk&oh=00_Af3m8xLYwYoL92vXiTD4h92txHRXQmve1K9woGDk9kgOFw&oe=69F75FC3&bitrate=1035137&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-7",
+              "name": "163",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPthg65jqCoumPTn4Qb73K_JLRSuvk0zI45WHMKrIrkjKnfQVc9-ApIYik9inO8ITXbbKG0GBGeJSqU33MN--8D4vMcRgyipIB9sKUJ0fz2qA.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=k7oa6X8lPFcQ7kNvwEBXfNg&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NjczNzA2ODU3OTg0ODQsImFzc2V0X2FnZV9kYXlzIjoyNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=43472a1dfacfab3d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yNjQzOTJDMjIxRkYyQjU5RkY1MzMzODI3NDg5NzNCNF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzc2NDEyMDIxRUQwRTcwREZCODlGQzEzMEY1RDIwQThDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACao4b6hsfS3AxUCKAJDMywXQIBseuFHrhQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=J-3dinmdxesaaIaJcD0QVw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHgms8ET7963R121SYDI9WpFVWe1K7mmxCEisGtGFiMmccdMJLzWTvNRyy8Za6V-5WrseyoEK4n&_nc_eui2=AeGBSDUyx7_Qds_z5EDpr7DKB6-wKG7yX-8Hr7AobvJf71-J4upwjXkaIuwKQQjSlgGyKPJ0PAL66DqleqTsg0J1&oh=00_Af00YHikuqXi4Fd-c1E5y39LPccN-IlNBU4ZZ7DpMhczWA&oe=69F77334&bitrate=960687&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-8",
+              "name": "162",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQNZc0G-dxmbjcs8hZMgvtpDA6U3bPXLOX91s3TuA9zU1WozUliC8S5OXd2Wpv74QC0pf2lqn6gsNHdGsmbUM5LpSi9H7o9UBMPYhuBloE4qSQ.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=mKnTSv6Q04cQ7kNvwFPMyIG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo4MzYxMTcyNDg3NDMwMjQsImFzc2V0X2FnZV9kYXlzIjoyOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=e173388e948fed4e&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wRTRGM0Y4QUZERjA4RTkyNkQzOEE3NEMwQTBEMTk5OF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0Q1NEI2MDExQzRFRDUwNTBCOTE0RTRBQUQ2Mzg3MUJDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbg2dD5tpz8AhUCKAJDMywXQH0xR64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=merUB0WrSL-Y9FouSlUqAw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHdUTxbuWqkYE_BZ7a25lyCAoXES63EO1AklUVljf8EmqmBSdKOkDSUnH9VWg8jFOrYUi7oErUR&_nc_eui2=AeHmeIall4d0pkMkOqTrQqMKF7omzPsR3WoXuibM-xHdaqOJrrdUAZ5Yq2cpoPnLe5bzUnYpHk54P6nt04FhWijl&oh=00_Af2cJ-7qvTuUhgGMhAVsgrNGgrzVU77qQUP_Zh9Lq7dYwA&oe=69F80059&bitrate=1057737&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-9",
+              "name": "161",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOrSeGPOyWrgXrMYUFwXQ1tmmp3mu9j4on4D8l3SaGiYjHbmRT7AxB9AK9j7tFzM_okhrSaNapuDup0ZYKA4XuwmWmf_en0lbMspVOFLg.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=92SvV-a866QQ7kNvwHSTA2u&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTg4MTM4MjMzMjUzNzM0OSwiYXNzZXRfYWdlX2RheXMiOjMxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDcxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=jbMsHFKxXp2z4pp6i_tDLg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFm-McjDxeeedvOVtHod5B145ZPVuved15wPpOHQ3H8jQ4V2vJh07NphMCd5KXzzZhr3vgS6L3p&_nc_eui2=AeG6boVY6Vy3_vI3rVnYH_YBHwHDg8p4kSYfAcODyniRJlguHKkaEE9zOtLuI9TtlbNwVJWp7fPfcNQEMONVa7cA&oh=00_Af3QdgU-dP52csJc3UtTyR8HCxj77JbpZzZ9gN7Hc25jjA&oe=69F77254&bitrate=352154&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-10",
+              "name": "160",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNGyPdDJp4XViIqTZAtPKJxa6uqE8_SjGDfhkU7av37JOyyjuv5C_dyobv05NLXb4ZU8Kejz6U69dCzw_vrdT106faXawtDgG4a6mS9jw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=-_bFaUCn69gQ7kNvwGBJikd&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjAwMDA2NDI1MDkyODY1MywiYXNzZXRfYWdlX2RheXMiOjM1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=Vl8IbcRw29iU08rOV1PjZg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGC-nlpBLA0N0fl3uD78qcVz2QZ_rBDW1gwIcsfPImGFhqNALV8VgjhC1CBNCZI2Emwp3Mm6zly&_nc_eui2=AeHTl9YxzBvuq85P6s1v0wN3IDDQ6z5XjNQgMNDrPleM1ExKTzdRe5GwjGcwemJHTWRvqKZ6skmd1CVpgunYT7eZ&oh=00_Af16M2HKyPwREiIaJ1VBor8BlelYr8BTm6bDKnE_wZnUNA&oe=69F77701&bitrate=285223&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-11",
+              "name": "159",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMnT7q3F_6NnnoOIPyBagyWEA4Nbqi5-R6K814Rg2oCiDRrYR_ilDXgxRLnIBzL1asO_jLKYfil2mFTGttqXFG8pEPKENw2gCf20fg6-g.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=bLRGwjzZkgwQ7kNvwFg_Pya&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjQwNzc0OTYyNjQwOTk0MSwiYXNzZXRfYWdlX2RheXMiOjM4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTAxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=3XIOuR5VEKBuNfKDhmzpqw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF2Pxpu7OFrY2AJ9CMoIP6Z-3ls5StKme8FL1TPvhlla5Ze_Vq_nzsrTrDVQH6aezhIDpDyg201&_nc_eui2=AeFHUcktkfOShTqhgYQ2Fbak9wIfZgHi2cj3Ah9mAeLZyEG8g0Zg8nJg-lMKspPpMmPAwPqxK5uBsD4ZqP934NeW&oh=00_Af3KWFcheKM8BT1tRrtamd0f0OeVFHSUH-xD8q2yLWx18g&oe=69F7732E&bitrate=357130&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-12",
+              "name": "158",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNzwOwTP4oRRLJkALVXuB-LQ78YMytiTAc1VFeN774cYTAq5-RMlcvCQMGAJbcqCAVwwgZEACJmrsUqY7EEYX7LKJ2a8bIfL4vfzZLcxw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=7UmaTOBiE0EQ7kNvwENQ2Vj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjAyNjU0MDU4MTYyOTkwOSwiYXNzZXRfYWdlX2RheXMiOjQyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=S6KVcUIy8w-5QTHeR6IpAA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH7ei7dL_v_ycjpzy0G7zZ4jvgu7g80JAMh2aAECZylWsjYqfQVwuKlwXIMFX6tDcDVkKRU2WaK&_nc_eui2=AeEZXrRrdB7RKBTPnROBNTRFhmZLbIheqrmGZktsiF6quVV7WnabQJnbYRIyazPEd_QbVY21xnEpNclpSi1LQsDz&oh=00_Af1CQdPnciRdCHh-IHtPO3sjwl_gbBM9mZ7HKrfTTaplHw&oe=69F79119&bitrate=302389&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-13",
+              "name": "157",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNwgaWOt3KiJNGnmsRnYgyd428p9U0gFuNmJ4O5CKnycPGvVBCAJGr9Rm1u_jSvR9w8GbmSMM2Yzgxx9d_AoWJtoz52Xdj62h7HuNjExA.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=J9JT5awsaYgQ7kNvwHcqIIG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk3NTU1ODI1MzM2ODU4OCwiYXNzZXRfYWdlX2RheXMiOjQ0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDYzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=WyfeEYNVmxs6LWP0Nc1ZBg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHVrXUFM-WNZLLkpObkAYNE50OvB9PMLaWoEGSwFJ5fLKzTSr4ayMHVoqhGJAnE6KHLqpUsNt_g&_nc_eui2=AeHaM52jd6IhRUtQY5V35zx4ymbBHokLSO_KZsEeiQtI74toHViSfB7Yxa21sKkO9bnmqWbUjAr_8K63gKQ-4m-t&oh=00_Af0T6L0X74K_J2Zvpxn2Dmw_0KkIe1BbK4AQx07slw5xaA&oe=69F74FC5&bitrate=307418&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-14",
+              "name": "156",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOgoEu8HLv_h72Oeo3dYwvuHdTTEMViCwIRxdm6xTgSLQYB5ymMNYovIVWSH6bY9qfA5_mRqUfPeYJFy5FDhJSPof1VdAHuE3qe4TUQ0g.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=eEugq0ZZqwkQ7kNvwGM97Ov&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTc3Njk2NzYyMzI2OTcxOSwiYXNzZXRfYWdlX2RheXMiOjQ5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=QnMR_7l-ALLlV1fvLDKFhQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEMwkCrmXCAjgv4PGn5hsqKb5pOnY4Ifc0XwbUhTn5TnSRbar6pBjsRQWnFGb6Kb2NJtvAOEVG3&_nc_eui2=AeG_cF6PjmuaU_vSwRYe0k22jttkkABVZFKO22SQAFVkUiGbu9GkcmIq-Fh_1SvCdpQRsIavjecaVqPMd-zlg7zp&oh=00_Af3mkEC4FTFyBm0WTnkApODSbSvWtKw-bjwcJfwYXNjG1g&oe=69F77B29&bitrate=337842&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-15",
+              "name": "155",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOr3BJBCLZsvuC7YhEqz5i5OqDkaGDaSMu2_2UTkG5K-Hhi4p1eU3_n_qfb0qOfT4W3D5wxIXQxxIe4wSA7H0Ew25lqt9zVKAUoQ-RzLw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=O4kEhbNs3z0Q7kNvwE5XzgM&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTYzODQ2NDI5ODM5Njg0LCJhc3NldF9hZ2VfZGF5cyI6NTIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=HMTOOw2plWWly_KbI-2Hjg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG9CpYejuxhHp54XI6LmUpvExmoh-c_nj82rY_Tz4bq0LxkpGi1n2s5C_lGWsc-iC8IOSctkWr2&_nc_eui2=AeGv9JXAo00EZ3MUvMpUsLwFhhKxIuJmTzuGErEi4mZPO0PfynhbPCf0UPHNuqKMmjYUxvtA-F7eHNUc0qEc_lEM&oh=00_Af0ReEAvDaoZece0_o9rtv3ffDxZtga1PSPDHN5QzL5LOg&oe=69F837FD&bitrate=400274&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-16",
+              "name": "154",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOr_02QcisJPFRnuucCk76CWKiRA5rfB5ZgWeZO6u7Ckjm5HI_nCr_bMDCrMVAxnVYdF7NA8oZRuiyVbaFmCG7beQqVkG-ndGGRyn1MHg.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=qQnGYx5LnhcQ7kNvwFSH2x7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk5NTE4MTAxMTA2NjE0NiwiYXNzZXRfYWdlX2RheXMiOjU2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=QvhKBpCECGWcweVaXVnxbw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGKWqYoABYWYQj3Akm-kiAWppxLEM55NfrxtBCAPHug0RJP3QLsdlxmvK7Mz8iR0sOszCixY0Xy&_nc_eui2=AeHPB0UKd3h10x42EMGpLVjTK2w0O6Ng9UUrbDQ7o2D1RaxsCsjqgZ-I4tndwYvhBU9135mqqwYfxAbaUXS3nIN0&oh=00_Af1cmsy-mfnbU9DsU3pfVwgGOhP97i_0yItrUSegR-zegw&oe=69F7626C&bitrate=356117&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-17",
+              "name": "153",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPnxOHZ91Ift_17JWg3cbxibpu9ct6cAOyWVwmI6jGKCI8kIm9Q47lJZDt8ILLyUTqdt-eild6VvYPbWmUpq4RODBmKIQmN2yt-Zy90hg.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=DJvo9KQm_HEQ7kNvwEFnD9Y&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4MTM4NTk1OTU3ODg4NiwiYXNzZXRfYWdlX2RheXMiOjU5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDg5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=4LaSbuL14Unu85wPPCAyZQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFcP-ZH0KVHoNdr6S9wEVexGj4xTPaiwXKrxIHcc5R0G0e0jgtaZ1A5wBHdPRLqkMjjkX0kOmW_&_nc_eui2=AeGPS2MFdfBTJPDyS7XkfihtEctJLNVpBgwRy0ks1WkGDGjZctfw1lSLQFR0DeflV-VqR_fQ_rb5fCwgrw6-_Tj6&oh=00_Af3jFjLmREQXH_ZedL2j221A4ZkyoPVEapI_thX0yAJk0Q&oe=69F84F67&bitrate=311100&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-18",
+              "name": "152",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-18-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNkT6Z7CDpAXJ_45UVIXrmyRUM6AkTevMjIHyjRSg63fla8pobzgJkpm-T4-PkJ5n53xYXahQlve_oEDd6ImfFJ6tOguifLnIC_qZ-cEQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=uPUWGaJ0TXcQ7kNvwH0Hizw&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYwMzQ0NjE3NDIyNDU1MiwiYXNzZXRfYWdlX2RheXMiOjYzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDc2LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=yVR6tvnmfkO1aUtqFW6qRA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFK639_9gyY9Va9yDCbVN4AMR_51lzdj_jC30191sYoGmsa4sBFBdAIbRfnZiAIVDyh_5nUUcdd&_nc_eui2=AeHdoIqXaZ8nLyhrl6XU6c2RV2uITKsmLTpXa4hMqyYtOrtRASBonQxy_7vkLTb9cynnU2yswmajji79_7t-mL8x&oh=00_Af3WpfWlw8CcZ3dMttWPhIuO9jZwXHQ2fudpcNGLqrPnVA&oe=69F850B9&bitrate=391668&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-19",
+              "name": "151",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-19-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQO8uHVUKe61wo3v1CdXo55gZEPBCNMk4J4KOyJBkN-F_GSGaYpVYCEB_kyC32_2cMVHs5YpfKj0UoU4Be4-0LhabJUfURgpSZzOpij_Fg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=lzvPMimalasQ7kNvwGp-GtY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzE1MjgxNzU0ODg1MTY0LCJhc3NldF9hZ2VfZGF5cyI6NjYsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NzMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=wBccQEbbU_tHC4rb-2rYow&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFWm3SS__Jcne_GGodNn9nrtgUIXI7J3r3bDUxCM6ZksodQF7xS6Ec5L3AeFbJ7zSoIUvjq18aX&_nc_eui2=AeFJI29Y5GLRf_iu4KKUYJD-NzuFw2XUDt03O4XDZdQO3SJuVHrVuiZfhUh7g0asuAA8JkPqSzgFp2sMUONa8zli&oh=00_Af2A4xhidbwFl59N1UIfFw8oHwsck_h4WkyOi-7dhfZQQw&oe=69F854C7&bitrate=386784&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-20",
+              "name": "150",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-20-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPfAO89qS73irDSARFGblY52jjoi0c768IabG1VwiCCYmh0z3n9kboLPwuphYzVM2fvOScMyWF30nXNb2jQzsgURUYft2DaCgdtNDJlUQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=azQr0C4dTpQQ7kNvwEJnbdV&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU5OTc5Nzk1NzcyMjU4NywiYXNzZXRfYWdlX2RheXMiOjcwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=90OEebOryiW7zkrQKYGtCQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGTXHQZLrHjAR0YSngZsTuRRR9EKtkzpJ5_pjb21bKeE_sczrp10LT9VFWiXaHpO6iRlCeMhq3Y&_nc_eui2=AeGNHER197TqeryOVLecQujScjP4RquY8_hyM_hGq5jz-FU7W-dFT_yjMB67UmxAmi0_jp2W5t62m1Pv7XmRnef-&oh=00_Af32a6j8aOCB8merM00lJzdQKwTDGJVz14ZIfaBS-24WPg&oe=69F857AD&bitrate=348897&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-21",
+              "name": "149",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-21-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNws5a3TXwZphy3XRJG-VL4Ir1FkLSgs5zgOWU2zUMs5aoAgmVZJk1PXngJ0UTTviWK1Di-QG9hgt8TMmUCYzbzDxyDMdiSKNLLL6ASPQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=CnhBB3KlDnwQ7kNvwGx6OFR&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYwODE2OTQzMDIyNDk2OCwiYXNzZXRfYWdlX2RheXMiOjczLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=VKBbydAcAK2SJFl2N6XBiQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEeUBZUsRkXthfnZ8J3fnltC7yTmkfad0tTJjrU4RreK23W3laLTKHdObbuRCVcAcC3lxtsxaP2&_nc_eui2=AeE8rSZLHHxI8gfgiPzvnECzbQb1555Mmm9tBvXnnkyabwskq73ubcyZbMK8h_z7lrYj-IFH9y21WUYASlUgGhIM&oh=00_Af35_tCBJ4JU3_wpcu0lSBuPvLuYMp4WGvDsLc67vZprGQ&oe=69F85E19&bitrate=353289&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-22",
+              "name": "148",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-22-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOBI2uddj9dhLw1U0_Pf5mHVXRtNIzBkgFen34bSh7Q9o-ZTU1s5ODC21PpdDO74KP8bHKjDdJNoo3JWozupvitPEWmpMdhGO8x5yHdkQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=cgQaUqarKEwQ7kNvwE_uvTj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIwODMxMzI2ODExNDkzNCwiYXNzZXRfYWdlX2RheXMiOjc3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=ZlJ-cFJopQ9tLsE9TM_IBg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHkPxt8roR4Z9r_hiL7Rom-IXx04vpSeES4AoAZ8y0cppwe5N1mgfU_c_kE0OTshFSD6xPgJlwP&_nc_eui2=AeH_D9vxQfOKl0bVjb3gT4KpvVfvMYIYBaq9V-8xghgFqqCdBqOhQV61E5YZOXEIhePKMLk1hgo0gKyXt2fx406l&oh=00_Af1FQjO3bv5fJUNYNY8WHWbcCvMuTjz8Oid05-8tLjyLow&oe=69F85AE9&bitrate=347977&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-23",
+              "name": "147",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-23-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOS8MwaOWQuPYaL6iydBaxEcMKTdtZV1Z1SmIe3sahi7vA1nqyhI1dlxeuKE1HeMN_QwLAxy67e5MCrEzFtrUz3MycO0lXf-qvsWJuriA.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=DJjDHOS0F5gQ7kNvwE0puxZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIyOTM4MDU4ODY0MDU1MSwiYXNzZXRfYWdlX2RheXMiOjgwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDY5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=pLQiMXU_nWB6kf2TSiZG-A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH7GYzvgr1H0UVHRqW8zaEp5CwA3od-cFnxivhTupuyLzu875mptUmkGHVJ2wDLXkKjVdy790WZ&_nc_eui2=AeHXzCPPAbVp3-FHiyUTFeJchsBNhmaeQhOGwE2GZp5CE6c7a34gfsSOMSQNXRyHa38IDz1gee0-mgoT7IHicMZS&oh=00_Af3Hkv1CoWydOS-10fTzKnhkvahXdiRp6hlucd_O2vnOqg&oe=69F85099&bitrate=274540&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-24",
+              "name": "146",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-24-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQODKo0ZlJ4qqqP2YROK8j_YS9n8hHVwuSJU7DgCsaeHkt3FmFjovyU_E9gjl8IxzwOrO9JieOxMNZps4tznsC_5l-mmsFwC4ABWOlFm-Q.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=ffZUDYe16zsQ7kNvwFlAc_-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTAyOTU4OTk1NDUzNjg5LCJhc3NldF9hZ2VfZGF5cyI6ODQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0NjYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=ThAtYEuH7Yag-pZkMkWQ2Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEwrfqFN287SVch5nWXGZbz5gx96_Gkt-2qiRffrtiCPVHCogFJlwyaUPJGSVMFfoKJcLuozsRG&_nc_eui2=AeGAc_igMV9DeRVuhLCTSCUDWtHHrHAaSQJa0cescBpJAq3OnSCPT6EUvRBdFTsAsl5Uu1V2W0IGhgEuqb87-SZr&oh=00_Af2cBl3OLeA2Bg1nVbgFjg4oe7pXfpzpEHsXsAoMtMJkjg&oe=69F8300B&bitrate=264523&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-25",
+              "name": "145",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-25-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOOR8pBiJsC1C8rOdXPhKPBBaLR2CUSrRnMxZbSPUoeK3RijWSIyLTGH63l_xy3bbaV0z7Ji4xRruWyD7i4J6w3VFjhdOqvgz7bSOsHyw.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=lDmIYfyMORwQ7kNvwFtgDl2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODc0MDQ5OTUyMjkzNTg1LCJhc3NldF9hZ2VfZGF5cyI6ODcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo1MjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=ZyaqVLtyCbPXHHBNjt84tA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHLc5o1FtXcs1zEzWmWnJ_4xO9hNKvgevotf2wjy176RB6aTF5vDe1BQLbTFDF5rc_cY_j8aoby&_nc_eui2=AeEEKtMJvm_tHtH18ZDX5Dn6wOtySKnBMrnA63JIqcEyuSgavVHgkoMCGDVb9AKsOiFXfVF7FfDpNVmXUaKk3hVu&oh=00_Af0M5psmCIcTFY8CT1Vt25IQQVuANLIMMYYgDdmfPKA2HQ&oe=69F83A84&bitrate=302011&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-26",
+              "name": "144",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-26-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMkd7qGMnH9ZjqYgHE-6yCaHpCQPa9PSw4irTlYKRo1eK1EEAKyh_ALX_IJ82JHxZaRZtvKvgveny0wJYHOfMxseGN1AWlkEEgeCIdQ0g.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=ZAQ64UXD3w4Q7kNvwG5pqMd&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjYyNDYyODE0MDE2NDYzMjgsImFzc2V0X2FnZV9kYXlzIjo5MSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUyOCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=zb3Qz1n50E27tJnP2ioYTA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHxMo9i7xYCASmCkfU0Y-Ukx5JawlaJZ4I_BxfLeyWlDV5zWS6r7KUdSg9zkHrwQo31wim8ttsz&_nc_eui2=AeEUjIaVqa0tHRZSxeWHs0kQCpkA_xyxazwKmQD_HLFrPPeFM9SJfOl8PuWRTf48ELgRuYv5fI797MuKWKV242w4&oh=00_Af3kER_QXBSPHZj5gvNptylOdUZb2lnLBigdc0S6ryqrSw&oe=69F84B0E&bitrate=370837&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-27",
+              "name": "143",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-27-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQP3FRqzlwQVr9thpygyvfqayevTLPy3RUHtBs-puv91k3KOl2zt7XX904XBHxVhBY3Z-JIrXgBeClR5xYzWKh0LAofvBV8mYZqHm3K8bA.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=ZndKmmD13Q4Q7kNvwEQEF7t&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ0MzgxNzMwMzkzMzQwMSwiYXNzZXRfYWdlX2RheXMiOjk0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTM1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=1Efemp2QMgwZQ9gHvCYDkw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHvMZKaXDfgRf7TM6j9FoN2RTKj7N82ppCDBIo469RURez-hXb2ZkMGiXrR7flLpZyY1fv3KDGC&_nc_eui2=AeGRndCFl5s6j6odMQij5O85OjwSeWOu5f06PBJ5Y67l_RWBy78B-SulqSPsdLaa-76HDZLukD1sqISF-l0MaUY4&oh=00_Af2bHM5oZmAzV8w-0Vg2QwUAW8rnrbykMSqu1J52W1Z1qA&oe=69F7BDB3&bitrate=293363&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-28",
+              "name": "142",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-28-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOnPD9zzM964MxPfxzsviMDP77p7r2q8Elb3ohbLTRrTr7_giFr8psaRxtSXEuarEjuXtY2TzMYSThVHZYkfyEF3ikrDVir2KjZjIZbsA.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=hOfEd-UoUdYQ7kNvwFXMF5R&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTUyMDQzODU4MjU4NjUxNSwiYXNzZXRfYWdlX2RheXMiOjk4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTAwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=BXdZzQCEPtzhxt4GGPx1xQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH7TQdwEL-Cf88Q_YYh7veTjvRHe05-PskznZW6g1TKQrODp1bYy0wtAaVybp7k4TxvrLsdOnTA&_nc_eui2=AeGXS1sc6E6I0s-kie71mL-4a-1B_JI148lr7UH8kjXjyVslV7V1Hfg797trme5lc4iAKIh8KurFvD5myskmhQly&oh=00_Af0mPtIyC5bRVKWECSMmX9eqRQlA5yoEAxjzkEyHikI4Jg&oe=69F85686&bitrate=298910&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-29",
+              "name": "141",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-29-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOefs92cCQHtf2s_BGjqWeiSVUb5aSrv6dhKvez6BWYyBaoq0t021sxE-vucUUSIxrnei8bvQ25Bl0Jj-N06wW9Yaeb5SKw_6NHM24pRg.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=drXpgsLu-RgQ7kNvwEmbPZy&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MzM0MDM1ODA2NTU5NTUxNDcsImFzc2V0X2FnZV9kYXlzIjoxMDEsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo0OTYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=XckLvFGwhv4KwRssPq-b9A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF2UbMYd3VTJgx-NbpKZLW5VoAVjMCiRbFYvrQLNZJF_819a9d7btrXkS4CTWC-VjUlzWw0ba56&_nc_eui2=AeFvDfe4Bh8bR6GZgwQQMVk44dcGOQmnhTPh1wY5CaeFM58Rg6wlBn1r8Dya7xqVyZ-MulpVdw5Z23Q-wcPmJK2v&oh=00_Af1d8tck1osOqP6cEIAPx3gqPP9NC3z8_NiT6DmsFyRd-A&oe=69F865C2&bitrate=295399&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-30",
+              "name": "140",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-30-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMcvAUOt6WmmlT48tv2SRuVg2K7hmNsgKbA_6cB57LnUnGoNy3uLo3cx1Bsp85Mcl1C5y2EEcqZf22SeyXhhbREjxGEXY7ZgOybysG1UQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=P0J1NwR2sb8Q7kNvwG1NId5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODU2MDkyMjQwNjY1MjUzLCJhc3NldF9hZ2VfZGF5cyI6MTA1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTM5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=mHeiAyv9LA2vXNMaNy9HXQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFS_UtD9lKSPmIMA9vGbx0ErZq9zU9GqnbgxGehDZCyt-0DPxDAYaCgHNaJDNyLMU1w_e1Efcnn&_nc_eui2=AeE-DyjW88N-twinwr5zc_1Tu48Cs2WeYiC7jwKzZZ5iIALiJ3zU93u7sNf7RTz3jsF-W_Rj4zm5n7MqAyW6W26l&oh=00_Af04eoux5tL0N17zpV_d2s7gNR9NsIh7HqNsq9AJLhnJOg&oe=69F82F81&bitrate=312730&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-31",
+              "name": "139",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-31-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPdqRYuiJLqfaKebLo9_nphCt3lUwXBDwtt2oP0Vyi-wlEgMdDx3-6LEKPpCV4zeDXV_C4YPffp-nkbGFtwwmuOGt0isYDKhRXCBQuiaw.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=xV1EDKIvSiMQ7kNvwEk8cFg&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU5MjM3NzE0NTEyNjM4MCwiYXNzZXRfYWdlX2RheXMiOjEwOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=7BgnEgQmqimBdb5u_8OeqQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFD1ioR8-yRwxwmv0M1ga2z9qQ1ybC-bsMtD9rp0C3ij6dLiKZCMBgO7dsBfnc7StNOtjm6CmQX&_nc_eui2=AeHQR2GmG-_ZoB6-71RIztdnZhveitBWK6VmG96K0FYrpYeHnPEvYbZkzPQ2C3iDT1MoZ7wnKFrV6fmVRlDDS3DQ&oh=00_Af2LopkQozexGM9-XqceDgB2s788g52f6s8GwNFSRjXMlQ&oe=69F858B8&bitrate=339751&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-32",
+              "name": "138",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-32-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQN6dgojzgFdTO1xs6eCHdJREaKhyAUyP96Yqrpmg4dvS0C9fOfWjOEGzxs0leojzbca6NNpWKnf79VgzMJ7Cii0C7Q5vHAsB11lCzSXBw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=CaneyDYPgP4Q7kNvwHleofp&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjEyNTI3NjM2NDY3NTQzMywiYXNzZXRfYWdlX2RheXMiOjExMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ1MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=-V8kDEYqKva2sAbRnRUBQw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEkUT_O5HYNvNBhgIP33wN_-CyHI-6sjVcUsSgmh3edQmLqLFliSLPaepqnROC84MEGoGCV4i1c&_nc_eui2=AeESght-ZKVsYLSnFMxrYVirT28z053GToRPbzPTncZOhMAA8msjvrxWWlcoK-fOln5aaWWL4EXf6JmzIHCVeEXT&oh=00_Af06siQeN5uRlVtuEIp_eY8hvaQuVZjnV3BCgF02H6zjrA&oe=69F82709&bitrate=434054&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-33",
+              "name": "137",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-33-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQP82i2z7rx0Rtq39r2Nt0B6DbmV10WMip-4pOxssi56ZC6Ei3II6QR2MmmVvppWZvPDurm_l1tRSMrjavqRc669IlH2X_pEbajtAc9W5A.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=n6N1OUhcPbcQ7kNvwHixJZm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjI4Mjk4MjE3MjE2NzIwMCwiYXNzZXRfYWdlX2RheXMiOjExNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUwOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=p9B6iwTo3NH2pnWfLfjQ1A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGNdX3ERM58ba9xqDpgsj0U5IUBl95X1y8QdtiT-_ED1Bzmh0X5naBFwPtSBcaQ0xprpstcD1Il&_nc_eui2=AeGKfnqhP-r8-4o7GqBtKViXo0jvXf3Mt52jSO9d_cy3ndayKbulQUWUyoUSpvMUIXR3Gh6AkB7XOuh0RvK5XJFD&oh=00_Af2CD8FPtHBrkvXdmjM50a1F2MxbKp9R8a8GVnyALQTftA&oe=69F746CF&bitrate=337156&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-34",
+              "name": "136",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-34-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNF4UpT4Y3oxLP-eLcEHuvVBWFfMbL4R3T9SiHBlFzRI96Gb2j5DRXGzcSs2CbCW9kVicQtPPfHd4vyo_BkPoiaqo_B8mQUkw8Rz_-jqw.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=7R8SDzWMEnkQ7kNvwHUtDMH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE5ODU3MTgzNTA3Njc5NiwiYXNzZXRfYWdlX2RheXMiOjExOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUxNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=JHPByYDF-smIpVfEGyEGmw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGlyeib6GW0nfpVP8EugmDcM4A7m2I1Jzu-1Y08KNu5W-IUIETPz8a7w01tc-EaMHqsAa0jAVho&_nc_eui2=AeG8VpAB8HiSUMgzPIlP9HM3v11UhGbfnAi_XVSEZt-cCMRXMXV-HOYimNrhQUUUZ2lQLFMZVuWD9IRBIH2xg_A9&oh=00_Af1on-g24nPh4bZAVTVpClEKMt3gvUWGyFoxgHQdK9--Tg&oe=69F7AF8E&bitrate=419877&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-35",
+              "name": "135",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-35-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPsfnJVALK_oSug5Kl74u-MyTPzA8LKfJu49k_rZpt2gClblGWh5P-_WJreaeKYMSfGscUeaxKyup3Fly-KmdxSQTMtgnnyZ4YDQVOpJg.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=_VBr-kijc-EQ7kNvwEb8xG4&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU5OTE1Mzc4Nzg4OTQ0MiwiYXNzZXRfYWdlX2RheXMiOjEyMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ5MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=kzW9_2kcqXLX54GBofUAXg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFH8PRcquO2_cxWVBCWkhH4MhyUD_dPcisJJnXo_Rx5Cz2Y_W_5VEXuOTGgxQJmk3BdASAbstBq&_nc_eui2=AeExu_3cEiDbEhS8qWyX7iGtkcNy7hg94smRw3LuGD3iyeWohnCBZsjw8INvjCecdVuGNk89dB-cUumgEZitsxgf&oh=00_Af2cwC9pWVoIapgDXvJUw3Mia5aR9xeyRCVnHRy6mmp71w&oe=69F8684D&bitrate=332275&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-36",
+              "name": "134",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-36-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMouDGAXi5o9ys_8J_ncNj1vujxXiL3_A35ElnIxjSZ7z1jTmqBLDbpo60lL1cR-wQD7epHE-qTjnTfySSmQErf-ikkAoatzU6cX3tx2w.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=OJV4G4eSr2YQ7kNvwEbSHxe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODA4MTA2MzUyMjY3ODMyLCJhc3NldF9hZ2VfZGF5cyI6MTI2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NTI5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=rPdO9mJ7Mdw4-rhQGoxE9w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFaLlf7oyJ0xKoUdTRNJP1FGMzTA6tgfBJ2xP3wc6nqcIZ19OQk2gcE1quMJZb7_aoSOMe_stG0&_nc_eui2=AeEfle8rd-9_oZJoJZAOwJamSgInByAtz6RKAicHIC3PpINtApsfNgs0VvbFn9JYI_UF_BDVHMaRLq0SfK-mA0v_&oh=00_Af3uM4UHrRLtHTI-lznrYa68j4Zl6DWJBuH2fyE5mZmMGw&oe=69F85F98&bitrate=312130&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-37",
+              "name": "133",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-37-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM0tEBPYYpdUsVTDcbmVN_S--qvpkGKtl4VZJjlv1Ta6rD72zFU7LKWr6_77ZKZfCOHWVByD34bhpO5SHtdIdt5VTGySo0zjPvynG53oQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=xXyrj4Sx_rcQ7kNvwEoJ_2T&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjE3NDk4MzEzMjkxMTI4MCwiYXNzZXRfYWdlX2RheXMiOjEyOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=JV2Ta6OPfcSS34NYVvs-rA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH3a6iu3bOxESNUFe9KmIVZ2loOPZ2AZSnW28pU4Y4p6r1S_RkkvywmFNz1ec2rlLsvCwXTeLCi&_nc_eui2=AeGuDTE9jiQYlGrAC2NjWuomTuAiFkngjlxO4CIWSeCOXPpSDoelI_bfqAMAIAHxqu5Ozjx_PHlWNZbH4YTv9LJI&oh=00_Af1oapv3gcMDCb9TRZTtCPMMSkxHEeGwgB_PWy-TRsKStQ&oe=69F84D19&bitrate=335604&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-38",
+              "name": "132",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-38-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQORzXSL9h5vnDVIDEj6BYGeEiLXJtduzSnVFkSJgc6q3J_O3VsuDtWFY4Gzov-v5G5gXZ4x1OgmLWzS5xapuDC5o2xbVEco6NVzfK8aow.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=zg6VWEJYOUEQ7kNvwGKqEM3&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE2NzIyODYwODg1NjQwMSwiYXNzZXRfYWdlX2RheXMiOjEzMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjUyMiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=MOJdBMI2J6KCZToiH9JXDA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH1hvv5ayweFu59o4UG5sMVZ_tkQgvYLCIy-wAkPsNx2LifK6_YFxlXgqVO0zpzKMbK-2gJYovE&_nc_eui2=AeEbG9k5UBgsD38zl4tS2HeVT_aLnn3I-AtP9ouefcj4C7-EQFsjnWjW_dHopEyWqMdYbTO0YIjHZWxJcGiL5FWR&oh=00_Af1i3VIekVlggUBOJnrOm0XfPgmyi_ga5yNUGROnsQVlCQ&oe=69F819BD&bitrate=346855&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-39",
+              "name": "131",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-39-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNIbc9gxIlRWlA1DC7MkowmroVnaqpbSDB_7-iEwR2Y1OTZpwdkLxblDXnOA1cQywM1zxoNAtGZiNYH25aeAwjO8_ArAAmUStzpterNFQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=YavIsaq6g4EQ7kNvwFt_4Gu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIxNTc4MTU2Mzc4MDExOSwiYXNzZXRfYWdlX2RheXMiOjEzNiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ2OCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=vVfItd01XAbbT1yrvyDy7A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE7WB4hFLrOuhT_sofpTNkM3fQntZSQn5qjy7BToSvLOx2vZsPaD_CyLScNE4j-DAFnusuMeKvz&_nc_eui2=AeELu7eOWyl5dgbMdlJpS3kei7pQBuLl9HuLulAG4uX0e2tgfDYEb39gD_IV5Kn9NiDVSnwxZax6x7FkqxNliauC&oh=00_Af2XT7vne3SqALUkQzpsL2AN8YrFqcxJ2SiljX19yJcVbA&oe=69F87B5E&bitrate=548851&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-40",
+              "name": "130",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-40-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-41",
+              "name": "129",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-41-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-42",
+              "name": "128",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-42-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-43",
+              "name": "127",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-43-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "do-thi-co-tien-y--0-44",
+              "name": "126",
+              "stream_links": [
+                {
+                  "id": "do-thi-co-tien-y--0-44-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "do-thi-co-tien-y xem phim đô thị cổ tiên y thuyết minh: diệp bất phàm là một sinh viên năm 3, để kiếm đủ tiền nằm viện cho mẹ mà đi ăn vạ, giả vờ tai nạn để bắt người khác bồi thường. nào ngờ lại gặp phải một cô tài xế không làm theo những gì người ta hay l... do thi co tien y hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Đô Thị Cổ Tiên Y Thuyết Minh: Diệp Bất Phàm là một sinh viên năm 3, để kiếm đủ tiền nằm viện cho mẹ mà đi ăn vạ, giả vờ tai nạn để bắt người khác bồi thường. Nào ngờ lại gặp phải một cô tài xế không làm theo những gì người ta hay l..."
+}

@@ -2,16 +2,254 @@
   "sources": [
     {
       "id": "nhat-nhan-chi-ha-phan-6--0",
-      "name": "Thuyết Minh #1",
+      "name": "Thuyet Minh #1",
       "contents": [
         {
           "id": "nhat-nhan-chi-ha-phan-6--0",
           "name": "",
           "grid_number": 3,
-          "streams": []
+          "streams": [
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-0",
+              "name": "18",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNaocKMFmvP15hATvkIYQlex4obv5p-8kIoYho-zOb1D7dO1lW89HN_ZEsG4DA0S8R4Go2_ducWhYqbLqJtkBzQ3DZgcXhryOqODTv9Gr1aPQ.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=FzZ966s4J8kQ7kNvwEYl2rs&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNjc4Njc2OTY5OTM5MTI5LCJhc3NldF9hZ2VfZGF5cyI6MSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEzMDgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=645afafaa5d02160&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9ERTQyQjlENjU0NzZDMDU5MzQ1NzMwMjUyQzQxN0U5Ml9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0FFNEFBMjE2M0U0MzU4MjQxOEI4QzkwRTlFMkVEMkEwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbyguOH7q_7BRUCKAJDMywXQJRwUeuFHrgYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=jw40RODvFKEJAIBmIV1rXA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFpaQWCOlB4GXXhySdKUBxF__6IdZIP-XeuGgOMyM0FPZQj7KEtycZk3_4v2oXlLNErfxtQrgmD&_nc_eui2=AeEODStw3fh37ab-6SbYSFIvQ8_G3CLX3bBDz8bcItfdsJEK5gcudusHIA1HsxbUQ5pWlWwZx-WPnAkYFwDhegNt&oh=00_Af0SVTho7DXItRWU3a3zyeQVttV_QWO3_cZAC4p_fVRr4A&oe=69F79564&bitrate=675135&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-1",
+              "name": "17",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPJwSPhxwOAYqkAE00NMVGBK5LOBTAlYCCh588bzplYar4e1bhWlt7LNQ1ohfmDE1kb0xWY4_aD0umkOMDhmYaOxgxKMd3PvyK71K9-4Aoggg.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=SZwoJS7G9nAQ7kNvwGD7uOB&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxOTkzNTQ2MzQ3OTA0NzM5LCJhc3NldF9hZ2VfZGF5cyI6NywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE0NjMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=9cb9a71e001f714f&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9ENDRCRjBGMTcwN0EzQ0FGN0NGM0UwMURGQTE4NUY4Nl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0VBNEI1NDdFMUUwOThBMjJCRkM1QTE1MzQxQTA1M0I5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbG-8fe1ceKBxUCKAJDMywXQJbczMzMzM0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=U9LYXx3u39TxRWtIRdqeBg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFHuN_U8k_eS71icW3n7OiIwASIhcirWblIXTMtO30vERGc-a4Eg0Gt-qBSFI6Edht9LnF-JdYu&_nc_eui2=AeFFatwDkF4jXdAEp7vBB_e-bMb92pZnpKdsxv3almekp-0vkyMLoB3VOF9egujSkcevjsVSZGxxYx_S2ZCEqt6x&oh=00_Af03H_Kv-C4RdZzVGy6gjSDSrw0a0_v63ayxGgWXufNriw&oe=69F8209D&bitrate=524432&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-2",
+              "name": "16",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQMcpx7Ok1Ii-CEincrMtbJXcNTDMbKq1ZO3PRzLymAuAUK5U0J_t1maOZQ_F1H7WZws_y9G2nLvc4FUVNBMD9aIelP-1TnUtdjVsrAhfL97ig.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=NJCjEUkGrNEQ7kNvwFE0wl5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo4MTIwMzMzNTE0OTI1NzYsImFzc2V0X2FnZV9kYXlzIjoxNSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE0MTEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=e4daf206ebe01535&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9CMDQ4OUY4MjUxQTdGODA3M0IwNEMzODFBM0M4N0I4NV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzA5NDBFRDgyNDlERERBNDBENTJDMDM3MjNCRDFENkJGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbAj7H3x6LxAhUCKAJDMywXQJYMeuFHrhQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=48zosjM8ba-_jjXnl2p1rw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGRnhzMEUxbxHq3JCK_vZk6c5GSGQDT9QO4TcPvkuB57LJ0nWLtbTxQ7kQIOJ63-Xf493kh6sS4&_nc_eui2=AeHWh2EJHcXc-By3rPaIMkGPOtBGIsTWGtk60EYixNYa2WWwXbI-GEqj5LHdfwwikPJqfTv81dam7678s7R5Hmfm&oh=00_Af3gF0tGxNyhsv75VP5Tqyr054DtE-coLviBfhdO0lJFOg&oe=69F84CA7&bitrate=711000&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-3",
+              "name": "15",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-3-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-4",
+              "name": "14",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPiyPn_cL7bPSwSXxhNnUMQDtivlbgEvKHaqGtm95R1lkBFUfIMF4tJiNu3HibNkctvoepvvyN8JXYzyt7S2dQyxZELBh_V0QW4k_GmkYu1xw.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=zi58RX6hzdUQ7kNvwFVWiPB&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjozMzkxMDA4MDExMDU3MDY1LCJhc3NldF9hZ2VfZGF5cyI6MjYsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNDMzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=f125cef9591f3749&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84RTRGOTdFQzEwNDMyRUVDMjgzNzhGRUYwRDIyMjg5N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzIxNDRCMzgzRjAzQTZEOEUzRkZEMzUzRTA3NURDQjg1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbS3u--0oaGDBUCKAJDMywXQJZl64UeuFIYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=95pHQKcn15XJ0h0_9Gfm_Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF3Q6XDCUoOpcLMpMhitNa8XfSqU_wWnUfcOR28m7RWSdB8xpvw4gWoeV49F0X16-hi44TzrxbR&_nc_eui2=AeGx8hN2knLeY7Npx3nC6w1FyBzeU9e0v1DIHN5T17S_UDI_JjmJ3bISwZuUj367Hbx64qHvv64Oq03bOR-n9MMO&oh=00_Af0SepDRIsjJzqwWEaG1ks9PuTDFrnfHzFk06TG_A8zxyQ&oe=69F75449&bitrate=520490&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-5",
+              "name": "13",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPCSbucBIqsRDk6cSTEpQapyDNVLnK2VYKfLQmnDWIMVdkbSqJfCd5HZ6TidbNMhumK1rFoD_dDh6nbS1gG05ulEH06YtSxURK14XeAWg.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=KQ8muPd_bv8Q7kNvwG9jzSH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIwOTc4OTQwNDI5Njc5MywiYXNzZXRfYWdlX2RheXMiOjM1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTM4MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=yY00nno08-oTp68ug3ah_A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH0CKWJqKftWNH1DIg5pZBLxhfd3sZZ_6Ewz_WBTXo4BxS7mInYlrOiDycQvg5--R_YGDwW0jYA&_nc_eui2=AeF052xuk-xuSC465swSiUa3fhrJYgkuOPB-GsliCS448ONA4TMPC89LZiDAje3Y3QZKdM7rGQ7lPytVA5JRUMRR&oh=00_Af2OP6xvPPQUyQnAJBPs2aCLpXsPkhfTKhZT--MQhzeIhQ&oe=69F742A2&bitrate=234032&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-6",
+              "name": "12",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOA9fEM3AL9B4TdCcwref2iq_ki_k1lU91jrv6MhB9vGwpexH75hQcM9tV1HY-4Vsxh9xBm9R2RU2IEjjC5yDwpuwPl7L_BzBIkBcX-RQ.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=ZUu3w8jcwOQQ7kNvwGQUGyW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU0ODUyMDg0MjkxMjkzMiwiYXNzZXRfYWdlX2RheXMiOjQyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTMwNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=MgTX-3oL7FICZHNxQqBgXg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFdBuonIc1n1p4mDLuqwSrsibS2JFZm9ITAVFHXsEFe0zjVPYUC6eSFYKg7TkjCpHDhstzKrnt5&_nc_eui2=AeEzv6uZ2keDv7pXSch41-m6DwJixva7frYPAmLG9rt-tv9ir5nH2fXhu-1QsZXSstf4ppAmIJ8vQVtr39wJAERW&oh=00_Af1EN_bKOIN7NC_LO7-kbgJO35hpv-EIQIDSQVYoma_-jw&oe=69F76E46&bitrate=160347&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-7",
+              "name": "11",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMaec8ksxgDLKOSMSz5i39zRZYUlZo3_9DqfDd4ureeSdnW7wpSYa44BOvCOhD0J0Ad4PvdfBL_qAj1p8ATKNretwyHXqvSkfie21Xwug.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=wzJrBqz4pWgQ7kNvwGGtOcc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4MTU4MTAyMjk1ODc3OSwiYXNzZXRfYWdlX2RheXMiOjUwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE5MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=1JcJr56jgvk68I0fUC9wOg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH8-hU0vYzPkS7E8hKRTFEnvhcgVhP0SzHuclyo-CZGD_jgs8PhQbsdx9IYQFw9PgPm_gNeggAa&_nc_eui2=AeGtAzjxkZc29YliGwte7TUOpJEUn64lbx-kkRSfriVvH24f5FtzxvSPOsT18bJqiIlgOIV-9zFJbGcl_Xn-xCJH&oh=00_Af2JR49Se_31fnti9YT6NEWiKayv_p7gfZN-hJzqXaUn7Q&oe=69F75CF5&bitrate=175559&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-8",
+              "name": "10",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOW1xvdh89VYO9f043FrulI7sZaGNmAzShC5yYwmWn-F7WUXEp74ml7gfAb7P83JcVA1DxP2MPLmAd0mL17syAemBDSl3Exby8CdqSYwg.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=8pXitStYvBAQ7kNvwFGToLW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTAxMDQ5MDIyNjM0ODg0LCJhc3NldF9hZ2VfZGF5cyI6NTcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjU0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=Zsk-mLSgmdhzv8loDfc78w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHfy9v46Ee6GNagbCn70LPI9dsz-OKKXXKO_9sVWepDHVEQ8jDAIA3c7M8B6qc6rqRDaxsRsVO0&_nc_eui2=AeE73GGjDeKTOY-MKsXgdWvyEzzjCORHukwTPOMI5Ee6TN66rW7oc6H-d_3GFfFyiWCjMdol_EqkYUYlokBPUyWG&oh=00_Af2axYuZ4JzDacwwo2gBYNdOjbPED-1DvLQnnSTU7j1mnQ&oe=69F74914&bitrate=147602&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-9",
+              "name": "9",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPv5kJQmgTw7zDznLDWGju4D-TSdptWsfmJ15vq3sbDIVykOVNVuWdhB-wV6HaVSlZaz4NRSgqVuOT4WPzvA3VmbxWiDjuwAp6sPs0UGw.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=RS1bqmOoQDwQ7kNvwFL7TrI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYzMzg2MjYxMTEwMjgwNCwiYXNzZXRfYWdlX2RheXMiOjYwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTI4OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=LLfMyr0defPIObg-UKLF5w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFoNTbGUNYkhAGmp17OdBDRGSHCv9ANICcy-QBwpW1B9ButbgxKyF56pCcuA5X-IEwbC6GfqiIs&_nc_eui2=AeHFlRoBnXaRCnrcIWZTRZNnZHTNRvovavtkdM1G-i9q--zC0xjICuxcpxu8SO4Vb_DGri0ztlDOcbvGsrtXig0J&oh=00_Af33ChAjU0yB09t_LjcYM1-5IymuFVLvl5luWNzwMFur2g&oe=69F87834&bitrate=160701&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-10",
+              "name": "8",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOUXecnt6c6yJNxK0FEV3cxelDAu5A_kD555MliNh6C2bBpHQvh_x4PIY5TCnqDfIKckhV0k-WOGXEhopthMw7B_xoM99ML1vQb86QWuw.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=EzUeUdocLYAQ7kNvwG0Q-Yn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQzNDcxNTU0ODA1MjIxMCwiYXNzZXRfYWdlX2RheXMiOjYxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTUzNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Etja8Z6EW_QjNo89uHaeaw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHq9JIQZZuVNK7gt1KQN5Aaa1OsoBTL0-PzSk6oGMOS4Ng7wjk_8PggYY6lcOiVlaZVzFRW8tbU&_nc_eui2=AeE4Se37DtVImhZTHL0QEBbzS5x_21X2_LJLnH_bVfb8sjpDIzazv0m2b8nOaEhLtQr7EW-QlVWCXXSYyRpaeJ_z&oh=00_Af2W9ex0jykPQAfynWrfenlcC0LRjfzE7foyGN-NoO-onQ&oe=69F85E8D&bitrate=193046&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-11",
+              "name": "7",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMnyGuivuxUhsj1uRdrXufpi-hTcrfeWiLIIANfEVSILx3tj29YMXVjxA75keX6V7_i1-f5R0EFxSDSjslXiYc3u_8Av4mprTwRDD-qwg.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=MMGPcRKP6ngQ7kNvwHpG7mG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzYyNzQ2MzY2NDQzNDY0LCJhc3NldF9hZ2VfZGF5cyI6NzksInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjczLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=tk18Xot9FwW8coxv3BUpqQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHGJkbOGh5O6BrsONf_1Ajko4MxfGMmw6DvMKRPdzw2-HgFuQYugjedB1FqrPmuaPWV6-FbSAZh&_nc_eui2=AeHwqM2vBSE7kbPIpS7QAQQQT5SjydWlJDFPlKPJ1aUkMa9_M3UI1jLX2a0ihfuLywIv0XXN7s1VGnWuC_pAZIGS&oh=00_Af247HgYbefncA0yhsJz45DFaTkjipZcUKOdv4qvVQO-Mw&oe=69F87748&bitrate=189737&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-12",
+              "name": "6",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM330Uw_5fOE5CCGkX8Hq52ppXkdeJkBgaczCu59Xd21HJhGfbVTAQX_IrhdwMvZkqqFnuhLXXQMDrnUQwOBtTBtHqf8uhIhAbGS_H7Rw.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=79EPFKwta7oQ7kNvwEoB2hL&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIzNDMxMDAwMTM5MjIwOCwiYXNzZXRfYWdlX2RheXMiOjc5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTI1MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=LQ6WqbDvsvCsulF0yAxBaQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGvNjh5G08Az9dszxslKVFQ_BqZZ3oLJMpQwZBWkJOW8m2W987LH-7TFbpe5R56O-j9ap9WWJ7R&_nc_eui2=AeFoMjvA3e6va26KusxzqHcyqrJwT3QLoh-qsnBPdAuiHw5I7VCQ7d2fF5Mihy1TsW7T0gu566VnTIiDRGdCaMMb&oh=00_Af2Ld5LvJXNJr6nJGT6XWWy-K9W_UK7VtrRuAYj4fqyheg&oe=69F7D978&bitrate=235427&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-13",
+              "name": "5",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNJVaSoCTfLyH3Q-RAPMsskNm0FQwPqXw6db4X9Id1zJcyxC_IyD_WEiE-_hw9VTJsLTLagOuxN4LruMRW8Y8ibdAcSyHpYabBltPwlPQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=V2KOX4G0XlwQ7kNvwH7oXVc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA2NTg1ODI0MDY0MTEyMywiYXNzZXRfYWdlX2RheXMiOjgwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTI0NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Jt7LZqe9GXQCkXS6tODbRQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGHyCaiWaQUjIbefuw_Npwb_O6x3ziP4zBqW4XKbwrJ2q_L1t522otXqXOQ_JXmVtK48KYeNX7k&_nc_eui2=AeHX9mriDhPu-L5wOGOg-PUanNK-Ptn3WDuc0r4-2fdYO8fjsYn1KcxSMOSgMIW239olhfWIgYDY8MDP7JCqGjl9&oh=00_Af1aNLVrKqJqaO0BU0Q31FKTC-tBJQbtJ3rqgT2H1FD4GA&oe=69F85EA1&bitrate=218460&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-14",
+              "name": "4",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMbZB1b9N4FNbK1DY0H8mnUeqb7hVs6kFtBjaQA1kW9--Fy2yaxFYXn0JNLN67oxm-l059UDm5nqtFx9CQQuijlE5AunymActtHo7WtlA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=0NSvE_if0ycQ7kNvwG_WfFI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODkyMDM5OTIzMjI4OTMyLCJhc3NldF9hZ2VfZGF5cyI6OTYsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNDUyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=NcEOL8qmu7Zrjnj9IdRPMw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG_mUMh4hk_6d__71KGytQSaUXfPIZ4w2o9-dMiyiLAsBRusddZKn7GfpTG3Wf_5Q5WOT3cfP46&_nc_eui2=AeE4F4z1zaGf6o90cJEG3Jw-PgzaEhAjj5o-DNoSECOPmlDKzIpCIB87gDLRPMZpjDt2wNyWuyAvBe4XHfmWXtcV&oh=00_Af0GhL8DH93KVmsW8YMmu557r3M1UJHCXxYAdY8z9PnjOQ&oe=69F8606A&bitrate=251774&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-15",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPsGhVWU1JyKQ2YJZUvXu7ipmYpYQuo4zeuYADp27-M2FCHcsQKUNNp6FLRxt1-8n9GrIW2omT2PIcVOqALa-0GXqGo0l_PnMSbtE5pQw.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=QW-_MXVuKZMQ7kNvwEc4v-u&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU2MDAzMzg4MTg4ODU5MiwiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQ1MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=B7LQ6W0UpSd-mCZzZdL9fQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFw2Px7Uir1RY33SKeHQq5t8DNi4wxYY1QaqG3ewSnA8lXf-ZD2xj0EuYTn_8_wQl_ESfEGAFxQ&_nc_eui2=AeEepGHqLH_yDk-i8cUU1malVR-AYJIAp-xVH4BgkgCn7DjQRaCURunQfqylpORJDzU89sNHnRzaU6ZBn_toC1Er&oh=00_Af28ykKSj_u1m7Yvk8RrwJsxnCkZwZ9RUg37bnRlNc5Qlw&oe=69F87B06&bitrate=209013&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-16",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMsLM-NgCajJTf1m8dsrE3UhblEtL2o8vwCfvX6cWTJsYpeXM6Bh7M4QkhRD12SXImuET4F9Mi3jr1niaQrwI97ySYZHim4rc9bu7i-uw.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=dWCb27FkmegQ7kNvwGnRriy&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ2MzU2NjE0NTI3NzkwMiwiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQ5MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=prTKHdtXqntFoE56pcR06Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEkreNHhjo8mdjpomzXOlUHrLyLzZpLOV6aBWYaSdfZL0XAsciYyLwTusgqv8ap9JXRfeLdTRt9&_nc_eui2=AeFichcv3id0SxH5GVLSbcQ8Cg4GhtZazNoKDgaG1lrM2i2XT-mLWNWfSg-_Z247ZUR1oSBPbqxfYjbDfPC84uQL&oh=00_Af2i59oJkD0UgoY0_S3OEAGmSbmAM0LTtMBdnn-I-FTjjg&oe=69F866E3&bitrate=215388&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "nhat-nhan-chi-ha-phan-6--0-17",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "nhat-nhan-chi-ha-phan-6--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQN29M-cZUbAajtIUATCIXPFHr2UUS1jdozcneKgzpZdJ-WutFeQwm4Ah6BviyVF16khhDf-4eU1utVDv_E_Yro0yP2l3p1t4Ju5vu06dQ.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=dj9ERxiZMjEQ7kNvwHu2-vK&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE5MDg4MDU4MzE2NTc1NCwiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTM4NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=rJS6omtjuioCpOtzv-Zleg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEkcc-fQpo6Iupx_3aHO6fH84UuqckNUE4WHNkNm6QUtDyJJ4nx4yP2Q4t-ND1FM7EnjBTSEzN8&_nc_eui2=AeGamYJBnVyUoK9r2dOH6qv6U60TK-ZW44lTrRMr5lbjidiPTjdgRTzIDqdRYksncNU_uhWiTOheaiVciZOzuhV9&oh=00_Af1Od_yQ70B3H6HQRrGitmYQTsRvwE0JeB33GDwjmTwmxg&oe=69F860B8&bitrate=194534&tag=sve_sd"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
   ],
-  "subtitle": "Thuyết Minh"
+  "subtitle": "Thuyet Minh",
+  "search": "nhat-nhan-chi-ha-phan-6 xem phim nhất nhân chi hạ phần 6 thuyết minh: sau sự kiện bích du thôn, trương sở lam tiếp tục giúp phùng bảo bảo điều tra thân thế của cô, vì vậy anh đã đến thăm lục cẩn.từ lục cẩn, trương sở lam lấy được danh sách tam thập lục tặc, đồng t... nhat nhan chi ha phan 6 hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Nhất Nhân Chi Hạ Phần 6 Thuyết Minh: Sau sự kiện Bích Du thôn, Trương Sở Lam tiếp tục giúp Phùng Bảo Bảo điều tra thân thế của cô, vì vậy anh đã đến thăm Lục Cẩn.Từ Lục Cẩn, Trương Sở Lam lấy được danh sách Tam Thập Lục Tặc, đồng t..."
 }
