@@ -31,7 +31,6 @@ jobs:
       - run: python scraper.py
         env:
           PYTHONUNBUFFERED: 1
-          PROXY_BASE: ${{ secrets.PROXY_BASE }}
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '🤖 Auto update MonPlayer (Thuyết Minh)'
