@@ -2,7 +2,7 @@
   "sources": [
     {
       "id": "tien-nghich--0",
-      "name": "Thuyết Minh #1",
+      "name": "Thuyet Minh #1",
       "contents": [
         {
           "id": "tien-nghich--0",
@@ -11,22 +11,39 @@
           "streams": [
             {
               "id": "tien-nghich--0-0",
-              "name": "1",
+              "name": "56",
               "stream_links": [
                 {
-                  "id": "tien-nghich--0-0-default",
-                  "name": "Mặc Định",
+                  "id": "tien-nghich--0-0-0",
+                  "name": "1080",
                   "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/d348f40d-b20e-4c65-94ad-53b5129b8982.m3u8",
+                  "default": true,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/68efc0d5-fb28-4fd0-aa26-35880eb31fd7.m3u8",
                   "request_headers": [
                     {
                       "key": "User-Agent",
-                      "value": "MonPlayer"
+                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
                     },
                     {
                       "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-1"
+                      "value": "https://yanhh3d.bz"
+                    }
+                  ]
+                },
+                {
+                  "id": "tien-nghich--0-0-1",
+                  "name": "1080-",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/8598feb3-a4dd-4cbb-bc4a-e26b0397f67f.m3u8",
+                  "request_headers": [
+                    {
+                      "key": "User-Agent",
+                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+                    },
+                    {
+                      "key": "Referer",
+                      "value": "https://yanhh3d.bz"
                     }
                   ]
                 }
@@ -34,45 +51,39 @@
             },
             {
               "id": "tien-nghich--0-1",
-              "name": "2",
+              "name": "57",
               "stream_links": [
                 {
-                  "id": "tien-nghich--0-1-default",
-                  "name": "Mặc Định",
+                  "id": "tien-nghich--0-1-0",
+                  "name": "1080",
                   "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/95901df4-a0ab-4d10-8577-a47fdb22d273.m3u8",
+                  "default": true,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/687d5a4b-f15b-46bd-b5c7-8b7d388c2a36.m3u8",
                   "request_headers": [
                     {
                       "key": "User-Agent",
-                      "value": "MonPlayer"
+                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
                     },
                     {
                       "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-2"
+                      "value": "https://yanhh3d.bz"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "tien-nghich--0-2",
-              "name": "3",
-              "stream_links": [
+                },
                 {
-                  "id": "tien-nghich--0-2-default",
-                  "name": "Mặc Định",
+                  "id": "tien-nghich--0-1-1",
+                  "name": "1080-",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-2-xx.fbcdn.cloud/o1/v/t2/f2/m366/70a84878-f807-4c8f-b12f-82e68249951f.m3u8",
+                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/c6f76474-15ca-4170-a286-664bbced89ff.m3u8",
                   "request_headers": [
                     {
                       "key": "User-Agent",
-                      "value": "MonPlayer"
+                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
                     },
                     {
                       "key": "Referer",
-                      "value": "https://yanhh3d.bz/sever2/tien-nghich/tap-3"
+                      "value": "https://yanhh3d.bz"
                     }
                   ]
                 }
@@ -83,5 +94,5 @@
       ]
     }
   ],
-  "subtitle": "Thuyết Minh"
+  "subtitle": "Thuyet Minh"
 }
