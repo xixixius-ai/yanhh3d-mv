@@ -18,63 +18,21 @@
                   "name": "1080",
                   "type": "hls",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/a33fb7a4-630d-4fdd-a7ff-111bce55d08d.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://www.facebook.com"
-                    },
-                    {
-                      "key": "Origin",
-                      "value": "https://www.facebook.com"
-                    }
-                  ]
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/a33fb7a4-630d-4fdd-a7ff-111bce55d08d.m3u8"
                 },
                 {
                   "id": "gia-thien--0-0-1",
                   "name": "4K",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/ef11bc8f-fcf1-4577-85b0-104287c9b020.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://www.facebook.com"
-                    },
-                    {
-                      "key": "Origin",
-                      "value": "https://www.facebook.com"
-                    }
-                  ]
+                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/ef11bc8f-fcf1-4577-85b0-104287c9b020.m3u8"
                 },
                 {
                   "id": "gia-thien--0-0-2",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/b167a3bb-3324-44da-a806-0cac399f79a8.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://www.facebook.com"
-                    },
-                    {
-                      "key": "Origin",
-                      "value": "https://www.facebook.com"
-                    }
-                  ]
+                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/b167a3bb-3324-44da-a806-0cac399f79a8.m3u8"
                 }
               ]
             },
@@ -87,42 +45,14 @@
                   "name": "1080",
                   "type": "hls",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/19751562-8a12-469d-ada6-f810622861e3.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://www.facebook.com"
-                    },
-                    {
-                      "key": "Origin",
-                      "value": "https://www.facebook.com"
-                    }
-                  ]
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/19751562-8a12-469d-ada6-f810622861e3.m3u8"
                 },
                 {
                   "id": "gia-thien--0-1-1",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/9bb0eec2-b044-4bb2-8176-cf54eb829ba7.m3u8",
-                  "request_headers": [
-                    {
-                      "key": "User-Agent",
-                      "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-                    },
-                    {
-                      "key": "Referer",
-                      "value": "https://www.facebook.com"
-                    },
-                    {
-                      "key": "Origin",
-                      "value": "https://www.facebook.com"
-                    }
-                  ]
+                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/9bb0eec2-b044-4bb2-8176-cf54eb829ba7.m3u8"
                 }
               ]
             }
