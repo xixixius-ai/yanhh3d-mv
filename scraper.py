@@ -116,7 +116,7 @@ def _wait_for_cf(page, selector, timeout):
 
 
 # ── Search Index Builder ─────────────────────────────────────────────────────
-def _build_search_str(movie: dict, meta dict = None) -> str:
+def _build_search_str(movie: dict, metadata: dict = None) -> str:
     parts = [
         movie.get("title", ""),
         " ".join(metadata.get("tags", [])) if metadata else "",
@@ -416,7 +416,7 @@ def get_stream_url(page, context, ep_url):
 
 
 # ── JSON Builders ──────────────────────────────────────────────────────────
-def build_detail_json(slug, episodes, meta dict = None):
+def build_detail_json(slug, episodes, metadata: dict = None):
     streams = []
     for i, ep in enumerate(episodes):
         raw_streams = ep.get("stream")
@@ -445,7 +445,7 @@ def build_detail_json(slug, episodes, meta dict = None):
         if metadata.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
     return result
 
-def build_list_item(movie: dict, meta dict = None):
+def build_list_item(movie: dict, metadata: dict = None):
     # ✅ Use original movie dict for thumb & badge
     thumb = movie.get("thumb") or (metadata.get("poster") if metadata else "")
     badge = movie.get("badge") or metadata.get("status", "") if metadata else ""
