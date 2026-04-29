@@ -120,8 +120,8 @@ def _wait_for_cf(page, selector, timeout):
 def _build_search_str(movie: dict, metadata: dict = None) -> str:
     parts = [
         movie.get("title", ""),
-        " ".join(metadata.get("tags", [])) if metadata else "",
-        metadata.get("description", "") if metadata else "",
+        " ".join(metadata.get("tags", [])) data else "",
+        metadata.get("description", "") data else "",
         movie.get("slug", "").replace("-", " "),
         "hoạt hình trung quốc", "thuyết minh", "anime", "donghua"
     ]
@@ -435,10 +435,10 @@ def build_detail_json(slug, episodes, metadata: dict = None):
         "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}],
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
-        "tags": metadata.get("tags", []) if metadata else [],
-        "description": metadata.get("description", "") if metadata else "",
+        "tags": metadata.get("tags", []) data else [],
+        "description": metadata.get("description", "") data else "",
     }
-    data:
+    if metadata:
         data.get("year"): result["year"] = metadata["year"]
         data.get("status"): result["status"] = metadata["status"]
         data.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
@@ -452,8 +452,8 @@ def build_list_item(movie: dict, metadata: dict = None):
         "id": movie["slug"],
         "name": movie["title"],
         "search": _build_search_str(movie, metadata),
-        "keywords": metadata.get("tags", []) if metadata else [],
-        "description": metadata.get("description", "") if metadata else "",
+        "keywords": metadata.get("tags", []) data else [],
+        "description": metadata.get("description", "") data else "",
         "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
         "type": "playlist",
         "display": "text-below",
@@ -462,8 +462,8 @@ def build_list_item(movie: dict, metadata: dict = None):
         "enable_detail": True
     }
     if metadata:
-        if metadata.get("year"): item["year"] = metadata["year"]
-        if metadata.get("status"): item["status"] = metadata["status"]
+        data.get("year"): item["year"] = metadata["year"]
+        data.get("status"): item["status"] = metadata["status"]
     return item
 
 
