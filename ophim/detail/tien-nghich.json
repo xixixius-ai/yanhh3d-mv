@@ -15,20 +15,27 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-0-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/68efc0d5-fb28-4fd0-aa26-35880eb31fd7.m3u8"
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNS0MjdC5w2F6Xdd4mAq6_FFNkFRKWtt7G4LzQabs0y1J4u8e1oxLNpAskbQ9G0P0e_4Y11bWJ-nTJkYwpGAm8Lcq88Gxcc8Z81zbLwIw.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=GLF3KLq9c7IQ7kNvwFi-NLi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQxODQ2NjI1MzIxMDc0OCwiYXNzZXRfYWdlX2RheXMiOjExMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk3MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=TSbj30FLLEEBgPC1gvur9Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFZyMOspkBpU4YpfiwJh5EDkpNv2nVhLBO8Y3indmhbbAQ7ggDgnjWwAR03tXnQfIiUyJUD_QCl&_nc_eui2=AeGrA6478FPn0MyJbOlfEQAhEaNFfDj8k3wRo0V8OPyTfFKF5mg89Rnk8txYkX9ODGd3GilF7AEHUTS2aJ0aNWM5&oh=00_Af1goHszmLXF11VJ3IwprHgXEcbDBtjnXfwU-Goo4zhJMw&oe=69F7452B&bitrate=378953&tag=sve_sd"
                 },
                 {
                   "id": "tien-nghich--0-0-1",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/68efc0d5-fb28-4fd0-aa26-35880eb31fd7.m3u8"
+                },
+                {
+                  "id": "tien-nghich--0-0-2",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
                   "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/8598feb3-a4dd-4cbb-bc4a-e26b0397f67f.m3u8"
                 },
                 {
-                  "id": "tien-nghich--0-0-2",
+                  "id": "tien-nghich--0-0-3",
                   "name": "link10",
                   "type": "embed",
                   "default": false,
@@ -42,20 +49,27 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-1-0",
-                  "name": "1080",
-                  "type": "hls",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/687d5a4b-f15b-46bd-b5c7-8b7d388c2a36.m3u8"
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPNrbuuswHMQWIrXCYew4mrAZGSnAGZsKMJNuorGJN_BFQFQ_E25hXg_4JekEjYysmzNspgs5OE7kNhSWa9s58IuOE8GbukS8rBeFhEhg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=BBmzrYaVwlcQ7kNvwFTluJe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODY3MDc0Nzc1OTQxMTY3LCJhc3NldF9hZ2VfZGF5cyI6MTEzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTIwMSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=LisdI7gHpcyiVsYttBd2Iw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGTFqDveZmjyy8JoEv0z94NnybRgNjSfJ-2Uxbp25lxjZCMdOnpEq16uejVsZuK04ZI53ApIsAA&_nc_eui2=AeF1YmOMfS4GeaML1jf0LNEmOAaTEp6VxTQ4BpMSnpXFNI2Va0lbadHUDbwIg5shkXrAxUVh-px-NfHO8HahMf5R&oh=00_Af3t_b6LmR89uJO_82MrxpcEmXxZQdkHrCCk4p2rsYD5Uw&oe=69F7512B&bitrate=334470&tag=sve_sd"
                 },
                 {
                   "id": "tien-nghich--0-1-1",
+                  "name": "1080",
+                  "type": "hls",
+                  "default": false,
+                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/687d5a4b-f15b-46bd-b5c7-8b7d388c2a36.m3u8"
+                },
+                {
+                  "id": "tien-nghich--0-1-2",
                   "name": "1080-",
                   "type": "hls",
                   "default": false,
                   "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/c6f76474-15ca-4170-a286-664bbced89ff.m3u8"
                 },
                 {
-                  "id": "tien-nghich--0-1-2",
+                  "id": "tien-nghich--0-1-3",
                   "name": "link10",
                   "type": "embed",
                   "default": false,
