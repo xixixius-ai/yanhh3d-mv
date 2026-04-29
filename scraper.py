@@ -480,7 +480,7 @@ def build_detail_json(slug, episodes, metadata: dict = None):
     return result
 
 
-def build_list_item(movie: dict, meta dict = None):
+def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
