@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
 YanHH3D Scraper → MonPlayer JSON (v2.2)
-Fixes:
-  - ✅ Anti-Rate-Limit: 2.5-4.5s delay + batch cooldown every 15 eps
-  - ✅ 429/403 Handler: Auto-wait & retry on server block
-  - ✅ Consecutive Fail Breaker: Stop early if 5+ eps fail in a row
-  - ✅ Clean Syntax: Fixed all meta/metadata variable issues
+- Anti-Rate-Limit: 2.5-4.5s delay + batch cooldown
+- 429/403 Handler: Auto-wait & retry
+- Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
+- Clean Syntax: Fix toàn bộ lỗi meta dict / if metadata / type hint
 """
 
 import argparse
@@ -40,7 +39,7 @@ CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
-    "MAX_MOVIES":   15,
+    "MAX_MOVIES":   50,
     "MAX_EPISODES": None,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
@@ -48,11 +47,11 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 2500,        # ✅ Tăng lên 2.5s
-    "EP_DELAY_MAX": 4500,        # ✅ Tăng lên 4.5s
-    "BATCH_SIZE":  15,           # ✅ Nghỉ sau mỗi 15 tập
+    "EP_DELAY_MIN": 2500,
+    "EP_DELAY_MAX": 4500,
+    "BATCH_SIZE":   15,
     "BATCH_COOLDOWN": 12.0,
-    "CONSECUTIVE_FAIL_LIMIT": 5, # ✅ Dừng nếu 5 tập liên tiếp lỗi
+    "CONSECUTIVE_FAIL_LIMIT": 5,
 }
 
 EXTRA_HEADERS = {
@@ -118,10 +117,11 @@ def _wait_for_cf(page, selector, timeout):
 
 
 def _build_search_str(movie: dict, metadata: dict = None) -> str:
+    metadata = metadata or {}
     parts = [
         movie.get("title", ""),
-        " ".join(metadata.get("tags", [])) if metadata else "",
-        metadata.get("description", "") if metadata else "",
+        " ".join(metadata.get("tags", [])),
+        metadata.get("description", ""),
         movie.get("slug", "").replace("-", " "),
         "hoạt hình trung quốc", "thuyết minh", "anime", "donghua"
     ]
@@ -171,7 +171,8 @@ def get_movie_metadata(page, slug: str) -> dict:
         if not meta.get("description"):
             html = page.content()
             desc_match = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html, re.I)
-            if desc_match: meta["description"] = desc_match.group(1).strip()[:500]
+            if desc_match:
+                meta["description"] = desc_match.group(1).strip()[:500]
             
         logger.info(f"   Meta tags={meta['tags'][:3]}..., status={meta['status']}")
         return meta
@@ -181,9 +182,12 @@ def get_movie_metadata(page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
-    if retry_count is None: retry_count = CONFIG["RETRY_COUNT"]
+    if retry_count is None:
+        retry_count = CONFIG["RETRY_COUNT"]
+    
     class NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self, req, fp, code, msg, headers, newurl): return None
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
 
     last_error = None
     for attempt in range(retry_count + 1):
@@ -193,38 +197,44 @@ def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
             with opener.open(req, timeout=20) as resp:
                 if resp.status in (301, 302, 303, 307, 308):
                     location = resp.headers.get("Location", "")
-                    if location and _is_valid_fb_cdn(location): return location
+                    if location and _is_valid_fb_cdn(location):
+                        return location
                 
                 if resp.status == 200:
                     content_type = resp.headers.get('Content-Type', '')
                     content = resp.read().decode('utf-8', errors='ignore')
+                    
                     if 'application/json' in content_type:
                         try:
                             data = json.loads(content)
                             url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
-                            if url and _is_valid_fb_cdn(url): return url
-                        except json.JSONDecodeError: pass
+                            if url and _is_valid_fb_cdn(url):
+                                return url
+                        except json.JSONDecodeError:
+                            pass
                     
                     url_patterns = [
-                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"', r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']', r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
                         r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
                     ]
                     for pattern in url_patterns:
                         match = re.search(pattern, content, re.IGNORECASE)
                         if match:
                             url = match.group(1).replace('\\/', '/')
-                            if _is_valid_fb_cdn(url): return url
+                            if _is_valid_fb_cdn(url):
+                                return url
                     
                     fallback = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
-                    if fallback and _is_valid_fb_cdn(fallback.group(1)): return fallback.group(1)
+                    if fallback and _is_valid_fb_cdn(fallback.group(1)):
+                        return fallback.group(1)
                 
-                # ✅ Log status khi fail
                 logger.debug(f"   ⚠️ play-fb-v8 returned status {resp.status}")
                 return None
                 
         except urllib.error.HTTPError as e:
-            # ✅ Xử lý 429/403 đặc biệt
             if e.code in (429, 403):
                 wait_time = random.uniform(5.0, 12.0)
                 logger.warning(f"   🛑 Server rate-limited ({e.code}). Waiting {wait_time:.1f}s...")
@@ -232,7 +242,8 @@ def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
                 continue
             if e.code in (301, 302, 303, 307, 308):
                 location = e.headers.get("Location", "")
-                if location and _is_valid_fb_cdn(location): return location
+                if location and _is_valid_fb_cdn(location):
+                    return location
             last_error = f"HTTPError {e.code}"
         except Exception as e:
             last_error = str(e)
@@ -245,8 +256,10 @@ def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
     logger.warning(f"   resolve_play_fb_v8 failed: {last_error}")
     return None
 
+
 def _is_valid_fb_cdn(url: str) -> bool:
-    if not url: return False
+    if not url:
+        return False
     url_lower = url.lower()
     return ('fbcdn' in url_lower or 'facebook' in url_lower) and '.mp4' in url_lower
 
@@ -277,6 +290,7 @@ def search_movies(page, keyword: str) -> list[dict]:
         logger.error(f"   Search failed: {e}")
         return []
 
+
 def list_all_movies(page, category_url: str = None) -> list[dict]:
     url = category_url or f"{CONFIG['BASE_URL']}/danh-sach/hoat-hinh"
     try:
@@ -301,12 +315,15 @@ def list_all_movies(page, category_url: str = None) -> list[dict]:
                 }
                 return results;
             }""")
-            if not batch: break
+            if not batch:
+                break
             movies.extend(batch)
             next_btn = page.query_selector('a[title="Next"], .pagination li.active + li a')
-            if not next_btn: break
+            if not next_btn:
+                break
             page_num += 1
-            if page_num > 15: break
+            if page_num > 15:
+                break
             next_btn.click()
             _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
             _human_delay(500, 1000)
@@ -314,6 +331,7 @@ def list_all_movies(page, category_url: str = None) -> list[dict]:
     except Exception as e:
         logger.error(f"   List movies failed: {e}")
         return []
+
 
 def get_trending_movies(page, limit: int = 50):
     try:
@@ -342,6 +360,7 @@ def get_trending_movies(page, limit: int = 50):
         logger.error(f"Failed to get trending movies: {e}")
         return []
 
+
 def get_latest_ep_url(page, slug):
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
@@ -360,9 +379,11 @@ def get_latest_ep_url(page, slug):
         logger.warning(f"   Error on detail page for {slug}: {e}")
         return None
 
+
 def get_episodes(page, slug):
     latest_url = get_latest_ep_url(page, slug)
-    if not latest_url: return []
+    if not latest_url:
+        return []
     try:
         _human_delay(400, 800)
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -386,6 +407,7 @@ def get_episodes(page, slug):
     except Exception as e:
         logger.warning(f"   Error at {latest_url}: {e}")
         return []
+
 
 def get_stream_url(page, context, ep_url):
     try:
@@ -416,10 +438,12 @@ def get_stream_url(page, context, ep_url):
 
 
 def build_detail_json(slug, episodes, metadata: dict = None):
+    metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
         raw_streams = ep.get("stream")
-        if not raw_streams: continue
+        if not raw_streams:
+            continue
         stream_links = []
         for j, s in enumerate(raw_streams):
             stream_links.append({
@@ -432,28 +456,41 @@ def build_detail_json(slug, episodes, metadata: dict = None):
         streams.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": stream_links})
     
     result = {
-        "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}],
+        "sources": [{
+            "id": f"{slug}--0",
+            "name": "Thuyet Minh #1",
+            "contents": [{
+                "id": f"{slug}--0",
+                "name": "",
+                "grid_number": 3,
+                "streams": streams
+            }]
+        }],
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
-        "tags": metadata.get("tags", []) if metadata else [],
-        "description": metadata.get("description", "") if metadata else "",
+        "tags": metadata.get("tags", []),
+        "description": metadata.get("description", ""),
     }
-    if metadata:
-        data.get("year"): result["year"] = metadata["year"]
-        data.get("status"): result["status"] = metadata["status"]
-        data.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
+    if metadata.get("year"):
+        result["year"] = metadata["year"]
+    if metadata.get("status"):
+        result["status"] = metadata["status"]
+    if metadata.get("total_episodes"):
+        result["total_episodes"] = metadata["total_episodes"]
     return result
 
+
 def build_list_item(movie: dict, metadata: dict = None):
-    thumb = movie.get("thumb") or (metadata.get("poster") if metadata else "")
-    badge = movie.get("badge") or metadata.get("status", "") if metadata else ""
+    metadata = metadata or {}
+    thumb = movie.get("thumb") or metadata.get("poster", "")
+    badge = movie.get("badge") or metadata.get("status", "")
     
     item = {
         "id": movie["slug"],
         "name": movie["title"],
         "search": _build_search_str(movie, metadata),
-        "keywords": metadata.get("tags", []) if metadata else [],
-        "description": metadata.get("description", "") if metadata else "",
+        "keywords": metadata.get("tags", []),
+        "description": metadata.get("description", ""),
         "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
         "type": "playlist",
         "display": "text-below",
@@ -461,14 +498,16 @@ def build_list_item(movie: dict, metadata: dict = None):
         "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"},
         "enable_detail": True
     }
-    if metadata:
-        data.get("year"): item["year"] = metadata["year"]
-        data.get("status"): item["status"] = metadata["status"]
+    if metadata.get("year"):
+        item["year"] = metadata["year"]
+    if metadata.get("status"):
+        item["status"] = metadata["status"]
     return item
 
 
 def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> tuple | None:
-    if max_episodes is None: max_episodes = CONFIG["MAX_EPISODES"]
+    if max_episodes is None:
+        max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
     logger.info(f"  Processing: {slug}")
     
@@ -490,11 +529,10 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> t
         ep = episodes[i]
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
-        # ✅ Batch cooldown
         if (i + 1) % CONFIG["BATCH_SIZE"] == 0:
             logger.info(f"    🛑 Batch limit ({CONFIG['BATCH_SIZE']}). Cooling down {CONFIG['BATCH_COOLDOWN']}s...")
             time.sleep(CONFIG["BATCH_COOLDOWN"])
-            consecutive_fails = 0  # Reset counter after cooldown
+            consecutive_fails = 0
             
         stream = get_stream_url(page, context, ep["url"])
         if stream:
@@ -515,9 +553,8 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> t
             })
             logger.warning(f"    ✗ Tap {ep['name']}: marked as no stream (streak: {consecutive_fails})")
             
-            # ✅ Dừng sớm nếu fail liên tiếp quá giới hạn
             if consecutive_fails >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
-                logger.warning(f"    ⛔ Consecutive fail limit reached ({consecutive_fails}). Stopping early to save time.")
+                logger.warning(f"    ⛔ Consecutive fail limit reached ({consecutive_fails}). Stopping early.")
                 break
     
     detail_json = build_detail_json(slug, ep_data, metadata)
@@ -551,7 +588,14 @@ def main():
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage", "--lang=vi-VN"])
-        context = browser.new_context(user_agent=CONFIG["USER_AGENT"], viewport={"width": 1280, "height": 720}, locale="vi-VN", timezone_id="Asia/Ho_Chi_Minh", extra_http_headers=EXTRA_HEADERS, java_script_enabled=True)
+        context = browser.new_context(
+            user_agent=CONFIG["USER_AGENT"],
+            viewport={"width": 1280, "height": 720},
+            locale="vi-VN",
+            timezone_id="Asia/Ho_Chi_Minh",
+            extra_http_headers=EXTRA_HEADERS,
+            java_script_enabled=True
+        )
         page = context.new_page()
         _apply_stealth(page)
 
@@ -576,7 +620,8 @@ def main():
                 res = scrape_movie(page, context, fake_movie, args.max_episodes)
                 if res:
                     li, dj = res
-                    with open(detail_dir / f"{args.slug}.json", "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
+                    with open(detail_dir / f"{args.slug}.json", "w", encoding="utf-8") as f: 
+                        json.dump(dj, f, ensure_ascii=False, indent=2)
                     channels.append(li)
             elif args.url:
                 slug = args.url.rstrip('/').split('/')[-1]
@@ -584,7 +629,8 @@ def main():
                 res = scrape_movie(page, context, fake_movie, args.max_episodes)
                 if res:
                     li, dj = res
-                    with open(detail_dir / f"{slug}.json", "w", encoding="utf-8") as f: json.dump(dj, f, ensure_ascii=False, indent=2)
+                    with open(detail_dir / f"{slug}.json", "w", encoding="utf-8") as f: 
+                        json.dump(dj, f, ensure_ascii=False, indent=2)
                     channels.append(li)
             elif args.list_all:
                 movies = list_all_movies(page)
@@ -623,6 +669,7 @@ def main():
         json.dump(list_output, f, ensure_ascii=False, indent=2)
         
     logger.info(f"✅ Done! Saved {list_path} + {len(channels)} detail files.")
+
 
 if __name__ == "__main__":
     main()
