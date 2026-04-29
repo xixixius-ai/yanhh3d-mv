@@ -1,22 +1,7 @@
 #!/usr/bin/env python3
 """
 YanHH3D Scraper → MonPlayer JSON (Production Version)
-
-ROOT CAUSE của timeout:
-  Trang dùng Cloudflare (data-cfasync, cf-beacon).
-  Playwright headless mặc định bị CF detect → trả về challenge page
-  → #episodes-content không bao giờ xuất hiện → timeout.
-
-GIẢI PHÁP:
-  1. playwright-stealth  → ẩn dấu hiệu headless (navigator.webdriver, v.v.)
-  2. Thêm human-like headers (Accept-Language, Sec-CH-UA, v.v.)
-  3. Random delay nhỏ giữa các request
-  4. goto /slug/tap-1 (episode page) vì #episodes-content chỉ có ở đây,
-     KHÔNG có trên movie detail page /slug
-
-CÀI ĐẶT:
-  pip install playwright playwright-stealth
-  playwright install chromium
+DEBUG VERSION - in ra title/url/html khi timeout để chẩn đoán CF block
 """
 
 import json
@@ -29,16 +14,12 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
-# ── playwright-stealth (optional nhưng quan trọng) ───────────────────────────
 try:
     from playwright_stealth import stealth_sync
     HAS_STEALTH = True
 except ImportError:
     HAS_STEALTH = False
-    print("[WARN] playwright-stealth chưa cài. Chạy: pip install playwright-stealth")
-    print("[WARN] Không có stealth, CF có thể block. Tiếp tục không có stealth...")
 
-# ── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
@@ -46,64 +27,66 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ── Config ───────────────────────────────────────────────────────────────────
 CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
     "MAX_MOVIES":   5,
     "MAX_EPISODES": 2,
-    "TIMEOUT_NAV":  30000,   # tăng lên 30s cho CF
-    "TIMEOUT_WAIT": 20000,   # tăng lên 20s
+    "TIMEOUT_NAV":  30000,
+    "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main")
 }
 
-# Thứ tự ưu tiên chất lượng (label viết thường)
 QUALITY_PRIORITY = ["1080", "4k", "4k-", "1080-", "hd"]
 
-# Headers giống browser thật — giúp qua CF
 EXTRA_HEADERS = {
-    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Cache-Control":   "no-cache",
-    "Pragma":          "no-cache",
-    "Sec-Fetch-Dest":  "document",
-    "Sec-Fetch-Mode":  "navigate",
-    "Sec-Fetch-Site":  "none",
-    "Sec-Fetch-User":  "?1",
+    "Accept":                    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language":           "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding":           "gzip, deflate, br",
+    "Cache-Control":             "no-cache",
+    "Pragma":                    "no-cache",
+    "Sec-Fetch-Dest":            "document",
+    "Sec-Fetch-Mode":            "navigate",
+    "Sec-Fetch-Site":            "none",
+    "Sec-Fetch-User":            "?1",
     "Upgrade-Insecure-Requests": "1",
 }
 
 
 def _human_delay(min_ms=300, max_ms=900):
-    """Random delay để tránh bị detect là bot"""
     time.sleep(random.uniform(min_ms / 1000, max_ms / 1000))
 
 
 def _apply_stealth(page):
-    """Áp dụng stealth nếu có, fallback nếu không"""
     if HAS_STEALTH:
         stealth_sync(page)
     else:
-        # Fallback thủ công: xóa dấu hiệu headless cơ bản
         page.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
+            Object.defineProperty(navigator, 'plugins',   { get: () => [1, 2, 3] });
             Object.defineProperty(navigator, 'languages', { get: () => ['vi-VN', 'vi', 'en-US'] });
             window.chrome = { runtime: {} };
         """)
 
 
-def _wait_for_cf(page, selector, timeout):
-    """
-    Chờ selector, tự động handle CF challenge nếu xuất hiện.
-    CF challenge thường resolve trong 5-10s nếu browser không bị detect.
-    """
-    # Chờ CF challenge biến mất (nếu có) trước khi chờ selector thật
+def _debug_page(page, label):
+    """In ra title + url + 800 ký tự đầu HTML để chẩn đoán CF block"""
     try:
-        # Nếu trang là CF challenge, nó sẽ tự redirect sau vài giây
+        title   = page.title()
+        url_now = page.url
+        html    = page.content()[:800].replace('\n', ' ')
+        logger.info(f"   [DEBUG:{label}] title='{title}'")
+        logger.info(f"   [DEBUG:{label}] url='{url_now}'")
+        logger.info(f"   [DEBUG:{label}] html[:800]={html}")
+    except Exception as e:
+        logger.info(f"   [DEBUG:{label}] cannot read page: {e}")
+
+
+def _wait_for_cf(page, selector, timeout):
+    """Chờ CF challenge tự resolve rồi mới chờ selector thật"""
+    try:
         page.wait_for_function(
             """() => !document.title.includes('Just a moment') &&
                     !document.querySelector('#challenge-running') &&
@@ -111,17 +94,15 @@ def _wait_for_cf(page, selector, timeout):
             timeout=15000
         )
     except Exception:
-        pass  # Không có CF challenge hoặc đã qua rồi
-
-    # Giờ mới chờ selector thật
+        pass
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
 # ── Step 1: Homepage → movie list ────────────────────────────────────────────
 def get_trending_movies(page):
-    """Extract trending movies from homepage"""
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _debug_page(page, "homepage")
         _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
 
         movies = page.evaluate("""() => {
@@ -147,27 +128,27 @@ def get_trending_movies(page):
         return movies
     except Exception as e:
         logger.error(f"Failed to get trending movies: {e}")
+        _debug_page(page, "homepage-error")
         return []
 
 
 # ── Step 2: Episode page → episode list ──────────────────────────────────────
 def get_episodes(page, slug):
     """
-    Lấy danh sách tập từ episode page.
-
-    TẠI SAO goto tap-1 chứ không phải /slug:
-      #episodes-content chỉ render trên /slug/tap-N (episode page).
-      Movie detail page /slug KHÔNG có selector này.
-
-    TẠI SAO dùng #top-comment:
-      Tab Thuyết Minh = #top-comment  → URL /slug/tap-N   (lấy)
-      Tab Vietsub     = #new-comment  → URL /sever2/slug/tap-N (bỏ)
+    Goto /slug/tap-1 (episode page) để lấy episode list.
+    #episodes-content chỉ có trên episode page, KHÔNG có trên /slug.
+    Tab #top-comment = Thuyết Minh (lấy), #new-comment = Vietsub/sever2 (bỏ).
     """
     for tap_num in [1, 2, 3]:
         ep_url = f"{CONFIG['BASE_URL']}/{slug}/tap-{tap_num}"
         try:
             _human_delay(400, 800)
             page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+
+            # ── DEBUG: xem trang trả về gì trước khi wait selector ──
+            _debug_page(page, f"ep-{tap_num}")
+            # ─────────────────────────────────────────────────────────
+
             _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
 
             episodes = page.evaluate("""() => {
@@ -193,14 +174,16 @@ def get_episodes(page, slug):
             }""")
 
             if episodes:
-                logger.info(f"   Got episode list from {ep_url} ({len(episodes)} eps)")
+                logger.info(f"   Got {len(episodes)} episodes from {ep_url}")
                 return episodes
 
         except PlaywrightTimeout:
-            logger.warning(f"   Timeout at {ep_url}, trying next...")
+            logger.warning(f"   Timeout at {ep_url}")
+            _debug_page(page, f"timeout-tap{tap_num}")
             continue
         except Exception as e:
             logger.warning(f"   Error at {ep_url}: {e}")
+            _debug_page(page, f"error-tap{tap_num}")
             continue
 
     logger.error(f"Cannot get episode list for {slug}")
@@ -209,12 +192,6 @@ def get_episodes(page, slug):
 
 # ── Step 3: Episode page → stream URLs ───────────────────────────────────────
 def get_stream_url(page, ep_url):
-    """
-    Thu thập tất cả stream links từ #list_sv a.btn3dsv.
-    Chỉ lấy fbcdn.cloud .m3u8 (link trực tiếp).
-    Bỏ: play-fb-v8 (proxy), short.icu (shortlink).
-    Trả về list[{url, type, label}] hoặc None.
-    """
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -248,6 +225,7 @@ def get_stream_url(page, ep_url):
 
     except Exception as e:
         logger.debug(f"Stream extraction failed for {ep_url}: {e}")
+        _debug_page(page, "stream-error")
         return None
 
 
@@ -332,8 +310,7 @@ def build_list_item(movie):
 # ── Main ──────────────────────────────────────────────────────────────────────
 def scrape():
     logger.info("Starting YanHH3D to MonPlayer scraper...")
-    if not HAS_STEALTH:
-        logger.warning("playwright-stealth not found — CF may block. Install: pip install playwright-stealth")
+    logger.info(f"playwright-stealth: {'OK' if HAS_STEALTH else 'NOT FOUND - using fallback'}")
 
     channels   = []
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
@@ -344,9 +321,8 @@ def scrape():
             headless=True,
             args=[
                 "--no-sandbox",
-                "--disable-blink-features=AutomationControlled",  # ẩn automation flag
+                "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
-                "--disable-web-security",
                 "--lang=vi-VN",
             ]
         )
@@ -356,15 +332,13 @@ def scrape():
             locale="vi-VN",
             timezone_id="Asia/Ho_Chi_Minh",
             extra_http_headers=EXTRA_HEADERS,
-            # Giả lập có đủ permissions như browser thật
             java_script_enabled=True,
         )
 
         page = context.new_page()
-        _apply_stealth(page)  # Áp dụng stealth TRƯỚC khi goto bất kỳ trang nào
+        _apply_stealth(page)
 
         try:
-            # 1) Homepage
             movies = get_trending_movies(page)
             if not movies:
                 logger.error("No movies found. Exiting.")
@@ -373,7 +347,6 @@ def scrape():
             limit = min(len(movies), CONFIG["MAX_MOVIES"])
             logger.info(f"Found {len(movies)} movies. Processing {limit}...")
 
-            # 2) Xử lý từng phim
             for idx, movie in enumerate(movies[:limit], 1):
                 logger.info(f"[{idx}/{limit}] {movie['title']} ({movie['slug']})")
                 try:
@@ -420,7 +393,6 @@ def scrape():
         finally:
             browser.close()
 
-    # 3) Lưu list JSON
     list_output = {
         "id":          "yanhh3d-thuyet-minh",
         "name":        "YanHH3D - Thuyet Minh",
