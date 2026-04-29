@@ -19,47 +19,6 @@
                   "type": "hls",
                   "default": true,
                   "url": "https://scontent-sin2-3-xx.fbcdn.cloud/stream/m3u8/cbcfc71d-62ad-4f31-a410-6892aa0c9b4c.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-0-1",
-                  "name": "1080-",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/8598feb3-a4dd-4cbb-bc4a-e26b0397f67f.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-0-2",
-                  "name": "link10",
-                  "type": "embed",
-                  "default": false,
-                  "url": "https://abysscdn.com/?v=Yz-54ORo9"
-                }
-              ]
-            },
-            {
-              "id": "tien-nghich--0-1",
-              "name": "57",
-              "stream_links": [
-                {
-                  "id": "tien-nghich--0-1-0",
-                  "name": "1080",
-                  "type": "hls",
-                  "default": true,
-                  "url": "https://scontent-sin2-8-xx.fbcdn.cloud/o2/v/t2/f2/m366/687d5a4b-f15b-46bd-b5c7-8b7d388c2a36.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-1-1",
-                  "name": "1080-",
-                  "type": "hls",
-                  "default": false,
-                  "url": "https://scontent-sin2-3-xx.fbcdn.cloud/o1/v/t2/f2/m366/c6f76474-15ca-4170-a286-664bbced89ff.m3u8"
-                },
-                {
-                  "id": "tien-nghich--0-1-2",
-                  "name": "link10",
-                  "type": "embed",
-                  "default": false,
-                  "url": "https://abysscdn.com/?v=REGSQ7xyD"
                 }
               ]
             }
