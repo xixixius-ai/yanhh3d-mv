@@ -11,270 +11,10 @@
           "streams": [
             {
               "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-0",
-              "name": "196",
+              "name": "197",
               "stream_links": [
                 {
                   "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOfRQuQGKEb0Bs_-2Py3fb8b93kaQYBC7jeinkPX6EdgzYYN1uMcOg_q6ZHmw9jNAsdrPBIflQuvzTSfcnRc99RgOC0hpwZns-oIZU80h7_Ew.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=KHdC3ysJXgQQ7kNvwGQCwDi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTAwMDE2NTc0ODE5MDIyLCJhc3NldF9hZ2VfZGF5cyI6NSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=4b982afb0555a093&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FRTRDNENDNUZFNjYxMUI0RjJDMDUyOTJEQkEyMUM5RV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzQ1NEQ0MUM5OTQyRjM3RkMzRkREMTBDRkUyOTkxRUExX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACacq8uxupCqBRUCKAJDMywXQJE7hR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=8Vo-SysA0n6XvHCyIO8YMg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEp-NjyiXr_WP00joaGko1ijy4M1uvL0U0bqs8BitdWqwJprrT6hmKa3qpTwHeDIDkqVyWWgzCR&_nc_eui2=AeER20bu_1FKQWu16_sTpAKafaJdIxymv5t9ol0jHKa_m573Jf0PlQoVtAUPUBya33ebMA8GU7CxBsvKbtyNI5xX&oh=00_Af24PI655hjlBQRSgy9A5LQIYmJHzwBC06NRmi0XRTaJgw&oe=69F91356&bitrate=1440653&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-1",
-              "name": "195",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-1-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNQ8fIo-9_GiQVJPubORf0FmM8EzIj7BBJm1coB1lZO3OZOnSWkk9-gSmxdyv7H116UAM3p4P2uC28_fBZMRcy1Wj2GD4qS0bFDYZE-qQS6jA.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=8zgTnB2xTGEQ7kNvwGv04MD&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo3ODg5NzA1NjczNzM1ODgsImFzc2V0X2FnZV9kYXlzIjoxMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMzMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=efbcb7f78b6b9f25&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wODQ2NjMyOTcwN0EyOEIwNTVFMzcwNDg5QTBGNEM5N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzYyNENBMEY1NTQ2OEI1ODMxNDhDMTA3NTNGQTBFQjgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaozMDmkOTmAhUCKAJDMywXQJG1cKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=qzX4rFU0C_nbAW_t1TK7Ew&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGpGUZcdBl-ubaySDUOTtkzq9a3JJJfzw19r4Y_Pe_D-Ix1mlunwACZlAki5Csc7GTGGnKePIuh&_nc_eui2=AeEyfhUqNERDhXUSiJo7Iur8FqiOix2c3xkWqI6LHZzfGfEbobFwUxyrc9tkiB0d74SerLOS9N-wEOV4kNlavFDr&oh=00_Af2uV12KUziL5Pof2-SbJAIGHQ7WkYgoPb9yZaIkifDHyg&oe=69F92116&bitrate=1599296&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2",
-              "name": "194",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOEQr1vlGH_lkaZbcr2g2PBPnA2P7L-kMTqllIST3jLxvuAsGQLJ5y0UiYzu8Yf0jxJfoOmpJ6Wnl8a-XZm9Cp55pGa8OeJvC-Fnhie4eRYjg.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=hIgVY4jCybIQ7kNvwGxWdFZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMDA3OTk0ODMzMTI0NDA0LCJhc3NldF9hZ2VfZGF5cyI6MTksInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDcwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=b5baaa32c676236d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC82RDRCMzM1NUEzNDI3QjNDNTk4RDMwMUYzNEIxMjZCOV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzRENEI4MDUxNUEwNTI4OUNEQjQwRTE0NzRBRDhDRjkyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbo8Omr15CRBxUCKAJDMywXQJC4o9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=AQUOwaoctarRBysvJmNK9A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHOE6OjvvjFj52x69-6eWdU3-zobu0T4zEbDXhieQ75H-rLFtJPE7qogZABcija78YUd2M-0PWo&_nc_eui2=AeE_Ao26bzYXqQmm_g93FPcDXsvXMf7JRQ5ey9cx_slFDiLJOjJohfEGtQTyYPdAvlT8KFt8TvocusomYBpykSpc&oh=00_Af1rVrB5ERXRwjhW4UlhDRsSvWAOoaW19E2GN5pFrOYAVQ&oe=69F93D57&bitrate=2009710&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-3",
-              "name": "193",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-3-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMq3joBTZL9nt4e3-tPuwaWIkBspphVFBx9d3vWlWN5FOsIeyJorUSPAOf2A795s1w9nfiVFUFY0HpUtRGkVCQZu3Yz7lxggID6Y40XStHGQQ.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=z5giGrCa0qkQ7kNvwGkk6sI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjUxOTUyNTQ0NDM0MzQ3MywiYXNzZXRfYWdlX2RheXMiOjI2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTExOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=bb0bf51812b3a928&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wQzRBQjg3ODQ0QThBQURDREZERjU0OEQ3OEY2Mjk4RF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzE4NDZBMzI0RDk2QzdDRUY4Rjk2QzE3OUExQzlFNDg1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbi2sbbxdebXhUCKAJDMywXQJF-uFHrhR8YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=6QOcvMDarAANB_01cL1p_Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHoNMrUvaIri6yNUBetK2IJ1Fw8jy_JeJQdrVfGeErFbU_Hrz6K-JYN7m912oBb9o-kKSq25veD&_nc_eui2=AeFIIClFDcpCq4azwtrJ1PfypIiqV2z3oJKkiKpXbPegkgiecBzV96zbbADJD80L_gME7vDCdcMfcjeau4u3qSZX&oh=00_Af3BSpUIgqnYFeoVaAK7n_ys3hBE6dN8U3ZQsvgU4Ybeig&oe=69F92B74&bitrate=2243193&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-4",
-              "name": "192",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-4-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNVebfjiXgfc0KE0ugxjhgFFKrwdz3HFzd4zy9Zuvt6SyQKfQTF3BW4MNdMb0kwg6SXZS-B7vEw4fX0jSxiSP531pSptPDl2X8wfY7avg.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=tRKDYjXZBqEQ7kNvwFk3NRA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTQ3NDQ4ODkxMDc0MTY5LCJhc3NldF9hZ2VfZGF5cyI6MzMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDAxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=-qM5z_smDdB_HHqcwfkQmw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHZ11JRqNUqdliUrPF4ZHFv_iuwfi6H7JYe9yPdwfpqRx7BF4NsmhmbiIoyKbmg0-oosChglr2e&_nc_eui2=AeHecFtxnpDEOw94bXjtYd3xf5e6L11q-iF_l7ovXWr6IcJG51H9k_dDpw91FbxlHwE1d-0SddPuKvgOEm6NsBYY&oh=00_Af3p8m5I7Uma7TQTFaKqLVct07ugl63JGLyZ0lpnlraPzA&oe=69F94F8E&bitrate=676870&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-5",
-              "name": "191",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-5-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQODZao1htrQ1qzj4_in0JGXId0H9UAAmfQGlPearqj4urihPC1AIprbssHef-AT_mQuB2IDHE_zL8zASFmGOmqehkpFDBvZCnehLqQM1l4x1g.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=8dt-X4kRSYoQ7kNvwGgev8f&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjA3MjEyMDQxMjQwOTAxMCwiYXNzZXRfYWdlX2RheXMiOjQwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA4OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=1ad526234e198a48&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FQjQzRjJDMEQwRjkwNUMwRjMyMEI2OEYwMEYyMDM5MV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0VGNDM2MjRCNUZFREFGNjU1RjYzQkY4QzkyOEZFOUI0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbkssi7kp3QXBUCKAJDMywXQJEEo9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=1E8VD9xZ-tQhB7h7vHWBZA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGOv8j-_8bfjXABSn1WJgJ7RXbrUhZthdpH8LtuR_u9IBFnQKHxBkb6ffayEu7vn3TY00pOKI4L&_nc_eui2=AeHSQD-pCVE_BMD1Sqta2wwzABWV_kZU_hIAFZX-RlT-EmaCvX5al5MQYVEee0DPK0BzGT73yOxSVkUWOglYjmMl&oh=00_Af4RK0DnMpfCPEJN7SBb5lI6qyqpoVCKhhu6EiHli2HzUA&oe=69FA0D0E&bitrate=2710610&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-6",
-              "name": "190",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-6-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPkLvD1kwaLKRrcdg5N74ycfgOvxa0Un86cL28NC9U6_QEr3-41H4WDEzBqOA_OcajMC2IRty75UrtybslqQfGPY92cn4rACXFGQpTJ-Q.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=qbJYdPfSzDkQ7kNvwHc0Jcf&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIzMTUzMDI2OTEzNjU5MiwiYXNzZXRfYWdlX2RheXMiOjQ2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEzMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=99Cl6SwjFj-hpXikA0NwaA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQELvdv3ps9e5Pol73JZQVt_5V5JHR58xfe4RC107WGUW_uNRYYFEJ2z2i7ZwFQ0z71IaArXeM9O&_nc_eui2=AeEWjr05qZFmuIgdjv8T03jTyJ7FTpzSjR7InsVOnNKNHn8wkeSMQ15S1AmCc2Ufgg81uyl8qylmNAE59XdkgL5f&oh=00_Af3EvGJvSWrGGSwCHEfCC3isPkTwN0ij6awcb24RVY6cag&oe=69F8FFA4&bitrate=450064&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-7",
-              "name": "189",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-7-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPjjeLCfhLcUsmn9ZIPKSWj00l2oF60jX5s2fNPneT7Iak4FWcg8lUwpJ_jDtGokSyFhKdYMrSs81SudjQXZC9g3a5geRnTQ5eJ4HxteA.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=5gRcC1TQcfIQ7kNvwEkMvF_&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQxNzExNzE0OTYxODg2MCwiYXNzZXRfYWdlX2RheXMiOjU0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE2NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=CedHafjqfnmMLsTx1i2tDw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHjJU1aQHnwVSdQY7GCgOaCJVDhynj_dgoGslIZ2I7x-flp76WplWzkFz21dmLhUJDp_sxLjPQd&_nc_eui2=AeHeZdEUr2lOhAtbeLp_eH-IVsqWGWjh5BJWypYZaOHkEhN4brItqxj6jaEL2xnRI1xmcv1HE9o6xzDF12vUih5w&oh=00_Af6XtelhrvxEjG1hzdzvWCHRCYNokICiCkpZvhztvZiV1g&oe=69FA2944&bitrate=482463&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-8",
-              "name": "188",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-8-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNglVutHxMcoMhV25Pr26dggUm68s_1uYd-zlwKi31Bghn67sZ_pv9qdH9YVsJYNh_lrXRXzwORMbkWy_4JKcQpF8JpmfGYXvVQNcWxfQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=4DLtcTImQI8Q7kNvwEnFvHz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjE0NzUxODA3OTMyODU5OSwiYXNzZXRfYWdlX2RheXMiOjYxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=S35YKdI_J6N0TCD6Im6Elw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGbXpnEQx2vxQG-06pM-OX7MzTqupkzdz6QlE0hGJ9Ace9O-wqQ_w9F15O1gjuMN43t-a2j5yqV&_nc_eui2=AeGme9QE2i-a1VHLNXI6vwUwMGSEi7fpZjgwZISLt-lmOJd2hY6SPMyWXWrwqE-rV1ZaC-Zf6-CjSZCRDxEb6obN&oh=00_Af7mOxdIOY8gGtGQOAr3Du8AucsSnTo98D52wG9V_AGsBg&oe=69F9F06D&bitrate=345911&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-9",
-              "name": "187",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-9-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMaBVBu9fGLD_O2wInMG84AmMuSxc_O8WJFMKcQpG-uPahVsj4w8qT_Xvn2nQ1XYWCd65mgiaMbIFGLw5B5B-JZAEa27qz7ar3vkd1TRA.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=GELrLh51O8UQ7kNvwERAWn5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTgxODU3MTM5Mjg1NzkwMywiYXNzZXRfYWdlX2RheXMiOjY4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE0MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Immg1uY_KAoAUgH2cxDW-Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHl7seC2mIacSYMX7wI5In65eLLlaRFLkTWvBuBztxJiXm4T8YuCElF14d7WICgp_40P44oF4hU&_nc_eui2=AeEDKIAlXyPTFm2znjHCsxjbbw8B8ovrBXZvDwHyi-sFdpJUdrR4hv_IUTxd3DGjVK8Gop_sCax0Z1B3WwwLA-8H&oh=00_Af0mw1thd7s8hkpAqF5jfj77-6ME3Um9eJtsjuXecWc3qw&oe=69F942DF&bitrate=432807&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-10",
-              "name": "186",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-10-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQN3FS_sv54xlThx2ca-Ni9Ttyc8k1Vw8V_0VhOZ5V30JqxW4u7sjO-dEMRS0di7k8CER-znRnMMA_rkPSub1nQOxAwZ7R1KMj1F-dCojQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=KqP7ldFCW3IQ7kNvwFnC9mw&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQzMzA4MzM3ODQ3MDM2MiwiYXNzZXRfYWdlX2RheXMiOjc1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE1OCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=axH01IlAJw0LrjZeyLTg-w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEBmE3PFp0utRy30py0ebD1kUXNmhu7cHVEvza4qC-5h60GjUiKomkEBpkhCl9WtvLRyQdQoso5&_nc_eui2=AeHDc5tr4h-dS4qXv-fqJtyuQQJ22MhER35BAnbYyERHflojpWuvYa_MzERCdmgZkVnVAmC51EGqN3_zBAKW54oh&oh=00_Af2EektI5ilPgRwgXCgd6I4b3sozw2XUMhUjtasR4flkfg&oe=69F962FD&bitrate=595808&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-11",
-              "name": "185",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-11-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM1aj9yg89eTMw9-alH8ydM8Mw1RHkqnGxVXqGFXnjmx7N92faK0OrpCpV-tYoBKolxnEhQnjPhU0h7qMn--6jnWGpdXXKwVMwxMUun1g.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=DeExEClXa1cQ7kNvwGCLo0h&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODc4Mzc5MzA4MTM4NjQwLCJhc3NldF9hZ2VfZGF5cyI6ODIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMTYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=J-QXuXXEQjbHkpGHYG4vCw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHx9Esm41SXoWQya0_8126YEngVQ7T4HhXEE86mi7XY648YQhoo2WZ4Y1aU6cgmUHvRf0c5wYAS&_nc_eui2=AeGaLJVGAri7wD-LCFwLB7PMLN0JbEr6DFYs3QlsSvoMVvszI5WWOtKZbXcWEC-d8yRit-idycMVEHkEbZTMqz79&oh=00_Af7icjCaz29V5_yqwQ7iYheitr0lR4w3Yh9B1CxHXXIEdg&oe=69F9FB8E&bitrate=359052&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-12",
-              "name": "184",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-12-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQN8C_q5OEfWW0G_VboUWQkhckvmMdFtm5xdAE9Aruhn1k-JU1wxYqFEdxp0BAM3G4Jfq3-Ysn-O35Yu_ZDQZ24NtIGBDzPkSyOXrfW7eg.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=Ve5x5JQq_CQQ7kNvwGp9Zyc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjQ4Mjc0ODIyNTQ2MDEzNCwiYXNzZXRfYWdlX2RheXMiOjg5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=UQ5Pfs3vjQEc2JOg1A5PjQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE4YMwekNYknX1iRHCj3D3cYjSrNl4nivPdPJjFs4acVlwzulPq9Jt04cg2DuBdMcfqkFZ7yrUL&_nc_eui2=AeF8aFpBW9wB66Bc82Pr6ziw_OLzzeQHtMT84vPN5Ae0xPQlC-Ls4MwLL60tqpWG5L9Cz6MdFcwDye_mn71e32Gj&oh=00_Af4sDnL2DPvTKs7K6CV7KvKuKxwOraGGVOT1ek4pd4o5LQ&oe=69F9FA93&bitrate=522690&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-13",
-              "name": "183",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-13-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN-gXvy9nl8YRgov94c0QUpZ8AKzXYrXOWTuq6oDtW-Nr6nZVLPa_JbQ2euN4e5V1mFxT0KCbpIXujeMl1MFvFicZiMRA4g4yeAYEUZkQ.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=hWzC3iEL798Q7kNvwGuU_Ls&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NDM4Mjc1MDAwODYzNTU3NiwiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAxNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=zJqhaUz4bWxRBzsej0iVNg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG12PWw-9ehcNBpX9krB1W5uYN7jHInHyO11CHwYDd2BhlNn_Hu7ImcgoqQCy4IUFLn-eoQUwST&_nc_eui2=AeEZBvbgRvLtpxFHdM9WuFtvEyDR2UR1TrITINHZRHVOsgKw4BPBmmVgIEyFflYET5fegFgtGYkZgc_8J3XyBb1_&oh=00_Af4yi2NiLwKEhs_lGPycCgP8qEIjr2I6rPPnnn9r2BGSTA&oe=69F9F626&bitrate=601935&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-14",
-              "name": "182",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-14-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPtLejM9cKMxC9g-IF4YUSaB0N1zIS4U7MO0a9b8mQP2LP80uHPDveia1Zt5m4rLQHeWsnskbx51RcJ75v6Ln1py6neur1yU748kHncqA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=TAc8KOtPqZ8Q7kNvwHmR7IQ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA2MDE0Nzk5Nzg2MDMzNywiYXNzZXRfYWdlX2RheXMiOjEwMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk1NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=8wILTBhvIPcdQR6VL6Gn2g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF85Gjdbf8QWWnq76GCh2O6tidD5xVVkZnfrxa95aiYoM0CUUbOAIwVwhGS6GMEY2WBiHDw8PPF&_nc_eui2=AeE3Z7855sZN7oXtlbNf8rtT_eg17x9HQR796DXvH0dBHlqI-In3F9BRI8iJ7-pNYSrbvUyXTPDRQQf42z4IN00R&oh=00_Af1arUcXHFOzNC-yFMwAXTA6JtUpMb43o2qRXr8Z3FfIOg&oe=69F91BCE&bitrate=418546&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-15",
-              "name": "181",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-15-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMP_Ug6D5uKJyAeU1fUMwnB-Y56iErkbJirYCg7sgR4-YKYbzpLC9vJyCIRlho2bsIxPntus6DSE2-0QYzvFlcyq4dkuiWY-avWbKVA9w.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=mvvjy7LVL74Q7kNvwHVajZ2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTA5MjgwMjA0ODU5NTE1LCJhc3NldF9hZ2VfZGF5cyI6MTEwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=XPsEsnMMoGE6Po22k4uROg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEJS6U3oo0UEk0ixJUz5rwMizjQr1-MgFvYpZCFf4mCeih_QoVH2VhSGy60ds-WFhYxZjAapGLh&_nc_eui2=AeFuyiLBDPRk0B5_xv9xgbp6MzJ4-ZVLs0UzMnj5lUuzRTurQetzXKFnCo5fMq6DBGfhyDN9zpudQUVkXi3ZZLqW&oh=00_Af57rOs8sYe0Rfxrli5X-g5CYiXertz2AWS7KhCV9xvJHQ&oe=69FA2294&bitrate=507167&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-16",
-              "name": "180",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-16-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOF9Lbc-Ie9npffpsDa9Gm21lXcftM9EY2zxGfgYIG4oHn0GOB1KGDAzmZe_7NvJZ-nRCdLSpWRXlv7pEE5jvfqQKf4ODpTOIKGnkpt3Q.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=VmQCjq3FxdUQ7kNvwFOSj4G&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ5NjgyNzc4ODc2NTU5NSwiYXNzZXRfYWdlX2RheXMiOjExNywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNDUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=VrX6Tl6YLXLwrYlp_DFIZg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH9-tdqXoV-M4Ixn5F810Ul-tFShYTauxqx2IgnRN9Gl2FA15cTkDq2LGZFFkKR3Ug7zXyEY_Xj&_nc_eui2=AeHT2wXuvDQtg3fTfsho5tRSiXbNdS0c-rqJds11LRz6utQ4RrtzWME9GsxzCsmScLYVONwjdFqahiKRBF64ZPeN&oh=00_Af4Uyy5TPEO8HVGDIdfmmBIsmHylTlTQONIkdjVu_QYUlQ&oe=69FA0365&bitrate=454316&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-17",
-              "name": "179",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-17-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPGwbFumwWSmV_7ypc8ZX3tbL3Hh9i1yLEHIad0Q0HdQGzqI5gWcqlxkAYsixpM5TsxgUuUrmLL4qbjxl2DIJieqlBjCBgmqSZOVP5c5g.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=h5lgw4BoTxgQ7kNvwEI7mHX&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjU3MzY5OTE4NTI2NTQzMjksImFzc2V0X2FnZV9kYXlzIjoxMjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDQ0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=AdEkLMIK_eoy-V10V69Pjw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHmgaaypevwdgbbpjJdQsHYqhBtAiRfii6cGv_EyGsuE4q1odMnXTyTRjzjq8o7PiP8ftHvD3YW&_nc_eui2=AeG1iGiIg5Sy62cyXWaTRHXQox7Ln1KwmeGjHsufUrCZ4RWN8RlLD0lo8bD-7cR-J4SpOYUYDLBuHxmnDFYYdn3j&oh=00_Af5Rmfrg5_TXFBYLydlwUJCgvuD1nkxcG5Up41w21mVDdw&oe=69F9E0D5&bitrate=315941&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-18",
-              "name": "178",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-18-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMJ_aCoik4uP2lquDfRGLvZXIYmYtAZuBiSuSFo6cQ1eFrtyMxAsj6Hs4rOrxY5SnkPOxcsPvtO44O6p8hmcl-Vn2XIpT2QxPGqIddi2w.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=pIR_YOyye6YQ7kNvwEIdTLd&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4NzgwNTQzOTM4ODk4NSwiYXNzZXRfYWdlX2RheXMiOjEzMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExNzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=43_5b9OdMxbVyhRlNYQkYQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGr-RSxnuVXvthwsAwznjgsZzQH4_GUQXx6l5WvvKT8LmiCQH19th0ybk6CBSUPr6FIUUxbB5vn&_nc_eui2=AeGt9s2yHGdQ1xVw_Yb8D-3a5M5Fnn8KeiXkzkWefwp6Jd5hFrN21b_KRX95uSJiF9qY79zNcVPO4mDQzPPPlpvu&oh=00_Af0AaaZR-2mTqpXcusnGZwgAR4gguW5OvXEOWuknMjx0QQ&oe=69F94FB0&bitrate=458290&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-19",
-              "name": "177",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-19-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://video-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQMskRPmvrQpc23JPRDzJNpn7MECgzs2h-9BQs9bFAa5YqDbHT8Xr7fC5Px_JMY1Q61bN5vqAOymeejF4Izbx_cOi-chd2KfQyAevCHMKA.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=video-sin6-2.xx.fbcdn.net&_nc_ohc=b56qmcIDavYQ7kNvwFf3x9m&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM2MTcyNjc3MTYyNDQxMywiYXNzZXRfYWdlX2RheXMiOjEzOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwODUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=swSWNo5VJu5p0ThMRyQjCw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGcm0MaqBcBpsQLusHclPqU_Dpq1LfSZAiQdSvq3ZRNQIS0KDv9FtYmmivxKWrgqMRZrRvsfnaa&_nc_eui2=AeFz8N-tQaq-AsoruS-wX8sAnJ0DtdhipqecnQO12GKmpzmLhKs9-kk2rdx93ZIbw43G4ThDWm9RGrpB-jtb565s&oh=00_Af5_ycxa1wg2gTZ3Vrca5VgjKKOUp4HW_UEOkfpWmstliA&oe=69FA0F69&bitrate=491604&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-20",
-              "name": "176",
-              "stream_links": [
-                {
-                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-20-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
@@ -283,8 +23,268 @@
               ]
             },
             {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-1",
+              "name": "196",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOfRQuQGKEb0Bs_-2Py3fb8b93kaQYBC7jeinkPX6EdgzYYN1uMcOg_q6ZHmw9jNAsdrPBIflQuvzTSfcnRc99RgOC0hpwZns-oIZU80h7_Ew.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=KHdC3ysJXgQQ7kNvwGQCwDi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTAwMDE2NTc0ODE5MDIyLCJhc3NldF9hZ2VfZGF5cyI6NiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMDIsIndhdGNoX3RpbWVfcyI6MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=4b982afb0555a093&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FRTRDNENDNUZFNjYxMUI0RjJDMDUyOTJEQkEyMUM5RV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzQ1NEQ0MUM5OTQyRjM3RkMzRkREMTBDRkUyOTkxRUExX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACacq8uxupCqBRUCKAJDMywXQJE7hR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=CHpIbJr6qdrzBmkuYXIEsg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFYqLOSO10ewN989ZzKiLNLRHhjHzMBZ0PASJWpw2jMw5CMauJUwFcFuxEF76uw61qq5dyV_J01&_nc_eui2=AeER20bu_1FKQWu16_sTpAKafaJdIxymv5t9ol0jHKa_m573Jf0PlQoVtAUPUBya33ebMA8GU7CxBsvKbtyNI5xX&oh=00_Af4MG9MweHSd3ZLmalwmvBjgfG17S48DhJOn6M7aoSkQQQ&oe=69FA64D6&bitrate=1440653&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2",
+              "name": "195",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNQ8fIo-9_GiQVJPubORf0FmM8EzIj7BBJm1coB1lZO3OZOnSWkk9-gSmxdyv7H116UAM3p4P2uC28_fBZMRcy1Wj2GD4qS0bFDYZE-qQS6jA.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=1S0SKCFzxaoQ7kNvwF25dQq&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo3ODg5NzA1NjczNzM1ODgsImFzc2V0X2FnZV9kYXlzIjoxMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMzMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=efbcb7f78b6b9f25&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wODQ2NjMyOTcwN0EyOEIwNTVFMzcwNDg5QTBGNEM5N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzYyNENBMEY1NTQ2OEI1ODMxNDhDMTA3NTNGQTBFQjgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaozMDmkOTmAhUCKAJDMywXQJG1cKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=TpqgKrY2TP5CtVFIKfcc_g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFcI83FzXwnsQLnqLEfivzek2tY7A5t6Jbht6Pt-5jcwSGUQF1TwLnpOmpvJkgikIq1LbTuOlVa&_nc_eui2=AeEyfhUqNERDhXUSiJo7Iur8FqiOix2c3xkWqI6LHZzfGfEbobFwUxyrc9tkiB0d74SerLOS9N-wEOV4kNlavFDr&oh=00_Af6JLd63L4HhpoiA0Fpw3dB2jqKRDYFL48-XkfxvDXD1dA&oe=69FA7296&bitrate=1599296&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-3",
+              "name": "194",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQOEQr1vlGH_lkaZbcr2g2PBPnA2P7L-kMTqllIST3jLxvuAsGQLJ5y0UiYzu8Yf0jxJfoOmpJ6Wnl8a-XZm9Cp55pGa8OeJvC-Fnhie4eRYjg.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=Jt3kqP-8VQAQ7kNvwG5L8Nn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMDA3OTk0ODMzMTI0NDA0LCJhc3NldF9hZ2VfZGF5cyI6MjAsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDcwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=b5baaa32c676236d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC82RDRCMzM1NUEzNDI3QjNDNTk4RDMwMUYzNEIxMjZCOV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzRENEI4MDUxNUEwNTI4OUNEQjQwRTE0NzRBRDhDRjkyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbo8Omr15CRBxUCKAJDMywXQJC4o9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=oNVdZ_d5wRN8yqw4mFr5aA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG_dYM3F7m_jszBZ0llcqsgyY88dX2IgKYCIKATB7SAlliNWjZr8CceISPTwGadf1QdNiJrFWXJ&_nc_eui2=AeE_Ao26bzYXqQmm_g93FPcDXsvXMf7JRQ5ey9cx_slFDiLJOjJohfEGtQTyYPdAvlT8KFt8TvocusomYBpykSpc&oh=00_Af7SKOmv4x8BpOJBysWbIgPK12UT6CutF9Fjdu7DF_4krw&oe=69FA8ED7&bitrate=2009710&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-4",
+              "name": "193",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMq3joBTZL9nt4e3-tPuwaWIkBspphVFBx9d3vWlWN5FOsIeyJorUSPAOf2A795s1w9nfiVFUFY0HpUtRGkVCQZu3Yz7lxggID6Y40XStHGQQ.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=z5giGrCa0qkQ7kNvwGkk6sI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjUxOTUyNTQ0NDM0MzQ3MywiYXNzZXRfYWdlX2RheXMiOjI3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTExOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=bb0bf51812b3a928&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wQzRBQjg3ODQ0QThBQURDREZERjU0OEQ3OEY2Mjk4RF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzE4NDZBMzI0RDk2QzdDRUY4Rjk2QzE3OUExQzlFNDg1X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbi2sbbxdebXhUCKAJDMywXQJF-uFHrhR8YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=wNiKrfdFzD9fZhexAnfRYg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF7BJCfij92udnios7ZxWRfHdU9v-HrqKnT2V-xqKuIQaPR1GkdP0zqwrwK68b0OotYboIthuOX&_nc_eui2=AeFIIClFDcpCq4azwtrJ1PfypIiqV2z3oJKkiKpXbPegkgiecBzV96zbbADJD80L_gME7vDCdcMfcjeau4u3qSZX&oh=00_Af5lxxn0niK8pcV6Zl5xa2ufDlzCzV4KbfX32Apk5B46Lw&oe=69FA7CF4&bitrate=2243193&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-5",
+              "name": "192",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNVebfjiXgfc0KE0ugxjhgFFKrwdz3HFzd4zy9Zuvt6SyQKfQTF3BW4MNdMb0kwg6SXZS-B7vEw4fX0jSxiSP531pSptPDl2X8wfY7avg.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=tRKDYjXZBqEQ7kNvwFk3NRA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTQ3NDQ4ODkxMDc0MTY5LCJhc3NldF9hZ2VfZGF5cyI6MzQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDAxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=0ck08G02cltX6VFip2J7GQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEhAiteo07txVVxfODOVPPG-_TVPJz6SssqY4wq-70ukbIUq8n_Two5X75SX0Zykzx3L2DbnZ6k&_nc_eui2=AeHecFtxnpDEOw94bXjtYd3xf5e6L11q-iF_l7ovXWr6IcJG51H9k_dDpw91FbxlHwE1d-0SddPuKvgOEm6NsBYY&oh=00_Af7PuARODJ_2_CxkNe1RFE6RqaX5pc6puraWm-RfnI2DJQ&oe=69FAA10E&bitrate=676870&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-6",
+              "name": "191",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQODZao1htrQ1qzj4_in0JGXId0H9UAAmfQGlPearqj4urihPC1AIprbssHef-AT_mQuB2IDHE_zL8zASFmGOmqehkpFDBvZCnehLqQM1l4x1g.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=8dt-X4kRSYoQ7kNvwGgev8f&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNjA3MjEyMDQxMjQwOTAxMCwiYXNzZXRfYWdlX2RheXMiOjQxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA4OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=1ad526234e198a48&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FQjQzRjJDMEQwRjkwNUMwRjMyMEI2OEYwMEYyMDM5MV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0VGNDM2MjRCNUZFREFGNjU1RjYzQkY4QzkyOEZFOUI0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbkssi7kp3QXBUCKAJDMywXQJEEo9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=VNa_d0VHymGMqt0S13j3vg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGToC1-bkYloDJa3q9cBsHunOUBRx7rcO3aufBWoDGOLUENvs49M11NPdZ1xs0lFoU16vXFuo--&_nc_eui2=AeHSQD-pCVE_BMD1Sqta2wwzABWV_kZU_hIAFZX-RlT-EmaCvX5al5MQYVEee0DPK0BzGT73yOxSVkUWOglYjmMl&oh=00_Af4pNu5C4AEdO2NDTqi-bUzT_pypM1nV3kW8vjVaqXTF0Q&oe=69FB5E8E&bitrate=2710610&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-7",
+              "name": "190",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPkLvD1kwaLKRrcdg5N74ycfgOvxa0Un86cL28NC9U6_QEr3-41H4WDEzBqOA_OcajMC2IRty75UrtybslqQfGPY92cn4rACXFGQpTJ-Q.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=qbJYdPfSzDkQ7kNvwHc0Jcf&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIzMTUzMDI2OTEzNjU5MiwiYXNzZXRfYWdlX2RheXMiOjQ3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEzMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=65_g9D5CPjcC-nVINv-Yuw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHLs8Ixf6EfD6OHcrvjgOJoWig4SgdynrPhJr73YdwMO9-RneYPqkzxBZ3I3AIIkh6Uv_uUk6En&_nc_eui2=AeEWjr05qZFmuIgdjv8T03jTyJ7FTpzSjR7InsVOnNKNHn8wkeSMQ15S1AmCc2Ufgg81uyl8qylmNAE59XdkgL5f&oh=00_Af4ahYRQLP59b2CrglKNdIstLAB9UDZ-OPCRga-Xy9u0Ng&oe=69FA5124&bitrate=450064&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-8",
+              "name": "189",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPjjeLCfhLcUsmn9ZIPKSWj00l2oF60jX5s2fNPneT7Iak4FWcg8lUwpJ_jDtGokSyFhKdYMrSs81SudjQXZC9g3a5geRnTQ5eJ4HxteA.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=5gRcC1TQcfIQ7kNvwEkMvF_&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQxNzExNzE0OTYxODg2MCwiYXNzZXRfYWdlX2RheXMiOjU0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE2NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=CedHafjqfnmMLsTx1i2tDw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHjJU1aQHnwVSdQY7GCgOaCJVDhynj_dgoGslIZ2I7x-flp76WplWzkFz21dmLhUJDp_sxLjPQd&_nc_eui2=AeHeZdEUr2lOhAtbeLp_eH-IVsqWGWjh5BJWypYZaOHkEhN4brItqxj6jaEL2xnRI1xmcv1HE9o6xzDF12vUih5w&oh=00_Af6XtelhrvxEjG1hzdzvWCHRCYNokICiCkpZvhztvZiV1g&oe=69FA2944&bitrate=482463&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-9",
+              "name": "188",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNglVutHxMcoMhV25Pr26dggUm68s_1uYd-zlwKi31Bghn67sZ_pv9qdH9YVsJYNh_lrXRXzwORMbkWy_4JKcQpF8JpmfGYXvVQNcWxfQ.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=4DLtcTImQI8Q7kNvwEnFvHz&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjE0NzUxODA3OTMyODU5OSwiYXNzZXRfYWdlX2RheXMiOjYyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=xTGhTNuu-eu03mX8EhNzgA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG_sZqcfFbRy7xtz6GelJFGvU8pm6E0wuiYnTicY-soohyIniz3YbMwPopvcMhvQBHG2lQAOUVq&_nc_eui2=AeGme9QE2i-a1VHLNXI6vwUwMGSEi7fpZjgwZISLt-lmOJd2hY6SPMyWXWrwqE-rV1ZaC-Zf6-CjSZCRDxEb6obN&oh=00_Af4pGwWTthuh-T0wlGeCdJUe6wdEeiQoeMCEK7GA8LBOrg&oe=69FB41ED&bitrate=345911&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-10",
+              "name": "187",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMaBVBu9fGLD_O2wInMG84AmMuSxc_O8WJFMKcQpG-uPahVsj4w8qT_Xvn2nQ1XYWCd65mgiaMbIFGLw5B5B-JZAEa27qz7ar3vkd1TRA.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=0l-E891JXj0Q7kNvwHmfamn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTgxODU3MTM5Mjg1NzkwMywiYXNzZXRfYWdlX2RheXMiOjY5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE0MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=r1jXyonJwtGnSaaaeOV2Kw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEGKi0k1BURDCr22G50rcMKkXLLEz6OAidzWh8CJehnKU5E7VQYcDEwflTtWNPwMbNd9aVpUS0p&_nc_eui2=AeEDKIAlXyPTFm2znjHCsxjbbw8B8ovrBXZvDwHyi-sFdpJUdrR4hv_IUTxd3DGjVK8Gop_sCax0Z1B3WwwLA-8H&oh=00_Af6HGwV8qRLPLU81Vqawfo-WLzUXrUIhE0a01ZLiosYniw&oe=69FA945F&bitrate=432807&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-11",
+              "name": "186",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQN3FS_sv54xlThx2ca-Ni9Ttyc8k1Vw8V_0VhOZ5V30JqxW4u7sjO-dEMRS0di7k8CER-znRnMMA_rkPSub1nQOxAwZ7R1KMj1F-dCojQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=oyEExgAB8lIQ7kNvwHwxtMr&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQzMzA4MzM3ODQ3MDM2MiwiYXNzZXRfYWdlX2RheXMiOjc2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE1OCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=98xQUf3aenQqllKXoUMafQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGIyDxVP_vNPqgR0jUVOWZXhSrSByvLnSuJHJviVX1LPxQ6u8Y9R2nij5LTqM36bY3sDXNC2K5p&_nc_eui2=AeHDc5tr4h-dS4qXv-fqJtyuQQJ22MhER35BAnbYyERHflojpWuvYa_MzERCdmgZkVnVAmC51EGqN3_zBAKW54oh&oh=00_Af5DcUJOfZhzClGGbJExi4RCtIPS9Dg79ByWn9sdWvdGbA&oe=69FAB47D&bitrate=595808&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-12",
+              "name": "185",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM1aj9yg89eTMw9-alH8ydM8Mw1RHkqnGxVXqGFXnjmx7N92faK0OrpCpV-tYoBKolxnEhQnjPhU0h7qMn--6jnWGpdXXKwVMwxMUun1g.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=DeExEClXa1cQ7kNvwG6LFYs&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODc4Mzc5MzA4MTM4NjQwLCJhc3NldF9hZ2VfZGF5cyI6ODMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMTYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=WeVZV2Pbm7c2sH1dZXRsRg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFpwkq7qudd-5OhpEIxB6ENJaDL7-rVh9NpiCX5sN_47Jk0Noiy1A6LfEd99DRDqVFOMK01NEhT&_nc_eui2=AeGaLJVGAri7wD-LCFwLB7PMLN0JbEr6DFYs3QlsSvoMVvszI5WWOtKZbXcWEC-d8yRit-idycMVEHkEbZTMqz79&oh=00_Af4YP3qhO1gzY1AOTqYkZbRFpTOllJVDVCIcVIXxaBY2hQ&oe=69FB4D0E&bitrate=359052&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-13",
+              "name": "184",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQN8C_q5OEfWW0G_VboUWQkhckvmMdFtm5xdAE9Aruhn1k-JU1wxYqFEdxp0BAM3G4Jfq3-Ysn-O35Yu_ZDQZ24NtIGBDzPkSyOXrfW7eg.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=Ve5x5JQq_CQQ7kNvwGp9Zyc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjQ4Mjc0ODIyNTQ2MDEzNCwiYXNzZXRfYWdlX2RheXMiOjkwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=XKTIYprc8NA9BAqSKuVB5g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEFuQKgK6JtxmkCAnjYe5lxSXgWjCpN7knMT-in-UmNjxVdyKPU0FS5Q-BZNNUwGXpOwCthqLag&_nc_eui2=AeF8aFpBW9wB66Bc82Pr6ziw_OLzzeQHtMT84vPN5Ae0xPQlC-Ls4MwLL60tqpWG5L9Cz6MdFcwDye_mn71e32Gj&oh=00_Af5vB3935Xex6O5KP5aaZmu-T6C0X_Lk9v9iqaclui0dvQ&oe=69FB4C13&bitrate=522690&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-14",
+              "name": "183",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN-gXvy9nl8YRgov94c0QUpZ8AKzXYrXOWTuq6oDtW-Nr6nZVLPa_JbQ2euN4e5V1mFxT0KCbpIXujeMl1MFvFicZiMRA4g4yeAYEUZkQ.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=hWzC3iEL798Q7kNvwGuU_Ls&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NDM4Mjc1MDAwODYzNTU3NiwiYXNzZXRfYWdlX2RheXMiOjk3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAxNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=V9SeaDcEUOt-otCGRomQIQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGHh7FoHmrL1K-AtBdBN9nyXnkxQbdPAY_SAC-Ez9dQ2dLz4INVodtRtEQJ_93GbKyQm2LZTbd6&_nc_eui2=AeEZBvbgRvLtpxFHdM9WuFtvEyDR2UR1TrITINHZRHVOsgKw4BPBmmVgIEyFflYET5fegFgtGYkZgc_8J3XyBb1_&oh=00_Af4rTLrSquOl6uIkmN5kjm23qn-_nwu8QB7cZ0KHFk8yFw&oe=69FB47A6&bitrate=601935&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-15",
+              "name": "182",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPtLejM9cKMxC9g-IF4YUSaB0N1zIS4U7MO0a9b8mQP2LP80uHPDveia1Zt5m4rLQHeWsnskbx51RcJ75v6Ln1py6neur1yU748kHncqA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=uS0AgfRP7hgQ7kNvwFdnn7y&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA2MDE0Nzk5Nzg2MDMzNywiYXNzZXRfYWdlX2RheXMiOjEwNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk1NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=cdvFbB13AoY-tHGj9zXeVA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEE_Yefc20qF9ya6NkC43_RGAHRznP10JtNR0W1M8w3iFvxRgd6JwadEygnQxRpcoRUbT7c02zH&_nc_eui2=AeE3Z7855sZN7oXtlbNf8rtT_eg17x9HQR796DXvH0dBHlqI-In3F9BRI8iJ7-pNYSrbvUyXTPDRQQf42z4IN00R&oh=00_Af79D9JEO9vXr5-JANuW_OylpnLmPS16ga_4Pv9bZ6W2Og&oe=69FA6D4E&bitrate=418546&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-16",
+              "name": "181",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMP_Ug6D5uKJyAeU1fUMwnB-Y56iErkbJirYCg7sgR4-YKYbzpLC9vJyCIRlho2bsIxPntus6DSE2-0QYzvFlcyq4dkuiWY-avWbKVA9w.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=lmXGuj7fP2UQ7kNvwGc4uLp&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTA5MjgwMjA0ODU5NTE1LCJhc3NldF9hZ2VfZGF5cyI6MTExLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=mCbAhRsSwNUnzqMW5jFxog&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHVk65j83_FRoHtAkGeh89yznSUlRokGXpe6r5h6BGT-Fqz9l_kYYFvgcDUryhNsbc7ikkBBgix&_nc_eui2=AeFuyiLBDPRk0B5_xv9xgbp6MzJ4-ZVLs0UzMnj5lUuzRTurQetzXKFnCo5fMq6DBGfhyDN9zpudQUVkXi3ZZLqW&oh=00_Af7jDJletLn2MIvFtJJJnBwsEJGllTCxWO89CqTy4F5vwA&oe=69FB7414&bitrate=507167&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-17",
+              "name": "180",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOF9Lbc-Ie9npffpsDa9Gm21lXcftM9EY2zxGfgYIG4oHn0GOB1KGDAzmZe_7NvJZ-nRCdLSpWRXlv7pEE5jvfqQKf4ODpTOIKGnkpt3Q.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=VmQCjq3FxdUQ7kNvwFOSj4G&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ5NjgyNzc4ODc2NTU5NSwiYXNzZXRfYWdlX2RheXMiOjExOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNDUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=Jjtdrh6RPt23B3c0-Mi96w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEDQ5ejjakbOYNNLq96H5W1ltUv7MdUkbn6jlmIefCnCBBZDLFkzDcu1aX2jLp3BNBqUdA-VqzG&_nc_eui2=AeHT2wXuvDQtg3fTfsho5tRSiXbNdS0c-rqJds11LRz6utQ4RrtzWME9GsxzCsmScLYVONwjdFqahiKRBF64ZPeN&oh=00_Af70p01vlV5sj9fP1IAF_U3z9IcIYTZBHqHu4Jjzu1_oTg&oe=69FB54E5&bitrate=454316&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-18",
+              "name": "179",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-18-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPGwbFumwWSmV_7ypc8ZX3tbL3Hh9i1yLEHIad0Q0HdQGzqI5gWcqlxkAYsixpM5TsxgUuUrmLL4qbjxl2DIJieqlBjCBgmqSZOVP5c5g.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=sQuMVTNtHhIQ7kNvwEa0tdy&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjU3MzY5OTE4NTI2NTQzMjksImFzc2V0X2FnZV9kYXlzIjoxMjUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDQ0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=5eV0ia_YZLjPULlgZuoxNg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQES9Qwhwjh_hZ7aDbFKQZ1Mz7pt2jERxmCEY1UsTWVWuisIcd5LvRlIYmiZZWVLkqTYrnWBSfNd&_nc_eui2=AeG1iGiIg5Sy62cyXWaTRHXQox7Ln1KwmeGjHsufUrCZ4RWN8RlLD0lo8bD-7cR-J4SpOYUYDLBuHxmnDFYYdn3j&oh=00_Af52xrhkL8PUDPIxnM9GVB1PtDcrp-S3anYiuhQQGRMK0Q&oe=69FB3255&bitrate=315941&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-19",
+              "name": "178",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-19-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMJ_aCoik4uP2lquDfRGLvZXIYmYtAZuBiSuSFo6cQ1eFrtyMxAsj6Hs4rOrxY5SnkPOxcsPvtO44O6p8hmcl-Vn2XIpT2QxPGqIddi2w.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=8v0GrLFs6ZAQ7kNvwEgyA4Z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4NzgwNTQzOTM4ODk4NSwiYXNzZXRfYWdlX2RheXMiOjEzMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExNzgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=ha5dmWXFR2YKzPrEWCSt0Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHYUcYhpE_LOReNQY0HpqEssaOjZgXdL5tvIafl4zfT3IZDIdKsdPAS2jH2evAPrMcuJpfBv8j-&_nc_eui2=AeGt9s2yHGdQ1xVw_Yb8D-3a5M5Fnn8KeiXkzkWefwp6Jd5hFrN21b_KRX95uSJiF9qY79zNcVPO4mDQzPPPlpvu&oh=00_Af5jDV3zKB3Qayvziqt7oTbPE-dj4yKGHUZlv2g-F_xUYA&oe=69FB11B0&bitrate=458290&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-20",
+              "name": "177",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-20-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQMskRPmvrQpc23JPRDzJNpn7MECgzs2h-9BQs9bFAa5YqDbHT8Xr7fC5Px_JMY1Q61bN5vqAOymeejF4Izbx_cOi-chd2KfQyAevCHMKA.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=b56qmcIDavYQ7kNvwERKbeC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM2MTcyNjc3MTYyNDQxMywiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwODUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=Ftq3tPx8VrS8_qJL9wlgvQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH6E-NCwWJvNhbu9kd25cX-gr0rrG2z_M0KbW7Q3oxRJ4dqeEp55pj8Ix0JtXCAV65VDVHs4Kpl&_nc_eui2=AeFz8N-tQaq-AsoruS-wX8sAnJ0DtdhipqecnQO12GKmpzmLhKs9-kk2rdx93ZIbw43G4ThDWm9RGrpB-jtb565s&oh=00_Af4P4kC8iGn_nDJ-j_vKaHZufBrVuUkNbjgjvSzKYCK4wQ&oe=69FB9929&bitrate=491604&tag=sve_sd"
+                }
+              ]
+            },
+            {
               "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-21",
-              "name": "175",
+              "name": "176",
               "stream_links": [
                 {
                   "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-21-0",
@@ -297,7 +297,7 @@
             },
             {
               "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-22",
-              "name": "174",
+              "name": "175",
               "stream_links": [
                 {
                   "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-22-0",
@@ -310,7 +310,7 @@
             },
             {
               "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-23",
-              "name": "173",
+              "name": "174",
               "stream_links": [
                 {
                   "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-23-0",
@@ -323,10 +323,23 @@
             },
             {
               "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-24",
-              "name": "172",
+              "name": "173",
               "stream_links": [
                 {
                   "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-24-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-25",
+              "name": "172",
+              "stream_links": [
+                {
+                  "id": "dau-pha-thuong-khung-phan-5-thuyet-minh-new--0-25-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,

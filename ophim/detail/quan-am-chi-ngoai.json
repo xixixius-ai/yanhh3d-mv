@@ -1,0 +1,281 @@
+{
+  "sources": [
+    {
+      "id": "quan-am-chi-ngoai--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "quan-am-chi-ngoai--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "quan-am-chi-ngoai--0-0",
+              "name": "20",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-0-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-1",
+              "name": "19",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQOxJMtlmWmYcj-BlPwJQASU_X6yVj9aTVPcmyxyMLi-_vtnVGNGGuMMKEL0IwFmy2MvAi2dUvePj1tI02RkeDsqZ_4D-Vx04xlO0yjzsltcvg.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=F78hiNHFP_sQ7kNvwFsc5-H&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjozNTkwODc4NTMxMDUwMzI5LCJhc3NldF9hZ2VfZGF5cyI6NiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE0MDcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=3798377d1218db08&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9GQTQ2MDlDOThCRjdENjY2QzM4ODExNzIyQzA1MjQ5OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzNGNEM4ODQ0MUE0MjdCOTI2NUUyMDA4MkU4RDgwOThEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACay7bL00fjgDBUCKAJDMywXQJX_hR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=pMleCs6EATelHlzP-MlfVg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEO5x5KAcGQnddJo6EaFS7YmPgX5Cn3XYUEMeja2GNWzcdq4_49kBq2X0ZzPMInNKbs6jR8cxjS&_nc_eui2=AeEg3Ww4Yz60EnpHK-NgCrQlPgzcpS7TYCA-DNylLtNgIAK3zup-4bQSl4wXvBA9vXkUUzQ4eFCC-kFglLd0QZOo&oh=00_Af6qhgUSyya1cqjkXJuazFjo_OLa_P0_inxEdbOpAPBaLw&oe=69FB78A1&bitrate=2012027&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-2",
+              "name": "18",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNOw26JkTB1hHW0gtTLMQblwGKzj8JHpAWHU-ORY7TbaFUufLVkCCFZLT5bnapQWdCaOC6qvUJQuxaYSIzunGzvRT97Wdf4aA-e7lFIMNFi2w.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=4kdpkdVWAFUQ7kNvwG2HbKH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzg1Nzg5MTY5OTczNjQzLCJhc3NldF9hZ2VfZGF5cyI6MTMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjQ1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=c0a6e46287d61941&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84QjQ1MjAwQzMxRjk0MzA1NUQ4NDI0Njc0NUU5MEFBNF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0ZGNDE2MzI0ODAxN0Y4ODMyMzlCQzZCRUU2MEIwNUFBX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaW5q3zxZf2BBUCKAJDMywXQJN1R64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=epRmeQLG4OBqRxEeHto8Sw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEzs3rhP5yVxsvyitVAnqD9U2zerFNZtJbWtlWlJ3IHMRF2B1b01f-pZ23uJdByVkKGEHsIVBPc&_nc_eui2=AeGA64-Q7da659p9fM6QIK7wrcOMXXtS6d-tw4xde1Lp3w96A7hcQ1eBwYOwHXSH09WIxLIma2MUE9MrQQIlYNwp&oh=00_Af4k1HXmqxW0XvM2H1UVkieu6A7Vnt9Nh1tXm7nqI0mKbw&oe=69FA80DC&bitrate=1636963&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-3",
+              "name": "17",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOKTwXxLSaaMnx3kkYJwwxMZmVJ1YzVvGbaystbH9sLpa3N0hqbkESPLb6UWm2a0YOArWolnwNtyVJCIaI-ckytNzbSmGd5mNOqmWKOg0nBNg.mp4?_nc_cat=111&_nc_sid=5e9851&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=1WmKd2De2IIQ7kNvwEd3NyT&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTk5MTc2NzA0NjQ3ODY2LCJhc3NldF9hZ2VfZGF5cyI6MjAsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjE1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=2a5eba5d9ad76ab7&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8zMDQxNjA3NzNGNzdCOTE5QzRCNjdFRUNBNkY3RTU5NV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0UyNEM0QzAxQTk1ODM1QkVGN0E5ODM4RkQ3RDE5RTkyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb0is_2qpzXBRUCKAJDMywXQJL9R64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=YcVzIbk8JyXz1KeFbGGldw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGBKIqG1nxijOF9kVsnlbBFvSGsk0ak0YW7J7lQ_Rk-B2rKH96SZD0WpX0OCDZfRfEXCPLyWIAb&_nc_eui2=AeE5rzT4XdSkJi1DkIgkRg24LKRXesisMxAspFd6yKwzELJXKgKO6cIRVk-vNMwJDkSPLJch3dPG6SoExO5YkLIQ&oh=00_Af5Lthj0ThriRcAJ-UuPSICs6n1X1kHng3ijsaM-pE0Qcg&oe=69FA8EA1&bitrate=1859754&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-4",
+              "name": "16",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQNtahtvNQQG7RYw_HZjKxifpTXgNndoUBfpHjQ0YSX6rf2AyCFS9gJBlmUW92PRzCgXLWe4ohRZRnHu_Djg-N_9lvuKIvLuBWIBM3diygolng.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=WPBnexZYvDUQ7kNvwHOiSdw&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDU5NzcwMjY5MjY1OTY5LCJhc3NldF9hZ2VfZGF5cyI6MjcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNDYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=9f7c33a70763df2d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85RjQ3NjcxOEFCOUExMkU3MUZBQTk3OEI4MDlCRjE5OF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdFNEFBQUYzRTdENzk0Rjk3MkQ2ODJERkIyRDk2NEJGX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbiwNOF6OmXBRUCKAJDMywXQJbX1wo9cKQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=76m_M9ttr6nfUvqtlYniIA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFUaGbBNuCe3YtX7PKChcGdBiaip066xe3bIJ3-2z8JnWW-R81QzhwI6yq8U7zKh-mkQxuY61NZ&_nc_eui2=AeHrOqt_RgVqL_SLPgyKo-asOplFZjlHTYM6mUVmOUdNg33kighYuh60-JErHisZhk9QQaQCm7hiSl9aGigx81n6&oh=00_Af6CM3VFu_HPd0CnmHdNT7jmro524RPkVCrCo2PnBhqdBQ&oe=69FAAAC1&bitrate=1549547&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-5",
+              "name": "15",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOtE0uTLWeN4plsMFhk0N79iciMQRyC9G7pGevfHhHHRd8vysY_ssbF4k-GlPJwq5IgHAs5Uv5LSrhb86v_B2HE6vSrCEr2YvHRe1w8jQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=video-sin6-2.xx.fbcdn.net&_nc_ohc=C8cnsXFzPqcQ7kNvwFRh6pS&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjEzNjQ0NDM4MDIyNzk0NywiYXNzZXRfYWdlX2RheXMiOjM0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTMwOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=lwBbjKEtw0gR-xQHoo_WCQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEAxRgTA3eblZv962vVHrtmB8z3FfLUzeR-6PKYi-ElcLnyHiRUA6HjVDUM_otRot0SayQX1Ob_&_nc_eui2=AeFSgxAtmrbRPeQYCEZdlOo1ajWIhmyZhStqNYiGbJmFK-YIyy8eWsSq06tOp9cg_ZkUOSPj-yWgC2od0rpNWUKm&oh=00_Af4vhcYwabJVDsbSCpxVRjw0NUgE2wsjokXrXQbjMUBjgg&oe=69FB89C9&bitrate=393416&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-6",
+              "name": "14",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOVseAUzPk2ij25yQ9vx6OtK8yZ9O7kcE-KtwJyQpijZRgcjziyQ74-pSdfBwNYQEjo_NkSZn4BO5UUCUZl7ezFF94y8v_k6ezHbY4qmQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=KvFMztBVVnoQ7kNvwEYyxTp&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI1MjMzNjU4NjU3NTYyNiwiYXNzZXRfYWdlX2RheXMiOjQwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTIwNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=KUXW5Rkb9bAhpXiE7zFPwg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEiiwMaXwL9iQ9gumFiWBkbkkOadHNe9Hk0DP7e87-gKZDOQ9fM1Ksb7LXriET9TY6NFDIrleIG&_nc_eui2=AeFh9EpZ2J50phvf0m3J1GBt8vFC1iiOOBby8ULWKI44FvoVoQpp_63f50PgW0dulFMzbBGo8FTsD0RNXFj-BwDa&oh=00_Af5lWYlNQlG1OJl5K802iTI_1xo6cCUmjZj_WX-fs1xlEQ&oe=69FA5B04&bitrate=389668&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-7",
+              "name": "13",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPsc0ebKJUe96BRCwcGLO4q2EJBtOwJ_H7J5TJua4fxeIiWKsaLuscQlZ36p9XCIgOmpG3mGuQr7CbWKAqJVu7xhLo-oXFBOsGTW3Y4mg.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=x1RnN0GjRQkQ7kNvwFQyIpC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTEyMjkzNDQ0NzQxNjc5LCJhc3NldF9hZ2VfZGF5cyI6NDgsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjQ3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=ukjolHKadSnV-k9PuN05ug&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE8ZU41H3g4JYcQczYaYc7k9E8rumjW5mz80j66geyh3mFK0G-B2-NjouzrJSJMBDf0vjETJjwe&_nc_eui2=AeEh5cnQM-12__BtjZzhPznSG8uuKF1JVRQby64oXUlVFHtrreISD2IH0IxKC5TvsaIujzzHZ6FNrhmnHYNZhBuZ&oh=00_Af7jfu2I9cxMF2MlmxUg2G1C0JF7vsRpn0ylgP9p3XMVEg&oe=69FA957F&bitrate=410570&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-8",
+              "name": "12",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN_8c3XR2CinUUoEqEoWmUmHLN4JB6-mNT39CVULa_b3Ymt0neBYh7MGqSvRk7o1HTzpeNVqHhFT_KGh-JdrxZLjMTH-WuDXlUAjNCGyQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=22UkoUDvmmgQ7kNvwGS8H6G&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ2NDcwMTc0MTgzOTA4NywiYXNzZXRfYWdlX2RheXMiOjU0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE5MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=sOHl6RQAlvq5fKYWhYJnnQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE_Cqt7mgPmucKUlOhMGFHKlsbZJU-3cfmV5VG6lMR4h8abYxxi_HEm76FNu1JFccvxxn3MP0ix&_nc_eui2=AeEtxNf9xH0pV2BBPsp5xG72PPJ0M4VZJ-A88nQzhVkn4Bildez1mIwN1xHGO9JBy243q_ny0Cw6d1_pxw1hdLNL&oh=00_Af6H60wBRU2IE9kZe4TRCvpg9KUJXGgvqEnh7_yjgmYKfA&oe=69FA9214&bitrate=347971&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-9",
+              "name": "11",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNrFHwkbvKZZCdz4fswVW4W5tiajsSa-kWlBBTy8kGW8dA71NEKnnY0uM3aITqt_4ge69JR1HvFgG9Xv7tzMXJOf85MW89eQ4J53lzWrA.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=E60bIfK65wMQ7kNvwFAwSqN&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTkyOTAyODU5Nzc0NTM0NywiYXNzZXRfYWdlX2RheXMiOjYxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTMzNiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=GDt73x8Ys1wIKYhR5WTkFA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH4oQQI4iEQBXP97ffPUNPus1ao2gX3JaTCHq3PWr3VXSHhWfHQcn1V5r8is8JOuTZ3H_BFjIxz&_nc_eui2=AeEu6PpOmxf3P-69AI1kLXyYaebwvxbWQM9p5vC_FtZAz5GvmmP74vfNcYk7t7ClRByf768fnDpYmLlvHiPcp11k&oh=00_Af7AnQrMMgLMyvi-MctccYc4gS3LQnA4J8cf_QWU5Hqg1A&oe=69FA9E46&bitrate=364831&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-10",
+              "name": "10",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQN0lE1sPI6c4HUjflD_h4muZ78GeiFYamBCEejlmvKTtoXhyKdpjZ-n0oi6jqtpBbqITxp6QZIKBQxdvcdQCx_SeHmVxDgpW0SB9j4Qmw.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=nsmGq5HlvncQ7kNvwEm-gHo&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ0MTYxMzUzMDY0NTE3NywiYXNzZXRfYWdlX2RheXMiOjY5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE3NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=DDz3b1XEiFWor5nXpyAhpg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGtOxKGqa-33eJ2Pdemm9jKl7aEAtCdEBa00TMwfb98GUkypCNpOJVfVm0ztHrgIkqzR-i2q_g-&_nc_eui2=AeGKziLlw20fbeyL-TD5BuQgfB7JXeA5-_R8Hsld4Dn79ECEm4IGihP8a8cD3YKUEadIsS2xaOhvCxsW8DGtk1ut&oh=00_Af7CYpDINxxf_M23a1cUkoFhAa5agn_hop38CXf_W1BlSA&oe=69FB458D&bitrate=369247&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-11",
+              "name": "9",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPF43MASkajfXy_K0UhHPLUhaiGuLdLaCQKuGnxVl7-Q3Lr5VZVgdzKcO71ogHs1FXx0TPdFTT5T01p09k1XDFZHmcp9P3CaDJIYXGP-Q.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=43aHuOp2YN4Q7kNvwHWf2PO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzcxNDI3NTk5MzQwNzgxLCJhc3NldF9hZ2VfZGF5cyI6NzUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjMwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=RdzceIhW1O31ayO1NOr64w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGUIgGTur5DOD9ZhhNoavq63-P-q68kC73UNYYZjNh0sYPeY-ojgMPWVH6MunAYLE6c-_1hNaZ6&_nc_eui2=AeEsxcmNdZzrRE5W8_6DQFGMY3Blzvpwev1jcGXO-nB6_Z1M8QdTiefnSEPPxNqICpm1MTrF6hGy4dZEog70CGve&oh=00_Af4Nq9nxAGPh-bdsg-er-un32mihQs3VZ88MnJCjVw-_pg&oe=69FB2AD7&bitrate=350571&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-12",
+              "name": "8",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN43qiWt6dR_SUJLUgUpVVu_8dsbvwmsoFgt2NTNeyG-OophP6dUQwGPMmW-Hd05GuJ9Ek6O20rtKHkssvQW6XWb7JuxTSFpCDpqcbrgA.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=jcWRKWVJcJgQ7kNvwG_JIVq&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3ODkxOTMyMDAzMjkwNiwiYXNzZXRfYWdlX2RheXMiOjgyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEwNywid2F0Y2hfdGltZV9zIjowLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=fUWKlREvEqpkomcHfz6DEQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFYybfoFghNpQaM--bcbe0L2CuTW1aTZJoDXZrMDh8Q_1NQ8VcEazqLsGbzAPAyrg_t6pBQD4mj&_nc_eui2=AeFNWNjOqDL7JuPA_aHzgzRyjX2lRFyhbRuNfaVEXKFtGxjY7qnkMQ_BCxEsqvIFVO0xTB5F4ycMWUFOADuLsHPZ&oh=00_Af6mb66Pw9F0V3JyIsqWscbFKMdHoh2dN2EcU2HYPWW2LQ&oe=69FA9D14&bitrate=371975&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-13",
+              "name": "7",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPC5VcKVNCjxiwCa9T7AzOnLcZv9oTCXPue86ghNvs0haLNINOITgCpUhKj5N5BJeehJE7IT-dGBfZJIvA1vPeb0JDNAcogoxbJN5d0Cg.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=6L5f_Tu1hrAQ7kNvwFxJOs7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTkzMjgzMzU0NDc3ODgxMiwiYXNzZXRfYWdlX2RheXMiOjg5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTIzMiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=v6VcFdgg0uuY0MYSYdvrYw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFxgRu67aNe0hghdeYCpGSreVdBuykGWeuN1A-cubMfcig30IEhyznAZ-8Bla_67EtEcnxyGa7B&_nc_eui2=AeGwmFZT67FxT-OUSF5T1VDNU9ZdzcyycTdT1l3NzLJxNw41cY4MFZHtoaTZGUHVxbN_ttchTdMO_0mtvl-Kfo_Z&oh=00_Af7fpcbsDyBTNVDSFKma66ZJ3IBBEAL3IOWiAdzp_aPVvg&oe=69FAA6E4&bitrate=324684&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-14",
+              "name": "6",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQO58TP62yMajW8Ck01QguVTfK7Qp76pzrgOUNadkS_OW6-uIxX-IRpp07Vs6LIJVSDG7AZ9o7NRbJt-2ua83qz0ONpu1pmsbRRhqZ5V8Q.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=9hs0W03zbusQ7kNvwHbn49-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjIxMzE5OTgwNjE2NzUwNywiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQzNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=fDKYSvZyJOlbQ4Ab3VAmhw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHWFRWQN475yPXk8q3jwhBpfULdD2Od38A-RXNjkq1gk8PyU1uCACGY2pk0_18jSRuD-cRUjJFK&_nc_eui2=AeGDGGLcxM20VXXHkZWAEMnraAL4IG239ZVoAvggbbf1leEDA5f0QEPfzIRNqRdcQbZtMxNv-7e7KafeOPeHlqyI&oh=00_Af4irx9NJq-M3YYO-r-o0fbeHuSmuiJTA041smkiUQ6BVA&oe=69FB3914&bitrate=389737&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-15",
+              "name": "5",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPGSGiP5EG_Kz0UZlinemOlTrOWT1ZERui3g4R40cUVu5pSwMKltYIj0o0HYcZNXdLfDMHIAM3OpILUx_taMaFnHIJGdGz_daXRnx6XtA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=fQ2jxiz8bh8Q7kNvwHvKa7r&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjEzMzI5NzE3MDUzODg0NywiYXNzZXRfYWdlX2RheXMiOjEwNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEyNjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=-sBoiBO0unhrmEuC8m6zFg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHTlfs35V1u_XcpTwViSBlaRyKiUmxR-XW8HojTDWWOGLOXczy57mmp8EQaVlW0eZRSMVC0la_v&_nc_eui2=AeEOO2eVTl_uoX-QRqymMWbOEkLzhqyl3GYSQvOGrKXcZr7YvoN3LAJJNpmoMgZry4eHmVWTRg4KxjPvtbuX9xLb&oh=00_Af52ZrGCUCeGTgpnwvzxQUi06gAOt8-FBEaN0nqtac3qSA&oe=69FB54F2&bitrate=355625&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-16",
+              "name": "4",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMWmE0v7eDbgx1sIp4CorZq435MuHvdu6JMYSHGNnxeA9YMJGFvIBwmSrO5mLgBoVlZewjoqr7E9bQme8KMtgzJgyzn8EiWT_0hDGbqJg.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=YS3ugEq4qfoQ7kNvwFYHdvc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4NDA2MTkwOTQwMTQ2MywiYXNzZXRfYWdlX2RheXMiOjExMCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNDksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=5cZLgaHxrhdDKasehsPAag&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGLtuWlUpX1S6Bdx4WjgS1vwEzhXiIngRD5w4Yo58SaUvFUZ8gz24XUXSU2LvgTaYeI4spwMgSp&_nc_eui2=AeFjNXZJ76B2-6Al_p5uRydcA1pgczwM-vQDWmBzPAz69HRfHPGwU4M4Y_9yRVR_Y7tXtU7IVnG_cMZuOok7JClC&oh=00_Af52NNNvMToR6j9hv2VSdQ5mA0u5FANVxBaEgJ8Gp9BhJA&oe=69FAF9F5&bitrate=390688&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-17",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMNKvhaDfnWCnCsMIBs_H_f_yeCyiEVRfBUr5PQEcpekhS0_xcWpkZ-nHsWTCdHN4gZpV7q73YXgOM1ferg8IFCjHs9RYP5K8oacjHaXQ.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=9bkX6vs3G-sQ7kNvwFt5kkv&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjcyNjk1MzQwNDMyMDY2MCwiYXNzZXRfYWdlX2RheXMiOjExNywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwMDgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=htRjN6jJLs8y2Zz6ZMI-wA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHfctiZup5HERogEctDz6s3XoqV9kvVWvyI1qL7_AvDrK1aUi0vdkuMBaiEX35E3JsbcWVxp2ht&_nc_eui2=AeGfesLXVCxHW_nQ5pdJlI58FgY7322ou3EWBjvfbai7cQVph-xaFiWfdJBuU5Gy_1oNhsCsTkzhti7ytYkeqKAI&oh=00_Af78PIdnzr4C33nZOPX2qn7PS_iOUMvGdiaJIjQy-farcg&oe=69FABEB7&bitrate=445830&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-18",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-18-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOjjadcCCqD6xjR2ChgTpWkAA77nMJ3AIf7D5srOAZ2K6xnRlGhXFJvXx4LI7Vdeg3GjsPIe0xcmxhfOdshvBZjgFguMc6xawfJMKHCbw.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=xSDKD_Hk5cYQ7kNvwF0B7En&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODQ0MDQ0MTQ4NjE2NzA4LCJhc3NldF9hZ2VfZGF5cyI6MTI0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTM3NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=0gUqjwK5EyjLW_xX0dBYKg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE3R5cGKJX1uPmwqh528DnITOAsSTur1FBMC09-1VokjXEO5e1hQp-jUb4Nec2Fyg7ZRl_nBqpD&_nc_eui2=AeEdLYdRQtpI6c1JbgQXEhT7xWePqv6Br4LFZ4-q_oGvgqhyBsgiyogYBeRfaOuX9pXBPw1dUrCzij8tNS0S54XX&oh=00_Af5XmALDrVXFJRGM0BCPupprc06pAucJNWCUYh_VRpk9vQ&oe=69FA4D78&bitrate=365022&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "quan-am-chi-ngoai--0-19",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "quan-am-chi-ngoai--0-19-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM3-twe-b6RERMQ_GRGbgRAymAEIekIIbRA0TUUiyTWBe7-z5FhQ1xywgJjS8VBMENNXu4M422Ao_ntyNl4byLIkG-RMMdCyIrNTvNYig.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=MkefMX3uy14Q7kNvwEZYYHC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI1NTEwODM2NjQxMTk4NCwiYXNzZXRfYWdlX2RheXMiOjEyNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE2MTMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=_JYDPnTBu9qWSRwDx9dWEQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHjk5cIgtMCXcAUnH5nVJbOgkcjm8MVv43lKRMnKqs9GDrQGWk4CeQATBaXFX21npRKedjDPRha&_nc_eui2=AeHTELou6dn7bGlnybi_tCt8AmLdJTwY5fUCYt0lPBjl9cr0ae4QZVAQTA8yTts20_XiRWlqmrjvxa8VsthrKgZp&oh=00_Af6PE2WPoyMj3g2BcLIX7DuR6KVnBLaNt3WLFNphChDjpg&oe=69FAB297&bitrate=387955&tag=sve_sd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "quan-am-chi-ngoai xem phim quang âm chi ngoại thuyết minh: hứa thanh, nhân vật chính của câu chuyện, hiện lên với hình bóng của một con người tràn đầy sự khắc khổ vì hoàn cảnh rất là khắc nghiệt, cũng bởi vì thế mà tính cách của anh luôn rất lạnh lùng, khó đ... quan am chi ngoai hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Quang Âm Chi Ngoại Thuyết Minh: Hứa Thanh, nhân vật chính của câu chuyện, hiện lên với hình bóng của một con người tràn đầy sự khắc khổ vì hoàn cảnh rất là khắc nghiệt, cũng bởi vì thế mà tính cách của anh luôn rất lạnh lùng, khó đ..."
+}
