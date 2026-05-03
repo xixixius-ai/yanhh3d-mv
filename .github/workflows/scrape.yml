@@ -13,7 +13,8 @@ on:
       max_episodes:
         description: 'Max episodes/movie (empty = all)'
         required: false
-        default: '999'
+        # ✅ QUAN TRỌNG: Bỏ default '999' để khi để trống → kích hoạt --all-episodes
+        default: ''
         type: string
   push:
     paths:
@@ -47,7 +48,7 @@ jobs:
           # ✅ QUAN TRỌNG: Cài Playwright browser + system deps
           playwright install --with-deps chromium
 
-      -       - name: Run scraper
+      - name: Run scraper
         run: |
           MAX_MOVIES="${{ inputs.max_movies || '30' }}"
           
@@ -85,7 +86,7 @@ jobs:
             🤖 Auto update MonPlayer (Thuyết Minh)
             
             Movies: ${{ inputs.max_movies || 30 }}
-            Episodes: ${{ inputs.max_episodes && format('Limited to {0}', inputs.max_episodes) || 'ALL (no limit)' }}
+            Episodes: ${{ fromJSON(inputs.max_episodes != '' && inputs.max_episodes != null) && format('Limited to {0}', inputs.max_episodes) || 'ALL (no limit)' }}
             Run: ${{ github.run_id }}
           file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
