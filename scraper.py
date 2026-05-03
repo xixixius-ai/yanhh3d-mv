@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v3.1)
-- Anti-Rate-Limit: 2.5-4.5s delay + batch cooldown
+YanHH3D Scraper → MonPlayer JSON (v3.2)
+- Anti-Rate-Limit: 2.5-4.5s delay + configurable batch cooldown
 - 429/403 Handler: Auto-wait & retry
 - Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
-- Cookie Sync: Truyền cookie từ Playwright → urllib để fix limit 20 tập
-- NEW: --all-episodes flag để lấy TẤT CẢ tập, ưu tiên hơn --max-episodes
-- Clean Syntax: Fix toàn bộ lỗi meta dict / if metadata / type hint
+- Cookie Sync: Truyền cookie từ Playwright → urllib để fix limit link
+- NEW: --all-episodes flag (ưu tiên tuyệt đối) + --batch-size tùy chỉnh
+- Clean Syntax: Fix toàn bộ lỗi meta dict / type hint / logic limit
 """
 
 import argparse
@@ -50,10 +50,10 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 1500,
-    "EP_DELAY_MAX": 3000,
-    "BATCH_SIZE":   20,
-    "BATCH_COOLDOWN": 8.0,
+    "EP_DELAY_MIN": 2500,
+    "EP_DELAY_MAX": 4500,
+    "BATCH_SIZE":   50,          # 🔥 Tăng lên 50 để ít nghỉ hơn
+    "BATCH_COOLDOWN": 12.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
 }
 
@@ -132,7 +132,6 @@ def _build_search_str(movie: dict, metadata: dict = None) -> str:
 
 
 def _extract_cookies_from_context(context) -> dict:
-    """Extract cookies from Playwright context and return as dict {name: value}"""
     cookies = {}
     try:
         for cookie in context.cookies():
@@ -143,20 +142,15 @@ def _extract_cookies_from_context(context) -> dict:
 
 
 def _cookies_to_header(cookies: dict) -> str:
-    """Convert cookie dict to Cookie header string"""
     if not cookies:
         return ""
     return "; ".join(f"{k}={v}" for k, v in cookies.items())
 
 
 def _build_urllib_request(url: str, headers: dict, cookies: dict = None, no_redirect: bool = False):
-    """Build urllib request with cookies support"""
     req = urllib.request.Request(url, headers=headers, method="GET")
-    
     if cookies:
-        cookie_header = _cookies_to_header(cookies)
-        req.add_header("Cookie", cookie_header)
-    
+        req.add_header("Cookie", _cookies_to_header(cookies))
     if no_redirect:
         class NoRedirect(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -219,7 +213,6 @@ def get_movie_metadata(page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(proxy_url: str, cookies: dict = None, retry_count: int = None) -> str | None:
-    """Resolve Facebook CDN URL with cookie support from Playwright context"""
     if retry_count is None:
         retry_count = CONFIG["RETRY_COUNT"]
     
@@ -447,7 +440,6 @@ def get_episodes(page, slug):
 
 
 def get_stream_url(page, context, ep_url, cookies: dict = None):
-    """Extract stream URL with cookie support for Facebook CDN"""
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -466,7 +458,6 @@ def get_stream_url(page, context, ep_url, cookies: dict = None):
         candidates = preferred if preferred else raw_buttons
         for btn in candidates:
             if "play-fb-v8" in btn["src"]:
-                # Pass cookies to resolve_play_fb_v8 for authenticated requests
                 fb_cdn_url = resolve_play_fb_v8(btn["src"], cookies=cookies)
                 if fb_cdn_url and _is_valid_fb_cdn(fb_cdn_url):
                     return [{"url": fb_cdn_url, "type": "mp4", "label": f"fb-cdn-{btn['label']}" if btn['label'] else "fb-cdn"}]
@@ -545,12 +536,6 @@ def build_list_item(movie: dict, metadata: dict = None):
 
 
 def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
-    """
-    Scrape a single movie with episode limit control.
-    
-    Args:
-        force_all_episodes: If True, ignore max_episodes and crawl ALL available episodes
-    """
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
@@ -568,34 +553,31 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, forc
 
     ep_data = []
     
-    # 🔥 LOGIC MỚI: force_all_episodes ưu tiên hơn max_episodes
+    # 🔥 LOGIC XÁC ĐỊNH GIỚI HẠN TẬP
     if force_all_episodes:
         crawl_limit = len(episodes)
-        logger.info(f"  [EPISODE LIMIT] --all-episodes enabled: crawling ALL {crawl_limit} episodes")
+        logger.info(f"  [EP LIMIT] --all-episodes ENABLED → crawling ALL {crawl_limit} episodes")
     elif max_episodes is not None:
         crawl_limit = min(len(episodes), max_episodes)
-        logger.info(f"  [EPISODE LIMIT] max_episodes={max_episodes}: crawling {crawl_limit}/{len(episodes)} episodes")
+        logger.info(f"  [EP LIMIT] --max-episodes={max_episodes} → crawling {crawl_limit}/{len(episodes)} episodes")
     else:
         crawl_limit = len(episodes)
-        logger.info(f"  [EPISODE LIMIT] no limit set: crawling ALL {crawl_limit} episodes")
+        logger.info(f"  [EP LIMIT] No limit set → crawling ALL {crawl_limit} episodes")
     
     consecutive_fails = 0
-    
-    # Extract cookies once at the start for reuse across episode requests
     cookies = _extract_cookies_from_context(context)
     
     for i in range(crawl_limit):
         ep = episodes[i]
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
+        # 🔥 BATCH COOLDOWN (chỉ để nghỉ, KHÔNG dừng crawl)
         if (i + 1) % CONFIG["BATCH_SIZE"] == 0:
-            logger.info(f"    🛑 Batch limit ({CONFIG['BATCH_SIZE']}). Cooling down {CONFIG['BATCH_COOLDOWN']}s...")
+            logger.info(f"    🛑 [BATCH] {i+1} episodes processed. Cooling down {CONFIG['BATCH_COOLDOWN']}s...")
             time.sleep(CONFIG["BATCH_COOLDOWN"])
             consecutive_fails = 0
-            # Refresh cookies periodically for long crawls
             cookies = _extract_cookies_from_context(context)
             
-        # Pass cookies to get_stream_url for Facebook CDN authentication
         stream = get_stream_url(page, context, ep["url"], cookies=cookies)
         if stream:
             ep_data.append({"name": ep["name"], "stream": stream})
@@ -613,22 +595,22 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, forc
                     "url": "error:no_stream"
                 }]
             })
-            logger.warning(f"    ✗ Tap {ep['name']}: marked as no stream (streak: {consecutive_fails})")
+            logger.warning(f"    ✗ Tap {ep['name']}: no stream (streak: {consecutive_fails})")
             
             if consecutive_fails >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
-                logger.warning(f"    ⛔ Consecutive fail limit reached ({consecutive_fails}). Stopping early.")
+                logger.warning(f"    ⛔ Consecutive fail limit ({consecutive_fails}). Stopping early.")
                 break
     
     detail_json = build_detail_json(slug, ep_data, metadata)
     list_item = build_list_item(movie_info, metadata)
     
     success_count = sum(1 for ep in ep_data if any(s["type"] != "error" for s in ep["stream"]))
-    logger.info(f"  Saved {slug}.json ({success_count}/{len(ep_data)} playable)")
+    logger.info(f"  ✅ Saved {slug}.json ({success_count}/{len(ep_data)} playable)")
     return list_item, detail_json
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.1")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.2")
     parser.add_argument("--search", type=str, help="Search movies by keyword")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
@@ -637,16 +619,18 @@ def main():
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
     parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
     parser.add_argument("--all-episodes", action="store_true", help="🔥 Crawl ALL episodes (overrides --max-episodes)")
+    parser.add_argument("--batch-size", type=int, default=None, help="Episodes per batch before cooldown (default: 50)")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     
     args = parser.parse_args()
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_MOVIES"] = args.max_movies
-    # Chỉ set MAX_EPISODES nếu không dùng --all-episodes
+    if args.batch_size is not None:
+        CONFIG["BATCH_SIZE"] = args.batch_size
     if not args.all_episodes and args.max_episodes is not None:
         CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.1 - COOKIE SYNC + ALL-EPISODES FLAG + ANTI-RATE-LIMIT)...")
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.2 - COOKIE SYNC + ALL-EPISODES + SMART BATCH)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
@@ -668,7 +652,6 @@ def main():
             def process_movie_list(movies):
                 for movie in movies[:args.max_movies]:
                     try:
-                        # 🔥 Truyền force_all_episodes từ flag --all-episodes
                         res = scrape_movie(page, context, movie, 
                                          max_episodes=args.max_episodes, 
                                          force_all_episodes=args.all_episodes)
@@ -732,7 +715,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.1"
+            "version": "3.2"
         }
     }
     
