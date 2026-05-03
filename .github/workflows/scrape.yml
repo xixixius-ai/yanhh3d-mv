@@ -49,18 +49,9 @@ jobs:
 
       - name: Run scraper
         run: |
-          # FIX: dùng biến trung gian để tránh lỗi inputs khi chạy schedule
           MAX_MOVIES="${{ inputs.max_movies || '30' }}"
           MAX_EPISODES="${{ inputs.max_episodes || '20' }}"
- 
-          CMD="python scraper.py --max-movies $MAX_MOVIES"
- 
-          # Chỉ bỏ qua --max-episodes nếu người dùng truyền rỗng thật sự
-          # (workflow_dispatch với default '20' nên luôn có giá trị)
-          if [[ -n "$MAX_EPISODES" ]]; then
-            CMD="$CMD --max-episodes $MAX_EPISODES"
-          fi
- 
+          CMD="python scraper.py --max-movies $MAX_MOVIES --max-episodes $MAX_EPISODES"
           echo "▶️ Running: $CMD"
           $CMD
         env:
