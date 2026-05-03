@@ -49,11 +49,18 @@ jobs:
 
       - name: Run scraper
         run: |
-          CMD="python scraper.py"
-          CMD="$CMD --max-movies ${{ inputs.max_movies || 30 }}"
-          if [[ -n "${{ inputs.max_episodes }}" ]]; then
-            CMD="$CMD --max-episodes ${{ inputs.max_episodes }}"
+          # FIX: dùng biến trung gian để tránh lỗi inputs khi chạy schedule
+          MAX_MOVIES="${{ inputs.max_movies || '30' }}"
+          MAX_EPISODES="${{ inputs.max_episodes || '20' }}"
+ 
+          CMD="python scraper.py --max-movies $MAX_MOVIES"
+ 
+          # Chỉ bỏ qua --max-episodes nếu người dùng truyền rỗng thật sự
+          # (workflow_dispatch với default '20' nên luôn có giá trị)
+          if [[ -n "$MAX_EPISODES" ]]; then
+            CMD="$CMD --max-episodes $MAX_EPISODES"
           fi
+ 
           echo "▶️ Running: $CMD"
           $CMD
         env:
@@ -85,4 +92,4 @@ jobs:
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_fetch: true
+          skip_fetch: false
