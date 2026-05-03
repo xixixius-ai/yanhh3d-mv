@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v3.0)
+YanHH3D Scraper → MonPlayer JSON (v3.1)
 - Anti-Rate-Limit: 2.5-4.5s delay + batch cooldown
 - 429/403 Handler: Auto-wait & retry
 - Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
 - Cookie Sync: Truyền cookie từ Playwright → urllib để fix limit 20 tập
+- NEW: --all-episodes flag để lấy TẤT CẢ tập, ưu tiên hơn --max-episodes
 - Clean Syntax: Fix toàn bộ lỗi meta dict / if metadata / type hint
 """
 
@@ -49,10 +50,10 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 2500,
-    "EP_DELAY_MAX": 4500,
+    "EP_DELAY_MIN": 1500,
+    "EP_DELAY_MAX": 3000,
     "BATCH_SIZE":   20,
-    "BATCH_COOLDOWN": 12.0,
+    "BATCH_COOLDOWN": 8.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
 }
 
@@ -543,7 +544,13 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> tuple | None:
+def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
+    """
+    Scrape a single movie with episode limit control.
+    
+    Args:
+        force_all_episodes: If True, ignore max_episodes and crawl ALL available episodes
+    """
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
@@ -560,7 +567,18 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> t
         return None
 
     ep_data = []
-    crawl_limit = len(episodes) if max_episodes is None else min(len(episodes), max_episodes)
+    
+    # 🔥 LOGIC MỚI: force_all_episodes ưu tiên hơn max_episodes
+    if force_all_episodes:
+        crawl_limit = len(episodes)
+        logger.info(f"  [EPISODE LIMIT] --all-episodes enabled: crawling ALL {crawl_limit} episodes")
+    elif max_episodes is not None:
+        crawl_limit = min(len(episodes), max_episodes)
+        logger.info(f"  [EPISODE LIMIT] max_episodes={max_episodes}: crawling {crawl_limit}/{len(episodes)} episodes")
+    else:
+        crawl_limit = len(episodes)
+        logger.info(f"  [EPISODE LIMIT] no limit set: crawling ALL {crawl_limit} episodes")
+    
     consecutive_fails = 0
     
     # Extract cookies once at the start for reuse across episode requests
@@ -610,7 +628,7 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None) -> t
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.0")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.1")
     parser.add_argument("--search", type=str, help="Search movies by keyword")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
@@ -618,14 +636,17 @@ def main():
     parser.add_argument("--trending", action="store_true", help="Scrape trending (default)")
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
     parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
+    parser.add_argument("--all-episodes", action="store_true", help="🔥 Crawl ALL episodes (overrides --max-episodes)")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     
     args = parser.parse_args()
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_MOVIES"] = args.max_movies
-    CONFIG["MAX_EPISODES"] = args.max_episodes
+    # Chỉ set MAX_EPISODES nếu không dùng --all-episodes
+    if not args.all_episodes and args.max_episodes is not None:
+        CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.0 - COOKIE SYNC + ANTI-RATE-LIMIT + SMART BREAKER)...")
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.1 - COOKIE SYNC + ALL-EPISODES FLAG + ANTI-RATE-LIMIT)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
@@ -647,7 +668,10 @@ def main():
             def process_movie_list(movies):
                 for movie in movies[:args.max_movies]:
                     try:
-                        res = scrape_movie(page, context, movie, args.max_episodes)
+                        # 🔥 Truyền force_all_episodes từ flag --all-episodes
+                        res = scrape_movie(page, context, movie, 
+                                         max_episodes=args.max_episodes, 
+                                         force_all_episodes=args.all_episodes)
                         if res:
                             li, dj = res
                             with open(detail_dir / f"{movie['slug']}.json", "w", encoding="utf-8") as f: 
@@ -661,7 +685,9 @@ def main():
                 process_movie_list(movies)
             elif args.slug:
                 fake_movie = {"slug": args.slug, "title": args.slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, fake_movie, args.max_episodes)
+                res = scrape_movie(page, context, fake_movie, 
+                                 max_episodes=args.max_episodes, 
+                                 force_all_episodes=args.all_episodes)
                 if res:
                     li, dj = res
                     with open(detail_dir / f"{args.slug}.json", "w", encoding="utf-8") as f: 
@@ -670,7 +696,9 @@ def main():
             elif args.url:
                 slug = args.url.rstrip('/').split('/')[-1]
                 fake_movie = {"slug": slug, "title": slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, fake_movie, args.max_episodes)
+                res = scrape_movie(page, context, fake_movie, 
+                                 max_episodes=args.max_episodes, 
+                                 force_all_episodes=args.all_episodes)
                 if res:
                     li, dj = res
                     with open(detail_dir / f"{slug}.json", "w", encoding="utf-8") as f: 
@@ -704,7 +732,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.0"
+            "version": "3.1"
         }
     }
     
