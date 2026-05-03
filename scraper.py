@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v3.2)
-- Anti-Rate-Limit: 2.5-4.5s delay + configurable batch cooldown
-- 429/403 Handler: Auto-wait & retry
-- Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
-- Cookie Sync: Truyền cookie từ Playwright → urllib để fix limit link
-- NEW: --all-episodes flag (ưu tiên tuyệt đối) + --batch-size tùy chỉnh
-- Clean Syntax: Fix toàn bộ lỗi meta dict / type hint / logic limit
+YanHH3D Scraper → MonPlayer JSON (v3.5)
+✅ Context Rotation: Reset session/cookie/fingerprint sau mỗi batch → fix limit ~20 link/phim
+✅ Cookie Sync: Truyền cookie từ Playwright → urllib cho Facebook CDN
+✅ --all-episodes: Flag lấy TẤT CẢ tập, ưu tiên hơn --max-episodes
+✅ Anti-Rate-Limit: Delay ngẫu nhiên + batch cooldown + retry 429/403
+✅ Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
+✅ Clean Syntax: Fix toàn bộ type hint / meta dict / logic
 """
 
 import argparse
@@ -21,9 +21,8 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
-from http.cookiejar import CookieJar, Cookie
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, Browser, BrowserContext, Page
 
 try:
     from playwright_stealth import stealth_sync
@@ -52,8 +51,8 @@ CONFIG = {
     "RETRY_DELAY":  1.0,
     "EP_DELAY_MIN": 2500,
     "EP_DELAY_MAX": 4500,
-    "BATCH_SIZE":   50,          # 🔥 Tăng lên 50 để ít nghỉ hơn
-    "BATCH_COOLDOWN": 12.0,
+    "BATCH_SIZE":   15,          # 🔥 Giảm xuống 15 để rotation sớm hơn, tránh block ở tập 20
+    "BATCH_COOLDOWN": 8.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
 }
 
@@ -82,7 +81,7 @@ def _human_delay(min_ms=300, max_ms=900):
     time.sleep(random.uniform(min_ms / 1000, max_ms / 1000))
 
 
-def _apply_stealth(page):
+def _apply_stealth(page: Page):
     if HAS_STEALTH:
         stealth_sync(page)
     else:
@@ -94,7 +93,7 @@ def _apply_stealth(page):
         """)
 
 
-def _debug_page(page, label):
+def _debug_page(page: Page, label: str):
     try:
         title   = page.title()
         url_now = page.url
@@ -106,7 +105,7 @@ def _debug_page(page, label):
         logger.info(f"   [DEBUG:{label}] cannot read page: {e}")
 
 
-def _wait_for_cf(page, selector, timeout):
+def _wait_for_cf(page: Page, selector: str, timeout: int):
     try:
         page.wait_for_function(
             """() => !document.title.includes('Just a moment') &&
@@ -131,7 +130,7 @@ def _build_search_str(movie: dict, metadata: dict = None) -> str:
     return " ".join(p for p in parts if p).lower().strip()
 
 
-def _extract_cookies_from_context(context) -> dict:
+def _extract_cookies_from_context(context: BrowserContext) -> dict:
     cookies = {}
     try:
         for cookie in context.cookies():
@@ -159,7 +158,7 @@ def _build_urllib_request(url: str, headers: dict, cookies: dict = None, no_redi
     return urllib.request.build_opener()
 
 
-def get_movie_metadata(page, slug: str) -> dict:
+def get_movie_metadata(page: Page, slug: str) -> dict:
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     metadata = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
     
@@ -294,7 +293,7 @@ def _is_valid_fb_cdn(url: str) -> bool:
     return ('fbcdn' in url_lower or 'facebook' in url_lower) and '.mp4' in url_lower
 
 
-def search_movies(page, keyword: str) -> list[dict]:
+def search_movies(page: Page, keyword: str) -> list[dict]:
     try:
         search_url = f"{CONFIG['BASE_URL']}/tim-kiem?keyword={keyword}"
         page.goto(search_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -321,7 +320,7 @@ def search_movies(page, keyword: str) -> list[dict]:
         return []
 
 
-def list_all_movies(page, category_url: str = None) -> list[dict]:
+def list_all_movies(page: Page, category_url: str = None) -> list[dict]:
     url = category_url or f"{CONFIG['BASE_URL']}/danh-sach/hoat-hinh"
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -363,7 +362,7 @@ def list_all_movies(page, category_url: str = None) -> list[dict]:
         return []
 
 
-def get_trending_movies(page, limit: int = 50):
+def get_trending_movies(page: Page, limit: int = 50):
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _debug_page(page, "homepage")
@@ -391,7 +390,7 @@ def get_trending_movies(page, limit: int = 50):
         return []
 
 
-def get_latest_ep_url(page, slug):
+def get_latest_ep_url(page: Page, slug: str):
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     try:
         _human_delay(300, 700)
@@ -410,7 +409,7 @@ def get_latest_ep_url(page, slug):
         return None
 
 
-def get_episodes(page, slug):
+def get_episodes(page: Page, slug: str):
     latest_url = get_latest_ep_url(page, slug)
     if not latest_url:
         return []
@@ -439,7 +438,7 @@ def get_episodes(page, slug):
         return []
 
 
-def get_stream_url(page, context, ep_url, cookies: dict = None):
+def get_stream_url(page: Page, context: BrowserContext, ep_url: str, cookies: dict = None):
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -467,7 +466,7 @@ def get_stream_url(page, context, ep_url, cookies: dict = None):
         return None
 
 
-def build_detail_json(slug, episodes, metadata: dict = None):
+def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
@@ -535,7 +534,29 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
+def _rotate_context(browser: Browser, base_config: dict) -> tuple[BrowserContext, Page]:
+    """🔥 CONTEXT ROTATION: Tạo context + page mới để reset session/fingerprint"""
+    new_context = browser.new_context(
+        user_agent=base_config["USER_AGENT"],
+        viewport={"width": 1280, "height": 720},
+        locale="vi-VN",
+        timezone_id="Asia/Ho_Chi_Minh",
+        extra_http_headers=EXTRA_HEADERS,
+        java_script_enabled=True
+    )
+    new_page = new_context.new_page()
+    _apply_stealth(new_page)
+    return new_context, new_page
+
+
+def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_info: dict, 
+                 max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
+    """
+    Scrape a single movie with:
+    - Context Rotation sau mỗi batch để reset session
+    - Cookie sync cho Facebook CDN
+    - Episode limit control
+    """
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
@@ -571,12 +592,28 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, forc
         ep = episodes[i]
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
-        # 🔥 BATCH COOLDOWN (chỉ để nghỉ, KHÔNG dừng crawl)
-        if (i + 1) % CONFIG["BATCH_SIZE"] == 0:
-            logger.info(f"    🛑 [BATCH] {i+1} episodes processed. Cooling down {CONFIG['BATCH_COOLDOWN']}s...")
-            time.sleep(CONFIG["BATCH_COOLDOWN"])
-            consecutive_fails = 0
+        # 🔥 CONTEXT ROTATION + COOLDOWN sau mỗi batch
+        if (i + 1) % CONFIG["BATCH_SIZE"] == 0 and (i + 1) < crawl_limit:
+            logger.info(f"    🔄 [BATCH {i+1}/{crawl_limit}] Rotating context to reset session/fingerprint...")
+            
+            # Đóng context cũ để giải phóng resource
+            try:
+                context.close()
+            except Exception as e:
+                logger.debug(f"    Context close warning: {e}")
+            
+            # Tạo context + page mới
+            context, page = _rotate_context(browser, CONFIG)
+            
+            # Re-extract cookies từ context mới cho urllib
             cookies = _extract_cookies_from_context(context)
+            
+            # Cooldown ngắn để tránh trigger bot detection
+            logger.info(f"    🛑 Cooling down {CONFIG['BATCH_COOLDOWN']}s after rotation...")
+            time.sleep(CONFIG["BATCH_COOLDOWN"])
+            
+            consecutive_fails = 0
+            logger.info(f"    ✅ Context rotated. New session ready.")
             
         stream = get_stream_url(page, context, ep["url"], cookies=cookies)
         if stream:
@@ -610,7 +647,7 @@ def scrape_movie(page, context, movie_info: dict, max_episodes: int = None, forc
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.2")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.5")
     parser.add_argument("--search", type=str, help="Search movies by keyword")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
@@ -619,7 +656,7 @@ def main():
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
     parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
     parser.add_argument("--all-episodes", action="store_true", help="🔥 Crawl ALL episodes (overrides --max-episodes)")
-    parser.add_argument("--batch-size", type=int, default=None, help="Episodes per batch before cooldown (default: 50)")
+    parser.add_argument("--batch-size", type=int, default=None, help="Episodes per batch before rotation (default: 15)")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     
     args = parser.parse_args()
@@ -630,13 +667,15 @@ def main():
     if not args.all_episodes and args.max_episodes is not None:
         CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.2 - COOKIE SYNC + ALL-EPISODES + SMART BATCH)...")
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.5 - CONTEXT ROTATION + COOKIE SYNC + ALL-EPISODES)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage", "--lang=vi-VN"])
+        
+        # Context ban đầu
         context = browser.new_context(
             user_agent=CONFIG["USER_AGENT"],
             viewport={"width": 1280, "height": 720},
@@ -650,9 +689,11 @@ def main():
 
         try:
             def process_movie_list(movies):
+                nonlocal page, context
                 for movie in movies[:args.max_movies]:
                     try:
-                        res = scrape_movie(page, context, movie, 
+                        # 🔥 Truyền browser để hỗ trợ context rotation
+                        res = scrape_movie(page, context, browser, movie, 
                                          max_episodes=args.max_episodes, 
                                          force_all_episodes=args.all_episodes)
                         if res:
@@ -668,7 +709,7 @@ def main():
                 process_movie_list(movies)
             elif args.slug:
                 fake_movie = {"slug": args.slug, "title": args.slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, fake_movie, 
+                res = scrape_movie(page, context, browser, fake_movie, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -679,7 +720,7 @@ def main():
             elif args.url:
                 slug = args.url.rstrip('/').split('/')[-1]
                 fake_movie = {"slug": slug, "title": slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, fake_movie, 
+                res = scrape_movie(page, context, browser, fake_movie, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -696,6 +737,11 @@ def main():
                 process_movie_list(movies)
                 
         finally:
+            # Cleanup: đóng context và browser
+            try:
+                context.close()
+            except:
+                pass
             browser.close()
 
     list_output = {
@@ -715,7 +761,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.2"
+            "version": "3.5"
         }
     }
     
