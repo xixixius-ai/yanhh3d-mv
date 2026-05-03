@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v3.5)
-✅ Context Rotation: Reset session/cookie/fingerprint sau mỗi batch → fix limit ~20 link/phim
-✅ Cookie Sync: Truyền cookie từ Playwright → urllib cho Facebook CDN
+YanHH3D Scraper → MonPlayer JSON (v3.6)
+✅ FIX CHÍNH: Thay urllib bằng Playwright context.request → giải quyết triệt để lỗi "no stream" sau ~20 tập
+✅ Context Rotation: Reset session/cookie/fingerprint sau mỗi batch
 ✅ --all-episodes: Flag lấy TẤT CẢ tập, ưu tiên hơn --max-episodes
 ✅ Anti-Rate-Limit: Delay ngẫu nhiên + batch cooldown + retry 429/403
 ✅ Consecutive Fail Breaker: Dừng sớm nếu 5 tập liên tiếp lỗi
-✅ Clean Syntax: Fix toàn bộ type hint / meta dict / logic
 """
 
 import argparse
@@ -17,8 +16,6 @@ import random
 import re
 import sys
 import time
-import urllib.request
-import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -51,7 +48,7 @@ CONFIG = {
     "RETRY_DELAY":  1.0,
     "EP_DELAY_MIN": 2500,
     "EP_DELAY_MAX": 4500,
-    "BATCH_SIZE":   15,          # 🔥 Giảm xuống 15 để rotation sớm hơn, tránh block ở tập 20
+    "BATCH_SIZE":   15,
     "BATCH_COOLDOWN": 8.0,
     "CONSECUTIVE_FAIL_LIMIT": 5,
 }
@@ -130,34 +127,6 @@ def _build_search_str(movie: dict, metadata: dict = None) -> str:
     return " ".join(p for p in parts if p).lower().strip()
 
 
-def _extract_cookies_from_context(context: BrowserContext) -> dict:
-    cookies = {}
-    try:
-        for cookie in context.cookies():
-            cookies[cookie['name']] = cookie['value']
-    except Exception as e:
-        logger.debug(f"   Cookie extraction warning: {e}")
-    return cookies
-
-
-def _cookies_to_header(cookies: dict) -> str:
-    if not cookies:
-        return ""
-    return "; ".join(f"{k}={v}" for k, v in cookies.items())
-
-
-def _build_urllib_request(url: str, headers: dict, cookies: dict = None, no_redirect: bool = False):
-    req = urllib.request.Request(url, headers=headers, method="GET")
-    if cookies:
-        req.add_header("Cookie", _cookies_to_header(cookies))
-    if no_redirect:
-        class NoRedirect(urllib.request.HTTPRedirectHandler):
-            def redirect_request(self, req, fp, code, msg, headers, newurl):
-                return None
-        return urllib.request.build_opener(NoRedirect())
-    return urllib.request.build_opener()
-
-
 def get_movie_metadata(page: Page, slug: str) -> dict:
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     metadata = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
@@ -211,84 +180,48 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
         return metadata
 
 
-def resolve_play_fb_v8(proxy_url: str, cookies: dict = None, retry_count: int = None) -> str | None:
-    if retry_count is None:
-        retry_count = CONFIG["RETRY_COUNT"]
-    
-    headers = PLAY_FB_V8_HEADERS.copy()
-    if cookies:
-        headers["Cookie"] = _cookies_to_header(cookies)
-    
-    last_error = None
-    for attempt in range(retry_count + 1):
+def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
+    """Dùng Playwright request API thay cho urllib → tự động đồng bộ cookie/session/IP"""
+    try:
+        resp = context.request.get(proxy_url, headers=PLAY_FB_V8_HEADERS, timeout=15000)
+        if resp.status != 200:
+            logger.debug(f"   Proxy returned {resp.status}")
+            return None
+            
+        content = resp.text()
+        url_patterns = [
+            r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+            r"'(https?://scontent-[^']+\.mp4[^']*)'",
+            r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+            r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+            r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+            r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
+        ]
+        for pattern in url_patterns:
+            match = re.search(pattern, content, re.IGNORECASE)
+            if match:
+                url = match.group(1).replace('\\/', '/')
+                if ('fbcdn' in url.lower() or 'facebook' in url.lower()):
+                    return url
+                    
+        # Fallback JSON
         try:
-            opener = _build_urllib_request(proxy_url, headers, cookies, no_redirect=True)
-            with opener.open(urllib.request.Request(proxy_url, headers=headers), timeout=20) as resp:
-                if resp.status in (301, 302, 303, 307, 308):
-                    location = resp.headers.get("Location", "")
-                    if location and _is_valid_fb_cdn(location):
-                        return location
-                
-                if resp.status == 200:
-                    content_type = resp.headers.get('Content-Type', '')
-                    content = resp.read().decode('utf-8', errors='ignore')
-                    
-                    if 'application/json' in content_type:
-                        try:
-                            data = json.loads(content)
-                            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
-                            if url and _is_valid_fb_cdn(url):
-                                return url
-                        except json.JSONDecodeError:
-                            pass
-                    
-                    url_patterns = [
-                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
-                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                    ]
-                    for pattern in url_patterns:
-                        match = re.search(pattern, content, re.IGNORECASE)
-                        if match:
-                            url = match.group(1).replace('\\/', '/')
-                            if _is_valid_fb_cdn(url):
-                                return url
-                    
-                    fallback = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
-                    if fallback and _is_valid_fb_cdn(fallback.group(1)):
-                        return fallback.group(1)
-                
-                logger.debug(f"   ⚠️ play-fb-v8 returned status {resp.status}")
-                return None
-                
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 403):
-                wait_time = random.uniform(5.0, 12.0)
-                logger.warning(f"   🛑 Server rate-limited ({e.code}). Waiting {wait_time:.1f}s...")
-                time.sleep(wait_time)
-                continue
-            if e.code in (301, 302, 303, 307, 308):
-                location = e.headers.get("Location", "")
-                if location and _is_valid_fb_cdn(location):
-                    return location
-            last_error = f"HTTPError {e.code}"
-        except Exception as e:
-            last_error = str(e)
+            import json as _json
+            data = _json.loads(content)
+            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+            if url and ('fbcdn' in url.lower() or 'facebook' in url.lower()):
+                return url
+        except:
+            pass
             
-        if attempt < retry_count:
-            delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
-            logger.debug(f"   Retry {attempt + 1}/{retry_count} in {delay}s...")
-            time.sleep(delay)
-            
-    logger.warning(f"   resolve_play_fb_v8 failed: {last_error}")
-    return None
+        return None
+    except Exception as e:
+        logger.debug(f"   resolve_play_fb_v8 failed: {e}")
+        return None
 
 
 def _is_valid_fb_cdn(url: str) -> bool:
-    if not url:
-        return False
+    if not url: return False
     url_lower = url.lower()
     return ('fbcdn' in url_lower or 'facebook' in url_lower) and '.mp4' in url_lower
 
@@ -344,15 +277,12 @@ def list_all_movies(page: Page, category_url: str = None) -> list[dict]:
                 }
                 return results;
             }""")
-            if not batch:
-                break
+            if not batch: break
             movies.extend(batch)
             next_btn = page.query_selector('a[title="Next"], .pagination li.active + li a')
-            if not next_btn:
-                break
+            if not next_btn: break
             page_num += 1
-            if page_num > 15:
-                break
+            if page_num > 15: break
             next_btn.click()
             _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
             _human_delay(500, 1000)
@@ -411,8 +341,7 @@ def get_latest_ep_url(page: Page, slug: str):
 
 def get_episodes(page: Page, slug: str):
     latest_url = get_latest_ep_url(page, slug)
-    if not latest_url:
-        return []
+    if not latest_url: return []
     try:
         _human_delay(400, 800)
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -438,7 +367,7 @@ def get_episodes(page: Page, slug: str):
         return []
 
 
-def get_stream_url(page: Page, context: BrowserContext, ep_url: str, cookies: dict = None):
+def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
     try:
         _human_delay(200, 500)
         page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -457,7 +386,7 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str, cookies: di
         candidates = preferred if preferred else raw_buttons
         for btn in candidates:
             if "play-fb-v8" in btn["src"]:
-                fb_cdn_url = resolve_play_fb_v8(btn["src"], cookies=cookies)
+                fb_cdn_url = resolve_play_fb_v8(context, btn["src"])
                 if fb_cdn_url and _is_valid_fb_cdn(fb_cdn_url):
                     return [{"url": fb_cdn_url, "type": "mp4", "label": f"fb-cdn-{btn['label']}" if btn['label'] else "fb-cdn"}]
         return None
@@ -471,8 +400,7 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     streams = []
     for i, ep in enumerate(episodes):
         raw_streams = ep.get("stream")
-        if not raw_streams:
-            continue
+        if not raw_streams: continue
         stream_links = []
         for j, s in enumerate(raw_streams):
             stream_links.append({
@@ -500,12 +428,9 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
         "tags": metadata.get("tags", []),
         "description": metadata.get("description", ""),
     }
-    if metadata.get("year"):
-        result["year"] = metadata["year"]
-    if metadata.get("status"):
-        result["status"] = metadata["status"]
-    if metadata.get("total_episodes"):
-        result["total_episodes"] = metadata["total_episodes"]
+    if metadata.get("year"): result["year"] = metadata["year"]
+    if metadata.get("status"): result["status"] = metadata["status"]
+    if metadata.get("total_episodes"): result["total_episodes"] = metadata["total_episodes"]
     return result
 
 
@@ -527,15 +452,12 @@ def build_list_item(movie: dict, metadata: dict = None):
         "remote_data": {"url": f"{CONFIG['RAW_BASE']}/ophim/detail/{movie['slug']}.json"},
         "enable_detail": True
     }
-    if metadata.get("year"):
-        item["year"] = metadata["year"]
-    if metadata.get("status"):
-        item["status"] = metadata["status"]
+    if metadata.get("year"): item["year"] = metadata["year"]
+    if metadata.get("status"): item["status"] = metadata["status"]
     return item
 
 
 def _rotate_context(browser: Browser, base_config: dict) -> tuple[BrowserContext, Page]:
-    """🔥 CONTEXT ROTATION: Tạo context + page mới để reset session/fingerprint"""
     new_context = browser.new_context(
         user_agent=base_config["USER_AGENT"],
         viewport={"width": 1280, "height": 720},
@@ -551,14 +473,7 @@ def _rotate_context(browser: Browser, base_config: dict) -> tuple[BrowserContext
 
 def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_info: dict, 
                  max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
-    """
-    Scrape a single movie with:
-    - Context Rotation sau mỗi batch để reset session
-    - Cookie sync cho Facebook CDN
-    - Episode limit control
-    """
-    if max_episodes is None:
-        max_episodes = CONFIG["MAX_EPISODES"]
+    if max_episodes is None: max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
     logger.info(f"  Processing: {slug}")
     
@@ -574,7 +489,6 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
 
     ep_data = []
     
-    # 🔥 LOGIC XÁC ĐỊNH GIỚI HẠN TẬP
     if force_all_episodes:
         crawl_limit = len(episodes)
         logger.info(f"  [EP LIMIT] --all-episodes ENABLED → crawling ALL {crawl_limit} episodes")
@@ -586,36 +500,22 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
         logger.info(f"  [EP LIMIT] No limit set → crawling ALL {crawl_limit} episodes")
     
     consecutive_fails = 0
-    cookies = _extract_cookies_from_context(context)
     
     for i in range(crawl_limit):
         ep = episodes[i]
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
-        # 🔥 CONTEXT ROTATION + COOLDOWN sau mỗi batch
         if (i + 1) % CONFIG["BATCH_SIZE"] == 0 and (i + 1) < crawl_limit:
             logger.info(f"    🔄 [BATCH {i+1}/{crawl_limit}] Rotating context to reset session/fingerprint...")
-            
-            # Đóng context cũ để giải phóng resource
-            try:
-                context.close()
-            except Exception as e:
-                logger.debug(f"    Context close warning: {e}")
-            
-            # Tạo context + page mới
+            try: context.close()
+            except: pass
             context, page = _rotate_context(browser, CONFIG)
-            
-            # Re-extract cookies từ context mới cho urllib
-            cookies = _extract_cookies_from_context(context)
-            
-            # Cooldown ngắn để tránh trigger bot detection
             logger.info(f"    🛑 Cooling down {CONFIG['BATCH_COOLDOWN']}s after rotation...")
             time.sleep(CONFIG["BATCH_COOLDOWN"])
-            
             consecutive_fails = 0
             logger.info(f"    ✅ Context rotated. New session ready.")
             
-        stream = get_stream_url(page, context, ep["url"], cookies=cookies)
+        stream = get_stream_url(page, context, ep["url"])
         if stream:
             ep_data.append({"name": ep["name"], "stream": stream})
             logger.info(f"    ✓ Tap {ep['name']}: OK")
@@ -647,7 +547,7 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.5")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.6")
     parser.add_argument("--search", type=str, help="Search movies by keyword")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
@@ -662,20 +562,16 @@ def main():
     args = parser.parse_args()
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_MOVIES"] = args.max_movies
-    if args.batch_size is not None:
-        CONFIG["BATCH_SIZE"] = args.batch_size
-    if not args.all_episodes and args.max_episodes is not None:
-        CONFIG["MAX_EPISODES"] = args.max_episodes
+    if args.batch_size is not None: CONFIG["BATCH_SIZE"] = args.batch_size
+    if not args.all_episodes and args.max_episodes is not None: CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.5 - CONTEXT ROTATION + COOKIE SYNC + ALL-EPISODES)...")
+    logger.info(f"Starting YanHH3D to MonPlayer scraper (v3.6 - PLAYWRIGHT REQUEST + CONTEXT ROTATION)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-blink-features=AutomationControlled", "--disable-dev-shm-usage", "--lang=vi-VN"])
-        
-        # Context ban đầu
         context = browser.new_context(
             user_agent=CONFIG["USER_AGENT"],
             viewport={"width": 1280, "height": 720},
@@ -692,7 +588,6 @@ def main():
                 nonlocal page, context
                 for movie in movies[:args.max_movies]:
                     try:
-                        # 🔥 Truyền browser để hỗ trợ context rotation
                         res = scrape_movie(page, context, browser, movie, 
                                          max_episodes=args.max_episodes, 
                                          force_all_episodes=args.all_episodes)
@@ -737,11 +632,8 @@ def main():
                 process_movie_list(movies)
                 
         finally:
-            # Cleanup: đóng context và browser
-            try:
-                context.close()
-            except:
-                pass
+            try: context.close()
+            except: pass
             browser.close()
 
     list_output = {
@@ -761,7 +653,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.5"
+            "version": "3.6"
         }
     }
     
