@@ -50,7 +50,7 @@ jobs:
       - name: Run scraper
         run: |
           MAX_MOVIES="${{ inputs.max_movies || '30' }}"
-          MAX_EPISODES="${{ inputs.max_episodes || '20' }}"
+          MAX_EPISODES="${{ inputs.max_episodes || '999' }}"
           CMD="python scraper.py --max-movies $MAX_MOVIES --max-episodes $MAX_EPISODES"
           echo "▶️ Running: $CMD"
           $CMD
