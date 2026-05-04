@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.3 - SYNTAX CLEAN)
-✅ Fix: metadata: dict = None (không còn meta dict)
+YanHH3D Scraper → MonPlayer JSON (v4.4 - STABLE + FULL RESTORE)
+✅ RESTORE LINK LOGIC: Khôi phục hoàn toàn hàm resolve_play_fb_v8 từ v4.0 (fix no link)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
-✅ Auto-detect new eps: Nếu phim có tập mới, tự động điều chỉnh offset
-✅ Fix Tags: Lấy đầy đủ thể loại từ selector đúng (.item.item-title a.name.genre)
-✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~24 phim = 120 phim)
-✅ Stable Delay: 2.5-4.5s (tránh CDN block)
-✅ Session Refresh: Reset connection mỗi 40 tập → giảm no stream
-✅ Progress Log: Hiển thị [1/120] Đang xử lý: <tên phim>
+✅ Pagination: Crawl từ /moi-cap-nhat (5 trang = 120 phim)
+✅ Tags: Lấy đầy đủ thể loại (.item.item-title a.name.genre)
+✅ Session Refresh: Reset connection mỗi 40 tập
+✅ Progress Log: [1/120] Đang xử lý: <tên phim>
 """
 
 import argparse
@@ -17,6 +15,7 @@ import logging
 import os
 import random
 import re
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -48,11 +47,11 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 2500,
-    "EP_DELAY_MAX": 4500,
+    "EP_DELAY_MIN": 1500,
+    "EP_DELAY_MAX": 3000,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
-    "MAX_PAGES":   2,
+    "MAX_PAGES":    5,
     "SESSION_REFRESH_INTERVAL": 40,
 }
 
@@ -115,7 +114,7 @@ def _wait_for_cf(page: Page, selector: str, timeout: int):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-def _build_search_str(movie: dict, metadata: dict = None) -> str:
+def _build_search_str(movie: dict, meta dict = None) -> str:
     metadata = metadata or {}
     parts = [
         movie.get("title", ""),
@@ -205,21 +204,42 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
+    """
+    ✅ RESTORED v4.0 Logic: Full robust extraction with JSON fallback and redirect handling.
+    """
     for attempt in range(CONFIG["RETRY_COUNT"] + 1):
         try:
+            # Dùng context.request để kế thừa cookie/session/IP của trình duyệt
             resp = context.request.get(proxy_url, headers=PLAY_FB_V8_HEADERS, timeout=20000)
+            
+            # Xử lý Redirect (quan trọng để lấy link thật sự)
             if resp.status in (301, 302, 303, 307, 308):
                 location = resp.headers.get("location", "")
                 if location and _is_valid_fb_cdn(location):
                     return location
+            
             if resp.status != 200:
+                logger.debug(f"   Proxy returned status {resp.status}")
                 if resp.status in (403, 429):
-                    time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
+                    wait = CONFIG["RETRY_DELAY"] * (2 ** attempt)
+                    logger.warning(f"   🛑 Rate limited ({resp.status}). Waiting {wait:.1f}s...")
+                    time.sleep(wait)
                     continue
                 return None
                 
             content = resp.text()
-            patterns = [
+            
+            # 1. Fallback JSON Response (một số proxy trả JSON thuần)
+            try:
+                data = json.loads(content)
+                url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+                if url and _is_valid_fb_cdn(url):
+                    return url
+            except:
+                pass
+
+            # 2. Regex Extraction (Khôi phục full list từ v4.0)
+            url_patterns = [
                 r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
                 r"'(https?://scontent-[^']+\.mp4[^']*)'",
                 r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
@@ -228,16 +248,27 @@ def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
                 r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
                 r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
                 r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
+                r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',  # Fallback thô
             ]
-            for pat in patterns:
-                m = re.search(pat, content, re.IGNORECASE)
-                if m:
-                    url = m.group(1).replace('\\/', '/')
-                    if _is_valid_fb_cdn(url): return url
+            
+            for pattern in url_patterns:
+                match = re.search(pattern, content, re.IGNORECASE)
+                if match:
+                    url = match.group(1).replace('\\/', '/')
+                    if _is_valid_fb_cdn(url):
+                        return url
+
+            # Log debug nếu không tìm thấy
+            logger.debug(f"   ⚠️ No URL found. Content length: {len(content)}, preview: {content[:100]}")
             return None
-        except Exception:
+            
+        except Exception as e:
+            logger.debug(f"   resolve_play_fb_v8 error: {e}")
             if attempt < CONFIG["RETRY_COUNT"]:
-                time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
+                delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
+                time.sleep(delay)
+            continue
+            
     return None
 
 
@@ -360,7 +391,7 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, metadata: dict = None):
+def build_detail_json(slug: str, episodes: list, meta dict = None):
     metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
@@ -381,7 +412,7 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     return result
 
 
-def build_list_item(movie: dict, metadata: dict = None):
+def build_list_item(movie: dict, meta dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
@@ -448,6 +479,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     ep_data = []
     consecutive_fails = 0
     for i, ep in enumerate(episodes_to_crawl):
+        # ✅ Refresh session định kỳ
         if (offset + i + 1) % CONFIG["SESSION_REFRESH_INTERVAL"] == 0:
             logger.info(f"   🔄 [SESSION] Refreshing after {offset + i + 1} requests...")
             _refresh_session(page)
@@ -484,7 +516,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.3")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.4")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -496,7 +528,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.3 - SYNTAX CLEAN + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.4 - RESTORED LINK LOGIC + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -540,7 +572,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.3"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.4"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
