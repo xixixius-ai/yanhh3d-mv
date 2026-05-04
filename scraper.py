@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.4 - STABLE + FULL RESTORE)
-✅ RESTORE LINK LOGIC: Khôi phục hoàn toàn hàm resolve_play_fb_v8 từ v4.0 (fix no link)
-✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
-✅ Pagination: Crawl từ /moi-cap-nhat (5 trang = 120 phim)
-✅ Tags: Lấy đầy đủ thể loại (.item.item-title a.name.genre)
-✅ Session Refresh: Reset connection mỗi 40 tập
-✅ Progress Log: [1/120] Đang xử lý: <tên phim>
+YanHH3D Scraper → MonPlayer JSON (v4.5 - SYNTAX PERFECT)
+✅ Fix definitive: metadata: dict = None (đã sửa cả 3 hàm)
+✅ RESTORED LINK LOGIC: Khôi phục hoàn toàn resolve_play_fb_v8 (v4.0)
+✅ Stateful: progress.json, offset 20 tập/lần
+✅ Pagination: /moi-cap-nhat (5 trang = ~120 phim)
+✅ Tags: Selector đúng (.item.item-title a.name.genre)
+✅ Session Refresh: Reset mỗi 40 tập
 """
 
 import argparse
@@ -15,7 +15,6 @@ import logging
 import os
 import random
 import re
-import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -114,7 +113,8 @@ def _wait_for_cf(page: Page, selector: str, timeout: int):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-def _build_search_str(movie: dict, meta dict = None) -> str:
+# ✅ FIX 1: metadata: dict = None
+def _build_search_str(movie: dict, metadata: dict = None) -> str:
     metadata = metadata or {}
     parts = [
         movie.get("title", ""),
@@ -204,41 +204,29 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
-    """
-    ✅ RESTORED v4.0 Logic: Full robust extraction with JSON fallback and redirect handling.
-    """
     for attempt in range(CONFIG["RETRY_COUNT"] + 1):
         try:
-            # Dùng context.request để kế thừa cookie/session/IP của trình duyệt
             resp = context.request.get(proxy_url, headers=PLAY_FB_V8_HEADERS, timeout=20000)
-            
-            # Xử lý Redirect (quan trọng để lấy link thật sự)
             if resp.status in (301, 302, 303, 307, 308):
                 location = resp.headers.get("location", "")
                 if location and _is_valid_fb_cdn(location):
                     return location
-            
             if resp.status != 200:
-                logger.debug(f"   Proxy returned status {resp.status}")
                 if resp.status in (403, 429):
-                    wait = CONFIG["RETRY_DELAY"] * (2 ** attempt)
-                    logger.warning(f"   🛑 Rate limited ({resp.status}). Waiting {wait:.1f}s...")
-                    time.sleep(wait)
+                    time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
                     continue
                 return None
                 
             content = resp.text()
             
-            # 1. Fallback JSON Response (một số proxy trả JSON thuần)
+            # JSON fallback
             try:
                 data = json.loads(content)
                 url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
-                if url and _is_valid_fb_cdn(url):
-                    return url
-            except:
-                pass
+                if url and _is_valid_fb_cdn(url): return url
+            except: pass
 
-            # 2. Regex Extraction (Khôi phục full list từ v4.0)
+            # Regex extraction (full restore)
             url_patterns = [
                 r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
                 r"'(https?://scontent-[^']+\.mp4[^']*)'",
@@ -248,27 +236,17 @@ def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
                 r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
                 r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
                 r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
-                r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',  # Fallback thô
+                r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',
             ]
-            
-            for pattern in url_patterns:
-                match = re.search(pattern, content, re.IGNORECASE)
-                if match:
-                    url = match.group(1).replace('\\/', '/')
-                    if _is_valid_fb_cdn(url):
-                        return url
-
-            # Log debug nếu không tìm thấy
-            logger.debug(f"   ⚠️ No URL found. Content length: {len(content)}, preview: {content[:100]}")
+            for pat in url_patterns:
+                m = re.search(pat, content, re.IGNORECASE)
+                if m:
+                    url = m.group(1).replace('\\/', '/')
+                    if _is_valid_fb_cdn(url): return url
             return None
-            
-        except Exception as e:
-            logger.debug(f"   resolve_play_fb_v8 error: {e}")
+        except Exception:
             if attempt < CONFIG["RETRY_COUNT"]:
-                delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
-                time.sleep(delay)
-            continue
-            
+                time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
     return None
 
 
@@ -279,20 +257,16 @@ def _is_valid_fb_cdn(url: str) -> bool:
 
 
 def get_movies_from_pagination(page: Page, max_pages: int = None) -> list[dict]:
-    if max_pages is None:
-        max_pages = CONFIG["MAX_PAGES"]
-    
+    if max_pages is None: max_pages = CONFIG["MAX_PAGES"]
     all_movies = []
     base_url = f"{CONFIG['BASE_URL']}/moi-cap-nhat"
     
     for page_num in range(1, max_pages + 1):
         url = f"{base_url}?page={page_num}" if page_num > 1 else base_url
         logger.info(f"  📄 Loading page {page_num}/{max_pages}: {url}")
-        
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
             _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
-            
             movies = page.evaluate("""() => {
                 const res = [];
                 document.querySelectorAll('.flw-item').forEach(item => {
@@ -309,25 +283,15 @@ def get_movies_from_pagination(page: Page, max_pages: int = None) -> list[dict]:
                 });
                 return res;
             }""")
-            
-            if not movies:
-                logger.info(f"  ⚠️  No more movies found on page {page_num}")
-                break
-                
+            if not movies: break
             all_movies.extend(movies)
             logger.info(f"  ✅ Found {len(movies)} movies on page {page_num} (Total: {len(all_movies)})")
-            
             has_next = page.query_selector('a[title="Next"], .pagination li.active + li a')
-            if not has_next:
-                logger.info(f"  ⏹️  No next page button found")
-                break
-                
+            if not has_next: break
             _human_delay(500, 1000)
-            
         except Exception as e:
             logger.warning(f"  ⚠️  Error loading page {page_num}: {e}")
             break
-    
     logger.info(f"  🎯 Total movies collected: {len(all_movies)}")
     return all_movies
 
@@ -337,7 +301,6 @@ def get_episodes(page: Page, slug: str):
         _human_delay(300, 700)
         page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
-        
         latest_js = """(slug) => {
             const links = Array.from(document.querySelectorAll('a[href*="/' + slug + '/tap-"]'))
                 .filter(a => !a.href.includes('/sever2/'))
@@ -350,10 +313,8 @@ def get_episodes(page: Page, slug: str):
         }"""
         latest_url = page.evaluate(latest_js, slug)
         if not latest_url: return []
-        
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
-        
         return page.evaluate("""() => {
             const res = [];
             const pane = document.querySelector('#top-comment');
@@ -391,7 +352,8 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, meta dict = None):
+# ✅ FIX 2: metadata: dict = None
+def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
@@ -412,20 +374,18 @@ def build_detail_json(slug: str, episodes: list, meta dict = None):
     return result
 
 
-def build_list_item(movie: dict, meta dict = None):
+# ✅ FIX 3: metadata: dict = None
+def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
-    
     tags = metadata.get("tags", [])
     if metadata.get("status") == "ongoing" and metadata.get("year", "0") >= "2024":
-        if "Mới nhất" not in tags:
-            tags = ["Mới nhất"] + tags
+        if "Mới nhất" not in tags: tags = ["Mới nhất"] + tags
     
     item = {
         "id": movie["slug"], "name": movie["title"],
-        "search": _build_search_str(movie, metadata), 
-        "keywords": tags,
+        "search": _build_search_str(movie, metadata), "keywords": tags,
         "description": metadata.get("description", ""),
         "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
         "type": "playlist", "display": "text-below",
@@ -441,7 +401,6 @@ def build_list_item(movie: dict, meta dict = None):
 def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_index: int, total_movies: int, force_all: bool = False, progress: dict = None):
     if progress is None: progress = {}
     slug = movie_info["slug"]
-    
     logger.info(f"  [{movie_index}/{total_movies}] Đang xử lý: {slug}")
     
     metadata = get_movie_metadata(page, slug)
@@ -479,12 +438,10 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     ep_data = []
     consecutive_fails = 0
     for i, ep in enumerate(episodes_to_crawl):
-        # ✅ Refresh session định kỳ
         if (offset + i + 1) % CONFIG["SESSION_REFRESH_INTERVAL"] == 0:
             logger.info(f"   🔄 [SESSION] Refreshing after {offset + i + 1} requests...")
             _refresh_session(page)
             _human_delay(1000, 2000)
-            
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         stream = get_stream_url(page, context, ep["url"])
         if stream:
@@ -509,18 +466,17 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     
     detail_json = build_detail_json(slug, ep_data, metadata)
     list_item = build_list_item(movie_info, metadata)
-    
     ok = sum(1 for e in ep_data if any(s["type"] != "error" for s in e["stream"]))
     logger.info(f"  ✅ Saved {slug}.json ({ok}/{crawled_count} playable) | Offset -> {new_offset}")
     return list_item, detail_json
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.4")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.5")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
-    parser.add_argument("--max-pages", type=int, default=CONFIG["MAX_PAGES"], help="Số trang /moi-cap-nhat sẽ crawl")
+    parser.add_argument("--max-pages", type=int, default=CONFIG["MAX_PAGES"], help="Số trang /moi-cap-nhat")
     parser.add_argument("--all-episodes", action="store_true")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     args = parser.parse_args()
@@ -528,7 +484,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.4 - RESTORED LINK LOGIC + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.5 - PERFECT SYNTAX + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -542,14 +498,11 @@ def main():
 
         try:
             movies = get_movies_from_pagination(page, max_pages=args.max_pages)
-            
             if not movies:
                 logger.error("No movies found!")
                 return
-                
             total = len(movies)
             logger.info(f"🎬 Found {total} movies. Processing all...")
-            
             for idx, movie in enumerate(movies, 1):
                 try:
                     res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, 
@@ -572,7 +525,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.4"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.5"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
