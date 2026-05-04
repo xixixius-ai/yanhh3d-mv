@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v5.0 FINAL - SYNTAX PERFECT)
-✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
+YanHH3D Scraper → MonPlayer JSON (v5.0 FINAL - URLLIB RESTORED + MERGE)
+✅ URLLIB ENGINE: Khôi phục urllib + Cookie sync (fix triệt để no stream)
 ✅ MERGE LOGIC: Ghép tập mới vào detail.json cũ, không ghi đè mất tập cũ
 ✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~24 phim = 120 phim)
-✅ No limit: Bỏ giới hạn max_movies, crawl tất cả phim tìm được
 ✅ Fast: EP_DELAY 1.5-3.0s (nhanh hơn 40% so với v4.0)
 ✅ Progress log: Hiển thị [1/120] Đang xử lý: <tên phim>
 ✅ Session refresh: Reset connection mỗi 40 tập để tránh block
-✅ Clean Syntax: metadata: dict = None (chuẩn tuyệt đối, đã fix hết meta dict)
+✅ Clean Syntax: metadata: dict = None (chuẩn Python 3.10+)
 """
 
 import argparse
@@ -18,10 +17,12 @@ import os
 import random
 import re
 import time
+import urllib.request
+import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, BrowserContext, Page, APIResponse
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, BrowserContext, Page
 
 try:
     from playwright_stealth import stealth_sync
@@ -143,6 +144,22 @@ def save_progress(progress: dict):
         logger.warning(f"   Failed to save progress: {e}")
 
 
+def _extract_cookies_from_context(context: BrowserContext) -> dict:
+    """✅ URLLIB HELPER: Trích xuất cookie từ Playwright để truyền vào urllib"""
+    cookies = {}
+    try:
+        for c in context.cookies():
+            cookies[c['name']] = c['value']
+    except Exception:
+        pass
+    return cookies
+
+
+def _cookies_to_header(cookies: dict) -> str:
+    if not cookies: return ""
+    return "; ".join(f"{k}={v}" for k, v in cookies.items())
+
+
 def get_movie_metadata(page: Page, slug: str) -> dict:
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
     metadata = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
@@ -195,40 +212,76 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
         return metadata
 
 
-def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
+def resolve_play_fb_v8(proxy_url: str, cookies: dict = None) -> str | None:
+    """✅ URLLIB ENGINE: Dùng urllib + Cookie sync như v4.0 để tránh bị chặn"""
+    headers = PLAY_FB_V8_HEADERS.copy()
+    if cookies:
+        headers["Cookie"] = _cookies_to_header(cookies)
+
     for attempt in range(CONFIG["RETRY_COUNT"] + 1):
         try:
-            resp = context.request.get(proxy_url, headers=PLAY_FB_V8_HEADERS, timeout=20000)
-            if resp.status in (301, 302, 303, 307, 308):
-                location = resp.headers.get("location", "")
-                if location and _is_valid_fb_cdn(location):
-                    return location
-            if resp.status != 200:
-                if resp.status in (403, 429):
-                    time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
-                    continue
+            class NoRedirect(urllib.request.HTTPRedirectHandler):
+                def redirect_request(self, req, fp, code, msg, headers, newurl):
+                    return None
+
+            opener = urllib.request.build_opener(NoRedirect())
+            req = urllib.request.Request(proxy_url, headers=headers, method="GET")
+            
+            with opener.open(req, timeout=20) as resp:
+                if resp.status in (301, 302, 303, 307, 308):
+                    location = resp.headers.get("Location", "")
+                    if location and _is_valid_fb_cdn(location):
+                        return location
+                
+                if resp.status == 200:
+                    content_type = resp.headers.get('Content-Type', '')
+                    content = resp.read().decode('utf-8', errors='ignore')
+                    
+                    if 'application/json' in content_type:
+                        try:
+                            data = json.loads(content)
+                            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+                            if url and _is_valid_fb_cdn(url):
+                                return url
+                        except: pass
+                    
+                    url_patterns = [
+                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
+                        r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
+                        r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
+                        r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',
+                    ]
+                    for pattern in url_patterns:
+                        match = re.search(pattern, content, re.IGNORECASE)
+                        if match:
+                            url = match.group(1).replace('\\/', '/')
+                            if _is_valid_fb_cdn(url):
+                                return url
+                
                 return None
                 
-            content = resp.text()
-            patterns = [
-                r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
-                r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
-                r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
-                r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
-            ]
-            for pat in patterns:
-                m = re.search(pat, content, re.IGNORECASE)
-                if m:
-                    url = m.group(1).replace('\\/', '/')
-                    if _is_valid_fb_cdn(url): return url
-            return None
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 403):
+                wait = random.uniform(5.0, 12.0)
+                logger.warning(f"   🛑 Rate limited ({e.code}). Waiting {wait:.1f}s...")
+                time.sleep(wait)
+                continue
+            if e.code in (301, 302, 303, 307, 308):
+                location = e.headers.get("Location", "")
+                if location and _is_valid_fb_cdn(location):
+                    return location
         except Exception:
-            if attempt < CONFIG["RETRY_COUNT"]:
-                time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
+            pass
+            
+        if attempt < CONFIG["RETRY_COUNT"]:
+            delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
+            time.sleep(delay)
+            
     return None
 
 
@@ -341,9 +394,11 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
                 label: (b.innerText || '').trim().toLowerCase()
             }));
         }""")
+        # ✅ URLLIB: Trích xuất cookie từ context hiện tại để truyền vào urllib
+        cookies = _extract_cookies_from_context(context)
         for b in btns:
             if "play-fb-v8" in b["src"]:
-                url = resolve_play_fb_v8(context, b["src"])
+                url = resolve_play_fb_v8(b["src"], cookies=cookies)
                 if url and _is_valid_fb_cdn(url):
                     return [{"url": url, "type": "mp4", "label": f"fb-cdn-{b['label']}" if b['label'] else "fb-cdn"}]
         return None
@@ -352,6 +407,7 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
 
 
 def _load_existing_streams(detail_path: Path) -> list[dict]:
+    """✅ MERGE HELPER: Load existing streams from detail.json"""
     if not detail_path.exists():
         return []
     try:
@@ -366,8 +422,8 @@ def _load_existing_streams(detail_path: Path) -> list[dict]:
         return []
 
 
-# ✅ FIX 1: metadata: dict = None (đã sửa từ meta dict)
 def build_detail_json(slug: str, episodes: list, all_streams: list, metadata: dict = None):
+    """✅ MERGE BUILDER: Build JSON with merged streams (old + new)"""
     metadata = metadata or {}
     
     ep_map = {}
@@ -414,7 +470,6 @@ def build_detail_json(slug: str, episodes: list, all_streams: list, metadata: di
     return result
 
 
-# ✅ FIX 2: metadata: dict = None (đã sửa từ meta dict)
 def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
@@ -502,7 +557,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     }
     save_progress(progress)
     
-    # ✅ MERGE LOGIC
+    # ✅ MERGE LOGIC: Load old streams + merge with new ones
     detail_path = detail_dir / f"{slug}.json"
     old_streams = _load_existing_streams(detail_path)
     
@@ -538,7 +593,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v5.0 FINAL - SYNTAX PERFECT + MERGE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v5.0 FINAL - URLLIB RESTORED + MERGE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
