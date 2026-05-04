@@ -2,7 +2,7 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # 1 lần/ngày lúc 3 AM UTC
+    - cron: '0 */4 * * *'  # Chạy mỗi 4h/lần
   workflow_dispatch:
     inputs:
       max_movies:
@@ -10,24 +10,19 @@ on:
         required: false
         default: '30'
         type: string
-      max_episodes:
-        description: 'Max episodes/movie (empty = all)'
-        required: false
-        # ✅ QUAN TRỌNG: Bỏ default '999' để khi để trống → kích hoạt --all-episodes
-        default: ''
-        type: string
   push:
     paths:
       - 'scraper.py'
       - 'requirements.txt'
       - '.github/workflows/scrape.yml'
+      - 'progress.json'
 
 jobs:
   scrape:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 360
+    timeout-minutes: 180
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -45,50 +40,27 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          # ✅ QUAN TRỌNG: Cài Playwright browser + system deps
           playwright install --with-deps chromium
 
       - name: Run scraper
         run: |
           MAX_MOVIES="${{ inputs.max_movies || '30' }}"
-          
-          # 🔥 Logic xử lý episode limit:
-          # - Nếu manual dispatch có nhập max_episodes → dùng giá trị đó
-          # - Nếu để trống hoặc chạy auto (schedule/push) → dùng --all-episodes
-          if [ -n "${{ inputs.max_episodes }}" ] && [ "${{ inputs.max_episodes }}" != "" ]; then
-            CMD="python scraper.py --max-movies $MAX_MOVIES --max-episodes ${{ inputs.max_episodes }}"
-            echo "▶️ Running: $CMD (with episode limit)"
-          else
-            CMD="python scraper.py --max-movies $MAX_MOVIES --all-episodes"
-            echo "▶️ Running: $CMD (ALL episodes, no limit)"
-          fi
-          $CMD
+          echo "▶️ Running: python scraper.py --max-movies $MAX_MOVIES"
+          python scraper.py --max-movies $MAX_MOVIES
         env:
           PYTHONUNBUFFERED: 1
           RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main
-
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: scraper-logs-${{ github.run_id }}
-          path: |
-            *.log
-            ophim.json
-            ophim/detail/*.json
-          retention-days: 7
 
       - name: Commit & push changes
         if: success()
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: |
-            🤖 Auto update MonPlayer (Thuyết Minh)
+            🤖 Auto update MonPlayer (v4.0 Stateful)
             
-            Movies: ${{ inputs.max_movies || 30 }}
-            Episodes: ${{ fromJSON(inputs.max_episodes != '' && inputs.max_episodes != null) && format('Limited to {0}', inputs.max_episodes) || 'ALL (no limit)' }}
+            Movies processed: ${{ inputs.max_movies || 30 }}
             Run: ${{ github.run_id }}
-          file_pattern: 'ophim.json ophim/detail/*.json'
+          file_pattern: 'ophim.json ophim/detail/*.json progress.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
