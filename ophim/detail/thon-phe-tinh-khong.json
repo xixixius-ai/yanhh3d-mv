@@ -11,20 +11,20 @@
           "streams": [
             {
               "id": "thon-phe-tinh-khong--0-0",
-              "name": "202",
+              "name": "196",
               "stream_links": [
                 {
                   "id": "thon-phe-tinh-khong--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQP6QQWyuIWGdLnm0AWcehuVdZbm6SqaEZSsHHpuk0Jyvjy8fYgq2zM6VP_Ol6lrTTFZkaMUFHtZsQceszwcoURzSha4jFl4lx39q2Kwhw.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=NwAQlrmUIYgQ7kNvwHAh3QA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE5MzkwNDcwMjg5MzA5NywiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk4OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=snfkZx2bADaGUzDDb5lvDg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE7aIqdpGpdBv2QUo4RneJ43YDHokI9HD9vP2YXkajIc3uGOhal3mcWe0bARV_v5YxB7tKeFzUQ&_nc_eui2=AeHfmKI2dbaFM4PDk_I0RwyDjI-r3VttXwGMj6vdW21fAVtShH1sskKaRKo4y-W8mIk7RsuOIKKOhOzL95XN_NFU&oh=00_Af4H8bCWG07B0GbQYT5_YyT7F35vf0iz_Ei5gRHJFmSbIA&oe=69FDEC60&bitrate=562642&tag=sve_sd"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "thon-phe-tinh-khong--0-1",
-              "name": "201",
+              "name": "195",
               "stream_links": [
                 {
                   "id": "thon-phe-tinh-khong--0-1-0",
@@ -37,7 +37,7 @@
             },
             {
               "id": "thon-phe-tinh-khong--0-2",
-              "name": "200",
+              "name": "194",
               "stream_links": [
                 {
                   "id": "thon-phe-tinh-khong--0-2-0",
@@ -50,7 +50,7 @@
             },
             {
               "id": "thon-phe-tinh-khong--0-3",
-              "name": "199",
+              "name": "193",
               "stream_links": [
                 {
                   "id": "thon-phe-tinh-khong--0-3-0",
@@ -63,23 +63,10 @@
             },
             {
               "id": "thon-phe-tinh-khong--0-4",
-              "name": "198",
+              "name": "192",
               "stream_links": [
                 {
                   "id": "thon-phe-tinh-khong--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "thon-phe-tinh-khong--0-5",
-              "name": "197",
-              "stream_links": [
-                {
-                  "id": "thon-phe-tinh-khong--0-5-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
@@ -93,7 +80,18 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "thon-phe-tinh-khong xem phim thôn phệ tinh không thuyết minh: một ngày nọ, thế giới xuất hiện loại virus rr không rõ lai lịch, cuốn thế giới vào thảm hoạ. động vật bị truyền nhiễm đột biến thành quái thú đáng sợ, xâm lược với số lượng lớn. trong lúc loài người... thon phe tinh khong hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [],
+  "search": "thon-phe-tinh-khong cn animation hhkungfu huyền huyễn hiện đại xem phim thôn phệ tinh không thuyết minh: một ngày nọ, thế giới xuất hiện loại virus rr không rõ lai lịch, cuốn thế giới vào thảm hoạ. động vật bị truyền nhiễm đột biến thành quái thú đáng sợ, xâm lược với số lượng lớn. trong lúc loài người... thon phe tinh khong hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [
+    "CN Animation",
+    "HHKungFu",
+    "Huyền Huyễn",
+    "Hiện Đại"
+  ],
+  "genres": [
+    "cn-animation",
+    "hhkungfu",
+    "huyen-huyen",
+    "hien-dai"
+  ],
   "description": "Xem phim Thôn Phệ Tinh Không Thuyết Minh: Một ngày nọ, thế giới xuất hiện loại virus RR không rõ lai lịch, cuốn thế giới vào thảm hoạ. Động vật bị truyền nhiễm đột biến thành quái thú đáng sợ, xâm lược với số lượng lớn. Trong lúc loài người..."
 }

@@ -11,33 +11,33 @@
           "streams": [
             {
               "id": "gia-thien--0-0",
-              "name": "141",
+              "name": "134",
               "stream_links": [
                 {
                   "id": "gia-thien--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPRZSCbjPk-PFJPRSa9T1_PBxkdka1SpEoyTExra0QX-YiHk00bJ_bUybL7PpPBs7PZrTA3R9n0o3wvBHDshA35kyNL-8P0uJmyY6RBIw.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=M12Bew8dEqEQ7kNvwHyTmYE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM5Mzk5MTEwMjI1MzAyMCwiYXNzZXRfYWdlX2RheXMiOjEzMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk5NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=vivcQCTP7QZmxIIrcfI50Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH1BFOgCOvSroStNtrAJLrwJk9xCBJNSAcPgQlithW7hWhsw2FLHMlwGstHY9iCwUTt9N0hEwmd&_nc_eui2=AeF8Qtmci8KgKUOuVKmQwaLAj3lq5kIslguPeWrmQiyWCyN9aV_ngpuAlMw47SI-bsHPNRw1lVmTqwguR2onSc8T&oh=00_Af42Xu4jS6dJQ0i9gkXoy8_BW60L4zLRLTfxzZonNaPCDQ&oe=69FE719B&bitrate=521004&tag=sve_sd"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "gia-thien--0-1",
-              "name": "140",
+              "name": "133",
               "stream_links": [
                 {
                   "id": "gia-thien--0-1-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPZTyy5flGKKwKS3XE6escrEcXSgFJNgX1jV3huWACSyYQqAh8C0uRWdBC7FkkTlFjm7a5vSGQAUvHZiwH7BYmCd3GAfvNNr8BOhQ-6VQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=r6Pk5CWZDekQ7kNvwFo4oZj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ4ODQzMTA2ODg4OTQ3MiwiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=TRbNF72Vvcq1L9n8dTyajQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQExUDkE4cE_quL-RgU8LSmYYs8O1-cW7C02mEUKF3yc4YL1nHZqz8fZEQbFxQQHoNygEB8vANcz&_nc_eui2=AeGS2T0cRranOkCuSGZKtwz74iYdguzAjQDiJh2C7MCNAAPZ0PndCWGr_920L6RJkDxdlxnO_KDLiQg7orcwL0jd&oh=00_Af6g3b0bXP5F6xsJqREckCHfTJGprrUGVusdqbIwZycJ-g&oe=69FE93DE&bitrate=466951&tag=sve_sd"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "gia-thien--0-2",
-              "name": "139",
+              "name": "132",
               "stream_links": [
                 {
                   "id": "gia-thien--0-2-0",
@@ -50,7 +50,7 @@
             },
             {
               "id": "gia-thien--0-3",
-              "name": "138",
+              "name": "131",
               "stream_links": [
                 {
                   "id": "gia-thien--0-3-0",
@@ -63,36 +63,10 @@
             },
             {
               "id": "gia-thien--0-4",
-              "name": "137",
+              "name": "130",
               "stream_links": [
                 {
                   "id": "gia-thien--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "gia-thien--0-5",
-              "name": "136",
-              "stream_links": [
-                {
-                  "id": "gia-thien--0-5-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "gia-thien--0-6",
-              "name": "135",
-              "stream_links": [
-                {
-                  "id": "gia-thien--0-6-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
@@ -106,7 +80,22 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "gia-thien xem phim già thiên thuyết minh: một chàng trai thành đạt được bạn bè yêu quý. trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. nơi đó, mọi mâu t... gia thien hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [],
+  "search": "gia-thien cn animation hhkungfu huyền huyễn xuyên không tiên hiệp hài hước xem phim già thiên thuyết minh: một chàng trai thành đạt được bạn bè yêu quý. trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. nơi đó, mọi mâu t... gia thien hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [
+    "CN Animation",
+    "HHKungFu",
+    "Huyền Huyễn",
+    "Xuyên Không",
+    "Tiên Hiệp",
+    "Hài Hước"
+  ],
+  "genres": [
+    "cn-animation",
+    "hhkungfu",
+    "huyen-huyen",
+    "xuyen-khong",
+    "tien-hiep",
+    "hai-huoc"
+  ],
   "description": "Xem phim Già Thiên Thuyết Minh: Một chàng trai thành đạt được bạn bè yêu quý. Trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. Nơi đó, mọi mâu t..."
 }

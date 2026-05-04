@@ -1,56 +1,56 @@
 {
   "tien-nghich": {
-    "offset": 26,
+    "offset": 31,
     "total_seen": 84,
     "status": "ongoing"
   },
   "dau-pha-thuong-khung-phan-5-thuyet-minh-new": {
-    "offset": 26,
+    "offset": 31,
     "total_seen": 91,
     "status": "ongoing"
   },
   "the-gioi-hoan-my-thuyet-minh-tieng-viet": {
-    "offset": 20,
+    "offset": 28,
     "total_seen": 87,
     "status": "ongoing"
   },
   "muc-than-ky": {
-    "offset": 26,
+    "offset": 31,
     "total_seen": 81,
     "status": "ongoing"
   },
   "gia-thien": {
-    "offset": 27,
+    "offset": 32,
     "total_seen": 91,
     "status": "ongoing"
   },
   "pham-nhan-tu-tien": {
-    "offset": 9,
+    "offset": 14,
     "total_seen": 169,
     "status": "ongoing"
   },
   "thon-phe-tinh-khong": {
-    "offset": 26,
+    "offset": 31,
     "total_seen": 87,
     "status": "ongoing"
   },
   "kiem-lai-phan-2": {
-    "offset": 20,
+    "offset": 26,
     "total_seen": 26,
-    "status": "ongoing"
+    "status": "completed"
   },
   "dau-la-dai-luc-2-tuyet-the-duong-mon": {
-    "offset": 20,
+    "offset": 26,
     "total_seen": 86,
     "status": "ongoing"
   },
   "than-an-vuong-toa": {
-    "offset": 20,
+    "offset": 25,
     "total_seen": 107,
     "status": "ongoing"
   },
   "bach-luyen-thanh-than-thuyet-minh": {
-    "offset": 20,
+    "offset": 26,
     "total_seen": 125,
     "status": "ongoing"
   },
@@ -70,9 +70,9 @@
     "status": "completed"
   },
   "tien-kiem-ky-hiep-truyen-phan-3": {
-    "offset": 20,
+    "offset": 21,
     "total_seen": 21,
-    "status": "ongoing"
+    "status": "completed"
   },
   "toi-nop-tan-the-cho-quoc-gia": {
     "offset": 9,
@@ -80,22 +80,22 @@
     "status": "completed"
   },
   "nghich-thien-chi-ton": {
-    "offset": 20,
+    "offset": 40,
     "total_seen": 239,
     "status": "ongoing"
   },
   "lao-to-luyen-the-manh-nhat-lich-su": {
-    "offset": 20,
+    "offset": 36,
     "total_seen": 36,
-    "status": "ongoing"
+    "status": "completed"
   },
   "dai-luc-linh-vo": {
-    "offset": 20,
+    "offset": 40,
     "total_seen": 175,
     "status": "ongoing"
   },
   "vo-thuong-than-de": {
-    "offset": 20,
+    "offset": 40,
     "total_seen": 470,
     "status": "ongoing"
   },
@@ -105,12 +105,12 @@
     "status": "completed"
   },
   "do-thi-co-tien-y": {
-    "offset": 20,
+    "offset": 40,
     "total_seen": 171,
     "status": "ongoing"
   },
   "vo-than-chua-te-thuyet-minh": {
-    "offset": 20,
+    "offset": 40,
     "total_seen": 203,
     "status": "ongoing"
   },
@@ -120,8 +120,483 @@
     "status": "completed"
   },
   "vinh-sinh-phan-5": {
-    "offset": 20,
+    "offset": 22,
     "total_seen": 22,
+    "status": "completed"
+  },
+  "tien-vo-de-ton-thuyet-minh": {
+    "offset": 20,
+    "total_seen": 170,
+    "status": "ongoing"
+  },
+  "luyen-khi-10-van-nam-thuyet-minh": {
+    "offset": 20,
+    "total_seen": 308,
+    "status": "ongoing"
+  },
+  "van-gioi-doc-ton": {
+    "offset": 20,
+    "total_seen": 429,
+    "status": "ongoing"
+  },
+  "tu-tien-gia-dai-chien-sieu-nang-luc-3d": {
+    "offset": 20,
+    "total_seen": 39,
+    "status": "ongoing"
+  },
+  "dai-chua-te-3d": {
+    "offset": 20,
+    "total_seen": 70,
+    "status": "ongoing"
+  },
+  "thuong-nguyen-do": {
+    "offset": 11,
+    "total_seen": 65,
+    "status": "ongoing"
+  },
+  "tham-khong-bi-ngan": {
+    "offset": 18,
+    "total_seen": 18,
+    "status": "completed"
+  },
+  "ban-long": {
+    "offset": 3,
+    "total_seen": 3,
+    "status": "completed"
+  },
+  "tuong-da": {
+    "offset": 3,
+    "total_seen": 3,
+    "status": "completed"
+  },
+  "nghich-thien-ta-than-3d": {
+    "offset": 9,
+    "total_seen": 34,
+    "status": "ongoing"
+  },
+  "than-mo": {
+    "offset": 20,
+    "total_seen": 65,
+    "status": "ongoing"
+  },
+  "dao-yeu-hanh": {
+    "offset": 20,
+    "total_seen": 23,
+    "status": "ongoing"
+  },
+  "dan-dao-chi-ton": {
+    "offset": 10,
+    "total_seen": 141,
+    "status": "ongoing"
+  },
+  "long-pha-cuu-thien": {
+    "offset": 20,
+    "total_seen": 31,
+    "status": "ongoing"
+  },
+  "suu-than-ky": {
+    "offset": 8,
+    "total_seen": 8,
+    "status": "completed"
+  },
+  "huyen-gioi-chi-mon": {
+    "offset": 20,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "su-huynh-a-su-huynh": {
+    "offset": 20,
+    "total_seen": 89,
+    "status": "ongoing"
+  },
+  "nhat-nhan-chi-ha-phan-6": {
+    "offset": 18,
+    "total_seen": 18,
+    "status": "completed"
+  },
+  "tuyet-the-chien-hon-3d": {
+    "offset": 20,
+    "total_seen": 155,
+    "status": "ongoing"
+  },
+  "cuu-duong-vo-than": {
+    "offset": 20,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "con-ra-the-thong-gi-nua-phan-2": {
+    "offset": 16,
+    "total_seen": 16,
+    "status": "completed"
+  },
+  "vua-choi-da-co-tai-khoan-vuong-gia": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "tinh-than-bien-phan-7": {
+    "offset": 0,
+    "total_seen": 0,
+    "status": "completed"
+  },
+  "nguyen-ton": {
+    "offset": 5,
+    "total_seen": 26,
+    "status": "ongoing"
+  },
+  "gia-thien-movie-vac-quan-chien-vuong-dang": {
+    "offset": 0,
+    "total_seen": 0,
+    "status": "completed"
+  },
+  "tu-xuyen-phan-2": {
+    "offset": 20,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "luong-bat-nghi-phan-2": {
+    "offset": 20,
+    "total_seen": 24,
+    "status": "ongoing"
+  },
+  "dong-dai-cao-vo-hoc-vien": {
+    "offset": 0,
+    "total_seen": 0,
+    "status": "completed"
+  },
+  "thien-tuong": {
+    "offset": 20,
+    "total_seen": 26,
+    "status": "ongoing"
+  },
+  "tu-la-vo-than-phan-2": {
+    "offset": 16,
+    "total_seen": 16,
+    "status": "completed"
+  },
+  "luong-bat-nghi": {
+    "offset": 20,
+    "total_seen": 24,
+    "status": "ongoing"
+  },
+  "thong-linh-phi": {
+    "offset": 7,
+    "total_seen": 16,
+    "status": "ongoing"
+  },
+  "mat-that-cua-ai-u": {
+    "offset": 16,
+    "total_seen": 16,
+    "status": "completed"
+  },
+  "dao-mo-but-ky-tan-linh-than-thu": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nhat-nhan-chi-ha-movie-tu-thiet-trong-hien": {
+    "offset": 0,
+    "total_seen": 0,
+    "status": "completed"
+  },
+  "nguoi-dai-dien-thoi-gian-link-click-ova-thu-do-anh-quoc": {
+    "offset": 6,
+    "total_seen": 6,
+    "status": "completed"
+  },
+  "nhat-ky-thuong-ngay-cua-tien-vuong-phan-5": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "ma-dao-to-su-phan-3": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nguoi-dai-dien-thoi-gian-link-click-phan-2": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "mat-ma-son-hai-kinh": {
+    "offset": 13,
+    "total_seen": 13,
+    "status": "completed"
+  },
+  "ma-dao-to-su-phan-2": {
+    "offset": 5,
+    "total_seen": 8,
+    "status": "ongoing"
+  },
+  "nhat-ky-thuong-ngay-cua-tien-vuong-phan-4": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nguoi-dai-dien-thoi-gian-link-click": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "ma-dao-to-su-phan-1": {
+    "offset": 15,
+    "total_seen": 15,
+    "status": "completed"
+  },
+  "toan-nang-cao-thu": {
+    "offset": 18,
+    "total_seen": 20,
+    "status": "ongoing"
+  },
+  "dai-duong-thua-phong-luc": {
+    "offset": 17,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "bach-yeu-pho-phan-5": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nhat-ky-thuong-ngay-cua-tien-vuong-phan-3": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "vu-dong-can-khon-phan-7": {
+    "offset": 0,
+    "total_seen": 0,
+    "status": "completed"
+  },
+  "vo-toai-tinh-ha": {
+    "offset": 20,
+    "total_seen": 60,
+    "status": "ongoing"
+  },
+  "bach-yeu-pho-phan-4": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nhat-ky-thuong-ngay-cua-tien-vuong-phan-2": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "trung-quoc-ky-dam-phan-2": {
+    "offset": 8,
+    "total_seen": 8,
+    "status": "completed"
+  },
+  "bach-yeu-pho-phan-3": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "bach-yeu-pho-phan-2": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "vo-hon-dai-luc": {
+    "offset": 20,
+    "total_seen": 48,
+    "status": "ongoing"
+  },
+  "bach-yeu-pho": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "nhat-ky-thuong-ngay-cua-tien-vuong": {
+    "offset": 14,
+    "total_seen": 14,
+    "status": "completed"
+  },
+  "ngao-the-dan-than": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "nhat-nhan-chi-ha-phan-3": {
+    "offset": 7,
+    "total_seen": 7,
+    "status": "completed"
+  },
+  "nhat-nhan-chi-ha-phan-2": {
+    "offset": 20,
+    "total_seen": 24,
+    "status": "ongoing"
+  },
+  "tu-vo-ta": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "than-tai-quynh-do": {
+    "offset": 20,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "nhat-nhan-chi-ha": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "dan-dieu-cuc-di-van-luc-phan-2": {
+    "offset": 8,
+    "total_seen": 8,
+    "status": "completed"
+  },
+  "tien-de-tro-ve": {
+    "offset": 11,
+    "total_seen": 15,
+    "status": "ongoing"
+  },
+  "dan-dieu-cuc-di-van-luc": {
+    "offset": 12,
+    "total_seen": 12,
+    "status": "completed"
+  },
+  "trung-quoc-ky-dam": {
+    "offset": 8,
+    "total_seen": 8,
+    "status": "completed"
+  },
+  "nam-dinh-coc-vi": {
+    "offset": 15,
+    "total_seen": 15,
+    "status": "completed"
+  },
+  "cham-dao-ca-phan-3": {
+    "offset": 13,
+    "total_seen": 13,
+    "status": "completed"
+  },
+  "nhat-nhan-chi-ha-phan-5": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "nhat-nhan-chi-ha-phan-4": {
+    "offset": 11,
+    "total_seen": 11,
+    "status": "completed"
+  },
+  "sat-thu-567-thuyet-minh": {
+    "offset": 20,
+    "total_seen": 46,
+    "status": "ongoing"
+  },
+  "lang-thien-doc-ton": {
+    "offset": 15,
+    "total_seen": 60,
+    "status": "ongoing"
+  },
+  "hoang-co-an-cuu-luc-pha-phong": {
+    "offset": 16,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "song-sinh-vo-hon": {
+    "offset": 16,
+    "total_seen": 60,
+    "status": "ongoing"
+  },
+  "tuyet-the-than-hoang": {
+    "offset": 15,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "thien-menh-dai-than-hoang": {
+    "offset": 15,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "trong-tong-mon-tru-ta-ra-tat-ca-deu-la-gian-diep": {
+    "offset": 13,
+    "total_seen": 115,
+    "status": "ongoing"
+  },
+  "tien-hoa-sieu-pham": {
+    "offset": 4,
+    "total_seen": 4,
+    "status": "completed"
+  },
+  "thuong-lan-quyet-phan-2": {
+    "offset": 8,
+    "total_seen": 26,
+    "status": "ongoing"
+  },
+  "long-than-van-tuong-chi-long-hon": {
+    "offset": 8,
+    "total_seen": 8,
+    "status": "completed"
+  },
+  "van-tham-bat-tri-mong": {
+    "offset": 6,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "van-co-kiem-de": {
+    "offset": 8,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "kiem-lai": {
+    "offset": 5,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "quan-huu-van-phan-2": {
+    "offset": 5,
+    "total_seen": 31,
+    "status": "ongoing"
+  },
+  "long-toc-phan-2": {
+    "offset": 5,
+    "total_seen": 23,
+    "status": "ongoing"
+  },
+  "tham-tiem-cuong-che-quay-nguoc": {
+    "offset": 7,
+    "total_seen": 7,
+    "status": "completed"
+  },
+  "tam-tuyen-luan-hoi": {
+    "offset": 2,
+    "total_seen": 2,
+    "status": "completed"
+  },
+  "phieu-mieu-kiem-tien-truyen": {
+    "offset": 5,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "vu-dong-can-khon-phan-6": {
+    "offset": 5,
+    "total_seen": 11,
+    "status": "ongoing"
+  },
+  "van-kiem-vuong-toa": {
+    "offset": 5,
+    "total_seen": 40,
+    "status": "ongoing"
+  },
+  "nguoi-choi-khac-kim": {
+    "offset": 5,
+    "total_seen": 25,
+    "status": "ongoing"
+  },
+  "linh-kiem-ton": {
+    "offset": 5,
+    "total_seen": 403,
+    "status": "ongoing"
+  },
+  "de-linh-yeu-mac-thuy-linh-lung": {
+    "offset": 5,
+    "total_seen": 19,
     "status": "ongoing"
   }
 }

@@ -11,20 +11,20 @@
           "streams": [
             {
               "id": "tien-nghich--0-0",
-              "name": "119",
+              "name": "113",
               "stream_links": [
                 {
                   "id": "tien-nghich--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMbxgwB6IcwcXElLCbNxlRO89Hm7eTEwqFSxleUw3ugxbuzpPL8-rm2-QvGAi60bf4fVT0xghpJpLmkOEYteFkfegq0bl4iMW8bp--e-g.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=KlQGXnHvn8MQ7kNvwGK-7tc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODg2MzExMDAzOTc1NzcxLCJhc3NldF9hZ2VfZGF5cyI6MTQxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTEzNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=sOO6e4MhWzB8E7uGJaGfpQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEfmw2Fbn0vntEGhJXeNPuXs1NH6U1xgdfScjaVqa8S1Ul2NPSpMmawVnS1vw7YbFoBrbXdeP_9&_nc_eui2=AeETx0A0obnXJbQjA84Mr98fRZ2WTRFoS4ZFnZZNEWhLhvzW3-P5GPdt_pA6v1jTLC7G5thwHjQsmmQT7LyBjbgt&oh=00_Af63SF1NkmgdtIm5ZYTCqgRAusn7I90PGQqtbWDWy5XyAA&oe=69FE7BAA&bitrate=414010&tag=sve_sd"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "tien-nghich--0-1",
-              "name": "118",
+              "name": "112",
               "stream_links": [
                 {
                   "id": "tien-nghich--0-1-0",
@@ -37,7 +37,7 @@
             },
             {
               "id": "tien-nghich--0-2",
-              "name": "117",
+              "name": "111",
               "stream_links": [
                 {
                   "id": "tien-nghich--0-2-0",
@@ -50,7 +50,7 @@
             },
             {
               "id": "tien-nghich--0-3",
-              "name": "116",
+              "name": "110",
               "stream_links": [
                 {
                   "id": "tien-nghich--0-3-0",
@@ -63,23 +63,10 @@
             },
             {
               "id": "tien-nghich--0-4",
-              "name": "115",
+              "name": "109",
               "stream_links": [
                 {
                   "id": "tien-nghich--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "tien-nghich--0-5",
-              "name": "114",
-              "stream_links": [
-                {
-                  "id": "tien-nghich--0-5-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
@@ -93,7 +80,22 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "tien-nghich xem phim tiên nghịch thuyết minh: ✨ tập 62 => movie => tập 63 [ lưu ý: thứ tự xem này dựa theo tu vi của vương lâm ] ✨ cải biên từ tiểu thuyết “tiên nghịch” của tác giả nhĩ căn, kể về thiếu niên bình phàm vương lâm xuất thân nông thôn, ma... tien nghich hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [],
+  "search": "tien-nghich cn animation hhkungfu huyền huyễn tiên hiệp cổ trang hiện đại xem phim tiên nghịch thuyết minh: ✨ tập 62 => movie => tập 63 [ lưu ý: thứ tự xem này dựa theo tu vi của vương lâm ] ✨ cải biên từ tiểu thuyết “tiên nghịch” của tác giả nhĩ căn, kể về thiếu niên bình phàm vương lâm xuất thân nông thôn, ma... tien nghich hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [
+    "CN Animation",
+    "HHKungFu",
+    "Huyền Huyễn",
+    "Tiên Hiệp",
+    "Cổ Trang",
+    "Hiện Đại"
+  ],
+  "genres": [
+    "cn-animation",
+    "hhkungfu",
+    "huyen-huyen",
+    "tien-hiep",
+    "co-trang",
+    "hien-dai"
+  ],
   "description": "Xem phim Tiên Nghịch Thuyết Minh: ✨ TẬP 62 => MOVIE => TẬP 63 [ Lưu ý: thứ tự xem này dựa theo tu vi của Vương Lâm ] ✨ Cải biên từ tiểu thuyết “Tiên Nghịch” của tác giả Nhĩ Căn, kể về thiếu niên bình phàm Vương Lâm xuất thân nông thôn, ma..."
 }

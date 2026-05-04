@@ -11,20 +11,20 @@
           "streams": [
             {
               "id": "muc-than-ky--0-0",
-              "name": "61",
+              "name": "55",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMBr2dKjUQ3z0NzQK9kAGp_YeOBUX5Kg-s73UbTK0AEgizd3BG1Bhx931lJPJcAFWp0B8rkYarMGfFWQqTtHZ2Y8u0nogSST0DyE5CAfg.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=VVTGVa3KRfEQ7kNvwFxyLsE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM0NDQzMjM1NzAwNzI5NiwiYXNzZXRfYWdlX2RheXMiOjE0MSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwMjAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=rmiO4eDhR5WrgP1WouYgVA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQETDdTOOEQRftbal5FhrySm5omPsqt-J3PARzFKv784SGKnq8xjklii_uHWnuavxvlgt4m7KT-i&_nc_eui2=AeFBusetBJ3vWru8hygDONj0IFkCvNQHz8YgWQK81AfPxg0tmJ9K6JlWxLtc7OJDmnrzOwKAjyKtswvW06hH8j-w&oh=00_Af7blCtpYMAPPY3AtCcPrThXuGNL_stTxfttxGOwnFbHKA&oe=69FE943B&bitrate=421231&tag=sve_sd"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "muc-than-ky--0-1",
-              "name": "60",
+              "name": "54",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-1-0",
@@ -37,7 +37,7 @@
             },
             {
               "id": "muc-than-ky--0-2",
-              "name": "59",
+              "name": "53",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-2-0",
@@ -50,7 +50,7 @@
             },
             {
               "id": "muc-than-ky--0-3",
-              "name": "58",
+              "name": "52",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-3-0",
@@ -63,23 +63,10 @@
             },
             {
               "id": "muc-than-ky--0-4",
-              "name": "57",
+              "name": "51",
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "muc-than-ky--0-5",
-              "name": "56",
-              "stream_links": [
-                {
-                  "id": "muc-than-ky--0-5-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
@@ -93,7 +80,22 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "muc-than-ky xem phim mục thần ký thuyết minh: tần mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ thiên ma giáo và được chọn là tiến sĩ thái học đầu tiên của diên khang quốc. trong cuộc chiến phản loạn của diên khang quốc, tần mục dấn thân vào... muc than ky hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [],
+  "search": "muc-than-ky cn animation hhkungfu huyền huyễn tiên hiệp cổ trang hài hước xem phim mục thần ký thuyết minh: tần mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ thiên ma giáo và được chọn là tiến sĩ thái học đầu tiên của diên khang quốc. trong cuộc chiến phản loạn của diên khang quốc, tần mục dấn thân vào... muc than ky hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [
+    "CN Animation",
+    "HHKungFu",
+    "Huyền Huyễn",
+    "Tiên Hiệp",
+    "Cổ Trang",
+    "Hài Hước"
+  ],
+  "genres": [
+    "cn-animation",
+    "hhkungfu",
+    "huyen-huyen",
+    "tien-hiep",
+    "co-trang",
+    "hai-huoc"
+  ],
   "description": "Xem phim Mục Thần Ký Thuyết Minh: Tần Mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ Thiên Ma Giáo và được chọn là tiến sĩ thái học đầu tiên của Diên Khang quốc. Trong cuộc chiến phản loạn của Diên Khang quốc, Tần Mục dấn thân vào..."
 }

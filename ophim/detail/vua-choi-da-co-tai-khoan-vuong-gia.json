@@ -1,0 +1,186 @@
+{
+  "sources": [
+    {
+      "id": "vua-choi-da-co-tai-khoan-vuong-gia--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "vua-choi-da-co-tai-khoan-vuong-gia--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-0",
+              "name": "12",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM6lCw_wzLEG1XEhLgx_B1qgv3yI6vmXzUNV7qnW4IY5NFM0efrNVcgsk7_Yna2S4g1q0E5nXcLCd3YzHEy60shGDG335aM-h7oAIaf1GSGqg.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=oGx75uG9HSYQ7kNvwGlqy8A&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzgxNzMyNDA0MDA1Nzk1LCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjc5MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=6a509dbef0150f97&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9CMDRDMkNEMzYyQ0VBQjQ2OTMxMjQyNEJDQkY0MThBQl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzMyNEZDQ0M3OUJFMDQwQTMwRTNBMzAyOEVCM0FGMjkwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbGruzRtKv0BBUCKAJDMywXQIjA9cKPXCkYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=qgCvM51-dYpKdd2o6Yi3AQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGxh5k90Th9wkPIHnTgF9DiUIWMMiSw9WCfr6_sMH3hPyvgvQhPVZsQAV1bXIm_Cp0h4O9hVvmx&_nc_eui2=AeGBCJZjg9LJd8HSw2ZQQhayhVOuO4s2D2eFU647izYPZ9voO1Yt23D2Xj_4NOG0VyQMICmdCja1frSJ2zr-8mVJ&oh=00_Af7sV0dccc5zzmVaCj7fWpA6hk2i7RC5tw58_FSzecHAZQ&oe=69FE9FFC&bitrate=984895&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-1",
+              "name": "11",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQMa373UAL6QI32PK9Z7kTnmorFATmb5ujaQeODcGUGboxEFrsz5ijdaRyX14iwS6TRhZBc0D2UK0-S6VuO7Gb5vaCcVFX9jJfVThIPw-5JgEQ.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=qo7n2qDFwOAQ7kNvwEbxeSl&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMDAxODkzMjc5MDI5MjY0LCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjY2NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=4a31fbe385e4150f&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85NTQwOUQxMTZFODVBMEI4NkM1MDMwNzVDMjUyOUQ4OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzlGNEQyNUExODQ1NjkzODZDODcxMDlENzY4RDU0QjgzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACag4P7P7s3HAxUCKAJDMywXQITJ64UeuFIYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=jG-DSHXgRCKf8i-Y_dc65Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEWPLy-3Wm2jCVSkJctcwuzdrTTZQ25fyvnj-rxyj6Xr5u9IFLBM6CbhjaklukPKYpI67iUna2w&_nc_eui2=AeHAEM73JWQ_UVjIS53vSAfKaaY5az061ixppjlrPTrWLFUvqeXr4KxT6KX-f11MpZS-qq0bkFjHr5NnBUQc9xq5&oh=00_Af63tw1wjwDy1zCVSoWvwKPnZNgCcJ-rgilnNj1AYR5FsQ&oe=69FE6C7E&bitrate=1018014&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-2",
+              "name": "10",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPObjr5GhTiF82OUQkeFL9J02FHUC-q2OR5Q2w-w16sQybcKesJWCJl7JNno-oW0LdyJJLhsSQRuCaTV7N4u75PheJZMgxxH4nnXYNyasNvng.mp4?_nc_cat=111&_nc_sid=5e9851&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=bK5ZKvdg1GcQ7kNvwHCSXWE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyODE5NDc2MTE1MDc0NjMwLCJhc3NldF9hZ2VfZGF5cyI6MTIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo2NDksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=9cbcb36c362b8211&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85NzRCOTUyMkE3NTI1MjIyRjY3QTg1MDI4Njg1QjlBRF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdENDA2QkU1QjlDNEY5REEzMTFDMTlENDg2N0I2OUE2X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaMudWEjpOCChUCKAJDMywXQIRJR64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=27VzG8P_AUUFuzo-4HG6Qw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEcf5cmhKPQnLXGbhpYo_hzXo_hqAQLDDpHFn_EdAGDlWlGZl9Pjrg8WV4RYWrsPA400qRZz_nj&_nc_eui2=AeH42sba20_Pzd6z6Bj0P1nNfbgJKWaN4WV9uAkpZo3hZb6T0wqehGZKxJlzjlkkMzijrNKP_K_WaTyr6KT2VBN5&oh=00_Af7M-A7PD44ngtYf68W5FHcqKFNMfh6wBbKfrtaZQXR1wA&oe=69FE57E1&bitrate=1075857&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-3",
+              "name": "9",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQO5EAFQOnDp0FPAww-9eul3C3tDwvXY2dfATz_XyjKemB070Ekr6LRhT29q7JRysMeoUOeJcRxzUrAxCsPDGAB3faiizGlTK93C4wujM83RwQ.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=ngEESTNnPeoQ7kNvwFNmfDi&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NzI5Mzc4MDUxNTA3NzMsImFzc2V0X2FnZV9kYXlzIjoxNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjY0NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=62aa985a49495c7e&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC81RjRDM0NBMUUxOEFDOURGQzMxRjU1ODBBMTQyQTU4NV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzVCNENBNDdCMzU1MUVDNERERjQyMDQxQjg2QTZBN0JDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbq6J3Et7i6AxUCKAJDMywXQIQtcKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=T33AECaDJxVV18QLgXqTnA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGjOCSpNmIESJxf9WjXjtfp2rvpC-R1H9Kyu7mWuMohUtoKst0xzBww7CMOfiU95q_8gCgG_KEr&_nc_eui2=AeFzvqdsMcd5Ch8vFZbUs70XojusO9_RFQ6iO6w739EVDoxg86OfOf6uxXZri8oZNrpZVf1MZAi03czxjMWPuxDg&oh=00_Af4T4JF3u5BogYfkqMUVB0QAjZi7fipjrfVUQgOvmcMPwg&oe=69FE981C&bitrate=883875&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-4",
+              "name": "8",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQOAyMzWzgXX7Q4Eq6qVTpiR6gsBUlmI64W3E-L4swP65mo4VlHwATe54S6GI6bO672MK3n7XmWfZD--N0TmH2ImWVQm7ZoRfqM0EXDRrZ9Lew.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=SroPyrM6DrQQ7kNvwFrCJaH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNTU1ODg3MzY1Nzk5NjU4LCJhc3NldF9hZ2VfZGF5cyI6MTQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo1OTcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=1c837e80320efba5&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9DNzQzMEQ4MUMzRThDQUJDNEM2MDFENDYxRDY3MzdCM19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzQ5NEMxRDk2MDNFQUQxOTFEQ0JFM0QwQ0I5MTMxMzk5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbU-7HonKSKCRUCKAJDMywXQIKqPXCj1woYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=m1ahLzCwhzl6AoT_I2oTvQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFMcWP0NRN-rsmDesWHS7KdxTlYImnoQvX9ZD_0YI_-tHNu5mkCsIxR8ta6KvhhqTNGZKCGXJDn&_nc_eui2=AeGgO0GPa2JknWRLsOhlLD5GvkyrQvDW5rW-TKtC8NbmtW1FU7NTaHY39yMiu6uFgUZiZI8GiIp61KoWVxZuxe9p&oh=00_Af5-iriJuhp68LMaZGQdJFUQ6mTwof3SGR3dOfZNGrdNGA&oe=69FE9887&bitrate=782461&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-5",
+              "name": "7",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-5-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-6",
+              "name": "6",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQPPdyhEdkb2L_Apg6PMcbwVVvStIU0c92Nu_37edGLNbANg-NaI4eYi7lAGi9ndGyqJ0lSxUGQZaOGHa8vde2fwfcA9yy0cI5Mtb_EMunQgwg.mp4?_nc_cat=108&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=MjBatPK1VwEQ7kNvwHMc-JL&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDkxOTA3NzE5MzA0NzMxLCJhc3NldF9hZ2VfZGF5cyI6MjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo2MzUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=1214240c2f3da635&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yMjQ5MEMyMzU4NEJDNkRBNjVERkU3OTFCQjdDNEM5Nl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzI3NDg2NDc4RDc4MERENzJEMjYwMUVFMEEzRjVGNjhFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa22KzaurimBRUCKAJDMywXQIPdcKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=2fJzynguBhYj0EDVRXdmSw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHPdgynUWfijqNp4cZv77EdJt-ka8Apx6ibiUTRj31Zmo0YpobDICE-JFOgGmJV-KKd49XivAxZ&_nc_eui2=AeE4hO1Hhfxo4FyW67sd3P6oRWYP8OGEFCFFZg_w4YQUIe-ov9WUfsKVFF5G1mC8Wk9CTksIXqVbeSzxbYIzuuSr&oh=00_Af5EpY9x_ddYmzefFXoGrvkiGoJTAdfptZpe73MB0aqxuA&oe=69FE8228&bitrate=868149&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-7",
+              "name": "5",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQOL-_VhuqjQFFjRo52r3qZkZ_lsjpbPz-RXw8ILfXQe0wCqGzKfLqGsbV7QZTmXffci0Q-dy9fAY1wa39QE35w_FBXRvI-zqL9jUK-GHJwrBQ.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=video-sin2-1.xx.fbcdn.net&_nc_ohc=a8ssjT6_0aEQ7kNvwHcSfal&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo0NDM0NjI1NTEzNDg4MzAzLCJhc3NldF9hZ2VfZGF5cyI6MjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo2NDMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=e9376ecc0a92211&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yOTQ5MEMzOTM2MTgyOTc3RDlBOUQ5RjQyMkQzMzJBMF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0M3NDg0MkM3RjkyODg4QzdCNkIyNThGQTBBM0M0NjgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbe_ovnltHgDxUCKAJDMywXQIQfCj1wo9cYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=UY5ViEcXtruHer8QE2Nqzg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHQ1Crm6tVpo0eDzrW9F9yKWw3Kxpja5oNrxN9zno1ZH4K-mH7K7R7fH_b2yG_UAX-HliDbzwpf&_nc_eui2=AeGIOgGtpk0N4kKj7-g7nEpumAB1UfG-IISYAHVR8b4ghHb5lMMnM6UFNmQae1gq9RYjFjX7XdQTKGaEparDkVc4&oh=00_Af5hmlPXxhZaBE6lZUBWzUdiQnhFzNrZXxukEoCMPRrvBA&oe=69FE6846&bitrate=1029810&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-8",
+              "name": "4",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMow5VZxv0Eqqy1R4q7uaJEWaOgGX22tvi5uzhYZnmt2sIPALpSEBJeHXmySel1_zocA_cderum08kb8emGrd4HUD8IS5zAsodsGPfIcSJARQ.mp4?_nc_cat=102&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=ejI_IhN8eUAQ7kNvwEr_wov&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NDM1NzU1OTg1NjY2MDUsImFzc2V0X2FnZV9kYXlzIjoyNSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjY1NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=9bdafeac2c89929a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wMzRCQTYwOTYxQkRCMzNCMEFDMjRGNDU2Nzg0MEE4NF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzlFNDBENTlEMUZCOEVENkY1NTJFRjM1RjREQUU2RTg5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaas_iFqoutAxUCKAJDMywXQISAo9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=bVb_7xyLdp1u7L9_Y66pOw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHV5ye4OYSAHYIJX7r0lR-d2-7OQ5mROIQFfDgSYNDKV2GreijeIYhQNpxsUdzGnA8vAk4Rlf3F&_nc_eui2=AeGQyVKuXA0QlI4LOKXIfjZnzSxRWjG8KpHNLFFaMbwqkSPaswblJpHtdLL42nhBkxuo7yWETbeWHC9WJK3xO9Y6&oh=00_Af4bLTMxSDC98TWzLVkPvLEWcdnGDpRqgP3nnpnUuJ6rFQ&oe=69FEAEBE&bitrate=972440&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-9",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQNlZ581ikpx8qbqKdorvZkRaRvEsDk-aRPZyu8jpTvP89IuKvffXiEgpySqWnyFDfBEix9YtYiu0ZB49j_jLCqz-wdKprT-zCDng8KmjJYSLw.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=GGRExtHudiQQ7kNvwHbEAkv&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNzAxNzc3NzQ3NjY1ODAzLCJhc3NldF9hZ2VfZGF5cyI6MjQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo2MjcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=39f9f3d4609ea59a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9ENDQzNzQ2QzIyNjUyNzUyOTgwNDYzODVCQjkyOENCNF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzAzNDJGOUNBQ0IzQjdDRUZBREVDQ0I3MTA0MzdCQ0JEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaWjpeiwPCFBhUCKAJDMywXQIOZ64UeuFIYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=N77iHrre9gC_WdA8ow7D4g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEszRkyzzmeLmSV5IpoRWIf0RQfbkpsm9rCSi4B_FravvdJi6dMkT237Tnb9sGSV1zcS__oUYgy&_nc_eui2=AeG6Cxt63dayj3Q4O-3DtXHyxavsu_LF9DLFq-y78sX0MuG3cL_wym6TzQlnYh2exSHUm-DT0gkiBzu3y9KCV15_&oh=00_Af4GXUcKInFqoDy--LozTV7NvP--rU8TAUroM0RUV2I0iA&oe=69FE7785&bitrate=971144&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-10",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQNah0yAzMoyzLVn1oDLhwsXGubR8oUFpd3e23YIWYxu80P2EdBnfLi_CSUddCrg8r_U5lprh4GLyLkiI0UZ1Q2nUxHvV7wFcHusORX3blAIZQ.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=USIDnM3nAmoQ7kNvwFf161Z&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjozNDQ4MDU4MjkyMDMwMzU5LCJhc3NldF9hZ2VfZGF5cyI6MjcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo2NjMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=21f44e44f18ea2dd&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9BNzRGQTIxQkU1REY4NkQxRURFNThBQzgxQ0I4MDJCNV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzA1NDc5QTM2MDQyODc4NTgxNDVFMkRDQzQ5NjYzM0I4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaursqatP-fDBUCKAJDMywXQIS9wo9cKPYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=iB1S6qi8DEN1Oftb-zV-TQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFzdeYE2_rY6i1w8jAnLZhp1P3KaMYFbSFiLAhZe7-YFtFkPhFZBTZkN0x4wNiu6zD54uYD1bLb&_nc_eui2=AeGXWSXqiex2f10NgSpdJOxs0m_e-42JTTvSb977jYlNO7HP6N4DxIqqhicm7CoLVFy-cnTR2ALmFGIunh-g4N15&oh=00_Af4kyU005-_i3UZDGHSD5nthVpJEyF4ylf0q3ECOfawKNA&oe=69FE57B4&bitrate=893664&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-11",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "vua-choi-da-co-tai-khoan-vuong-gia--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM1nRpoYsPnpEP_SPEyQn2rV-6KkWQK5S1QN_n7iRDmiL6aF1KgQ8qWzTP32EjrTm3Qm4MIr0j0qZLyaL-DnJjyZFkq6e_fLV0RrOn7jHdMZg.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=1ZpVhtslcVIQ7kNvwFnMloU&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNDgzNjcwMDY4NzU2MDY2LCJhc3NldF9hZ2VfZGF5cyI6MjcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo4ODgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=4e30c6afba5f0e36&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85QzRBQUFEQUFCQzMxOTM1RDM5MzdDMDlCREMwOURBNF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzY4NEMzMTZDOUFFMzE4QzE2REFDRTE1MjUwRjY0QTk0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbE-f-C0LjpCBUCKAJDMywXQIvFHrhR64UYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=VGNy_djnEnpO1h562iNn-Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEab1fPypAeqBxDeQKTCDdlW5vrzKWZaQKGGsMrgmAS1-2lNVI5L0-lCGNRl-NKGtyRI6u7EuCQ&_nc_eui2=AeGvvoBbM0RIQKvMU89UK8o5A3hZhzlbm9MDeFmHOVub09V9xr4Tt6zzsTDM_DNtzxQxgmDCzsdI7z57XL7UYGKo&oh=00_Af7WusTtJc_iVTHkwlvpippLoKr8KwKraaPCkm3H5zX_dg&oe=69FE8CD1&bitrate=1269278&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "vua-choi-da-co-tai-khoan-vuong-gia cn animation hhkungfu huyền huyễn xem phim vừa chơi đã có tài khoản vương giả thuyết minh: năm 2063, trái đất bước vào kỷ nguyên trò chơi nơi mọi quy tắc của thế giới đều bị thay đổi. thiếu niên diệp hạo bất ngờ thức tỉnh tài khoản vương giả, từ đó mở ra con đường trở thành... vua choi da co tai khoan vuong gia hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [
+    "CN Animation",
+    "HHKungFu",
+    "Huyền Huyễn"
+  ],
+  "genres": [
+    "cn-animation",
+    "hhkungfu",
+    "huyen-huyen"
+  ],
+  "description": "Xem phim Vừa Chơi Đã Có Tài Khoản Vương Giả Thuyết Minh: Năm 2063, Trái Đất bước vào kỷ nguyên trò chơi nơi mọi quy tắc của thế giới đều bị thay đổi. Thiếu niên Diệp Hạo bất ngờ thức tỉnh tài khoản Vương Giả, từ đó mở ra con đường trở thành..."
+}
