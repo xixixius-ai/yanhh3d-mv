@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.0 - STATEFUL OFFSET)
+YanHH3D Scraper → MonPlayer JSON (v4.0 - STATEFUL OFFSET | SYNTAX-FIXED)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
 ✅ Auto-resume: Nối tiếp chính xác dù dừng giữa chừng hay sang ngày mới
 ✅ Auto-detect new eps: Nếu phim có tập mới, tự động điều chỉnh offset, không bỏ sót
 ✅ CDN Fix: Dùng context.request thay urllib → bypass limit ~20 link/run
-✅ Clean Syntax: Đã sửa toàn bộ 'metadata: dict = None', không lỗi type hint
+✅ Clean Syntax: Đã sửa toàn bộ f-string JS conflict + 'meta dict' typo
 """
 
 import argparse
@@ -47,7 +47,7 @@ CONFIG = {
     "RETRY_DELAY":  1.0,
     "EP_DELAY_MIN": 2500,
     "EP_DELAY_MAX": 4500,
-    "BATCH_LIMIT":  20,  # Số tập tối đa mỗi lần chạy
+    "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
 }
 
@@ -233,7 +233,7 @@ def search_movies(page: Page, keyword: str) -> list[dict]:
             document.querySelectorAll('.flw-item').forEach(item => {
                 const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
                 if (!link?.href) return;
-                const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                const slug = link.href.split('/').pop().replace(/\/$/, '');
                 const title = link.innerText.trim() || link.title || '';
                 if (!title || slug.includes('search')) return;
                 let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || item.querySelector('img[data-src], img.film-poster-img')?.src || '';
@@ -252,22 +252,23 @@ def get_trending_movies(page: Page, limit: int = 50):
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
-        return page.evaluate(f"""() => {{
+        js_code = """(lim) => {
             const res = [];
-            document.querySelectorAll('.flw-item').forEach(item => {{
-                if (res.length >= {limit}) return;
+            document.querySelectorAll('.flw-item').forEach(item => {
+                if (res.length >= lim) return;
                 const link = item.querySelector('.film-poster-ahref, .film-detail h3 a');
                 if (!link?.href) return;
-                const slug = link.href.split('/').pop().replace(/\\/$/, '');
+                const slug = link.href.split('/').pop().replace(/\/$/, '');
                 const title = link.innerText.trim() || link.title || '';
                 if (!title || slug.includes('search')) return;
                 let thumb = item.querySelector('img[data-src], img.film-poster-img')?.dataset.src || item.querySelector('img[data-src], img.film-poster-img')?.src || '';
                 if (thumb && !thumb.startsWith('http')) thumb = 'https://yanhh3d.bz' + thumb;
                 const badge = item.querySelector('.tick.tick-rate, .fdi-item')?.innerText.trim() || '';
-                res.push({{ slug, title, thumb, badge }});
-            }});
+                res.push({ slug, title, thumb, badge });
+            });
             return res;
-        }}""")
+        }"""
+        return page.evaluate(js_code, limit)
     except Exception as e:
         logger.error(f"Failed to get trending: {e}")
         return []
@@ -279,9 +280,8 @@ def get_episodes(page: Page, slug: str):
         page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
         
-        # Lấy tập mới nhất để vào đúng context episodes
-        latest_url = page.evaluate(f"""() => {{
-            const links = Array.from(document.querySelectorAll('a[href*="/{slug}/tap-"]'))
+        latest_js = """(slug) => {
+            const links = Array.from(document.querySelectorAll('a[href*="/' + slug + '/tap-"]'))
                 .filter(a => !a.href.includes('/sever2/'))
                 .sort((a, b) => {
                     const na = parseInt((a.href.match(/tap-(\\d+)/) || [])[1] || '0');
@@ -289,7 +289,8 @@ def get_episodes(page: Page, slug: str):
                     return nb - na;
                 });
             return links.length ? links[0].href : null;
-        }}""")
+        }"""
+        latest_url = page.evaluate(latest_js, slug)
         if not latest_url: return []
         
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
@@ -395,7 +396,6 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, force_al
     if force_all:
         offset, limit = 0, current_total
     else:
-        # Auto adjust offset nếu có tập mới
         new_eps = max(0, current_total - state["total_seen"])
         offset = max(0, state["offset"] - new_eps)
         limit = min(CONFIG["BATCH_LIMIT"], current_total - offset)
@@ -425,7 +425,6 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, force_al
             if consecutive_fails >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
                 break
                 
-    # Update state
     crawled_count = len(ep_data)
     new_offset = offset + crawled_count
     progress[slug] = {
@@ -486,7 +485,6 @@ def main():
         finally:
             browser.close()
 
-    # Save list
     list_output = {
         "id": "yanhh3d-thuyet-minh", "name": "YanHH3D - Thuyet Minh", "url": f"{CONFIG['RAW_BASE']}/ophim",
         "search": True, "enable_search": True, "features": {"search": True}, "color": "#004444",
