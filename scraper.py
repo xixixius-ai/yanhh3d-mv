@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.5 - SYNTAX PERFECT)
-✅ Fix definitive: metadata: dict = None (đã sửa cả 3 hàm)
-✅ RESTORED LINK LOGIC: Khôi phục hoàn toàn resolve_play_fb_v8 (v4.0)
-✅ Stateful: progress.json, offset 20 tập/lần
+YanHH3D Scraper → MonPlayer JSON (v4.6 - RESTORED LINK ENGINE)
+✅ RESTORED: Quay lại urllib + Cookie sync như v4.0 (fix triệt để no stream)
+✅ Stateful: progress.json, offset 20 tập/lần, auto-resume
 ✅ Pagination: /moi-cap-nhat (5 trang = ~120 phim)
 ✅ Tags: Selector đúng (.item.item-title a.name.genre)
-✅ Session Refresh: Reset mỗi 40 tập
+✅ Progress Log: [1/120] Đang xử lý: <tên phim>
+✅ Syntax: metadata: dict = None (chuẩn Python 3.10+)
 """
 
 import argparse
@@ -15,7 +15,10 @@ import logging
 import os
 import random
 import re
+import sys
 import time
+import urllib.request
+import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -47,7 +50,7 @@ CONFIG = {
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
     "EP_DELAY_MIN": 1500,
-    "EP_DELAY_MAX": 3000,
+    "EP_DELAY_MAX": 2000,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
     "MAX_PAGES":    5,
@@ -113,7 +116,6 @@ def _wait_for_cf(page: Page, selector: str, timeout: int):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-# ✅ FIX 1: metadata: dict = None
 def _build_search_str(movie: dict, metadata: dict = None) -> str:
     metadata = metadata or {}
     parts = [
@@ -140,6 +142,21 @@ def save_progress(progress: dict):
             json.dump(progress, f, ensure_ascii=False, indent=2)
     except Exception as e:
         logger.warning(f"   Failed to save progress: {e}")
+
+
+def _extract_cookies_from_context(context: BrowserContext) -> dict:
+    cookies = {}
+    try:
+        for c in context.cookies():
+            cookies[c['name']] = c['value']
+    except Exception:
+        pass
+    return cookies
+
+
+def _cookies_to_header(cookies: dict) -> str:
+    if not cookies: return ""
+    return "; ".join(f"{k}={v}" for k, v in cookies.items())
 
 
 def get_movie_metadata(page: Page, slug: str) -> dict:
@@ -203,50 +220,78 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
         return metadata
 
 
-def resolve_play_fb_v8(context: BrowserContext, proxy_url: str) -> str | None:
+def resolve_play_fb_v8(proxy_url: str, cookies: dict = None) -> str | None:
+    """
+    ✅ RESTORED v4.0 ENGINE: urllib + Cookie sync + full regex fallback
+    """
+    headers = PLAY_FB_V8_HEADERS.copy()
+    if cookies:
+        headers["Cookie"] = _cookies_to_header(cookies)
+
     for attempt in range(CONFIG["RETRY_COUNT"] + 1):
         try:
-            resp = context.request.get(proxy_url, headers=PLAY_FB_V8_HEADERS, timeout=20000)
-            if resp.status in (301, 302, 303, 307, 308):
-                location = resp.headers.get("location", "")
-                if location and _is_valid_fb_cdn(location):
-                    return location
-            if resp.status != 200:
-                if resp.status in (403, 429):
-                    time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
-                    continue
+            class NoRedirect(urllib.request.HTTPRedirectHandler):
+                def redirect_request(self, req, fp, code, msg, headers, newurl):
+                    return None
+
+            opener = urllib.request.build_opener(NoRedirect())
+            req = urllib.request.Request(proxy_url, headers=headers, method="GET")
+            
+            with opener.open(req, timeout=20) as resp:
+                if resp.status in (301, 302, 303, 307, 308):
+                    location = resp.headers.get("Location", "")
+                    if location and _is_valid_fb_cdn(location):
+                        return location
+                
+                if resp.status == 200:
+                    content_type = resp.headers.get('Content-Type', '')
+                    content = resp.read().decode('utf-8', errors='ignore')
+                    
+                    if 'application/json' in content_type:
+                        try:
+                            data = json.loads(content)
+                            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+                            if url and _is_valid_fb_cdn(url):
+                                return url
+                        except: pass
+                    
+                    url_patterns = [
+                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
+                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
+                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
+                        r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
+                        r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
+                        r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
+                        r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',
+                    ]
+                    for pattern in url_patterns:
+                        match = re.search(pattern, content, re.IGNORECASE)
+                        if match:
+                            url = match.group(1).replace('\\/', '/')
+                            if _is_valid_fb_cdn(url):
+                                return url
+                
                 return None
                 
-            content = resp.text()
-            
-            # JSON fallback
-            try:
-                data = json.loads(content)
-                url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
-                if url and _is_valid_fb_cdn(url): return url
-            except: pass
-
-            # Regex extraction (full restore)
-            url_patterns = [
-                r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
-                r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                r'<source[^>]+src=["\'](https?://[^"\']+\.mp4[^"\']*)["\']',
-                r'video_url["\']?\s*:\s*["\']([^"\']+\.mp4[^"\']*)["\']',
-                r'["\']src["\']\s*:\s*["\']([^"\']+fbcdn[^"\']+\.mp4[^"\']*)["\']',
-                r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)',
-            ]
-            for pat in url_patterns:
-                m = re.search(pat, content, re.IGNORECASE)
-                if m:
-                    url = m.group(1).replace('\\/', '/')
-                    if _is_valid_fb_cdn(url): return url
-            return None
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 403):
+                wait = random.uniform(5.0, 12.0)
+                logger.warning(f"   🛑 Rate limited ({e.code}). Waiting {wait:.1f}s...")
+                time.sleep(wait)
+                continue
+            if e.code in (301, 302, 303, 307, 308):
+                location = e.headers.get("Location", "")
+                if location and _is_valid_fb_cdn(location):
+                    return location
         except Exception:
-            if attempt < CONFIG["RETRY_COUNT"]:
-                time.sleep(CONFIG["RETRY_DELAY"] * (2 ** attempt))
+            pass
+            
+        if attempt < CONFIG["RETRY_COUNT"]:
+            delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
+            time.sleep(delay)
+            
     return None
 
 
@@ -301,6 +346,7 @@ def get_episodes(page: Page, slug: str):
         _human_delay(300, 700)
         page.goto(f"{CONFIG['BASE_URL']}/{slug}", wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
+        
         latest_js = """(slug) => {
             const links = Array.from(document.querySelectorAll('a[href*="/' + slug + '/tap-"]'))
                 .filter(a => !a.href.includes('/sever2/'))
@@ -313,11 +359,14 @@ def get_episodes(page: Page, slug: str):
         }"""
         latest_url = page.evaluate(latest_js, slug)
         if not latest_url: return []
+        
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
         _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
+        
         return page.evaluate("""() => {
             const res = [];
-            const pane = document.querySelector('#top-comment');
+            // ✅ Fallback selector giữ nguyên v4.0 + dự phòng
+            const pane = document.querySelector('#top-comment, #episodes-content, .episode-list');
             if (!pane) return res;
             pane.querySelectorAll('a.ssl-item.ep-item').forEach(item => {
                 const href = item.href || '';
@@ -342,9 +391,11 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
                 label: (b.innerText || '').trim().toLowerCase()
             }));
         }""")
+        # ✅ Extract cookies từ context hiện tại để truyền vào urllib
+        cookies = _extract_cookies_from_context(context)
         for b in btns:
             if "play-fb-v8" in b["src"]:
-                url = resolve_play_fb_v8(context, b["src"])
+                url = resolve_play_fb_v8(b["src"], cookies=cookies)
                 if url and _is_valid_fb_cdn(url):
                     return [{"url": url, "type": "mp4", "label": f"fb-cdn-{b['label']}" if b['label'] else "fb-cdn"}]
         return None
@@ -352,7 +403,6 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-# ✅ FIX 2: metadata: dict = None
 def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     metadata = metadata or {}
     streams = []
@@ -374,7 +424,6 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     return result
 
 
-# ✅ FIX 3: metadata: dict = None
 def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
@@ -472,7 +521,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.5")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.6")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -484,7 +533,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.5 - PERFECT SYNTAX + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.6 - RESTORED urllib ENGINE + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -525,7 +574,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.5"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.6"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
