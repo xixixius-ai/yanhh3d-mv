@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v5.0 - PAGINATION + FAST + PROGRESS)
+YanHH3D Scraper → MonPlayer JSON (v5.0 CORRECTED - MERGE + PAGINATION + FAST)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
-✅ Auto-resume: Nối tiếp chính xác dù dừng giữa chừng hay sang ngày mới
-✅ Auto-detect new eps: Nếu phim có tập mới, tự động điều chỉnh offset
+✅ MERGE LOGIC: Ghép tập mới vào detail.json cũ, không ghi đè mất tập cũ
 ✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~24 phim = 120 phim)
 ✅ No limit: Bỏ giới hạn max_movies, crawl tất cả phim tìm được
 ✅ Fast: EP_DELAY 1.5-3.0s (nhanh hơn 40% so với v4.0)
 ✅ Progress log: Hiển thị [1/120] Đang xử lý: <tên phim>
 ✅ Session refresh: Reset connection mỗi 40 tập để tránh block
-✅ Clean Syntax: metadata: dict = None (chuẩn Python 3.10+)
+✅ Clean Syntax: meta dict = None (chuẩn Python 3.10+)
 """
 
 import argparse
@@ -42,19 +41,19 @@ CONFIG = {
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
     "PROGRESS_FILE":"progress.json",
-    "MAX_MOVIES":   None,  # ✅ Bỏ giới hạn - crawl tất cả phim
+    "MAX_MOVIES":   None,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 1500,  # ✅ Giảm từ 2500 → 1500 (nhanh hơn)
-    "EP_DELAY_MAX": 3000,  # ✅ Giảm từ 4500 → 3000
+    "EP_DELAY_MIN": 1500,
+    "EP_DELAY_MAX": 3000,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
-    "MAX_PAGES":    5,     # Số trang /moi-cap-nhat sẽ crawl
-    "SESSION_REFRESH_INTERVAL": 40,  # ✅ Refresh session mỗi 40 tập
+    "MAX_PAGES":    5,
+    "SESSION_REFRESH_INTERVAL": 40,
 }
 
 EXTRA_HEADERS = {
@@ -95,7 +94,6 @@ def _apply_stealth(page: Page):
 
 
 def _refresh_session(page: Page):
-    """🔄 Refresh session nhẹ: reload blank để reset connection pool"""
     try:
         page.goto("about:blank", wait_until="commit", timeout=5000)
         _human_delay(500, 1500)
@@ -241,7 +239,6 @@ def _is_valid_fb_cdn(url: str) -> bool:
 
 
 def get_movies_from_pagination(page: Page, max_pages: int = None) -> list[dict]:
-    """✅ Crawl từ /moi-cap-nhat với pagination - lấy 100+ phim"""
     if max_pages is None:
         max_pages = CONFIG["MAX_PAGES"]
     
@@ -354,16 +351,62 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, metadata: dict = None):
+def _load_existing_streams(detail_path: Path) -> list[dict]:
+    """✅ MERGE HELPER: Load existing streams from detail.json"""
+    if not detail_path.exists():
+        return []
+    try:
+        with open(detail_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        streams = []
+        for source in data.get("sources", []):
+            for content in source.get("contents", []):
+                streams.extend(content.get("streams", []))
+        return streams
+    except Exception:
+        return []
+
+
+def build_detail_json(slug: str, episodes: list, all_streams: list, meta dict = None):
+    """✅ MERGE BUILDER: Build JSON with merged streams (old + new)"""
     metadata = metadata or {}
-    streams = []
-    for i, ep in enumerate(episodes):
-        if not ep.get("stream"): continue
-        sl = [{"id": f"{slug}--0-{i}-{j}", "name": s.get("label") or f"Link {j+1}", "type": s["type"], "default": j==0, "url": s["url"]} for j, s in enumerate(ep["stream"])]
-        streams.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": sl})
+    
+    # Map streams to episodes by name for merging
+    ep_map = {}
+    for stream_obj in all_streams:
+        ep_name = stream_obj.get("name", "")
+        if ep_name not in ep_map:
+            ep_map[ep_name] = {"name": ep_name, "stream": []}
+        ep_map[ep_name]["stream"].append({
+            "id": stream_obj.get("id", ""),
+            "name": stream_obj.get("name", f"Link {len(ep_map[ep_name]['stream'])+1}"),
+            "type": stream_obj.get("type", "mp4"),
+            "default": stream_obj.get("default", False),
+            "url": stream_obj.get("url", "")
+        })
+    
+    # Sort episodes by number (newest first)
+    def extract_ep_num(name):
+        match = re.search(r'\d+', name)
+        return int(match.group()) if match else 0
+        
+    sorted_eps = sorted(ep_map.values(), key=lambda x: extract_ep_num(x["name"]), reverse=True)
+    
+    streams_output = []
+    for i, ep in enumerate(sorted_eps):
+        stream_links = []
+        for j, s in enumerate(ep["stream"]):
+            stream_links.append({
+                "id": f"{slug}--0-{i}-{j}",
+                "name": s.get("name") or f"Link {j+1}",
+                "type": s["type"],
+                "default": j == 0,
+                "url": s["url"]
+            })
+        streams_output.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": stream_links})
     
     result = {
-        "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}],
+        "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams_output}]}],
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
         "tags": metadata.get("tags", []),
@@ -374,7 +417,7 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     return result
 
 
-def build_list_item(movie: dict, metadata: dict = None):
+def build_list_item(movie: dict, meta dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
@@ -393,11 +436,10 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_index: int, total_movies: int, force_all: bool = False, progress: dict = None):
+def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_index: int, total_movies: int, detail_dir: Path, force_all: bool = False, progress: dict = None):
     if progress is None: progress = {}
     slug = movie_info["slug"]
     
-    # ✅ Log progress: [1/120] Đang xử lý: tien-nghich
     logger.info(f"  [{movie_index}/{total_movies}] Đang xử lý: {slug}")
     
     metadata = get_movie_metadata(page, slug)
@@ -435,7 +477,6 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     ep_data = []
     consecutive_fails = 0
     for i, ep in enumerate(episodes_to_crawl):
-        # ✅ Refresh session định kỳ để tránh CDN block
         if (offset + i + 1) % CONFIG["SESSION_REFRESH_INTERVAL"] == 0:
             logger.info(f"   🔄 [SESSION] Refreshing after {offset + i + 1} requests...")
             _refresh_session(page)
@@ -463,11 +504,29 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     }
     save_progress(progress)
     
-    detail_json = build_detail_json(slug, ep_data, metadata)
+    # ✅ MERGE LOGIC: Load old streams + merge with new ones
+    detail_path = detail_dir / f"{slug}.json"
+    old_streams = _load_existing_streams(detail_path)
+    
+    # Convert new ep_data to stream format
+    new_streams = []
+    for ep in ep_data:
+        for s in ep["stream"]:
+            new_streams.append(s)
+            
+    # Merge & deduplicate by URL
+    seen_urls = {s.get("url") for s in old_streams if s.get("url")}
+    merged_streams = old_streams + [s for s in new_streams if s.get("url") not in seen_urls]
+    
+    # Build final JSON with merged streams
+    detail_json = build_detail_json(slug, ep_data, merged_streams, metadata)
+    with open(detail_path, "w", encoding="utf-8") as f:
+        json.dump(detail_json, f, ensure_ascii=False, indent=2)
+        
     list_item = build_list_item(movie_info, metadata)
     
-    ok = sum(1 for e in ep_data if any(s["type"] != "error" for s in e["stream"]))
-    logger.info(f"  ✅ Saved {slug}.json ({ok}/{crawled_count} playable) | Offset -> {new_offset}")
+    ok = sum(1 for s in merged_streams if s.get("type") != "error")
+    logger.info(f"  ✅ Saved {slug}.json ({ok}/{len(merged_streams)} playable) | Offset -> {new_offset}")
     return list_item, detail_json
 
 
@@ -484,7 +543,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v5.0 - PAGINATION + FAST + PROGRESS (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v5.0 - MERGE + PAGINATION + FAST (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -497,7 +556,6 @@ def main():
         _apply_stealth(page)
 
         try:
-            # ✅ Crawl từ /moi-cap-nhat với pagination
             movies = get_movies_from_pagination(page, max_pages=args.max_pages)
             
             if not movies:
@@ -509,13 +567,11 @@ def main():
             
             for idx, movie in enumerate(movies, 1):
                 try:
-                    # ✅ Truyền movie_index, total_movies để log progress
-                    res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, 
+                    # ✅ Pass detail_dir to scrape_movie for merge logic
+                    res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, detail_dir=detail_dir,
                                      force_all=args.all_episodes, progress=progress)
                     if res:
-                        li, dj = res
-                        with open(detail_dir / f"{movie['slug']}.json", "w", encoding="utf-8") as f: 
-                            json.dump(dj, f, ensure_ascii=False, indent=2)
+                        li, _ = res
                         channels.append(li)
                 except Exception as e:
                     logger.error(f"  ❌ Error processing {movie.get('slug', 'unknown')}: {e}")
