@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "van-kiem-vuong-toa--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "40",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "van-kiem-vuong-toa--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "39",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "van-kiem-vuong-toa--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "38",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "van-kiem-vuong-toa--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "37",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "van-kiem-vuong-toa--0-4-0",
-                  "name": "Link 1",
+                  "name": "36",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-5",
+              "name": "35(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-5-0",
+                  "name": "35(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-6",
+              "name": "34(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-6-0",
+                  "name": "34(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-7",
+              "name": "33(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-7-0",
+                  "name": "33(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-8",
+              "name": "32(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-8-0",
+                  "name": "32(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-9",
+              "name": "31(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-9-0",
+                  "name": "31(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -88,14 +153,6 @@
     "Tiên Hiệp",
     "Cổ Trang",
     "Kiếm Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "co-trang",
-    "kiem-hiep"
   ],
   "description": "Xem phim Vạn Kiếm Vương Toạ Thuyết Minh: Ở vương triều Khương Á rộng lớn, văn hóa kiếm đạo đã được lưu truyền hàng vạn năm, người dân đều lấy việc tu luyện kiếm đạo làm niềm vinh dự. Thế nhưng những người có thể tu luyện thành công đến cảnh..."
 }

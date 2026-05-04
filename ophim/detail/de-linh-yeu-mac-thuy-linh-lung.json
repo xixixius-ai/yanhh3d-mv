@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "19",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "18",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "17",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "16",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-4-0",
-                  "name": "Link 1",
+                  "name": "15",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-5",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-5-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-6",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-6-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-7",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-7-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-8",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-8-0",
+                  "name": "11(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-9",
+              "name": "10(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-9-0",
+                  "name": "10(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -86,12 +151,6 @@
     "HHKungFu",
     "Huyền Huyễn",
     "Tiên Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep"
   ],
   "description": "Xem phim Đế Linh Yêu: Mặc Thuỷ Linh Lung Thuyết Minh: Tất cả mọi vật trên trần gian đều có những linh hồn và sức mạnh riêng của chúng, thậm chí là chúng đều đã cùng nhau hội tụ thành những tiên tử và đều có ý thức, hiểu biết như là những co..."
 }

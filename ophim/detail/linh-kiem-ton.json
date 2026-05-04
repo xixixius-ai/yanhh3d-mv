@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "linh-kiem-ton--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "659",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "linh-kiem-ton--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "658",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "linh-kiem-ton--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "657",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "linh-kiem-ton--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "656",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "linh-kiem-ton--0-4-0",
-                  "name": "Link 1",
+                  "name": "655",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-5",
+              "name": "654(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-5-0",
+                  "name": "654(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-6",
+              "name": "653(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-6-0",
+                  "name": "653(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-7",
+              "name": "652(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-7-0",
+                  "name": "652(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-8",
+              "name": "651(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-8-0",
+                  "name": "651(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-9",
+              "name": "650(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-9-0",
+                  "name": "650(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -86,12 +151,6 @@
     "Huyền Huyễn",
     "Trùng Sinh",
     "Cổ Trang"
-  ],
-  "genres": [
-    "cn-animation",
-    "huyen-huyen",
-    "trung-sinh",
-    "co-trang"
   ],
   "description": "Xem phim Linh Kiếm Tôn Thuyết Minh: Phim nói về cường giả Sở Hành Vân bị tập kích, trở lại lúc còn trẻ, bất ngờ trở thành thiếu chủ phế vật yếu đuối năm đó, cùng với nữ chính Thủy Lưu Hương vượt qua mọi trở ngại."
 }

@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-0-0",
-                  "name": "fb-cdn-hd",
+                  "name": "131",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN7TCzZxS382bz4PJV1Nu0JIl2fQ74jkP_9OuJnWnk6KFmPTJ7zjgC0ISQsfpEDUMhL4uJ5-RyFGyN3xmh5CEZJorfCiLnr-b3KHlwMSw.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=pa4FZKsdRcoQ7kNvwElevLV&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE5MDU1MDk3MzE5OTI2OSwiYXNzZXRfYWdlX2RheXMiOjE0MiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwMjUsIndhdGNoX3RpbWVfcyI6MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=dGDYexkxBBlRqYHZQp90Ww&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG4uDcxLJBF6vNVlcEVF_9d_Q3ZNjZ3exYa7RlSD1SLTYvxw-n5rmhY1kdlhYseOI0KG3kj6KZJ&_nc_eui2=AeEyZC_CqSW0RrWw6gnhKcOfXfBmcjgGC9Jd8GZyOAYL0s7QeDpbmrqzgmstfxEg_z38y8rQy4UA5GVoRR62I-r5&oh=00_Af58fX_Sl3KxeEU8CjwVz2KitTEya9qKB3aOo_g9iQqdsw&oe=69FDA07A&bitrate=551799&tag=sve_sd"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "130",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "129",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "128",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,10 +67,10 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "127",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -80,7 +80,72 @@
               "stream_links": [
                 {
                   "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-5-0",
-                  "name": "Link 1",
+                  "name": "126",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-6",
+              "name": "125(no)",
+              "stream_links": [
+                {
+                  "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-6-0",
+                  "name": "125(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-7",
+              "name": "124(no)",
+              "stream_links": [
+                {
+                  "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-7-0",
+                  "name": "124(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-8",
+              "name": "123(no)",
+              "stream_links": [
+                {
+                  "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-8-0",
+                  "name": "123(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-9",
+              "name": "122(no)",
+              "stream_links": [
+                {
+                  "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-9-0",
+                  "name": "122(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-10",
+              "name": "121(no)",
+              "stream_links": [
+                {
+                  "id": "dau-la-dai-luc-2-tuyet-the-duong-mon--0-10-0",
+                  "name": "121(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -100,13 +165,6 @@
     "Huyền Huyễn",
     "Tiên Hiệp",
     "Hiện Đại"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "hien-dai"
   ],
   "description": "Xem phim Đấu La Đại Lục 2 - Tuyệt Thế Đường Môn Thuyết Minh: Nơi này không có ma pháp, không có đấu khí, không có võ thuật, lại có võ hồn. Đường Môn sáng lập vạn năm trên Đấu La đại lục, Đường Môn suy thoái. Một đời Thiên Kiêu hoành không x..."
 }

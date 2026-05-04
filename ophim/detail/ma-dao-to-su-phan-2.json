@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "ma-dao-to-su-phan-2--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "8",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "ma-dao-to-su-phan-2--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "7",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "ma-dao-to-su-phan-2--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "6",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "ma-dao-to-su-phan-2--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "5",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,10 +67,43 @@
               "stream_links": [
                 {
                   "id": "ma-dao-to-su-phan-2--0-4-0",
-                  "name": "Link 1",
+                  "name": "4",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "ma-dao-to-su-phan-2--0-5",
+              "name": "3(no)",
+              "stream_links": [
+                {
+                  "id": "ma-dao-to-su-phan-2--0-5-0",
+                  "name": "3(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "ma-dao-to-su-phan-2--0-6",
+              "name": "",
+              "stream_links": [
+                {
+                  "id": "ma-dao-to-su-phan-2--0-6-0",
+                  "name": "Link 1",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOrM1iWLwW5xguAeTQtCYLUIACrfFY6EfNh6Gqj6KB1te6OcOsfXxDI38oGjRHue-sZ5SVoFT2zX0hR3B0k4Umo_OWCM1cmvWs6yGMuFA.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=Lud6Ps8TkG0Q7kNvwHihtFn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTUzNTAyOTIzODUwMTk1LCJhc3NldF9hZ2VfZGF5cyI6NTQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMjU2LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=SvBJryp5kp8KM8bf7Hq8fA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFWCft6OO2eFNb2SwNJ8co-aZO15go0cyX6nL4UVlr2LlP0fenwaEMCyW3iAibDANQQ7-CLfps4&_nc_eui2=AeFuQtSR1dxO4_adGTFTOYAL_XhA04VCy-H9eEDThULL4ZxND-52u_gzLWIy7_gSoEHbf5dQoctBjR20eO17Bm7H&oh=00_Af6pFVYczmPYEgzR0QVqFHHEgaZWzVwqVkQfJBh-C1QFFg&oe=69FE7962&bitrate=154431&tag=sve_sd"
+                },
+                {
+                  "id": "ma-dao-to-su-phan-2--0-6-1",
+                  "name": "Link 2",
+                  "type": "mp4",
+                  "default": false,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMJZNFBV2c9p5U2s283Lz44bpMbJwzkpM0_Is3wsG2P1EBO54KYdhQa26mTFRtboWrxBRSIRRDDGOwBAOKppCcS3yUVTJzK6iajXU39EA.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=JttHDNURQwsQ7kNvwHI-ODe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTg5MTk3MjgxMTQxMjYzNCwiYXNzZXRfYWdlX2RheXMiOjU1LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQ4MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=ofe5_8OFf28nl4YfgTmTJQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEugkznurtKDVMR3FyHyC08iikRK8jt89oan9LCi3h4ZJ5M2H8HCSmXSCWGtsvngZYLtYYXvjMj&_nc_eui2=AeGMUeLPzsLBW2_R5jdzKmxftCVVOi1eYNG0JVU6LV5g0WCLblrU7jeVSLBtQynQsNeZ6s3ttBzHXP0mWocHU98h&oh=00_Af7v9h1buLzyLvR4HllwSGEoBh9XNCA_InZyI5tbJs6r1Q&oe=69FE6DE7&bitrate=214212&tag=sve_sd"
                 }
               ]
             }
@@ -88,14 +121,6 @@
     "Cổ Trang",
     "Hài Hước",
     "Kiếm Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "co-trang",
-    "hai-huoc",
-    "kiem-hiep"
   ],
   "description": "Xem phim Ma Đạo Tổ Sư Phần 2 Thuyết Minh: Sau khi Ngụy Vô Tiện trở về từ cửa tử và báo được mối thù diệt gia, vả Ôn Gia sấp mặt. Đặt câu chuyện trong quá khứ ở đó, phần 2 sẽ tiết lộ thêm nhiều bí mật và tình hình ở thực tại. Thực tại nơi Ng..."
 }

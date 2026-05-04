@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-0-0",
-                  "name": "fb-cdn-hd",
+                  "name": "107",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://video-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQP-1oN3zeN1YE4M-ne00BZDRuJz5NTSqHmllAQfD_mhhGVjmspWXz-jgtD2qfTsh3FlZFf26D7RzNfkIR1HuXjKCjsop163GcxQTelfrQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=video-sin6-2.xx.fbcdn.net&_nc_ohc=GPhXoBpOXWkQ7kNvwF_-fox&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4NDEwMzQ4NTkxODQ0NiwiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwODEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=R-ndgGL7xUWCA91XwzSF2Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE1sDR-4C756aX4sJRo0SpxUhmzy--QNyvoIjS9TrLTNwSVrzfx16PlJu2zWTz7U34ywNgViEOX&_nc_eui2=AeH6A8CJyZanPWR8utkmvEg3yatAA7mXacLJq0ADuZdpwtaq9XBltFv5SVKxNFm8IVAJW9f0MjMvP8wv60RgisPB&oh=00_Af5AAgyZCxNgJ5CUiOnvo7VYeKVZJBIO-rr8CvxklY9A_A&oe=69FE4B41&bitrate=476132&tag=sve_sd"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "106",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "104",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "103",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,10 +67,10 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "102",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -80,7 +80,72 @@
               "stream_links": [
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-5-0",
-                  "name": "Link 1",
+                  "name": "101",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-6",
+              "name": "100(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-6-0",
+                  "name": "100(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-7",
+              "name": "99(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-7-0",
+                  "name": "99(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-8",
+              "name": "98(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-8-0",
+                  "name": "98(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-9",
+              "name": "97(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-9-0",
+                  "name": "97(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-10",
+              "name": "96(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-10-0",
+                  "name": "96(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -99,12 +164,6 @@
     "HHKungFu",
     "Huyền Huyễn",
     "Tiên Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep"
   ],
   "description": "Xem phim Bách Luyện Thành Thần Thuyết Minh: Gia tộc sa sút, người thân gặp nạn, La Chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, La Chinh..."
 }

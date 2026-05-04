@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "113",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "112",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "111",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "110",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "tien-nghich--0-4-0",
-                  "name": "Link 1",
+                  "name": "109",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-5",
+              "name": "108(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-5-0",
+                  "name": "108(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-6",
+              "name": "107(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-6-0",
+                  "name": "107(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-7",
+              "name": "106(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-7-0",
+                  "name": "106(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-8",
+              "name": "105(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-8-0",
+                  "name": "105(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-9",
+              "name": "104(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-9-0",
+                  "name": "104(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -88,14 +153,6 @@
     "Tiên Hiệp",
     "Cổ Trang",
     "Hiện Đại"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "co-trang",
-    "hien-dai"
   ],
   "description": "Xem phim Tiên Nghịch Thuyết Minh: ✨ TẬP 62 => MOVIE => TẬP 63 [ Lưu ý: thứ tự xem này dựa theo tu vi của Vương Lâm ] ✨ Cải biên từ tiểu thuyết “Tiên Nghịch” của tác giả Nhĩ Căn, kể về thiếu niên bình phàm Vương Lâm xuất thân nông thôn, ma..."
 }

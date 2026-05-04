@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-0-0",
-                  "name": "fb-cdn-hd",
+                  "name": "25",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMXGw4CiYQlxpB9yFJeCOfDJiF4CwIyDWiDX6CBhdLkYcEazC_Rose1x0ONrSbDsZs0azx72V5PadM5IzfYhlwyAAzKBrFcobPKTdH8Vg.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=BndOE4iQfSwQ7kNvwGsmm3-&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjAxMjA2MzY0OTU4OTU5NSwiYXNzZXRfYWdlX2RheXMiOjE0MiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNzUsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=QYdQiwJ-gv1oMKmpADueBQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGL45QzDZgj-F3X4NZfpoXKqBIsob4_O7yBHGuELnovCdNFnUrDfIfX0KolcZhCvxzoHNLwuVU2&_nc_eui2=AeFproNA70bfb6zQ_ulKC4WgyUpDC_I1lQrJSkML8jWVCkqcSvi-8IZqYWyfonQzS-pTdlZPQX8CR2mS93q541wI&oh=00_Af6fBaaGrsNd62Q_Oc7OKEyhQ6YYVAV-NTpL13wzi5CuWg&oe=69FE05FA&bitrate=559714&tag=sve_sd"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "24",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "23",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "22",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,10 +67,10 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-4-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "21",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -80,7 +80,72 @@
               "stream_links": [
                 {
                   "id": "van-tham-bat-tri-mong--0-5-0",
-                  "name": "Link 1",
+                  "name": "20",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "van-tham-bat-tri-mong--0-6",
+              "name": "19(no)",
+              "stream_links": [
+                {
+                  "id": "van-tham-bat-tri-mong--0-6-0",
+                  "name": "19(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-tham-bat-tri-mong--0-7",
+              "name": "18(no)",
+              "stream_links": [
+                {
+                  "id": "van-tham-bat-tri-mong--0-7-0",
+                  "name": "18(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-tham-bat-tri-mong--0-8",
+              "name": "17(no)",
+              "stream_links": [
+                {
+                  "id": "van-tham-bat-tri-mong--0-8-0",
+                  "name": "17(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-tham-bat-tri-mong--0-9",
+              "name": "16(no)",
+              "stream_links": [
+                {
+                  "id": "van-tham-bat-tri-mong--0-9-0",
+                  "name": "16(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-tham-bat-tri-mong--0-10",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "van-tham-bat-tri-mong--0-10-0",
+                  "name": "15(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -100,13 +165,6 @@
     "Huyền Huyễn",
     "Trùng Sinh",
     "Tiên Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "trung-sinh",
-    "tien-hiep"
   ],
   "description": "Xem phim Vân Thâm Bất Tri Mộng Thuyết Minh: Một đám cưới tuyệt mỹ lại gặp phải sự phản bội của người yêu. Không vì thành tiên, chỉ vì nhất niệm hóa ma. Đây là con đường báo thù đẫm máu của một nữ chính mạnh mẽ, xinh đẹp, bi thảm — kẻ diệt t..."
 }

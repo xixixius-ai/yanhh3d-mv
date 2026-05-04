@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "134",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "133",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "132",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "131",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "gia-thien--0-4-0",
-                  "name": "Link 1",
+                  "name": "130",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-5",
+              "name": "129(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-5-0",
+                  "name": "129(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-6",
+              "name": "128(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-6-0",
+                  "name": "128(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-7",
+              "name": "127(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-7-0",
+                  "name": "127(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-8",
+              "name": "126(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-8-0",
+                  "name": "126(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-9",
+              "name": "125(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-9-0",
+                  "name": "125(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -88,14 +153,6 @@
     "Xuyên Không",
     "Tiên Hiệp",
     "Hài Hước"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "xuyen-khong",
-    "tien-hiep",
-    "hai-huoc"
   ],
   "description": "Xem phim Già Thiên Thuyết Minh: Một chàng trai thành đạt được bạn bè yêu quý. Trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. Nơi đó, mọi mâu t..."
 }

@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "than-an-vuong-toa--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "187",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "than-an-vuong-toa--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "186",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "than-an-vuong-toa--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "185",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "than-an-vuong-toa--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "184",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "than-an-vuong-toa--0-4-0",
-                  "name": "Link 1",
+                  "name": "183",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-5",
+              "name": "182(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-5-0",
+                  "name": "182(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-6",
+              "name": "181(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-6-0",
+                  "name": "181(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-7",
+              "name": "180(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-7-0",
+                  "name": "180(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-8",
+              "name": "179(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-8-0",
+                  "name": "179(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-9",
+              "name": "178(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-9-0",
+                  "name": "178(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -86,12 +151,6 @@
     "HHKungFu",
     "Huyền Huyễn",
     "Kiếm Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "kiem-hiep"
   ],
   "description": "Xem phim Thần Ấn Vương Tọa Thuyết Minh: Một thiếu niên vì cứu mẫu thân của mình mà gia nhập Kỵ Sĩ Thánh Điện, kỳ tích, quỷ kế không ngừng xoay quanh hắn. Trên con đường để giải cứu nhân loại và tìm đến đỉnh cao của tu luyện hắn đã đi tìm và..."
 }

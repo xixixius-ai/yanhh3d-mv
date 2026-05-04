@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "nguoi-choi-khac-kim--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "25",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "nguoi-choi-khac-kim--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "24",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "nguoi-choi-khac-kim--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "23",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "nguoi-choi-khac-kim--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "22",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "nguoi-choi-khac-kim--0-4-0",
-                  "name": "Link 1",
+                  "name": "21",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-5",
+              "name": "20(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-5-0",
+                  "name": "20(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-6",
+              "name": "19(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-6-0",
+                  "name": "19(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-7",
+              "name": "18(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-7-0",
+                  "name": "18(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-8",
+              "name": "17(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-8-0",
+                  "name": "17(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-9",
+              "name": "16(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-9-0",
+                  "name": "16(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -86,12 +151,6 @@
     "HHKungFu",
     "Hài Hước",
     "Hiện Đại"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "hai-huoc",
-    "hien-dai"
   ],
   "description": "Xem phim Người Chơi Khắc Kim Thuyết Minh: Trong thế giới tương lai, trò chơi thực tế ảo \"Kỷ Nguyên\" do Tập đoàn Sở thị phát triển đã thu hút sự chú ý của toàn thế giới nhờ trải nghiệm nhập vai hoàn hảo. Thế nhưng ngay trước ngày trò chơi ch..."
 }

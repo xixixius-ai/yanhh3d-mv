@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "55",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "54",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "53",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "52",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "muc-than-ky--0-4-0",
-                  "name": "Link 1",
+                  "name": "51",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-5",
+              "name": "50(no)",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-5-0",
+                  "name": "50(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-6",
+              "name": "49(no)",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-6-0",
+                  "name": "49(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-7",
+              "name": "48(no)",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-7-0",
+                  "name": "48(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-8",
+              "name": "47(no)",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-8-0",
+                  "name": "47(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "muc-than-ky--0-9",
+              "name": "46(no)",
+              "stream_links": [
+                {
+                  "id": "muc-than-ky--0-9-0",
+                  "name": "46(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -88,14 +153,6 @@
     "Tiên Hiệp",
     "Cổ Trang",
     "Hài Hước"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "co-trang",
-    "hai-huoc"
   ],
   "description": "Xem phim Mục Thần Ký Thuyết Minh: Tần Mục, với sức mạnh bất diệt cuối cùng trở thành giáo chủ Thiên Ma Giáo và được chọn là tiến sĩ thái học đầu tiên của Diên Khang quốc. Trong cuộc chiến phản loạn của Diên Khang quốc, Tần Mục dấn thân vào..."
 }

@@ -15,10 +15,10 @@
               "stream_links": [
                 {
                   "id": "pham-nhan-tu-tien--0-0-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "167",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -28,10 +28,10 @@
               "stream_links": [
                 {
                   "id": "pham-nhan-tu-tien--0-1-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "166",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "pham-nhan-tu-tien--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "165",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -54,10 +54,10 @@
               "stream_links": [
                 {
                   "id": "pham-nhan-tu-tien--0-3-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "164",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -67,7 +67,72 @@
               "stream_links": [
                 {
                   "id": "pham-nhan-tu-tien--0-4-0",
-                  "name": "Link 1",
+                  "name": "163",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-5",
+              "name": "162(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-5-0",
+                  "name": "162(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-6",
+              "name": "161(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-6-0",
+                  "name": "161(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-7",
+              "name": "160(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-7-0",
+                  "name": "160(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-8",
+              "name": "159(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-8-0",
+                  "name": "159(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-9",
+              "name": "158(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-9-0",
+                  "name": "158(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -88,14 +153,6 @@
     "Tiên Hiệp",
     "Cổ Trang",
     "Hài Hước"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "co-trang",
-    "hai-huoc"
   ],
   "description": "Xem phim Phàm Nhân Tu Tiên Thuyết Minh: Khúc Hồn thành công kết đan! hai người ở Loạn Tinh hải còn gặp được cơ duyên gì gì? “Tinh Hải Phi Trì” , xin đợi trở về Đồng thời Manhua cũng đang trong quá trình khẩn trương remake, ngày nào đó sẽ gặ..."
 }
