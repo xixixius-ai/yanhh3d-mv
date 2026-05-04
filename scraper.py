@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.2 - STABLE + FAST + FULL TAGS)
+YanHH3D Scraper → MonPlayer JSON (v4.3 - SYNTAX CLEAN)
+✅ Fix: metadata: dict = None (không còn meta dict)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
 ✅ Auto-detect new eps: Nếu phim có tập mới, tự động điều chỉnh offset
 ✅ Fix Tags: Lấy đầy đủ thể loại từ selector đúng (.item.item-title a.name.genre)
@@ -47,12 +48,12 @@ CONFIG = {
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 2500,  # ✅ Khôi phục delay an toàn
+    "EP_DELAY_MIN": 2500,
     "EP_DELAY_MAX": 4500,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
     "MAX_PAGES":   2,
-    "SESSION_REFRESH_INTERVAL": 40,  # ✅ Refresh session mỗi 40 tập
+    "SESSION_REFRESH_INTERVAL": 40,
 }
 
 EXTRA_HEADERS = {
@@ -93,7 +94,6 @@ def _apply_stealth(page: Page):
 
 
 def _refresh_session(page: Page):
-    """🔄 Refresh session nhẹ: reload blank để reset connection pool"""
     try:
         page.goto("about:blank", wait_until="commit", timeout=5000)
         _human_delay(500, 1500)
@@ -115,7 +115,7 @@ def _wait_for_cf(page: Page, selector: str, timeout: int):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-def _build_search_str(movie: dict, meta dict = None) -> str:
+def _build_search_str(movie: dict, metadata: dict = None) -> str:
     metadata = metadata or {}
     parts = [
         movie.get("title", ""),
@@ -159,7 +159,6 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
                         document.querySelector('meta[property="og:description"]')?.content || "";
             result.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
             
-            // ✅ Tags/Genres - Selector đúng
             const genreLinks = document.querySelectorAll('.item.item-title a.name.genre');
             genreLinks.forEach(link => {
                 const text = link.innerText.trim();
@@ -361,7 +360,7 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, meta dict = None):
+def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
@@ -382,7 +381,7 @@ def build_detail_json(slug: str, episodes: list, meta dict = None):
     return result
 
 
-def build_list_item(movie: dict, meta dict = None):
+def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
@@ -449,7 +448,6 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     ep_data = []
     consecutive_fails = 0
     for i, ep in enumerate(episodes_to_crawl):
-        # ✅ Refresh session định kỳ để tránh CDN block
         if (offset + i + 1) % CONFIG["SESSION_REFRESH_INTERVAL"] == 0:
             logger.info(f"   🔄 [SESSION] Refreshing after {offset + i + 1} requests...")
             _refresh_session(page)
@@ -486,7 +484,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.2")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.3")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -498,7 +496,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.2 - STABLE + FULL TAGS + SESSION REFRESH (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.3 - SYNTAX CLEAN + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -542,7 +540,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.2"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.3"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
