@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v5.0 CORRECTED - MERGE + PAGINATION + FAST)
+YanHH3D Scraper → MonPlayer JSON (v5.0 FINAL - SYNTAX PERFECT)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
 ✅ MERGE LOGIC: Ghép tập mới vào detail.json cũ, không ghi đè mất tập cũ
 ✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~24 phim = 120 phim)
@@ -8,7 +8,7 @@ YanHH3D Scraper → MonPlayer JSON (v5.0 CORRECTED - MERGE + PAGINATION + FAST)
 ✅ Fast: EP_DELAY 1.5-3.0s (nhanh hơn 40% so với v4.0)
 ✅ Progress log: Hiển thị [1/120] Đang xử lý: <tên phim>
 ✅ Session refresh: Reset connection mỗi 40 tập để tránh block
-✅ Clean Syntax: meta dict = None (chuẩn Python 3.10+)
+✅ Clean Syntax: metadata: dict = None (chuẩn tuyệt đối, đã fix hết meta dict)
 """
 
 import argparse
@@ -352,7 +352,6 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
 
 
 def _load_existing_streams(detail_path: Path) -> list[dict]:
-    """✅ MERGE HELPER: Load existing streams from detail.json"""
     if not detail_path.exists():
         return []
     try:
@@ -367,11 +366,10 @@ def _load_existing_streams(detail_path: Path) -> list[dict]:
         return []
 
 
-def build_detail_json(slug: str, episodes: list, all_streams: list, meta dict = None):
-    """✅ MERGE BUILDER: Build JSON with merged streams (old + new)"""
+# ✅ FIX 1: metadata: dict = None (đã sửa từ meta dict)
+def build_detail_json(slug: str, episodes: list, all_streams: list, metadata: dict = None):
     metadata = metadata or {}
     
-    # Map streams to episodes by name for merging
     ep_map = {}
     for stream_obj in all_streams:
         ep_name = stream_obj.get("name", "")
@@ -385,7 +383,6 @@ def build_detail_json(slug: str, episodes: list, all_streams: list, meta dict = 
             "url": stream_obj.get("url", "")
         })
     
-    # Sort episodes by number (newest first)
     def extract_ep_num(name):
         match = re.search(r'\d+', name)
         return int(match.group()) if match else 0
@@ -417,7 +414,8 @@ def build_detail_json(slug: str, episodes: list, all_streams: list, meta dict = 
     return result
 
 
-def build_list_item(movie: dict, meta dict = None):
+# ✅ FIX 2: metadata: dict = None (đã sửa từ meta dict)
+def build_list_item(movie: dict, metadata: dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
@@ -504,21 +502,18 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     }
     save_progress(progress)
     
-    # ✅ MERGE LOGIC: Load old streams + merge with new ones
+    # ✅ MERGE LOGIC
     detail_path = detail_dir / f"{slug}.json"
     old_streams = _load_existing_streams(detail_path)
     
-    # Convert new ep_data to stream format
     new_streams = []
     for ep in ep_data:
         for s in ep["stream"]:
             new_streams.append(s)
             
-    # Merge & deduplicate by URL
     seen_urls = {s.get("url") for s in old_streams if s.get("url")}
     merged_streams = old_streams + [s for s in new_streams if s.get("url") not in seen_urls]
     
-    # Build final JSON with merged streams
     detail_json = build_detail_json(slug, ep_data, merged_streams, metadata)
     with open(detail_path, "w", encoding="utf-8") as f:
         json.dump(detail_json, f, ensure_ascii=False, indent=2)
@@ -543,7 +538,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v5.0 - MERGE + PAGINATION + FAST (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v5.0 FINAL - SYNTAX PERFECT + MERGE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -567,7 +562,6 @@ def main():
             
             for idx, movie in enumerate(movies, 1):
                 try:
-                    # ✅ Pass detail_dir to scrape_movie for merge logic
                     res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, detail_dir=detail_dir,
                                      force_all=args.all_episodes, progress=progress)
                     if res:
