@@ -5,10 +5,10 @@ on:
     - cron: '0 */4 * * *'  # Chạy mỗi 4h/lần
   workflow_dispatch:
     inputs:
-      max_movies:
-        description: 'Max movies (default: 30)'
+      max_pages:
+        description: 'Số trang /moi-cap-nhat (default: 5)'
         required: false
-        default: '30'
+        default: '5'
         type: string
   push:
     paths:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 180
+    timeout-minutes: 200
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -44,9 +44,9 @@ jobs:
 
       - name: Run scraper
         run: |
-          MAX_MOVIES="${{ inputs.max_movies || '30' }}"
-          echo "▶️ Running: python scraper.py --max-movies $MAX_MOVIES"
-          python scraper.py --max-movies $MAX_MOVIES
+          MAX_PAGES="${{ inputs.max_pages || '5' }}"
+          echo "▶️ Running: python scraper.py --max-pages $MAX_PAGES"
+          python scraper.py --max-pages $MAX_PAGES
         env:
           PYTHONUNBUFFERED: 1
           RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main
@@ -56,9 +56,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: |
-            🤖 Auto update MonPlayer (v4.0 Stateful)
+            🤖 Auto update MonPlayer (v4.1 Pagination + Tags)
             
-            Movies processed: ${{ inputs.max_movies || 30 }}
+            Pages: ${{ inputs.max_pages || 5 }}
             Run: ${{ github.run_id }}
           file_pattern: 'ophim.json ophim/detail/*.json progress.json'
           commit_user_name: github-actions[bot]
