@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.1 - FAST + FULL TAGS + PAGINATION)
+YanHH3D Scraper → MonPlayer JSON (v4.2 - STABLE + FAST + FULL TAGS)
 ✅ Stateful: Lưu progress.json, mỗi lần chạy chỉ crawl 20 tập tiếp theo
 ✅ Auto-detect new eps: Nếu phim có tập mới, tự động điều chỉnh offset
 ✅ Fix Tags: Lấy đầy đủ thể loại từ selector đúng (.item.item-title a.name.genre)
-✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~20 phim = 100+ phim)
-✅ Fast Mode: Giảm delay 1.5-3.0s (nhanh hơn 40% so với v4.0)
-✅ Progress Log: Hiển thị [1/100] Đang xử lý: <tên phim>
+✅ Pagination: Crawl từ /moi-cap-nhat (5 trang × ~24 phim = 120 phim)
+✅ Stable Delay: 2.5-4.5s (tránh CDN block)
+✅ Session Refresh: Reset connection mỗi 40 tập → giảm no stream
+✅ Progress Log: Hiển thị [1/120] Đang xử lý: <tên phim>
 """
 
 import argparse
@@ -39,18 +40,19 @@ CONFIG = {
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
     "PROGRESS_FILE":"progress.json",
-    "MAX_MOVIES":   None,  # ✅ Bỏ giới hạn - lấy tất cả phim tìm được
+    "MAX_MOVIES":   None,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 1500,  # ✅ Giảm từ 2500 → 1500 (nhanh hơn)
-    "EP_DELAY_MAX": 3000,  # ✅ Giảm từ 4500 → 3000
+    "EP_DELAY_MIN": 2500,  # ✅ Khôi phục delay an toàn
+    "EP_DELAY_MAX": 4500,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
-    "MAX_PAGES":   5,  # Số trang /moi-cap-nhat sẽ crawl
+    "MAX_PAGES":   2,
+    "SESSION_REFRESH_INTERVAL": 40,  # ✅ Refresh session mỗi 40 tập
 }
 
 EXTRA_HEADERS = {
@@ -90,6 +92,16 @@ def _apply_stealth(page: Page):
         """)
 
 
+def _refresh_session(page: Page):
+    """🔄 Refresh session nhẹ: reload blank để reset connection pool"""
+    try:
+        page.goto("about:blank", wait_until="commit", timeout=5000)
+        _human_delay(500, 1500)
+        logger.info("   🔄 Session refreshed")
+    except Exception as e:
+        logger.debug(f"   Session refresh warning: {e}")
+
+
 def _wait_for_cf(page: Page, selector: str, timeout: int):
     try:
         page.wait_for_function(
@@ -103,7 +115,7 @@ def _wait_for_cf(page: Page, selector: str, timeout: int):
     page.wait_for_selector(selector, state="attached", timeout=timeout)
 
 
-def _build_search_str(movie: dict, metadata: dict = None) -> str:
+def _build_search_str(movie: dict, meta dict = None) -> str:
     metadata = metadata or {}
     parts = [
         movie.get("title", ""),
@@ -143,12 +155,11 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
         meta = page.evaluate("""() => {
             const result = { description: "", tags: [], genres: [], year: "", status: "", poster: "", total_episodes: "" };
             
-            // Description
             const desc = document.querySelector('meta[name="description"]')?.content ||
                         document.querySelector('meta[property="og:description"]')?.content || "";
             result.description = desc ? desc.trim().replace(/\s+/g, ' ').slice(0, 500) : "";
             
-            // ✅ Tags/Genres - Selector đúng: .item.item-title a.name.genre
+            // ✅ Tags/Genres - Selector đúng
             const genreLinks = document.querySelectorAll('.item.item-title a.name.genre');
             genreLinks.forEach(link => {
                 const text = link.innerText.trim();
@@ -162,23 +173,19 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
             result.tags = [...new Set(result.tags)].slice(0, 15);
             result.genres = [...new Set(result.genres)].slice(0, 15);
             
-            // Year
             const yearMatch = document.title.match(/(\d{4})/) || 
                              document.querySelector('.item.item-list')?.innerText?.match(/(\d{4})/);
             if (yearMatch) result.year = yearMatch[1];
             
-            // Status
             const statusText = document.querySelector('.tick-rate, .badge, .status')?.innerText?.toLowerCase() || "";
             if (/hoàn thành|end|completed/i.test(statusText)) result.status = "completed";
             else if (/đang phát|ongoing|updating/i.test(statusText)) result.status = "ongoing";
             
-            // Poster
             const poster = document.querySelector('meta[property="og:image"]')?.content ||
                           document.querySelector('.film-poster img')?.src ||
                           document.querySelector('.film-poster img')?.dataset.src || "";
             result.poster = poster || "";
             
-            // Total episodes
             const epInfo = document.querySelector('.total-episodes, .episode-count, .item.item-list')?.innerText || "";
             const epMatch = epInfo.match(/(\d+)\s*(?:tập|ep)/i);
             if (epMatch) result.total_episodes = epMatch[1];
@@ -242,7 +249,6 @@ def _is_valid_fb_cdn(url: str) -> bool:
 
 
 def get_movies_from_pagination(page: Page, max_pages: int = None) -> list[dict]:
-    """✅ Crawl từ /moi-cap-nhat với pagination - lấy 100+ phim"""
     if max_pages is None:
         max_pages = CONFIG["MAX_PAGES"]
     
@@ -281,7 +287,6 @@ def get_movies_from_pagination(page: Page, max_pages: int = None) -> list[dict]:
             all_movies.extend(movies)
             logger.info(f"  ✅ Found {len(movies)} movies on page {page_num} (Total: {len(all_movies)})")
             
-            # Check if has next page
             has_next = page.query_selector('a[title="Next"], .pagination li.active + li a')
             if not has_next:
                 logger.info(f"  ⏹️  No next page button found")
@@ -356,7 +361,7 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, metadata: dict = None):
+def build_detail_json(slug: str, episodes: list, meta dict = None):
     metadata = metadata or {}
     streams = []
     for i, ep in enumerate(episodes):
@@ -369,7 +374,7 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
         "tags": metadata.get("tags", []),
-        "genres": metadata.get("genres", []),  # ✅ Thêm genres
+        "genres": metadata.get("genres", []),
         "description": metadata.get("description", ""),
     }
     for k in ("year", "status", "total_episodes"):
@@ -377,12 +382,11 @@ def build_detail_json(slug: str, episodes: list, metadata: dict = None):
     return result
 
 
-def build_list_item(movie: dict, metadata: dict = None):
+def build_list_item(movie: dict, meta dict = None):
     metadata = metadata or {}
     thumb = movie.get("thumb") or metadata.get("poster", "")
     badge = movie.get("badge") or metadata.get("status", "")
     
-    # ✅ Thêm tag "Mới nhất" cho phim ongoing + year >= 2024
     tags = metadata.get("tags", [])
     if metadata.get("status") == "ongoing" and metadata.get("year", "0") >= "2024":
         if "Mới nhất" not in tags:
@@ -391,7 +395,7 @@ def build_list_item(movie: dict, metadata: dict = None):
     item = {
         "id": movie["slug"], "name": movie["title"],
         "search": _build_search_str(movie, metadata), 
-        "keywords": tags,  # ✅ Dùng tags thay vì empty
+        "keywords": tags,
         "description": metadata.get("description", ""),
         "image": {"url": thumb, "type": "cover", "width": 480, "height": 640},
         "type": "playlist", "display": "text-below",
@@ -408,7 +412,6 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     if progress is None: progress = {}
     slug = movie_info["slug"]
     
-    # ✅ Log progress: [1/100] Đang xử lý: tien-nghich
     logger.info(f"  [{movie_index}/{total_movies}] Đang xử lý: {slug}")
     
     metadata = get_movie_metadata(page, slug)
@@ -446,6 +449,12 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     ep_data = []
     consecutive_fails = 0
     for i, ep in enumerate(episodes_to_crawl):
+        # ✅ Refresh session định kỳ để tránh CDN block
+        if (offset + i + 1) % CONFIG["SESSION_REFRESH_INTERVAL"] == 0:
+            logger.info(f"   🔄 [SESSION] Refreshing after {offset + i + 1} requests...")
+            _refresh_session(page)
+            _human_delay(1000, 2000)
+            
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         stream = get_stream_url(page, context, ep["url"])
         if stream:
@@ -477,7 +486,7 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.1")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.2")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -489,7 +498,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.1 - FAST + FULL TAGS + PAGINATION (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.2 - STABLE + FULL TAGS + SESSION REFRESH (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -502,7 +511,6 @@ def main():
         _apply_stealth(page)
 
         try:
-            # ✅ Crawl từ /moi-cap-nhat với pagination
             movies = get_movies_from_pagination(page, max_pages=args.max_pages)
             
             if not movies:
@@ -534,7 +542,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.1"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.2"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
