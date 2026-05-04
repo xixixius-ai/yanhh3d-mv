@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v4.6 - RESTORED LINK ENGINE)
-✅ RESTORED: Quay lại urllib + Cookie sync như v4.0 (fix triệt để no stream)
+YanHH3D Scraper → MonPlayer JSON (v4.7 - MERGE + SCHEMA RESTORE)
+✅ RESTORED SCHEMA: Bỏ genres/keywords đổi tên, giữ đúng cấu trúc app mong đợi
+✅ MERGE LOGIC: Ghép tập mới vào detail.json cũ, không ghi đè mất tập cũ
 ✅ Stateful: progress.json, offset 20 tập/lần, auto-resume
 ✅ Pagination: /moi-cap-nhat (5 trang = ~120 phim)
 ✅ Tags: Selector đúng (.item.item-title a.name.genre)
-✅ Progress Log: [1/120] Đang xử lý: <tên phim>
-✅ Syntax: metadata: dict = None (chuẩn Python 3.10+)
+✅ Engine: urllib + Cookie sync (ổn định như v4.0)
+✅ Syntax: metadata: dict = None (chuẩn tuyệt đối)
 """
 
 import argparse
@@ -50,7 +51,7 @@ CONFIG = {
     "RETRY_COUNT":  2,
     "RETRY_DELAY":  1.0,
     "EP_DELAY_MIN": 1500,
-    "EP_DELAY_MAX": 2000,
+    "EP_DELAY_MAX": 3000,
     "BATCH_LIMIT":  20,
     "CONSECUTIVE_FAIL_LIMIT": 5,
     "MAX_PAGES":    5,
@@ -161,7 +162,7 @@ def _cookies_to_header(cookies: dict) -> str:
 
 def get_movie_metadata(page: Page, slug: str) -> dict:
     detail_url = f"{CONFIG['BASE_URL']}/{slug}"
-    metadata = {"description": "", "tags": [], "genres": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
+    metadata = {"description": "", "tags": [], "year": "", "status": "", "poster": "", "total_episodes": ""}
     
     try:
         _human_delay(200, 400)
@@ -169,7 +170,7 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
         _wait_for_cf(page, "body", CONFIG["TIMEOUT_WAIT"])
         
         meta = page.evaluate("""() => {
-            const result = { description: "", tags: [], genres: [], year: "", status: "", poster: "", total_episodes: "" };
+            const result = { description: "", tags: [], year: "", status: "", poster: "", total_episodes: "" };
             
             const desc = document.querySelector('meta[name="description"]')?.content ||
                         document.querySelector('meta[property="og:description"]')?.content || "";
@@ -178,15 +179,9 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
             const genreLinks = document.querySelectorAll('.item.item-title a.name.genre');
             genreLinks.forEach(link => {
                 const text = link.innerText.trim();
-                const href = link.getAttribute('href') || '';
-                const slug = href.split('/').pop();
-                if (text && text.length < 50) {
-                    result.tags.push(text);
-                    if (slug) result.genres.push(slug);
-                }
+                if (text && text.length < 50) result.tags.push(text);
             });
             result.tags = [...new Set(result.tags)].slice(0, 15);
-            result.genres = [...new Set(result.genres)].slice(0, 15);
             
             const yearMatch = document.title.match(/(\d{4})/) || 
                              document.querySelector('.item.item-list')?.innerText?.match(/(\d{4})/);
@@ -221,9 +216,6 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(proxy_url: str, cookies: dict = None) -> str | None:
-    """
-    ✅ RESTORED v4.0 ENGINE: urllib + Cookie sync + full regex fallback
-    """
     headers = PLAY_FB_V8_HEADERS.copy()
     if cookies:
         headers["Cookie"] = _cookies_to_header(cookies)
@@ -365,7 +357,6 @@ def get_episodes(page: Page, slug: str):
         
         return page.evaluate("""() => {
             const res = [];
-            // ✅ Fallback selector giữ nguyên v4.0 + dự phòng
             const pane = document.querySelector('#top-comment, #episodes-content, .episode-list');
             if (!pane) return res;
             pane.querySelectorAll('a.ssl-item.ep-item').forEach(item => {
@@ -391,7 +382,6 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
                 label: (b.innerText || '').trim().toLowerCase()
             }));
         }""")
-        # ✅ Extract cookies từ context hiện tại để truyền vào urllib
         cookies = _extract_cookies_from_context(context)
         for b in btns:
             if "play-fb-v8" in b["src"]:
@@ -403,20 +393,61 @@ def get_stream_url(page: Page, context: BrowserContext, ep_url: str):
         return None
 
 
-def build_detail_json(slug: str, episodes: list, metadata: dict = None):
+def _load_existing_streams(detail_path: Path) -> list[dict]:
+    """Tải danh sách tập cũ từ file detail.json để merge"""
+    if not detail_path.exists():
+        return []
+    try:
+        with open(detail_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        streams = []
+        for source in data.get("sources", []):
+            for content in source.get("contents", []):
+                streams.extend(content.get("streams", []))
+        return streams
+    except Exception:
+        return []
+
+
+def build_detail_json(slug: str, new_episodes: list, all_streams: list, metadata: dict = None):
+    """Build JSON với danh sách tập đã được merge (cũ + mới)"""
     metadata = metadata or {}
-    streams = []
-    for i, ep in enumerate(episodes):
-        if not ep.get("stream"): continue
-        sl = [{"id": f"{slug}--0-{i}-{j}", "name": s.get("label") or f"Link {j+1}", "type": s["type"], "default": j==0, "url": s["url"]} for j, s in enumerate(ep["stream"])]
-        streams.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": sl})
+    
+    # Map all_streams back to episode structure for sorting
+    ep_map = {}
+    for stream_obj in all_streams:
+        ep_name = stream_obj.get("name", "")
+        if ep_name not in ep_map:
+            ep_map[ep_name] = {"name": ep_name, "stream": []}
+        ep_map[ep_name]["stream"].append({
+            "id": stream_obj.get("id", ""),
+            "name": stream_obj.get("name", f"Link {len(ep_map[ep_name]['stream'])+1}"),
+            "type": stream_obj.get("type", "mp4"),
+            "default": stream_obj.get("default", False),
+            "url": stream_obj.get("url", "")
+        })
+    
+    # Sort episodes by number (newest first)
+    sorted_eps = sorted(ep_map.values(), key=lambda x: int(re.search(r'\d+', x["name"]).group()) if re.search(r'\d+', x["name"]) else 0, reverse=True)
+    
+    streams_output = []
+    for i, ep in enumerate(sorted_eps):
+        stream_links = []
+        for j, s in enumerate(ep["stream"]):
+            stream_links.append({
+                "id": f"{slug}--0-{i}-{j}",
+                "name": s.get("name") or f"Link {j+1}",
+                "type": s["type"],
+                "default": j == 0,
+                "url": s["url"]
+            })
+        streams_output.append({"id": f"{slug}--0-{i}", "name": ep["name"], "stream_links": stream_links})
     
     result = {
-        "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams}]}],
+        "sources": [{"id": f"{slug}--0", "name": "Thuyet Minh #1", "contents": [{"id": f"{slug}--0", "name": "", "grid_number": 3, "streams": streams_output}]}],
         "subtitle": "Thuyet Minh",
         "search": _build_search_str({"slug": slug, "title": slug}, metadata),
         "tags": metadata.get("tags", []),
-        "genres": metadata.get("genres", []),
         "description": metadata.get("description", ""),
     }
     for k in ("year", "status", "total_episodes"):
@@ -447,7 +478,7 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_index: int, total_movies: int, force_all: bool = False, progress: dict = None):
+def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_index: int, total_movies: int, detail_dir: Path, force_all: bool = False, progress: dict = None):
     if progress is None: progress = {}
     slug = movie_info["slug"]
     logger.info(f"  [{movie_index}/{total_movies}] Đang xử lý: {slug}")
@@ -513,15 +544,33 @@ def scrape_movie(page: Page, context: BrowserContext, movie_info: dict, movie_in
     }
     save_progress(progress)
     
-    detail_json = build_detail_json(slug, ep_data, metadata)
+    # ✅ MERGE LOGIC: Ghép tập mới vào tập cũ
+    detail_path = detail_dir / f"{slug}.json"
+    old_streams = _load_existing_streams(detail_path)
+    
+    # Convert new ep_data to stream format
+    new_streams = []
+    for ep in ep_data:
+        for s in ep["stream"]:
+            new_streams.append(s)
+            
+    # Merge & deduplicate by URL
+    seen_urls = {s.get("url") for s in old_streams if s.get("url")}
+    merged_streams = old_streams + [s for s in new_streams if s.get("url") not in seen_urls]
+    
+    detail_json = build_detail_json(slug, ep_data, merged_streams, metadata)
+    with open(detail_path, "w", encoding="utf-8") as f:
+        json.dump(detail_json, f, ensure_ascii=False, indent=2)
+        
     list_item = build_list_item(movie_info, metadata)
-    ok = sum(1 for e in ep_data if any(s["type"] != "error" for s in e["stream"]))
-    logger.info(f"  ✅ Saved {slug}.json ({ok}/{crawled_count} playable) | Offset -> {new_offset}")
+    
+    ok = sum(1 for s in merged_streams if s.get("type") != "error")
+    logger.info(f"  ✅ Saved {slug}.json ({ok}/{len(merged_streams)} playable) | Offset -> {new_offset}")
     return list_item, detail_json
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.6")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v4.7")
     parser.add_argument("--search", type=str)
     parser.add_argument("--slug", type=str)
     parser.add_argument("--url", type=str)
@@ -533,7 +582,7 @@ def main():
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_PAGES"] = args.max_pages
     
-    logger.info(f"Starting v4.6 - RESTORED urllib ENGINE + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
+    logger.info(f"Starting v4.7 - MERGE + SCHEMA RESTORE + STABLE (Delay: {CONFIG['EP_DELAY_MIN']/1000}-{CONFIG['EP_DELAY_MAX']/1000}s)")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -554,12 +603,10 @@ def main():
             logger.info(f"🎬 Found {total} movies. Processing all...")
             for idx, movie in enumerate(movies, 1):
                 try:
-                    res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, 
+                    res = scrape_movie(page, context, movie, movie_index=idx, total_movies=total, detail_dir=detail_dir,
                                      force_all=args.all_episodes, progress=progress)
                     if res:
-                        li, dj = res
-                        with open(detail_dir / f"{movie['slug']}.json", "w", encoding="utf-8") as f: 
-                            json.dump(dj, f, ensure_ascii=False, indent=2)
+                        li, _ = res
                         channels.append(li)
                 except Exception as e:
                     logger.error(f"  ❌ Error processing {movie.get('slug', 'unknown')}: {e}")
@@ -574,7 +621,7 @@ def main():
         "description": "Phim thuyet minh chat luong cao tu YanHH3D.bz", "grid_number": 3,
         "channels": channels,
         "sorts": [{"text": "Moi nhat", "type": "radio", "url": f"{CONFIG['RAW_BASE']}/ophim"}],
-        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.6"}
+        "meta": {"source": CONFIG["BASE_URL"], "total_items": len(channels), "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "version": "4.7"}
     }
     with open(Path(CONFIG["LIST_FILE"]), "w", encoding="utf-8") as f: 
         json.dump(list_output, f, ensure_ascii=False, indent=2)
