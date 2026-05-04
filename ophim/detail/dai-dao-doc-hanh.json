@@ -41,10 +41,10 @@
               "stream_links": [
                 {
                   "id": "dai-dao-doc-hanh--0-2-0",
-                  "name": "Link 1",
-                  "type": "error",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPSGw8k0N33AK2Wh79rU8d85DvQAKbs3ZcPIS4Y0GzI9d7jUz6YoYgAlGfJjDCbZaD65-tq_1JPjF2-6qY-cG3SNlsWDY5ZJMKtOl7RaF6kIQ.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=28vf8IAMMJ8Q7kNvwE-7hf3&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTk4NDY2NzUxMjY1Nzg2LCJhc3NldF9hZ2VfZGF5cyI6MTQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo5MTgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=21587ca9f39cf93e&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC83NTQ5M0Y0MEU3RkVERDYwM0FFOTkwN0JGQ0MyOTc4OF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzNBNEIyMDk2RjJDOUExNDE0OEUzMjUxMkQ2MUFBRkEzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb076eugfPWBRUCKAJDMywXQIy2uFHrhR8YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=wkQpjFGee7oX5TZhz2x_sw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGUJzHaOZz2gc07pqiKcaH_HP_tIgSKdSwiIKrh2kZyqoXxBi9tZ4LVwoE1b8SccxlSChhjQ2w2&_nc_eui2=AeGgjOqo6yNOkNgz2iXWkzP73A6bAyT1a1HcDpsDJPVrUTbJ6HCiMLY4-GF0elRTZhc41iW4y9z9kdyu00SYG8aW&oh=00_Af7Ssc-r7myxf4ed58p7wQKk74LQ5xcY_YujkWUVgk3Q4Q&oe=69FE6A10&bitrate=1844779&tag=dash_h264-basic-gen2_720p"
                 }
               ]
             },
@@ -83,7 +83,7 @@
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQNK28-Cz7eCYeddTZEmz_q6zhwq-lcz89A3Qtz84KhN2l10WLB_YwaMII_7GWEH2L6YEzttto5CWU8DJpLHSOpmauLc_UJsipmQzB8rKM1Llw.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=v5jbOUAcQMsQ7kNvwGvl6jD&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNDc3NDc2NjY5MzU4OTk4LCJhc3NldF9hZ2VfZGF5cyI6MjcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMTYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=a1cac42069016334&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wOTRBOTI4MzIwNkZGMjM4RTBEMTQ3MTUyMENFMzE5Ml9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0I5NEE2NTFCOTMzRDNGODgzQkE5QTQxNDkyRkExNkEwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACasjojNj9DmCBUCKAJDMywXQJImZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=sShSKmCqcLX9yzAjKUo2yg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFfk9VH8VgybgH4EXtNcEVddjUG9YpbQ4vlwsBBqUd5hUav3VxpfKHBnvY5OKi39cbDp0oMRe8-&_nc_eui2=AeHtB84nU67Fqycv-trFW7KfGL2uBRZwBA0Yva4FFnAEDUAaPH0s3UMLlts73tx-0unDlhg5YKxMRHhB9Wp3ml8A&oh=00_Af4BAVpKfVOoQLSi-Nwqr8YAUE9eBBIwVAKxBERlPCOpwg&oe=69FD2A77&bitrate=2858137&tag=dash_h264-basic-gen2_720p"
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQNK28-Cz7eCYeddTZEmz_q6zhwq-lcz89A3Qtz84KhN2l10WLB_YwaMII_7GWEH2L6YEzttto5CWU8DJpLHSOpmauLc_UJsipmQzB8rKM1Llw.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=4V6dpYcUDGUQ7kNvwFa5ocv&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNDc3NDc2NjY5MzU4OTk4LCJhc3NldF9hZ2VfZGF5cyI6MjgsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMTYxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=a1cac42069016334&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wOTRBOTI4MzIwNkZGMjM4RTBEMTQ3MTUyMENFMzE5Ml9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0I5NEE2NTFCOTMzRDNGODgzQkE5QTQxNDkyRkExNkEwX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACasjojNj9DmCBUCKAJDMywXQJImZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=QZcpM3E68s7dDZARu89Gkw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEO7o_RsAvqYTbXYzZvk5p5eqYc0hmMJXj55Jvv1KONnbFo_E_ThjgemV6o0mnaqY66DEoUq-P5&_nc_eui2=AeHtB84nU67Fqycv-trFW7KfGL2uBRZwBA0Yva4FFnAEDUAaPH0s3UMLlts73tx-0unDlhg5YKxMRHhB9Wp3ml8A&oh=00_Af6dFMUfm9p2p-yRKIFoceUhFwNGY7NBJXBfEjnMSJ6pbg&oe=69FE7BF7&bitrate=2858137&tag=dash_h264-basic-gen2_720p"
                 }
               ]
             }
