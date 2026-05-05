@@ -211,9 +211,9 @@
                 {
                   "id": "thien-menh-dai-than-hoang--0-15-0",
                   "name": "25(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -224,9 +224,9 @@
                 {
                   "id": "thien-menh-dai-than-hoang--0-16-0",
                   "name": "24(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -237,9 +237,9 @@
                 {
                   "id": "thien-menh-dai-than-hoang--0-17-0",
                   "name": "23(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -250,9 +250,9 @@
                 {
                   "id": "thien-menh-dai-than-hoang--0-18-0",
                   "name": "22(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -263,6 +263,71 @@
                 {
                   "id": "thien-menh-dai-than-hoang--0-19-0",
                   "name": "21(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "thien-menh-dai-than-hoang--0-20",
+              "name": "20(no)",
+              "stream_links": [
+                {
+                  "id": "thien-menh-dai-than-hoang--0-20-0",
+                  "name": "20(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thien-menh-dai-than-hoang--0-21",
+              "name": "19(no)",
+              "stream_links": [
+                {
+                  "id": "thien-menh-dai-than-hoang--0-21-0",
+                  "name": "19(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thien-menh-dai-than-hoang--0-22",
+              "name": "18(no)",
+              "stream_links": [
+                {
+                  "id": "thien-menh-dai-than-hoang--0-22-0",
+                  "name": "18(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thien-menh-dai-than-hoang--0-23",
+              "name": "17(no)",
+              "stream_links": [
+                {
+                  "id": "thien-menh-dai-than-hoang--0-23-0",
+                  "name": "17(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thien-menh-dai-than-hoang--0-24",
+              "name": "16(no)",
+              "stream_links": [
+                {
+                  "id": "thien-menh-dai-than-hoang--0-24-0",
+                  "name": "16(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -275,13 +340,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "thien-menh-dai-than-hoang cn animation hhkungfu trùng sinh tiên hiệp kiếm hiệp xem phim thiên mệnh đại thần hoàng thuyết minh: thiên phú tầm thường, không tên trên bảng thần thông, châm ngôn sống chỉ có “có thể tránh thì tránh, có thể trốn thì trốn”, tuyên khởi chỉ mong yên ổn qua ngày. nhưng bánh xe số mệnh lại bắt đ... thien menh dai than hoang hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Trùng Sinh",
-    "Tiên Hiệp",
-    "Kiếm Hiệp"
-  ],
+  "search": "thien-menh-dai-than-hoang xem phim thiên mệnh đại thần hoàng thuyết minh: thiên phú tầm thường, không tên trên bảng thần thông, châm ngôn sống chỉ có “có thể tránh thì tránh, có thể trốn thì trốn”, tuyên khởi chỉ mong yên ổn qua ngày. nhưng bánh xe số mệnh lại bắt đ... thien menh dai than hoang hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thiên Mệnh Đại Thần Hoàng Thuyết Minh: Thiên phú tầm thường, không tên trên bảng Thần Thông, châm ngôn sống chỉ có “có thể tránh thì tránh, có thể trốn thì trốn”, Tuyên Khởi chỉ mong yên ổn qua ngày. Nhưng bánh xe số mệnh lại bắt đ..."
 }

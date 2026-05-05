@@ -81,9 +81,9 @@
                 {
                   "id": "gia-thien--0-5-0",
                   "name": "129(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "gia-thien--0-6-0",
                   "name": "128(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "gia-thien--0-7-0",
                   "name": "127(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "gia-thien--0-8-0",
                   "name": "126(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "gia-thien--0-9-0",
                   "name": "125(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-10",
+              "name": "124(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-10-0",
+                  "name": "124(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-11",
+              "name": "123(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-11-0",
+                  "name": "123(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-12",
+              "name": "122(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-12-0",
+                  "name": "122(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-13",
+              "name": "121(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-13-0",
+                  "name": "121(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "gia-thien--0-14",
+              "name": "120(no)",
+              "stream_links": [
+                {
+                  "id": "gia-thien--0-14-0",
+                  "name": "120(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "gia-thien cn animation hhkungfu huyền huyễn xuyên không tiên hiệp hài hước xem phim già thiên thuyết minh: một chàng trai thành đạt được bạn bè yêu quý. trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. nơi đó, mọi mâu t... gia thien hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Xuyên Không",
-    "Tiên Hiệp",
-    "Hài Hước"
-  ],
+  "search": "gia-thien xem phim già thiên thuyết minh: một chàng trai thành đạt được bạn bè yêu quý. trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. nơi đó, mọi mâu t... gia thien hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Già Thiên Thuyết Minh: Một chàng trai thành đạt được bạn bè yêu quý. Trong một lần họp mặt cùng nhóm bạn, một sự cố huyền ảo đã xảy ra và đưa cả nhóm bạn quay trở về thời cổ đại, thời kỳ tồn tại của những vị thần. Nơi đó, mọi mâu t..."
 }

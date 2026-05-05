@@ -276,9 +276,9 @@
                 {
                   "id": "sat-thu-567-thuyet-minh--0-20-0",
                   "name": "24(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "sat-thu-567-thuyet-minh--0-21-0",
                   "name": "23(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "sat-thu-567-thuyet-minh--0-22-0",
                   "name": "22(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "sat-thu-567-thuyet-minh--0-23-0",
                   "name": "20(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "sat-thu-567-thuyet-minh--0-24-0",
                   "name": "19(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "sat-thu-567-thuyet-minh--0-25",
+              "name": "18(no)",
+              "stream_links": [
+                {
+                  "id": "sat-thu-567-thuyet-minh--0-25-0",
+                  "name": "18(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,36 +348,67 @@
               ]
             },
             {
-              "id": "sat-thu-567-thuyet-minh--0-25",
+              "id": "sat-thu-567-thuyet-minh--0-26",
+              "name": "17(no)",
+              "stream_links": [
+                {
+                  "id": "sat-thu-567-thuyet-minh--0-26-0",
+                  "name": "17(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "sat-thu-567-thuyet-minh--0-27",
+              "name": "16(no)",
+              "stream_links": [
+                {
+                  "id": "sat-thu-567-thuyet-minh--0-27-0",
+                  "name": "16(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "sat-thu-567-thuyet-minh--0-28",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "sat-thu-567-thuyet-minh--0-28-0",
+                  "name": "15(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "sat-thu-567-thuyet-minh--0-29",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "sat-thu-567-thuyet-minh--0-29-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "sat-thu-567-thuyet-minh--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "sat-thu-567-thuyet-minh--0-25-0",
+                  "id": "sat-thu-567-thuyet-minh--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNv4GJKD8TSbnFl9gizVPlcEaLMuOMCNC6dWix7fzUHiHNcJE-x66jhufTPNlOTH7dXWmSZ-eX8Ext8yvSnU2ArqBPSiV1Tek4StlaJ3Q.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=cvhodhcKi54Q7kNvwGYbpTj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA3NTYzNjY2NjU5MTQ4NCwiYXNzZXRfYWdlX2RheXMiOjExMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjkxNCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=ZQYfEevC_YZ9XMj9b_qHhQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFzpPzHdTUmC89rXpLPxp_odf_mShYGP_N2rldZSiO60Xjbdbgse_ukaYxj9DaV_nRtnCOmGB56&_nc_eui2=AeEAAfj8Cc8r96PL9VOOVPwXzZqOw1uv4STNmo7DW6_hJJ7R7Uwki2btsu6sn_IpgZ9nWv634Ze2mecCP9WMZUv2&oh=00_Af70vjnPCYXg1KMir-IN0Irdy2c2oy_UAKK4UlUNJ1Etzw&oe=69FE333C&bitrate=215093&tag=sve_sd"
-                },
-                {
-                  "id": "sat-thu-567-thuyet-minh--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQMKncjOgZrlUyWHjwtSHnXhnXlY0gCluK_WiVR30_3RfSLcpvMAIRdMsHhFjZUCy_GWAq7zGTXqrpsZtM1NekpJielWT4A2slUyh0ZSgw.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=umUokznF4NcQ7kNvwEDS05m&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODk0MjUxNzI5NjEyMDQyLCJhc3NldF9hZ2VfZGF5cyI6MTExLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6Nzg4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=JajMGyw0efb5YyIO30Rneg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFaDcGzM4x_l4I18Q0hgdgIEW7SCtErqHUsrctq9I1nGEX81HTFpcU-7-oaXmOvauQszjOdMmJC&_nc_eui2=AeHGd-TzHOKlJsUpPag0qFOby4JSB-KPJ8TLglIH4o8nxDYElZ2-R-uR7pTkdT1FjJ3Y-STXrpjkBa9Lye7E0wGF&oh=00_Af7YinQoMsKTXvq313TdiJG-RWjLu_ttmmZGtdI6N4S6LA&oe=69FE64A3&bitrate=243981&tag=sve_sd"
-                },
-                {
-                  "id": "sat-thu-567-thuyet-minh--0-25-2",
-                  "name": "Link 3",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNii2CtHVkL2XUTvyEImXneGf-Itq2bCuD2Jvaalepo8LxURQyIj3dkRKjAJdc6A5MDogmWU8ql4EfB1kW0EKgzLr1S0MgpiMJbjirKoQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=PXVbZJ6j4iYQ7kNvwF-OcZG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ0NTEzOTgwNzE2OTg1OCwiYXNzZXRfYWdlX2RheXMiOjExMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk0NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=GQzCCYKxImvb3zJD0rf60Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFuxtQu9cggz1W6pE9_n7GexArLAXsPOX7W6GPaovtpxoc34H_monLvqouSK6_mj2O5tplYykou&_nc_eui2=AeGULUUruUjJ-54a3NXsT9eJkocY0fS0U_eShxjR9LRT9-apClIEDdvBe2fGH99hKFpFonCgKHCxCjmzqeTD4e_e&oh=00_Af5L7uqEodxJB_HenwgWUMDUr2l2EOTqpTw8QgrxFhocNg&oe=69FEBCBD&bitrate=261604&tag=sve_sd"
-                },
-                {
-                  "id": "sat-thu-567-thuyet-minh--0-25-3",
-                  "name": "Link 4",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPFuUFOBhdzbRzca3EDnNL-9a66n8LZS4TDyJfBWWsdVv5DJ7BbY9j5qbau2DKtKnr_RtAjikz0P-ff7HFbhdsGyPquhJWxdOyZAz2dzw.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=1j77hHHv_h0Q7kNvwF9liO1&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTYxNzg4NjYxMjUzOTI5NywiYXNzZXRfYWdlX2RheXMiOjExMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwMjksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=Ra7IT0P7I8NPlP629olmcQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEKEHJAozrZHsik_TrfqNDLOP0iCj5A_l0sapGwHmz0Ei05JN5e4CnnClTpP4kArrypYGwMMrsG&_nc_eui2=AeHvXHvWsiwZuBp3YUDaTWVu4ihT3t-J0X3iKFPe34nRfbVdCAjKruR4AQvEJD9Y76Lw5bjzGPFBxryiciJoDAFQ&oh=00_Af5mEqcKAGAxWsQBzF92jhKjEGD7FE3264q5QoSBX_76oA&oe=69FE726A&bitrate=229006&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -374,15 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "sat-thu-567-thuyet-minh cn animation hhkungfu huyền huyễn xuyên không cổ trang hài hước kiếm hiệp xem phim sát thủ 567 - sát thủ lưỡi kéo full thuyết minh: lúc trước main là sát thủ top 1, nhưng bị hãm hại mất đi ký ức. may mắn được một người bạn là gà đại bảo cứu và đặt tên mới là 567. sau đó là hành trình trở lại làm sát thủ đi kiếm... sat thu 567 thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Xuyên Không",
-    "Cổ Trang",
-    "Hài Hước",
-    "Kiếm Hiệp"
-  ],
+  "search": "sat-thu-567-thuyet-minh xem phim sát thủ 567 - sát thủ lưỡi kéo full thuyết minh: lúc trước main là sát thủ top 1, nhưng bị hãm hại mất đi ký ức. may mắn được một người bạn là gà đại bảo cứu và đặt tên mới là 567. sau đó là hành trình trở lại làm sát thủ đi kiếm... sat thu 567 thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Sát Thủ 567 - Sát Thủ Lưỡi Kéo Full Thuyết Minh: Lúc trước main là sát thủ Top 1, nhưng bị hãm hại mất đi ký ức. May mắn được một người bạn là gà Đại Bảo cứu và đặt tên mới là 567. Sau đó là hành trình trở lại làm sát thủ đi kiếm..."
 }

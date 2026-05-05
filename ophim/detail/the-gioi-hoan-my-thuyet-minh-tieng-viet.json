@@ -120,9 +120,9 @@
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-8-0",
                   "name": "239(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,9 +133,9 @@
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-9-0",
                   "name": "238(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -146,9 +146,9 @@
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-10-0",
                   "name": "237(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -159,9 +159,9 @@
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-11-0",
                   "name": "236(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -172,6 +172,71 @@
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-12-0",
                   "name": "235(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-13",
+              "name": "234(no)",
+              "stream_links": [
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-13-0",
+                  "name": "234(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-14",
+              "name": "233(no)",
+              "stream_links": [
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-14-0",
+                  "name": "233(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-15",
+              "name": "232(no)",
+              "stream_links": [
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-15-0",
+                  "name": "232(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-16",
+              "name": "231(no)",
+              "stream_links": [
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-16-0",
+                  "name": "231(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-17",
+              "name": "230(no)",
+              "stream_links": [
+                {
+                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-17-0",
+                  "name": "230(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -184,13 +249,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "the-gioi-hoan-my-thuyet-minh-tieng-viet cn animation hhkungfu huyền huyễn tiên hiệp hài hước xem phim thế giới hoàn mỹ thuyết minh: thế giới hoàn mỹ cải biên từ tiểu thuyết cùng tên. hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử... the gioi hoan my thuyet minh tieng viet hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Hài Hước"
-  ],
+  "search": "the-gioi-hoan-my-thuyet-minh-tieng-viet xem phim thế giới hoàn mỹ thuyết minh: thế giới hoàn mỹ cải biên từ tiểu thuyết cùng tên. hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử... the gioi hoan my thuyet minh tieng viet hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thế Giới Hoàn Mỹ Thuyết Minh: Thế Giới Hoàn Mỹ cải biên từ tiểu thuyết cùng tên. Hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. Hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử..."
 }

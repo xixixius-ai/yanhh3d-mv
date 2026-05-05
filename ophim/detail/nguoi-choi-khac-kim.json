@@ -81,9 +81,9 @@
                 {
                   "id": "nguoi-choi-khac-kim--0-5-0",
                   "name": "20(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "nguoi-choi-khac-kim--0-6-0",
                   "name": "19(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "nguoi-choi-khac-kim--0-7-0",
                   "name": "18(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "nguoi-choi-khac-kim--0-8-0",
                   "name": "17(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "nguoi-choi-khac-kim--0-9-0",
                   "name": "16(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-10",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-10-0",
+                  "name": "15(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-11",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-11-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-12",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-12-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-13",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-13-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nguoi-choi-khac-kim--0-14",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "nguoi-choi-khac-kim--0-14-0",
+                  "name": "11(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,12 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "nguoi-choi-khac-kim cn animation hhkungfu hài hước hiện đại xem phim người chơi khắc kim thuyết minh: trong thế giới tương lai, trò chơi thực tế ảo \"kỷ nguyên\" do tập đoàn sở thị phát triển đã thu hút sự chú ý của toàn thế giới nhờ trải nghiệm nhập vai hoàn hảo. thế nhưng ngay trước ngày trò chơi ch... nguoi choi khac kim hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Hài Hước",
-    "Hiện Đại"
-  ],
+  "search": "nguoi-choi-khac-kim xem phim người chơi khắc kim thuyết minh: trong thế giới tương lai, trò chơi thực tế ảo \"kỷ nguyên\" do tập đoàn sở thị phát triển đã thu hút sự chú ý của toàn thế giới nhờ trải nghiệm nhập vai hoàn hảo. thế nhưng ngay trước ngày trò chơi ch... nguoi choi khac kim hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Người Chơi Khắc Kim Thuyết Minh: Trong thế giới tương lai, trò chơi thực tế ảo \"Kỷ Nguyên\" do Tập đoàn Sở thị phát triển đã thu hút sự chú ý của toàn thế giới nhờ trải nghiệm nhập vai hoàn hảo. Thế nhưng ngay trước ngày trò chơi ch..."
 }

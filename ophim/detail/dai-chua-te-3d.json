@@ -276,9 +276,9 @@
                 {
                   "id": "dai-chua-te-3d--0-20-0",
                   "name": "50(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "dai-chua-te-3d--0-21-0",
                   "name": "49(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "dai-chua-te-3d--0-22-0",
                   "name": "48(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "dai-chua-te-3d--0-23-0",
                   "name": "47(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,71 @@
                 {
                   "id": "dai-chua-te-3d--0-24-0",
                   "name": "46(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "dai-chua-te-3d--0-25",
+              "name": "45(no)",
+              "stream_links": [
+                {
+                  "id": "dai-chua-te-3d--0-25-0",
+                  "name": "45(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-chua-te-3d--0-26",
+              "name": "44(no)",
+              "stream_links": [
+                {
+                  "id": "dai-chua-te-3d--0-26-0",
+                  "name": "44(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-chua-te-3d--0-27",
+              "name": "43(no)",
+              "stream_links": [
+                {
+                  "id": "dai-chua-te-3d--0-27-0",
+                  "name": "43(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-chua-te-3d--0-28",
+              "name": "42(no)",
+              "stream_links": [
+                {
+                  "id": "dai-chua-te-3d--0-28-0",
+                  "name": "42(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-chua-te-3d--0-29",
+              "name": "41(no)",
+              "stream_links": [
+                {
+                  "id": "dai-chua-te-3d--0-29-0",
+                  "name": "41(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -340,12 +405,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "dai-chua-te-3d cn animation hhkungfu huyền huyễn tiên hiệp xem phim đại chúa tể 3d thuyết minh: đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, th... dai chua te 3d hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp"
-  ],
+  "search": "dai-chua-te-3d xem phim đại chúa tể 3d thuyết minh: đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, th... dai chua te 3d hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Đại Chúa Tể 3D Thuyết Minh: Đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị Thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, th..."
 }

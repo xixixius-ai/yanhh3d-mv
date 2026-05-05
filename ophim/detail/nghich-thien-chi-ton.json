@@ -276,9 +276,9 @@
                 {
                   "id": "nghich-thien-chi-ton--0-20-0",
                   "name": "469(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "nghich-thien-chi-ton--0-21-0",
                   "name": "468(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "nghich-thien-chi-ton--0-22-0",
                   "name": "467(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "nghich-thien-chi-ton--0-23-0",
                   "name": "466(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "nghich-thien-chi-ton--0-24-0",
                   "name": "465(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-chi-ton--0-25",
+              "name": "464(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-chi-ton--0-25-0",
+                  "name": "464(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,22 +348,67 @@
               ]
             },
             {
-              "id": "nghich-thien-chi-ton--0-25",
+              "id": "nghich-thien-chi-ton--0-26",
+              "name": "463(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-chi-ton--0-26-0",
+                  "name": "463(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-chi-ton--0-27",
+              "name": "462(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-chi-ton--0-27-0",
+                  "name": "462(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-chi-ton--0-28",
+              "name": "461(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-chi-ton--0-28-0",
+                  "name": "461(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-chi-ton--0-29",
+              "name": "460(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-chi-ton--0-29-0",
+                  "name": "460(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-chi-ton--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "nghich-thien-chi-ton--0-25-0",
+                  "id": "nghich-thien-chi-ton--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMcaj_FtVvqYUkN-8TzRkessE6adGlDbaipJb2u_tItgi3YplITYUDC_HVmVaYNUwT24Iomi_zpG6q-muP6DW0j9_ZIDkgveX67XxKm3Q.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=0508YSR0h0sQ7kNvwFJN6G5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjkwNzgyMTMyNjA5NDc4MCwiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ5NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=QMk1S5Irta-MEP89gIAgyw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHcPhO1y7O66XCKEh845RoTIzsHURwNHRNf1CBnRh2UeqdOeNhglp3TjicDtyJsCX2XQzk3ZjwN&_nc_eui2=AeG_sNAsuW-TgeRLjVvJKbDxNkzmMXw3oxE2TOYxfDejEWu5y6zco2xQnvkH33dJCi9z2gtvhzOUWufbYAlkaztf&oh=00_Af4C0jdYiZAD6dhk_dhUjzm7fnHFXGmhxtFLmXqNOKPm3A&oe=69FDC0E3&bitrate=436859&tag=sve_sd"
-                },
-                {
-                  "id": "nghich-thien-chi-ton--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNdFdlxBpV64lxQW1KSTt548b8d_mIUgtQQ3oiuR12GCIxNuryKaBMavd8-PDyKTenIVQ4t200U_cS5NBWgub8yYF8Q4BCy4h5XVW71pQ.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=OoDBLvDOqigQ7kNvwE7uMdb&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjI3NjMyMDI5Mjg1MTAzNCwiYXNzZXRfYWdlX2RheXMiOjE0MiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=aVT7GrHZScDiK3YL3HDY6w&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEtNpWHYUB9M_Ws4k-7ngRfGCluJYbW2sJQ_8HfXYTNl4AcUb7OvhV7wTrtl6tBHliPUanjsQGu&_nc_eui2=AeGKwPlNHT3wyZ8E2pHWQA29zYNzKGQlsVPNg3MoZCWxU2FaLso1du5MC5clBbvTSlylPU31oUGA0eVQltZYg47I&oh=00_Af5qrWh3_krM4yvIzBAK2tUr6oWR3yASxLk7lNN1wA9fYw&oe=69FDC564&bitrate=386646&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -360,12 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "nghich-thien-chi-ton cn animation huyền huyễn trùng sinh cổ trang xem phim nghịch thiên chí tôn thuyết minh: ngày xưa uy chấn chư thiên thần vực, vạn thế luân hồi sau thảm tao diệt môn! tàn khốc nguyền rủa, vạn thế cừu hận, đàm vân lập chí, không còn trầm luân! vì tình cảm chân thành, thân nhân, từ đây từ... nghich thien chi ton hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Cổ Trang"
-  ],
+  "search": "nghich-thien-chi-ton xem phim nghịch thiên chí tôn thuyết minh: ngày xưa uy chấn chư thiên thần vực, vạn thế luân hồi sau thảm tao diệt môn! tàn khốc nguyền rủa, vạn thế cừu hận, đàm vân lập chí, không còn trầm luân! vì tình cảm chân thành, thân nhân, từ đây từ... nghich thien chi ton hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Nghịch Thiên Chí Tôn Thuyết Minh: Ngày xưa uy chấn chư thiên Thần Vực, vạn thế luân hồi sau thảm tao diệt môn! Tàn khốc nguyền rủa, vạn thế cừu hận, Đàm Vân lập chí, không còn trầm luân! Vì tình cảm chân thành, thân nhân, từ đây từ..."
 }

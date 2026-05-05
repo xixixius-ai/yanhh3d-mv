@@ -276,9 +276,9 @@
                 {
                   "id": "tien-vo-de-ton-thuyet-minh--0-20-0",
                   "name": "144(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "tien-vo-de-ton-thuyet-minh--0-21-0",
                   "name": "143(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "tien-vo-de-ton-thuyet-minh--0-22-0",
                   "name": "142(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "tien-vo-de-ton-thuyet-minh--0-23-0",
                   "name": "141(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "tien-vo-de-ton-thuyet-minh--0-24-0",
                   "name": "140(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "tien-vo-de-ton-thuyet-minh--0-25",
+              "name": "139(no)",
+              "stream_links": [
+                {
+                  "id": "tien-vo-de-ton-thuyet-minh--0-25-0",
+                  "name": "139(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,50 +348,67 @@
               ]
             },
             {
-              "id": "tien-vo-de-ton-thuyet-minh--0-25",
+              "id": "tien-vo-de-ton-thuyet-minh--0-26",
+              "name": "138(no)",
+              "stream_links": [
+                {
+                  "id": "tien-vo-de-ton-thuyet-minh--0-26-0",
+                  "name": "138(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-vo-de-ton-thuyet-minh--0-27",
+              "name": "137(no)",
+              "stream_links": [
+                {
+                  "id": "tien-vo-de-ton-thuyet-minh--0-27-0",
+                  "name": "137(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-vo-de-ton-thuyet-minh--0-28",
+              "name": "136(no)",
+              "stream_links": [
+                {
+                  "id": "tien-vo-de-ton-thuyet-minh--0-28-0",
+                  "name": "136(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-vo-de-ton-thuyet-minh--0-29",
+              "name": "135(no)",
+              "stream_links": [
+                {
+                  "id": "tien-vo-de-ton-thuyet-minh--0-29-0",
+                  "name": "135(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-vo-de-ton-thuyet-minh--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-0",
+                  "id": "tien-vo-de-ton-thuyet-minh--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQPqS9W43LGuX3v1QCJO98ANYVoZsnYegpzueVqf-1p1zlJVc-oywhITVEKq4dqOhpWxQt9B-HedQx32OgJ7XRvVoCpkbBm6zcjjAl5UGQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=PslnjOhkwoIQ7kNvwEitOaO&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzE5OTExMDU0MzEwMDEwLCJhc3NldF9hZ2VfZGF5cyI6MTA2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA2NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=e8LkV46xm5VTteFDmLmMzA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFA-73ItpwpELG3vC_77j1GANnC7QKRdH45_d1l3I2_ER5J0t3YU-GrRB5j_Lsor_O9LYavjjLY&_nc_eui2=AeEdBrTecQRauQHnSo7QPRYtkax3WSObnqiRrHdZI5ueqPiCAeYb56wZESu-i_6I1bB3_e3B4fwUzi_nv5_MeKFp&oh=00_Af5cIxIR7AAlLO1PkS231SBVdKxPNuuC26HR0InrCN4dFg&oe=69FDB669&bitrate=516323&tag=sve_sd"
-                },
-                {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPX1UXTp8BUuXPJyP14KYteouXFxiOcUsaEGZYofYeMHrJUb9eNso-KJcc54ESkWYVOdvScvKbykRR_oiHKoUXdZP2Txi4PMDYTHZYP0A.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=S6Ooxh_0XRgQ7kNvwEZa2wE&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQxNDYzMDU3MzM1MzA5MiwiYXNzZXRfYWdlX2RheXMiOjExNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNDksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=arvaw8XvuhoVYjPK8a7gYw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF9tszdvrHKJmWeyMCRCfcTjchi6ETHXhRn_Om6IQ6Z3U2m9TPBGjmt6Bf-EDy8xrHoLI5FUlhy&_nc_eui2=AeEGl7vjXnTof2ULo_Xhw4EFCOlG_tgx1jsI6Ub-2DHWO13_O4lxJhIu-LSWgG8hpdTnRKtwCSeM6ilgMkw2oReC&oh=00_Af5gKcQk8y__NRwYWaiDPdWjOIqHd03NYZoRF9uKYJVEwQ&oe=69FE6BAC&bitrate=506173&tag=sve_sd"
-                },
-                {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-2",
-                  "name": "Link 3",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://video-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMjIMNPg_9MRIo-sJY0U8xNyS_lIjf3SYXNuHETjWqbffWU-Bxa37Cb-hHS6bHk2yR1Da7ZzPzkyyTVFnAyN9h1EHMsT7Hz1KfETuVWzw.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=video-sin6-1.xx.fbcdn.net&_nc_ohc=9sXWsCEsl5IQ7kNvwHKEREG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA0ODg5NzMxOTIzMjM5OSwiYXNzZXRfYWdlX2RheXMiOjEyMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=Rvmr7eiLlO19Y-0PzxhzMA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH3D6T5etG58vVDM09UGBwtcsCUbN47-nB1C3KJ5iErDVByJvaN9bCLXyvndzN-JbbykQ6pxxCz&_nc_eui2=AeHHQEmRQjYmx4R9htfhR-bltvE_hIdXwyq28T-Eh1fDKk7wbnvDvNGgk1-CcLEndqKIsvicYNeXgObF6Z8CGiG8&oh=00_Af430wlcyc7KcGdj1puWDRvbvvUCCm5V4FAiY81jQ4_6kw&oe=69FE6903&bitrate=446636&tag=sve_sd"
-                },
-                {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-3",
-                  "name": "Link 4",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQP7zEMqrxqcFC8LD7sUnKfIsWpCo66Vas9Sr5aXUeagozmh9oi9DXj65Chc7dFTFOoVPqE-M2fQjyiHaD2YsQWtswUxxqaqSMpe3zbgQw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=976O77k8ANMQ7kNvwGYiPy2&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTMzNTY1MDQyOTgxODY4LCJhc3NldF9hZ2VfZGF5cyI6MTI4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTExMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=aFSCCGAL1I1Gczr2AnMC1g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF2s71DI-boWIzuZMn9YZSxXOfq1cJ6uE095ib3U35l6jT6L9scte93ssIj3hlEH7aht3WQfaNR&_nc_eui2=AeFi8vDXTb5w4HH4K3R6ej0p2DDDJ8bDKOrYMMMnxsMo6jYCnhyxAQf-XglwUWH-WWikZGbfyuP2hulDlg_lVNAF&oh=00_Af6amQ2Vhm0q48HyBsP8bLmXY-4_o-b9GqYQBoUQoR1QAw&oe=69FDF47D&bitrate=571939&tag=sve_sd"
-                },
-                {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-4",
-                  "name": "Link 5",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQO8S3rB10_9lkTIcbqTBCfSKJrYpAxKxJxSXuh0HWy4296_LG7LUDPBbu09JfbY3HNPN9szWGRcEM9A4QSB2Aa94OYMKRonHbVPsrHJ0w.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=RRi02nHIY68Q7kNvwF4vlRq&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ5MzAyMzYwNTExMDY2NCwiYXNzZXRfYWdlX2RheXMiOjEzNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExMTksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=7crC67hhudBQ5SdgJMmQtA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHHEDLjPJR17-3S5UlScw3RaRmVA0D8T9P1-wgzgahcq0gN1yLlWjzSFPclsz6ytKo4udPQdRIr&_nc_eui2=AeH2iRH-HjPC7Gi81u3ykHIvUpbTB4zgDixSltMHjOAOLKyUvPQtHiCQjRWTqk2RZoxrxjOaX5m1v7wDx2_5iUSu&oh=00_Af7TOVgwP4cJLt-Bk5yWM3ldDf1LITxNdZnCf3N2NlrLDg&oe=69FDA6C9&bitrate=418576&tag=sve_sd"
-                },
-                {
-                  "id": "tien-vo-de-ton-thuyet-minh--0-25-5",
-                  "name": "Link 6",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMns8q7_C7xQ3p2FTe4TCGnzGhHveGa0v62x_wM6JaEvMvwYbJK3tXPD9_59L4LAlQwwUmV72fsPS7YYoA97L5sUNovFx8DHpK7_nbWkg.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=gvg0vGQ3jLwQ7kNvwGtQZpo&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIwMDIyNjE2MjE4NDk4NSwiYXNzZXRfYWdlX2RheXMiOjE0MSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwODAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=2osWa3PHK0KsjvPRIh0nMw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGDW_QdLo8fCG7ArrMlv3KhrFWkQ_zEn0Iv4cM5s34AcZPLlHlzz2-ascOiimgH1ZmGAOoJ4Q2l&_nc_eui2=AeEn3S0z0xqI5KtNgmh0_xt19eLaH2cXIdP14tofZxch04CJwV-HwcxIvzAdV5vYLIb9vRp8md-ZiSPnmVrGQb0k&oh=00_Af6961MHTYvTrHsz-NnUWrdjaiBjK-8ix6z_XEd6MbsQ5A&oe=69FDA39D&bitrate=455742&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -388,13 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "tien-vo-de-ton-thuyet-minh cn animation hhkungfu huyền huyễn tiên hiệp hài hước xem phim tiên võ đế tôn thuyết minh: chín ngàn năm trước, tiên võ đế tôn suất lĩnh trăm vạn thần tướng đánh vào thái cổ hồng hoang, lại không một người trở về, chỉ có một sợi chân hỏa còn sót lại thế gian. 9,000 năm sau, môn phái phế đồ diệ... tien vo de ton thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Hài Hước"
-  ],
+  "search": "tien-vo-de-ton-thuyet-minh xem phim tiên võ đế tôn thuyết minh: chín ngàn năm trước, tiên võ đế tôn suất lĩnh trăm vạn thần tướng đánh vào thái cổ hồng hoang, lại không một người trở về, chỉ có một sợi chân hỏa còn sót lại thế gian. 9,000 năm sau, môn phái phế đồ diệ... tien vo de ton thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Tiên Võ Đế Tôn Thuyết Minh: Chín ngàn năm trước, Tiên Võ Đế Tôn suất lĩnh trăm vạn Thần Tướng đánh vào Thái Cổ Hồng Hoang, lại không một người trở về, chỉ có một sợi chân hỏa còn sót lại thế gian. 9,000 năm sau, môn phái phế đồ Diệ..."
 }

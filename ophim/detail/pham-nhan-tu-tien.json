@@ -81,9 +81,9 @@
                 {
                   "id": "pham-nhan-tu-tien--0-5-0",
                   "name": "162(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "pham-nhan-tu-tien--0-6-0",
                   "name": "161(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "pham-nhan-tu-tien--0-7-0",
                   "name": "160(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "pham-nhan-tu-tien--0-8-0",
                   "name": "159(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "pham-nhan-tu-tien--0-9-0",
                   "name": "158(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-10",
+              "name": "157(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-10-0",
+                  "name": "157(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-11",
+              "name": "156(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-11-0",
+                  "name": "156(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-12",
+              "name": "155(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-12-0",
+                  "name": "155(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-13",
+              "name": "154(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-13-0",
+                  "name": "154(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "pham-nhan-tu-tien--0-14",
+              "name": "153(no)",
+              "stream_links": [
+                {
+                  "id": "pham-nhan-tu-tien--0-14-0",
+                  "name": "153(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "pham-nhan-tu-tien cn animation hhkungfu huyền huyễn tiên hiệp cổ trang hài hước xem phim phàm nhân tu tiên thuyết minh: khúc hồn thành công kết đan! hai người ở loạn tinh hải còn gặp được cơ duyên gì gì? “tinh hải phi trì” , xin đợi trở về đồng thời manhua cũng đang trong quá trình khẩn trương remake, ngày nào đó sẽ gặ... pham nhan tu tien hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Cổ Trang",
-    "Hài Hước"
-  ],
+  "search": "pham-nhan-tu-tien xem phim phàm nhân tu tiên thuyết minh: khúc hồn thành công kết đan! hai người ở loạn tinh hải còn gặp được cơ duyên gì gì? “tinh hải phi trì” , xin đợi trở về đồng thời manhua cũng đang trong quá trình khẩn trương remake, ngày nào đó sẽ gặ... pham nhan tu tien hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Phàm Nhân Tu Tiên Thuyết Minh: Khúc Hồn thành công kết đan! hai người ở Loạn Tinh hải còn gặp được cơ duyên gì gì? “Tinh Hải Phi Trì” , xin đợi trở về Đồng thời Manhua cũng đang trong quá trình khẩn trương remake, ngày nào đó sẽ gặ..."
 }

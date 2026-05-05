@@ -81,9 +81,9 @@
                 {
                   "id": "kiem-lai--0-5-0",
                   "name": "20(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "kiem-lai--0-6-0",
                   "name": "19(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "kiem-lai--0-7-0",
                   "name": "18(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "kiem-lai--0-8-0",
                   "name": "17(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "kiem-lai--0-9-0",
                   "name": "16(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai--0-10",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "kiem-lai--0-10-0",
+                  "name": "15(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai--0-11",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "kiem-lai--0-11-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai--0-12",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "kiem-lai--0-12-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai--0-13",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "kiem-lai--0-13-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai--0-14",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "kiem-lai--0-14-0",
+                  "name": "11(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "kiem-lai cn animation hhkungfu huyền huyễn tiên hiệp cổ trang kiếm hiệp xem phim kiếm lai thuyết minh: một thanh niên bình thường cùng với thanh kiếm có sức mạnh vô biên, anh bước vào cuộc hành trình của mình. trong thế giới đầy khó khăn và nguy hiểm, anh trở thành một kiếm khách mạnh mẽ , anh trải qua những hà... kiem lai hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Cổ Trang",
-    "Kiếm Hiệp"
-  ],
+  "search": "kiem-lai xem phim kiếm lai thuyết minh: một thanh niên bình thường cùng với thanh kiếm có sức mạnh vô biên, anh bước vào cuộc hành trình của mình. trong thế giới đầy khó khăn và nguy hiểm, anh trở thành một kiếm khách mạnh mẽ , anh trải qua những hà... kiem lai hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Kiếm Lai Thuyết Minh: Một Thanh niên bình thường cùng với thanh kiếm có sức mạnh vô biên, anh bước vào cuộc hành trình của mình. Trong thế giới đầy khó khăn và nguy hiểm, anh trở thành một kiếm khách mạnh mẽ , Anh trải qua những hà..."
 }

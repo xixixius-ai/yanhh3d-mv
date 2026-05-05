@@ -276,9 +276,9 @@
                 {
                   "id": "vo-toai-tinh-ha--0-20-0",
                   "name": "36(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "vo-toai-tinh-ha--0-21-0",
                   "name": "35(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "vo-toai-tinh-ha--0-22-0",
                   "name": "34(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "vo-toai-tinh-ha--0-23-0",
                   "name": "33(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "vo-toai-tinh-ha--0-24-0",
                   "name": "32(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "vo-toai-tinh-ha--0-25",
+              "name": "31(no)",
+              "stream_links": [
+                {
+                  "id": "vo-toai-tinh-ha--0-25-0",
+                  "name": "31(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,36 +348,67 @@
               ]
             },
             {
-              "id": "vo-toai-tinh-ha--0-25",
+              "id": "vo-toai-tinh-ha--0-26",
+              "name": "30(no)",
+              "stream_links": [
+                {
+                  "id": "vo-toai-tinh-ha--0-26-0",
+                  "name": "30(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-toai-tinh-ha--0-27",
+              "name": "29(no)",
+              "stream_links": [
+                {
+                  "id": "vo-toai-tinh-ha--0-27-0",
+                  "name": "29(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-toai-tinh-ha--0-28",
+              "name": "28(no)",
+              "stream_links": [
+                {
+                  "id": "vo-toai-tinh-ha--0-28-0",
+                  "name": "28(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-toai-tinh-ha--0-29",
+              "name": "27(no)",
+              "stream_links": [
+                {
+                  "id": "vo-toai-tinh-ha--0-29-0",
+                  "name": "27(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-toai-tinh-ha--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "vo-toai-tinh-ha--0-25-0",
+                  "id": "vo-toai-tinh-ha--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNi4ENtzN7CREvJ2Fm_NXRwYSdjvUiOtpZvF5ye2CkfJBi-QgYvIGV1dEBgw9xh97dAZ2OUDGd-9MauUGqemEbgVTC6-8ZNu-VQsUBmWQ.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=tj7OYfYG8S4Q7kNvwF1OHGW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIyOTE0NzQ0OTEwOTgxNiwiYXNzZXRfYWdlX2RheXMiOjEzNCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ0MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=nn6RTRXexrqqLoVQitLCQA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE0pBDdhn88R707Q-ss4oLYuv-LAccNJjzrG3TlOtg-BV43XJKs7bu2qEPEnXh5z2BefJ1AGtMP&_nc_eui2=AeGDFe7Lal4JrZ7Ye_iC_Y4TUBulNZJWPIBQG6U1klY8gKaBpF8L7o00AoqKTJ7hK36QbJsFQW_LS6vb8Uu9yCDF&oh=00_Af7EubkbmweFyqB8mGobT6qvkc8qMB2vultp0m4gwWz0eg&oe=69FE6AE5&bitrate=619427&tag=sve_sd"
-                },
-                {
-                  "id": "vo-toai-tinh-ha--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOKrtUKGH1oWykFcnQXrQ_-iadipLm7MyvsKjEqAhM3mP0U6QmYPeLzvOo7x9jEISIGZf98rcocqSyu6d2R0lBBTDel4Rrrn-kNqS0gbQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=wWYYI9QJxG0Q7kNvwHLSGZK&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzIuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6Nzk4MDE1MzE5OTM1Njc2LCJhc3NldF9hZ2VfZGF5cyI6MTM3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDM3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=k8jzuBFn9gsTPDWiKTU7xw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHWIhp_3IYwXKxkz3dECS01ns00AY6ISZkVaTIwoq7jaGYsHZTY2-6MQwtSeWrBEUIzipdIj7FV&_nc_eui2=AeF2kB3w8tZq5lqPbzXauipfA8bjP1LaVvMDxuM_UtpW8w33tDRV6-qSGckq2DHH15uQJIAZ6AvLy9ymNVKrKrr5&oh=00_Af7IskdWK8MH26F5IAKrHklOpm-ZMciJL4UngU3IbR0tdw&oe=69FE6A86&bitrate=466716&tag=sve_sd"
-                },
-                {
-                  "id": "vo-toai-tinh-ha--0-25-2",
-                  "name": "Link 3",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMSheF13MN9rtBbtj3-5YhNJNZsXaXNO6C50HA5_ZcSOvpmsTfRBbY0KmXsw6ST3MfCodtfNCocwyuiQdDH_uWRCKoC6uMTgUBLERe82A.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=dz3JsE_j_A0Q7kNvwEIuCRY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODExNDE3MTI4NTQ3MzAzLCJhc3NldF9hZ2VfZGF5cyI6MTQxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6NDQwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=WgPzdSYdJhJ4wjjNdodlBg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGDf1LZs_Ec_BK-wxsVj4ScmuJKkqeye4fEVHPgXXchVxDQAqO0xsF7z4sg4Nyp9ch1dhwnBXtb&_nc_eui2=AeFuLTN-T4GrNizVG18FOivYg0mfgZsTAtODSZ-BmxMC0y-74ngyz690baqzKt2hrZXhlABYvW_dW1wAs_LM0nza&oh=00_Af5SDCZBHT1f97Xv3GmBnNmbdgOyqEgNrkF7iBbQf9Pl9Q&oe=69FE6687&bitrate=513423&tag=sve_sd"
-                },
-                {
-                  "id": "vo-toai-tinh-ha--0-25-3",
-                  "name": "Link 4",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://video-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM4rMg2YZJ3tfNSt2nQp6K4N_J0g-ZYka2CDqkGwZuebGrnWi7NkMFJeAnCGP5ryssdkPmsKZYD1gIbXLrzT7TWEhJaHCaq5pQe7OEY0w.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=video-sin2-2.xx.fbcdn.net&_nc_ohc=XUseG2kdewEQ7kNvwEwgo68&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTc4NjMxMTExMjAzMDk1OSwiYXNzZXRfYWdlX2RheXMiOjE0NCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQzNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=zUtNFAahJy69fY4Lstcc_g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFAVf3-UtoQ1VKnpvZuQ6OgYwNKDuA1OQGtFtIlhnZY3gFjSbVLZjIdstRr6e1lXHQTT9_bNjr3&_nc_eui2=AeFjoFWkj8ufx9U05qNyRmyNzBcg-HHijBXMFyD4ceKMFSVMDiVeXEKYRpGieD3vwYPvxEW72UQ-XIxrCoiARTd5&oh=00_Af6hwCSKeVOAAghc9mj0O-R0d-wGB_PYPq7ujMsNfJhx7g&oe=69FE69BB&bitrate=507163&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -374,14 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "vo-toai-tinh-ha cn animation hhkungfu huyền huyễn trùng sinh tiên hiệp cổ trang xem phim võ toái tinh hà thuyết minh: câu chuyện được bắt đầu từ một anh chàng có tên là giang hàn, vốn không được đùm bọc bởi cha mẹ từ nhỏ nên cậu vẫn luôn canh cánh trong lòng việc tìm và gặp lại họ, nhưng việc đó là vô cùng khó khăn, bở... vo toai tinh ha hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Tiên Hiệp",
-    "Cổ Trang"
-  ],
+  "search": "vo-toai-tinh-ha xem phim võ toái tinh hà thuyết minh: câu chuyện được bắt đầu từ một anh chàng có tên là giang hàn, vốn không được đùm bọc bởi cha mẹ từ nhỏ nên cậu vẫn luôn canh cánh trong lòng việc tìm và gặp lại họ, nhưng việc đó là vô cùng khó khăn, bở... vo toai tinh ha hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Võ Toái Tinh Hà Thuyết Minh: Câu chuyện được bắt đầu từ một anh chàng có tên là Giang Hàn, vốn không được đùm bọc bởi cha mẹ từ nhỏ nên cậu vẫn luôn canh cánh trong lòng việc tìm và gặp lại họ, nhưng việc đó là vô cùng khó khăn, bở..."
 }

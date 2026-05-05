@@ -81,9 +81,9 @@
                 {
                   "id": "phieu-mieu-kiem-tien-truyen--0-5-0",
                   "name": "35(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "phieu-mieu-kiem-tien-truyen--0-6-0",
                   "name": "34(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "phieu-mieu-kiem-tien-truyen--0-7-0",
                   "name": "33(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "phieu-mieu-kiem-tien-truyen--0-8-0",
                   "name": "32(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "phieu-mieu-kiem-tien-truyen--0-9-0",
                   "name": "31(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "phieu-mieu-kiem-tien-truyen--0-10",
+              "name": "30(no)",
+              "stream_links": [
+                {
+                  "id": "phieu-mieu-kiem-tien-truyen--0-10-0",
+                  "name": "30(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "phieu-mieu-kiem-tien-truyen--0-11",
+              "name": "29(no)",
+              "stream_links": [
+                {
+                  "id": "phieu-mieu-kiem-tien-truyen--0-11-0",
+                  "name": "29(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "phieu-mieu-kiem-tien-truyen--0-12",
+              "name": "28(no)",
+              "stream_links": [
+                {
+                  "id": "phieu-mieu-kiem-tien-truyen--0-12-0",
+                  "name": "28(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "phieu-mieu-kiem-tien-truyen--0-13",
+              "name": "27(no)",
+              "stream_links": [
+                {
+                  "id": "phieu-mieu-kiem-tien-truyen--0-13-0",
+                  "name": "27(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "phieu-mieu-kiem-tien-truyen--0-14",
+              "name": "26(no)",
+              "stream_links": [
+                {
+                  "id": "phieu-mieu-kiem-tien-truyen--0-14-0",
+                  "name": "26(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "phieu-mieu-kiem-tien-truyen cn animation hhkungfu huyền huyễn trùng sinh tiên hiệp cổ trang xem phim phiêu miểu kiếm tiên truyện thuyết minh: bị dồn nén đến cùng cực, mọi thứ khó khăn bủa vây, đó cũng là lúc mà đông phương thiếu hồng có thể dần phát huy hết những tinh thần bất khuất của mình để tự khẳng định bản thân, trả được nhữ... phieu mieu kiem tien truyen hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Tiên Hiệp",
-    "Cổ Trang"
-  ],
+  "search": "phieu-mieu-kiem-tien-truyen xem phim phiêu miểu kiếm tiên truyện thuyết minh: bị dồn nén đến cùng cực, mọi thứ khó khăn bủa vây, đó cũng là lúc mà đông phương thiếu hồng có thể dần phát huy hết những tinh thần bất khuất của mình để tự khẳng định bản thân, trả được nhữ... phieu mieu kiem tien truyen hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Phiêu Miểu Kiếm Tiên Truyện Thuyết Minh: Bị dồn nén đến cùng cực, mọi thứ khó khăn bủa vây, đó cũng là lúc mà Đông Phương Thiếu Hồng có thể dần phát huy hết những tinh thần bất khuất của mình để tự khẳng định bản thân, trả được nhữ..."
 }

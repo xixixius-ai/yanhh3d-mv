@@ -276,9 +276,9 @@
                 {
                   "id": "vo-hon-dai-luc--0-20-0",
                   "name": "28(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "vo-hon-dai-luc--0-21-0",
                   "name": "27(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "vo-hon-dai-luc--0-22-0",
                   "name": "26(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "vo-hon-dai-luc--0-23-0",
                   "name": "25(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,71 @@
                 {
                   "id": "vo-hon-dai-luc--0-24-0",
                   "name": "24(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "vo-hon-dai-luc--0-25",
+              "name": "23(no)",
+              "stream_links": [
+                {
+                  "id": "vo-hon-dai-luc--0-25-0",
+                  "name": "23(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-hon-dai-luc--0-26",
+              "name": "22(no)",
+              "stream_links": [
+                {
+                  "id": "vo-hon-dai-luc--0-26-0",
+                  "name": "22(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-hon-dai-luc--0-27",
+              "name": "21(no)",
+              "stream_links": [
+                {
+                  "id": "vo-hon-dai-luc--0-27-0",
+                  "name": "21(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-hon-dai-luc--0-28",
+              "name": "20(no)",
+              "stream_links": [
+                {
+                  "id": "vo-hon-dai-luc--0-28-0",
+                  "name": "20(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-hon-dai-luc--0-29",
+              "name": "19(no)",
+              "stream_links": [
+                {
+                  "id": "vo-hon-dai-luc--0-29-0",
+                  "name": "19(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -340,13 +405,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "vo-hon-dai-luc cn animation hhkungfu huyền huyễn xuyên không tiên hiệp xem phim võ hồn đại lục thuyết minh: nhà khoa học sở phong vô tình có được “kim ô lệnh” từ một thiên thạch rơi xuống. để tìm hiểu nguồn gốc của nó, sở phong đã sáng tạo ra siêu máy tính “khởi nguyên”. với sự trợ giúp của khởi nguyên, sở pho... vo hon dai luc hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Xuyên Không",
-    "Tiên Hiệp"
-  ],
+  "search": "vo-hon-dai-luc xem phim võ hồn đại lục thuyết minh: nhà khoa học sở phong vô tình có được “kim ô lệnh” từ một thiên thạch rơi xuống. để tìm hiểu nguồn gốc của nó, sở phong đã sáng tạo ra siêu máy tính “khởi nguyên”. với sự trợ giúp của khởi nguyên, sở pho... vo hon dai luc hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Võ Hồn Đại Lục Thuyết Minh: Nhà khoa học Sở Phong vô tình có được “Kim Ô Lệnh” từ một thiên thạch rơi xuống. Để tìm hiểu nguồn gốc của nó, Sở Phong đã sáng tạo ra siêu máy tính “Khởi Nguyên”. Với sự trợ giúp của Khởi Nguyên, Sở Pho..."
 }

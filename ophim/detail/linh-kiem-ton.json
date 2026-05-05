@@ -81,9 +81,9 @@
                 {
                   "id": "linh-kiem-ton--0-5-0",
                   "name": "654(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "linh-kiem-ton--0-6-0",
                   "name": "653(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "linh-kiem-ton--0-7-0",
                   "name": "652(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "linh-kiem-ton--0-8-0",
                   "name": "651(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "linh-kiem-ton--0-9-0",
                   "name": "650(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-10",
+              "name": "649(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-10-0",
+                  "name": "649(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-11",
+              "name": "648(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-11-0",
+                  "name": "648(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-12",
+              "name": "647(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-12-0",
+                  "name": "647(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-13",
+              "name": "646(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-13-0",
+                  "name": "646(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "linh-kiem-ton--0-14",
+              "name": "645(no)",
+              "stream_links": [
+                {
+                  "id": "linh-kiem-ton--0-14-0",
+                  "name": "645(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,12 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "linh-kiem-ton cn animation huyền huyễn trùng sinh cổ trang xem phim linh kiếm tôn thuyết minh: phim nói về cường giả sở hành vân bị tập kích, trở lại lúc còn trẻ, bất ngờ trở thành thiếu chủ phế vật yếu đuối năm đó, cùng với nữ chính thủy lưu hương vượt qua mọi trở ngại. linh kiem ton hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Cổ Trang"
-  ],
+  "search": "linh-kiem-ton xem phim linh kiếm tôn thuyết minh: phim nói về cường giả sở hành vân bị tập kích, trở lại lúc còn trẻ, bất ngờ trở thành thiếu chủ phế vật yếu đuối năm đó, cùng với nữ chính thủy lưu hương vượt qua mọi trở ngại. linh kiem ton hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Linh Kiếm Tôn Thuyết Minh: Phim nói về cường giả Sở Hành Vân bị tập kích, trở lại lúc còn trẻ, bất ngờ trở thành thiếu chủ phế vật yếu đuối năm đó, cùng với nữ chính Thủy Lưu Hương vượt qua mọi trở ngại."
 }

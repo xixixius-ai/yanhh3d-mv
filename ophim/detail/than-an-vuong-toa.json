@@ -81,9 +81,9 @@
                 {
                   "id": "than-an-vuong-toa--0-5-0",
                   "name": "182(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "than-an-vuong-toa--0-6-0",
                   "name": "181(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "than-an-vuong-toa--0-7-0",
                   "name": "180(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "than-an-vuong-toa--0-8-0",
                   "name": "179(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "than-an-vuong-toa--0-9-0",
                   "name": "178(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-10",
+              "name": "177(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-10-0",
+                  "name": "177(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-11",
+              "name": "176(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-11-0",
+                  "name": "176(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-12",
+              "name": "175(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-12-0",
+                  "name": "175(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-13",
+              "name": "174(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-13-0",
+                  "name": "174(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-an-vuong-toa--0-14",
+              "name": "173(no)",
+              "stream_links": [
+                {
+                  "id": "than-an-vuong-toa--0-14-0",
+                  "name": "173(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,12 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "than-an-vuong-toa cn animation hhkungfu huyền huyễn kiếm hiệp xem phim thần ấn vương tọa thuyết minh: một thiếu niên vì cứu mẫu thân của mình mà gia nhập kỵ sĩ thánh điện, kỳ tích, quỷ kế không ngừng xoay quanh hắn. trên con đường để giải cứu nhân loại và tìm đến đỉnh cao của tu luyện hắn đã đi tìm và... than an vuong toa hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Kiếm Hiệp"
-  ],
+  "search": "than-an-vuong-toa xem phim thần ấn vương tọa thuyết minh: một thiếu niên vì cứu mẫu thân của mình mà gia nhập kỵ sĩ thánh điện, kỳ tích, quỷ kế không ngừng xoay quanh hắn. trên con đường để giải cứu nhân loại và tìm đến đỉnh cao của tu luyện hắn đã đi tìm và... than an vuong toa hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thần Ấn Vương Tọa Thuyết Minh: Một thiếu niên vì cứu mẫu thân của mình mà gia nhập Kỵ Sĩ Thánh Điện, kỳ tích, quỷ kế không ngừng xoay quanh hắn. Trên con đường để giải cứu nhân loại và tìm đến đỉnh cao của tu luyện hắn đã đi tìm và..."
 }

@@ -211,9 +211,9 @@
                 {
                   "id": "lang-thien-doc-ton--0-15-0",
                   "name": "45(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -224,9 +224,9 @@
                 {
                   "id": "lang-thien-doc-ton--0-16-0",
                   "name": "44(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -237,9 +237,9 @@
                 {
                   "id": "lang-thien-doc-ton--0-17-0",
                   "name": "43(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -250,9 +250,9 @@
                 {
                   "id": "lang-thien-doc-ton--0-18-0",
                   "name": "42(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -263,6 +263,71 @@
                 {
                   "id": "lang-thien-doc-ton--0-19-0",
                   "name": "41(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "lang-thien-doc-ton--0-20",
+              "name": "40(no)",
+              "stream_links": [
+                {
+                  "id": "lang-thien-doc-ton--0-20-0",
+                  "name": "40(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "lang-thien-doc-ton--0-21",
+              "name": "39(no)",
+              "stream_links": [
+                {
+                  "id": "lang-thien-doc-ton--0-21-0",
+                  "name": "39(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "lang-thien-doc-ton--0-22",
+              "name": "38(no)",
+              "stream_links": [
+                {
+                  "id": "lang-thien-doc-ton--0-22-0",
+                  "name": "38(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "lang-thien-doc-ton--0-23",
+              "name": "37(no)",
+              "stream_links": [
+                {
+                  "id": "lang-thien-doc-ton--0-23-0",
+                  "name": "37(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "lang-thien-doc-ton--0-24",
+              "name": "36(no)",
+              "stream_links": [
+                {
+                  "id": "lang-thien-doc-ton--0-24-0",
+                  "name": "36(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -275,13 +340,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "lang-thien-doc-ton cn animation hhkungfu huyền huyễn trùng sinh tiên hiệp xem phim lăng thiên độc tôn thuyết minh: một đời kiếm thánh lăng thiên, vì cứu người mình yêu mà nghịch thiên đoạt bia, nhưng lại bị thiên đạo mưu tính. lúc ngã xuống, hắn đồng quy vu tận với thiên đạo, không ngờ lại trọng sinh, quay trở về... lang thien doc ton hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Tiên Hiệp"
-  ],
+  "search": "lang-thien-doc-ton xem phim lăng thiên độc tôn thuyết minh: một đời kiếm thánh lăng thiên, vì cứu người mình yêu mà nghịch thiên đoạt bia, nhưng lại bị thiên đạo mưu tính. lúc ngã xuống, hắn đồng quy vu tận với thiên đạo, không ngờ lại trọng sinh, quay trở về... lang thien doc ton hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Lăng Thiên Độc Tôn Thuyết Minh: Một đời Kiếm Thánh Lăng Thiên, vì cứu người mình yêu mà nghịch thiên đoạt bia, nhưng lại bị Thiên Đạo mưu tính. Lúc ngã xuống, hắn đồng quy vu tận với Thiên Đạo, không ngờ lại trọng sinh, quay trở về..."
 }

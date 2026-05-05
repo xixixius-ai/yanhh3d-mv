@@ -120,9 +120,9 @@
                 {
                   "id": "thuong-lan-quyet-phan-2--0-8-0",
                   "name": "18(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,9 +133,9 @@
                 {
                   "id": "thuong-lan-quyet-phan-2--0-9-0",
                   "name": "17(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -146,9 +146,9 @@
                 {
                   "id": "thuong-lan-quyet-phan-2--0-10-0",
                   "name": "16(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -159,9 +159,9 @@
                 {
                   "id": "thuong-lan-quyet-phan-2--0-11-0",
                   "name": "15(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -172,6 +172,71 @@
                 {
                   "id": "thuong-lan-quyet-phan-2--0-12-0",
                   "name": "14(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "thuong-lan-quyet-phan-2--0-13",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-lan-quyet-phan-2--0-13-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-lan-quyet-phan-2--0-14",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-lan-quyet-phan-2--0-14-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-lan-quyet-phan-2--0-15",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-lan-quyet-phan-2--0-15-0",
+                  "name": "11(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-lan-quyet-phan-2--0-16",
+              "name": "10(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-lan-quyet-phan-2--0-16-0",
+                  "name": "10(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-lan-quyet-phan-2--0-17",
+              "name": "9(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-lan-quyet-phan-2--0-17-0",
+                  "name": "9(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -184,14 +249,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "thuong-lan-quyet-phan-2 cn animation hhkungfu huyền huyễn tiên hiệp cổ trang hài hước xem phim thương lan quyết phần 2 thuyết minh: sau đại chiến long trời lở đất, đông phương thanh thương trở về biển thương viêm, nhưng không ngờ lại rơi vào cái bẫy đã được giăng sẵn của quân sư khổng tước. sóng gió chưa kịp lắng xuống, một... thuong lan quyet phan 2 hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Cổ Trang",
-    "Hài Hước"
-  ],
+  "search": "thuong-lan-quyet-phan-2 xem phim thương lan quyết phần 2 thuyết minh: sau đại chiến long trời lở đất, đông phương thanh thương trở về biển thương viêm, nhưng không ngờ lại rơi vào cái bẫy đã được giăng sẵn của quân sư khổng tước. sóng gió chưa kịp lắng xuống, một... thuong lan quyet phan 2 hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thương Lan Quyết Phần 2 Thuyết Minh: Sau đại chiến long trời lở đất, Đông Phương Thanh Thương trở về biển Thương Viêm, nhưng không ngờ lại rơi vào cái bẫy đã được giăng sẵn của quân sư Khổng Tước. Sóng gió chưa kịp lắng xuống, một..."
 }

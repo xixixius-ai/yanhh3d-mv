@@ -94,9 +94,9 @@
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-6-0",
                   "name": "100(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-7-0",
                   "name": "99(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-8-0",
                   "name": "98(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,9 +133,9 @@
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-9-0",
                   "name": "97(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -146,6 +146,71 @@
                 {
                   "id": "bach-luyen-thanh-than-thuyet-minh--0-10-0",
                   "name": "96(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-11",
+              "name": "95(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-11-0",
+                  "name": "95(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-12",
+              "name": "94(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-12-0",
+                  "name": "94(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-13",
+              "name": "93(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-13-0",
+                  "name": "93(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-14",
+              "name": "92(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-14-0",
+                  "name": "92(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "bach-luyen-thanh-than-thuyet-minh--0-15",
+              "name": "91(no)",
+              "stream_links": [
+                {
+                  "id": "bach-luyen-thanh-than-thuyet-minh--0-15-0",
+                  "name": "91(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -158,12 +223,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "bach-luyen-thanh-than-thuyet-minh cn animation hhkungfu huyền huyễn tiên hiệp xem phim bách luyện thành thần thuyết minh: gia tộc sa sút, người thân gặp nạn, la chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, la chinh... bach luyen thanh than thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp"
-  ],
+  "search": "bach-luyen-thanh-than-thuyet-minh xem phim bách luyện thành thần thuyết minh: gia tộc sa sút, người thân gặp nạn, la chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, la chinh... bach luyen thanh than thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Bách Luyện Thành Thần Thuyết Minh: Gia tộc sa sút, người thân gặp nạn, La Chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, La Chinh..."
 }

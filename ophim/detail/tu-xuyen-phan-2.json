@@ -276,9 +276,9 @@
                 {
                   "id": "tu-xuyen-phan-2--0-20-0",
                   "name": "20(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "tu-xuyen-phan-2--0-21-0",
                   "name": "19(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "tu-xuyen-phan-2--0-22-0",
                   "name": "18(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "tu-xuyen-phan-2--0-23-0",
                   "name": "17(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,71 @@
                 {
                   "id": "tu-xuyen-phan-2--0-24-0",
                   "name": "16(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "tu-xuyen-phan-2--0-25",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "tu-xuyen-phan-2--0-25-0",
+                  "name": "15(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tu-xuyen-phan-2--0-26",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "tu-xuyen-phan-2--0-26-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tu-xuyen-phan-2--0-27",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "tu-xuyen-phan-2--0-27-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tu-xuyen-phan-2--0-28",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "tu-xuyen-phan-2--0-28-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tu-xuyen-phan-2--0-29",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "tu-xuyen-phan-2--0-29-0",
+                  "name": "11(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -340,12 +405,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "tu-xuyen-phan-2 cn animation hhkungfu huyền huyễn cổ trang xem phim tử xuyên phần 2 thuyết minh: muốn xoá bỏ hiềm nghi, có rất nhiều cách, thanh minh bằng lời nói chỉ là một trong số đó, nhưng cũng là cách yếu vô dụng nhất, thực lực cũng là một cách để thanh minh. tử xuyên tú, vị tướng đã một mình... tu xuyen phan 2 hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Cổ Trang"
-  ],
+  "search": "tu-xuyen-phan-2 xem phim tử xuyên phần 2 thuyết minh: muốn xoá bỏ hiềm nghi, có rất nhiều cách, thanh minh bằng lời nói chỉ là một trong số đó, nhưng cũng là cách yếu vô dụng nhất, thực lực cũng là một cách để thanh minh. tử xuyên tú, vị tướng đã một mình... tu xuyen phan 2 hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Tử Xuyên Phần 2 Thuyết Minh: Muốn xoá bỏ hiềm nghi, có rất nhiều cách, thanh minh bằng lời nói chỉ là một trong số đó, nhưng cũng là cách yếu vô dụng nhất, thực lực cũng là một cách để thanh minh. Tử Xuyên Tú, vị tướng đã một mình..."
 }

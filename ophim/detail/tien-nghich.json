@@ -81,9 +81,9 @@
                 {
                   "id": "tien-nghich--0-5-0",
                   "name": "108(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "tien-nghich--0-6-0",
                   "name": "107(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "tien-nghich--0-7-0",
                   "name": "106(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "tien-nghich--0-8-0",
                   "name": "105(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "tien-nghich--0-9-0",
                   "name": "104(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-10",
+              "name": "103(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-10-0",
+                  "name": "103(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-11",
+              "name": "102(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-11-0",
+                  "name": "102(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-12",
+              "name": "101(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-12-0",
+                  "name": "101(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-13",
+              "name": "100(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-13-0",
+                  "name": "100(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "tien-nghich--0-14",
+              "name": "99(no)",
+              "stream_links": [
+                {
+                  "id": "tien-nghich--0-14-0",
+                  "name": "99(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "tien-nghich cn animation hhkungfu huyền huyễn tiên hiệp cổ trang hiện đại xem phim tiên nghịch thuyết minh: ✨ tập 62 => movie => tập 63 [ lưu ý: thứ tự xem này dựa theo tu vi của vương lâm ] ✨ cải biên từ tiểu thuyết “tiên nghịch” của tác giả nhĩ căn, kể về thiếu niên bình phàm vương lâm xuất thân nông thôn, ma... tien nghich hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Cổ Trang",
-    "Hiện Đại"
-  ],
+  "search": "tien-nghich xem phim tiên nghịch thuyết minh: ✨ tập 62 => movie => tập 63 [ lưu ý: thứ tự xem này dựa theo tu vi của vương lâm ] ✨ cải biên từ tiểu thuyết “tiên nghịch” của tác giả nhĩ căn, kể về thiếu niên bình phàm vương lâm xuất thân nông thôn, ma... tien nghich hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Tiên Nghịch Thuyết Minh: ✨ TẬP 62 => MOVIE => TẬP 63 [ Lưu ý: thứ tự xem này dựa theo tu vi của Vương Lâm ] ✨ Cải biên từ tiểu thuyết “Tiên Nghịch” của tác giả Nhĩ Căn, kể về thiếu niên bình phàm Vương Lâm xuất thân nông thôn, ma..."
 }

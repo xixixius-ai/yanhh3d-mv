@@ -237,9 +237,9 @@
                 {
                   "id": "dai-duong-thua-phong-luc--0-17-0",
                   "name": "8(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -250,9 +250,9 @@
                 {
                   "id": "dai-duong-thua-phong-luc--0-18-0",
                   "name": "7(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -263,9 +263,9 @@
                 {
                   "id": "dai-duong-thua-phong-luc--0-19-0",
                   "name": "6(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -276,9 +276,9 @@
                 {
                   "id": "dai-duong-thua-phong-luc--0-20-0",
                   "name": "5(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,48 @@
                 {
                   "id": "dai-duong-thua-phong-luc--0-21-0",
                   "name": "4(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "dai-duong-thua-phong-luc--0-22",
+              "name": "3(no)",
+              "stream_links": [
+                {
+                  "id": "dai-duong-thua-phong-luc--0-22-0",
+                  "name": "3(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-duong-thua-phong-luc--0-23",
+              "name": "2(no)",
+              "stream_links": [
+                {
+                  "id": "dai-duong-thua-phong-luc--0-23-0",
+                  "name": "2(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-duong-thua-phong-luc--0-24",
+              "name": "",
+              "stream_links": [
+                {
+                  "id": "dai-duong-thua-phong-luc--0-24-0",
+                  "name": "Link 1",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPdBgFukRdWC5Klu-ddiwEAYWXJ3-MxFHcUFlcFECVUp8zCEUQ1FB0bxPN5gVN4uiOXlA7TyXbRwtxbHffn04lP4C8WuwInZ5ewyIxgLg.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=94m7QXQLsgAQ7kNvwH8y6VF&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTg0NTgzMzE4Mjc0NjE4MywiYXNzZXRfYWdlX2RheXMiOjU3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTMyMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=xC3C83vynJsGufQIsW3rZQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE2S_s8RP9TGl4t5EdqgwPtjBHRmUbFJ9LvcwqOYPHLPJuRQSC29w69YNcgQVnqf3f62eZQUrxY&_nc_eui2=AeEnx50ov4AX6H-WMNwPuf4MVwp_GKN3Hu1XCn8Yo3ce7caJ0d7rr6N8jIwMrpi3nIe8kVvccl5Dm0e0rlV9aoXd&oh=00_Af6K2fEpkwcPzor3oABta5arwWgnTCRgQIqC55eDp7edHg&oe=69FE0A8C&bitrate=428656&tag=sve_sd"
                 }
               ]
             }
@@ -301,12 +340,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "dai-duong-thua-phong-luc cn animation hhkungfu huyền huyễn tiên hiệp xem phim đại đường thừa phong lục thuyết minh: từ câu chuyện của một vị sư phụ bị ám toán nên khắp cõi giang hồ được một phen dậy sóng và cũng là mở đầu cho cuộc hành trình đầy bi hài của cặp đôi huynh đệ vừa mới gặp mặt. được biết đến là m... dai duong thua phong luc hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp"
-  ],
+  "search": "dai-duong-thua-phong-luc xem phim đại đường thừa phong lục thuyết minh: từ câu chuyện của một vị sư phụ bị ám toán nên khắp cõi giang hồ được một phen dậy sóng và cũng là mở đầu cho cuộc hành trình đầy bi hài của cặp đôi huynh đệ vừa mới gặp mặt. được biết đến là m... dai duong thua phong luc hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Đại Đường Thừa Phong Lục Thuyết Minh: Từ câu chuyện của một vị sư phụ bị ám toán nên khắp cõi giang hồ được một phen dậy sóng và cũng là mở đầu cho cuộc hành trình đầy bi hài của cặp đôi huynh đệ vừa mới gặp mặt. Được biết đến là m..."
 }

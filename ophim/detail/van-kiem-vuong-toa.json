@@ -81,9 +81,9 @@
                 {
                   "id": "van-kiem-vuong-toa--0-5-0",
                   "name": "35(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "van-kiem-vuong-toa--0-6-0",
                   "name": "34(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "van-kiem-vuong-toa--0-7-0",
                   "name": "33(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "van-kiem-vuong-toa--0-8-0",
                   "name": "32(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "van-kiem-vuong-toa--0-9-0",
                   "name": "31(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-10",
+              "name": "30(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-10-0",
+                  "name": "30(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-11",
+              "name": "29(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-11-0",
+                  "name": "29(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-12",
+              "name": "28(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-12-0",
+                  "name": "28(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-13",
+              "name": "27(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-13-0",
+                  "name": "27(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "van-kiem-vuong-toa--0-14",
+              "name": "26(no)",
+              "stream_links": [
+                {
+                  "id": "van-kiem-vuong-toa--0-14-0",
+                  "name": "26(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,14 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "van-kiem-vuong-toa cn animation hhkungfu huyền huyễn tiên hiệp cổ trang kiếm hiệp xem phim vạn kiếm vương toạ thuyết minh: ở vương triều khương á rộng lớn, văn hóa kiếm đạo đã được lưu truyền hàng vạn năm, người dân đều lấy việc tu luyện kiếm đạo làm niềm vinh dự. thế nhưng những người có thể tu luyện thành công đến cảnh... van kiem vuong toa hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Cổ Trang",
-    "Kiếm Hiệp"
-  ],
+  "search": "van-kiem-vuong-toa xem phim vạn kiếm vương toạ thuyết minh: ở vương triều khương á rộng lớn, văn hóa kiếm đạo đã được lưu truyền hàng vạn năm, người dân đều lấy việc tu luyện kiếm đạo làm niềm vinh dự. thế nhưng những người có thể tu luyện thành công đến cảnh... van kiem vuong toa hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Vạn Kiếm Vương Toạ Thuyết Minh: Ở vương triều Khương Á rộng lớn, văn hóa kiếm đạo đã được lưu truyền hàng vạn năm, người dân đều lấy việc tu luyện kiếm đạo làm niềm vinh dự. Thế nhưng những người có thể tu luyện thành công đến cảnh..."
 }

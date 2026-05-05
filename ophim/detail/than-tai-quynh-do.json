@@ -276,9 +276,9 @@
                 {
                   "id": "than-tai-quynh-do--0-20-0",
                   "name": "20(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "than-tai-quynh-do--0-21-0",
                   "name": "19(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "than-tai-quynh-do--0-22-0",
                   "name": "18(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "than-tai-quynh-do--0-23-0",
                   "name": "17(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,71 @@
                 {
                   "id": "than-tai-quynh-do--0-24-0",
                   "name": "16(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "than-tai-quynh-do--0-25",
+              "name": "15(no)",
+              "stream_links": [
+                {
+                  "id": "than-tai-quynh-do--0-25-0",
+                  "name": "15(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-quynh-do--0-26",
+              "name": "14(no)",
+              "stream_links": [
+                {
+                  "id": "than-tai-quynh-do--0-26-0",
+                  "name": "14(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-quynh-do--0-27",
+              "name": "13(no)",
+              "stream_links": [
+                {
+                  "id": "than-tai-quynh-do--0-27-0",
+                  "name": "13(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-quynh-do--0-28",
+              "name": "12(no)",
+              "stream_links": [
+                {
+                  "id": "than-tai-quynh-do--0-28-0",
+                  "name": "12(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-quynh-do--0-29",
+              "name": "11(no)",
+              "stream_links": [
+                {
+                  "id": "than-tai-quynh-do--0-29-0",
+                  "name": "11(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -340,13 +405,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "than-tai-quynh-do cn animation hhkungfu huyền huyễn trùng sinh tiên hiệp xem phim thần tại quýnh đồ thuyết minh: thần tôn bất ngờ rơi xuống phàm giới, mất hết pháp lực. chỉ vì ngài đã phá giải được bí mật phi thăng suốt ngàn năm, không ngờ bước đầu tiên lại là hoá tiên thành phàm, bắt đầu lại từ đầu! thần tôn vố... than tai quynh do hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Tiên Hiệp"
-  ],
+  "search": "than-tai-quynh-do xem phim thần tại quýnh đồ thuyết minh: thần tôn bất ngờ rơi xuống phàm giới, mất hết pháp lực. chỉ vì ngài đã phá giải được bí mật phi thăng suốt ngàn năm, không ngờ bước đầu tiên lại là hoá tiên thành phàm, bắt đầu lại từ đầu! thần tôn vố... than tai quynh do hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thần Tại Quýnh Đồ Thuyết Minh: Thần Tôn bất ngờ rơi xuống phàm giới, mất hết pháp lực. Chỉ vì ngài đã phá giải được bí mật phi thăng suốt ngàn năm, không ngờ bước đầu tiên lại là hoá tiên thành phàm, bắt đầu lại từ đầu! Thần Tôn vố..."
 }

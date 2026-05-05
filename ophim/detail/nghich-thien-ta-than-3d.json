@@ -133,9 +133,9 @@
                 {
                   "id": "nghich-thien-ta-than-3d--0-9-0",
                   "name": "25(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -146,9 +146,9 @@
                 {
                   "id": "nghich-thien-ta-than-3d--0-10-0",
                   "name": "24(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -159,9 +159,9 @@
                 {
                   "id": "nghich-thien-ta-than-3d--0-11-0",
                   "name": "23(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -172,9 +172,9 @@
                 {
                   "id": "nghich-thien-ta-than-3d--0-12-0",
                   "name": "22(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -185,6 +185,71 @@
                 {
                   "id": "nghich-thien-ta-than-3d--0-13-0",
                   "name": "21(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-14",
+              "name": "20(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-14-0",
+                  "name": "20(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-15",
+              "name": "19(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-15-0",
+                  "name": "19(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-16",
+              "name": "18(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-16-0",
+                  "name": "18(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-17",
+              "name": "17(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-17-0",
+                  "name": "17(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "nghich-thien-ta-than-3d--0-18",
+              "name": "16(no)",
+              "stream_links": [
+                {
+                  "id": "nghich-thien-ta-than-3d--0-18-0",
+                  "name": "16(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -197,13 +262,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "nghich-thien-ta-than-3d cn animation hhkungfu huyền huyễn trùng sinh hài hước xem phim nghịch thiên tà thần 3d thuyết minh: trên đại lục thương vân, đại thổ y tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên thần dược thiên không. việc này đã khiến cho cả thiên hạ đều thèm muốn viên thần dược này, dẫn đến cái ch... nghich thien ta than 3d hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Hài Hước"
-  ],
+  "search": "nghich-thien-ta-than-3d xem phim nghịch thiên tà thần 3d thuyết minh: trên đại lục thương vân, đại thổ y tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên thần dược thiên không. việc này đã khiến cho cả thiên hạ đều thèm muốn viên thần dược này, dẫn đến cái ch... nghich thien ta than 3d hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Nghịch Thiên Tà Thần 3D Thuyết Minh: Trên đại lục Thương Vân, Đại Thổ Y Tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên Thần Dược Thiên Không. Việc này đã khiến cho cả thiên hạ đều thèm muốn viên Thần Dược này, dẫn đến cái ch..."
 }

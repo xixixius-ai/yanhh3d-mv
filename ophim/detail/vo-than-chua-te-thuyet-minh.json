@@ -276,9 +276,9 @@
                 {
                   "id": "vo-than-chua-te-thuyet-minh--0-20-0",
                   "name": "606(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "vo-than-chua-te-thuyet-minh--0-21-0",
                   "name": "605(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "vo-than-chua-te-thuyet-minh--0-22-0",
                   "name": "604(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "vo-than-chua-te-thuyet-minh--0-23-0",
                   "name": "603(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "vo-than-chua-te-thuyet-minh--0-24-0",
                   "name": "602(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "vo-than-chua-te-thuyet-minh--0-25",
+              "name": "601(no)",
+              "stream_links": [
+                {
+                  "id": "vo-than-chua-te-thuyet-minh--0-25-0",
+                  "name": "601(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,57 +348,67 @@
               ]
             },
             {
-              "id": "vo-than-chua-te-thuyet-minh--0-25",
+              "id": "vo-than-chua-te-thuyet-minh--0-26",
+              "name": "600(no)",
+              "stream_links": [
+                {
+                  "id": "vo-than-chua-te-thuyet-minh--0-26-0",
+                  "name": "600(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-than-chua-te-thuyet-minh--0-27",
+              "name": "599(no)",
+              "stream_links": [
+                {
+                  "id": "vo-than-chua-te-thuyet-minh--0-27-0",
+                  "name": "599(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-than-chua-te-thuyet-minh--0-28",
+              "name": "598(no)",
+              "stream_links": [
+                {
+                  "id": "vo-than-chua-te-thuyet-minh--0-28-0",
+                  "name": "598(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-than-chua-te-thuyet-minh--0-29",
+              "name": "597(no)",
+              "stream_links": [
+                {
+                  "id": "vo-than-chua-te-thuyet-minh--0-29-0",
+                  "name": "597(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "vo-than-chua-te-thuyet-minh--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-0",
+                  "id": "vo-than-chua-te-thuyet-minh--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOVvjKClk8ptXjoQJWJ8JLjZxaLNk2B8P0zAB_sz7Qv0LQBr-Qve_OQlgV9ApE6U7f26mvBrfYv-IHIo9sND5qHd13EkkbTIwin2_FyiQ.mp4?_nc_cat=103&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=8PymtCxHt8IQ7kNvwHFSFQY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODIyODU3MDQ0MDY0MzIzLCJhc3NldF9hZ2VfZGF5cyI6MTIwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MzUxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=sxcUAJeSbgbo4hOyauDHBw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFu6NYUf82bnUslGWPxNDfpZ5_DNITkCN8DW_x0xWFiQpBHgkMh8spuU6LXPWqKhILDqvi1q9Al&_nc_eui2=AeFfHOleLwXt79I5VFdMx9Sk-UZMdAt56Wf5Rkx0C3npZ0D8rPQTBV2fuFJSCRW11n7bHNYz5xXiDHNNsfIT-E0G&oh=00_Af4IksFUiv7acTF8_eXKOgMqp-mJsnWlkUX9u9ZIVoP6ng&oe=69FE579B&bitrate=435766&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQMY-XrKPnl4GYG4pU-EAqoFSAFavEokv1bq3crR8FcaAg4O7CaACDeYckcXuAdhQc-DdD1mGbDCCR5w9QZ30bPUHHF0hqNjdqKdbK5BZQ.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=kB5LJh224MIQ7kNvwEfFZ6U&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjYyNzU3OTkxNDI2NzIxNSwiYXNzZXRfYWdlX2RheXMiOjEyNSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjMyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=v6kMqJdzAD3COJtGGmdFSQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFTrM-nCYkeWc357r3aQr2GmPen-HuAoecbrPJmVx30ilPUWmRtYYmgUObNXLwx_-DEK-_YMYCv&_nc_eui2=AeHS56KEpwRLLuX_zP82b4c8sYHs9hFBRBqxgez2EUFEGhpiPgkEv4k-NjDXK4pqLzy26Z4izjKDQz7OKID3fXch&oh=00_Af562NGbRLCaR2CHFOv9cHPvskj9SWxvqDIM7Pzo9-Y1_w&oe=69FE44EE&bitrate=425040&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-2",
-                  "name": "Link 3",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOnQyhyHKOTlmZgN_joUvG-tB06TEzKMmMQo2a9szKpWSo9GGAlSu9h11-Er2lYJrul9k85XcUG5cYULyxcvXHd5nkItntHtVKPcRuZ1g.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=j_mQ6ZiuEOUQ7kNvwHcyXp_&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI4MjcxNjUzMDM2MTMyOSwiYXNzZXRfYWdlX2RheXMiOjEyNiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjM0NywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=I8MzHxGwPWl5GQT_pY938Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH00p9krMRUZpp40DaGScrGlCw6iPZpAEVD_pm-LtZX8Q5K-NcNXaueJLIvPWWWg6bZRN4VGNkk&_nc_eui2=AeGIFwXx6vXdG9ZfBwHwX7yDm1SVqFsXAXmbVJWoWxcBecxVbMM9Ox7wD3LYxNJYVLzgkKQWBDQftcHTNiQRWGCv&oh=00_Af5y-0uMmoNIUMl0MV-_dAtRM0w5tnlkmT49ZMv4OHIc4g&oe=69FD9F6D&bitrate=534416&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-3",
-                  "name": "Link 4",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOn8gMM9wp6NcpmosnBU2lzK4yb31vehdCliRL_XP1JEhGvFhqdR47jzzpMTdoAYfkU3n8zUK6gzbK9Eyjns8PBI2DMwKJ7A4ECpOLICA.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=vOhaN0m5OrAQ7kNvwG-b76l&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTgwMjcwNTE2Mzc3MjUxOSwiYXNzZXRfYWdlX2RheXMiOjEzMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjMzOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=q6i79PPANI68PsDrdXk5OA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHchjiN8AO5qjOMwSzIkOvGmNsvg7BmrFw-Y1BdaL_tXZn_OUc5UP74Co0Y9UBh2896oTEhfpqD&_nc_eui2=AeECW4CRFtnhpgoE4uBwcQaUWTuBIxclCx1ZO4EjFyULHZKbzAD-64LWAA_QZ_ZG18hdAz1C3ffqR9RzKfOwetkq&oh=00_Af6ef1mDu7VZ_R694ZOST8KdkBXM188bNb1Z3cDwvTR6DQ&oe=69FED621&bitrate=531939&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-4",
-                  "name": "Link 5",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPKWgeF8PNe2A9XpAad8ITGMoE8bdYzyY1tMndzRnD8BRDvkrJ68yUow25m6636CeqXCovDoNxu-BLXNSZmAH4sFgjJhfqKkfDo_J_YQQ.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=DbhvE-NAB9EQ7kNvwFoeixY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4NDcxOTMzOTg1MjAxOSwiYXNzZXRfYWdlX2RheXMiOjEzMywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjMyNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=LFteN2J-QJ37BrqlSSm1oQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGNCMennXPKQlH6pOjOw5aZdzzKyU1X5uI2we0p-QXX27fppPaBBmtiz_7mZ3S74AinJLpR6c8V&_nc_eui2=AeFaNzn1fKDYg9iJH9OYzd1FrJVkZX-CoteslWRlf4Ki1_3uQf7PGLw6rZOEKeoyoV1uC5ucfUKcLwUHuAkdVOsL&oh=00_Af7LPc04FaS7m3wy87EgA1e8waI7PNxMRFgqxO5AN5_STw&oe=69FD9BCE&bitrate=514363&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-5",
-                  "name": "Link 6",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNK-k6CIIbrVQkeUpHBCClDNdSEbCCsT4OVkIlJKBMYMtFVNMyDbRisUuctzqAogOYIuDQ4KWlnHEfx3hvfyLGSbWpb6vRtLdA7GmM9vg.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=HGiRmRyvK-MQ7kNvwGExqDH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU4NTIwNTQ5OTI3OTM1OCwiYXNzZXRfYWdlX2RheXMiOjEzOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjM0MiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=dKKbhBmbrR2eANJImiQfpw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGhvbqvXnPME9rTPeJ9Qn25X6jPLb01XEjgcj0zJ5aD5eP67eT9eG7TVEpeNo4-i0M9qeb7bLZy&_nc_eui2=AeFSWp6RJbwnCaOmlZeJP3k_pp4nG02_BNKmnicbTb8E0lHvp0nWtSpthWw5ivH_zZEKgqXPSJIVihSLItXAqzIg&oh=00_Af75pRJ4ZdLLt9PX_l93Sd_BF4eogivg0mrXLmTnQKu9nA&oe=69FDA9FD&bitrate=474995&tag=sve_sd"
-                },
-                {
-                  "id": "vo-than-chua-te-thuyet-minh--0-25-6",
-                  "name": "Link 7",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNpitaqAr1IOevmZYBLBTyhczG-nS2vC_aRCTiW9DeTCApx4bE0lESLuEhjpqk_WFpNMPjd3yU7EqzB2vkc_XWnI6RnPVSoaOmu-HOGdw.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=fJtMozws88gQ7kNvwHSBJvR&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU3MDYzOTU3Mzk0MTk0MiwiYXNzZXRfYWdlX2RheXMiOjE0MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjMxMSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=rixLxq7x-jPs2yyuih_zWQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHOANaqp5buElMkCgFgevIRAbwWiPv5sa0QcjSWW2lAqBrGJX046Er17gPWT4tz8YS2KPBlKuKa&_nc_eui2=AeHaOMP29kYcac6VdaO4IMmSAQE0_jEOvAMBATT-MQ68A20fsn9ZUn_fLT1Y9qMK77TL2bBlbfbe1EI_i3b8N88r&oh=00_Af4B6mAObvr4ORb1wIswfaiCIGWumXrAjlq5hFycKnL0sw&oe=69FDC1DC&bitrate=433182&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -395,12 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "vo-than-chua-te-thuyet-minh cn animation huyền huyễn trùng sinh cổ trang xem phim võ thần chúa tể thuyết minh: thiên vũ đại lục nhất đại truyền kỳ tần trần, bởi vì bạn tốt phản bội bất ngờ ngã xuống võ vực. 300 năm sau, hắn chuyển sinh thành một con riêng ở một vương phủ phải chịu đủ mọi ức hiếp lên người, l... vo than chua te thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "Huyền Huyễn",
-    "Trùng Sinh",
-    "Cổ Trang"
-  ],
+  "search": "vo-than-chua-te-thuyet-minh xem phim võ thần chúa tể thuyết minh: thiên vũ đại lục nhất đại truyền kỳ tần trần, bởi vì bạn tốt phản bội bất ngờ ngã xuống võ vực. 300 năm sau, hắn chuyển sinh thành một con riêng ở một vương phủ phải chịu đủ mọi ức hiếp lên người, l... vo than chua te thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Võ Thần Chúa Tể Thuyết Minh: Thiên Vũ đại lục nhất đại truyền kỳ Tần Trần, bởi vì bạn tốt phản bội bất ngờ ngã xuống Võ vực. 300 năm sau, hắn chuyển sinh thành một con riêng ở một vương phủ phải chịu đủ mọi ức hiếp lên người, l..."
 }

@@ -276,9 +276,9 @@
                 {
                   "id": "su-huynh-a-su-huynh--0-20-0",
                   "name": "118(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "su-huynh-a-su-huynh--0-21-0",
                   "name": "117(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "su-huynh-a-su-huynh--0-22-0",
                   "name": "116(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "su-huynh-a-su-huynh--0-23-0",
                   "name": "115(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "su-huynh-a-su-huynh--0-24-0",
                   "name": "114(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "su-huynh-a-su-huynh--0-25",
+              "name": "113(no)",
+              "stream_links": [
+                {
+                  "id": "su-huynh-a-su-huynh--0-25-0",
+                  "name": "113(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,15 +348,67 @@
               ]
             },
             {
-              "id": "su-huynh-a-su-huynh--0-25",
+              "id": "su-huynh-a-su-huynh--0-26",
+              "name": "112(no)",
+              "stream_links": [
+                {
+                  "id": "su-huynh-a-su-huynh--0-26-0",
+                  "name": "112(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "su-huynh-a-su-huynh--0-27",
+              "name": "111(no)",
+              "stream_links": [
+                {
+                  "id": "su-huynh-a-su-huynh--0-27-0",
+                  "name": "111(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "su-huynh-a-su-huynh--0-28",
+              "name": "110(no)",
+              "stream_links": [
+                {
+                  "id": "su-huynh-a-su-huynh--0-28-0",
+                  "name": "110(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "su-huynh-a-su-huynh--0-29",
+              "name": "109(no)",
+              "stream_links": [
+                {
+                  "id": "su-huynh-a-su-huynh--0-29-0",
+                  "name": "109(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "su-huynh-a-su-huynh--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "su-huynh-a-su-huynh--0-25-0",
+                  "id": "su-huynh-a-su-huynh--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQM2cwMneLC4OTsGyHvpQXpoTJopdEwovigC9RGWkdokfru-LG0Itx_qF90UCNLJQKIsry4s4zlw5qGvIVpnnWqkJz_gCq0QuX1VMY2dsQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=d9SgIjDkWLwQ7kNvwFuecRu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTE2OTc5ODE4NTIxMjkwNCwiYXNzZXRfYWdlX2RheXMiOjE0NCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk5NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=ueoWyrnzeBMxDK5piqBpOA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEOnU3din9LaGtZ1rSSVBrIUbVholKJQ24bg9X8Ro-zK69Tj0wHzJTVUoP_hU1YzcnXdHD1QMyb&_nc_eui2=AeGotUN9KDPp-12G7y51eKDHgiJ7q2_ucOmCInurb-5w6UAVGhY2-Ge2DX9nZcBQ61MC6OO-5sPh2-l42JLGu0go&oh=00_Af7Co_YVpHiDg9ljEwXs7VjzitSGV2j0rNtAfE3xe1pD9w&oe=69FE0288&bitrate=528871&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -353,15 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "su-huynh-a-su-huynh cn animation hhkungfu huyền huyễn xuyên không trùng sinh tiên hiệp hài hước xem phim sư huynh a sư huynh thuyết minh: nội dung kể về lý trường thọ – một thanh niên mắc bệnh hiểm nghèo vô tình được tái sinh vào thời thượng cổ trước đại chiến phong thần, trở thành một luyện khí sĩ. vì để tu được trường sinh bất lão v... su huynh a su huynh hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Xuyên Không",
-    "Trùng Sinh",
-    "Tiên Hiệp",
-    "Hài Hước"
-  ],
+  "search": "su-huynh-a-su-huynh xem phim sư huynh a sư huynh thuyết minh: nội dung kể về lý trường thọ – một thanh niên mắc bệnh hiểm nghèo vô tình được tái sinh vào thời thượng cổ trước đại chiến phong thần, trở thành một luyện khí sĩ. vì để tu được trường sinh bất lão v... su huynh a su huynh hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Sư Huynh A Sư Huynh Thuyết Minh: Nội dung kể về Lý Trường Thọ – một thanh niên mắc bệnh hiểm nghèo vô tình được tái sinh vào thời thượng cổ trước đại chiến phong thần, trở thành một Luyện khí sĩ. Vì để tu được trường sinh bất lão v..."
 }

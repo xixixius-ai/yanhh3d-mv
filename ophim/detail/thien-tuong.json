@@ -276,9 +276,9 @@
                 {
                   "id": "thien-tuong--0-20-0",
                   "name": "6(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "thien-tuong--0-21-0",
                   "name": "5(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "thien-tuong--0-22-0",
                   "name": "4(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "thien-tuong--0-23-0",
                   "name": "3(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "thien-tuong--0-24-0",
                   "name": "2(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "thien-tuong--0-25",
+              "name": "1(no)",
+              "stream_links": [
+                {
+                  "id": "thien-tuong--0-25-0",
+                  "name": "1(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -340,12 +353,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "thien-tuong cn animation hhkungfu huyền huyễn tiên hiệp xem phim thiên tướng thuyết minh: đinh hiểu - người từng bị coi là \"phế tương\" và phải làm công việc khiêng quan tài trong suốt tám năm. cho đến khi cậu thức tỉnh năng lực “tương lực” để bảo vệ thế giới khỏi linh sát khiến hỗn loạn, đồng th... thien tuong hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp"
-  ],
+  "search": "thien-tuong xem phim thiên tướng thuyết minh: đinh hiểu - người từng bị coi là \"phế tương\" và phải làm công việc khiêng quan tài trong suốt tám năm. cho đến khi cậu thức tỉnh năng lực “tương lực” để bảo vệ thế giới khỏi linh sát khiến hỗn loạn, đồng th... thien tuong hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thiên Tướng Thuyết Minh: Đinh Hiểu - người từng bị coi là \"phế tương\" và phải làm công việc khiêng quan tài trong suốt tám năm. Cho đến khi cậu thức tỉnh năng lực “tương lực” để bảo vệ thế giới khỏi linh sát khiến hỗn loạn, đồng th..."
 }

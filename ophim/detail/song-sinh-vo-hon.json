@@ -224,9 +224,9 @@
                 {
                   "id": "song-sinh-vo-hon--0-16-0",
                   "name": "44(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -237,9 +237,9 @@
                 {
                   "id": "song-sinh-vo-hon--0-17-0",
                   "name": "43(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -250,9 +250,9 @@
                 {
                   "id": "song-sinh-vo-hon--0-18-0",
                   "name": "42(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -263,9 +263,9 @@
                 {
                   "id": "song-sinh-vo-hon--0-19-0",
                   "name": "41(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -276,6 +276,71 @@
                 {
                   "id": "song-sinh-vo-hon--0-20-0",
                   "name": "40(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "song-sinh-vo-hon--0-21",
+              "name": "39(no)",
+              "stream_links": [
+                {
+                  "id": "song-sinh-vo-hon--0-21-0",
+                  "name": "39(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "song-sinh-vo-hon--0-22",
+              "name": "38(no)",
+              "stream_links": [
+                {
+                  "id": "song-sinh-vo-hon--0-22-0",
+                  "name": "38(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "song-sinh-vo-hon--0-23",
+              "name": "37(no)",
+              "stream_links": [
+                {
+                  "id": "song-sinh-vo-hon--0-23-0",
+                  "name": "37(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "song-sinh-vo-hon--0-24",
+              "name": "36(no)",
+              "stream_links": [
+                {
+                  "id": "song-sinh-vo-hon--0-24-0",
+                  "name": "36(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "song-sinh-vo-hon--0-25",
+              "name": "35(no)",
+              "stream_links": [
+                {
+                  "id": "song-sinh-vo-hon--0-25-0",
+                  "name": "35(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -288,13 +353,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "song-sinh-vo-hon cn animation hhkungfu huyền huyễn tiên hiệp hài hước xem phim song sinh võ hồn thuyết minh: lâm phàm xuất thân từ thế gia đại lâm quận. vốn là một thiên tài tuyệt thế nhận được thiên kiêu lệnh, nhưng lại bị vị hôn thê cướp đi võ hồn, trở thành phế vật. khi đại ma có lai lịch bí ẩn ký sinh trê... song sinh vo hon hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Hài Hước"
-  ],
+  "search": "song-sinh-vo-hon xem phim song sinh võ hồn thuyết minh: lâm phàm xuất thân từ thế gia đại lâm quận. vốn là một thiên tài tuyệt thế nhận được thiên kiêu lệnh, nhưng lại bị vị hôn thê cướp đi võ hồn, trở thành phế vật. khi đại ma có lai lịch bí ẩn ký sinh trê... song sinh vo hon hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Song Sinh Võ Hồn Thuyết Minh: Lâm Phàm xuất thân từ thế gia Đại Lâm Quận. Vốn là một thiên tài tuyệt thế nhận được Thiên Kiêu Lệnh, nhưng lại bị vị hôn thê cướp đi võ hồn, trở thành phế vật. Khi đại ma có lai lịch bí ẩn ký sinh trê..."
 }

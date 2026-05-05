@@ -159,9 +159,9 @@
                 {
                   "id": "thuong-nguyen-do--0-11-0",
                   "name": "58(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -172,9 +172,9 @@
                 {
                   "id": "thuong-nguyen-do--0-12-0",
                   "name": "57(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -185,9 +185,9 @@
                 {
                   "id": "thuong-nguyen-do--0-13-0",
                   "name": "56(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -198,9 +198,9 @@
                 {
                   "id": "thuong-nguyen-do--0-14-0",
                   "name": "55(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -211,6 +211,71 @@
                 {
                   "id": "thuong-nguyen-do--0-15-0",
                   "name": "54(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "thuong-nguyen-do--0-16",
+              "name": "53(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-nguyen-do--0-16-0",
+                  "name": "53(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-nguyen-do--0-17",
+              "name": "52(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-nguyen-do--0-17-0",
+                  "name": "52(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-nguyen-do--0-18",
+              "name": "51(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-nguyen-do--0-18-0",
+                  "name": "51(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-nguyen-do--0-19",
+              "name": "50(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-nguyen-do--0-19-0",
+                  "name": "50(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "thuong-nguyen-do--0-20",
+              "name": "49(no)",
+              "stream_links": [
+                {
+                  "id": "thuong-nguyen-do--0-20-0",
+                  "name": "49(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -223,14 +288,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "thuong-nguyen-do cn animation hhkungfu huyền huyễn xuyên không tiên hiệp kiếm hiệp xem phim thương nguyên đồ thuyết minh: nói về yêu tà hoành hành ở thương nguyên giới, loài người chịu đủ tàn phá, nam chính mạnh xuyên từ nhỏ đã lập lời thề phải báo thù cho mẫu thân. lấy đạo viện kính hồ làm khởi điểm, dựa vào tâm chí kiên... thuong nguyen do hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Xuyên Không",
-    "Tiên Hiệp",
-    "Kiếm Hiệp"
-  ],
+  "search": "thuong-nguyen-do xem phim thương nguyên đồ thuyết minh: nói về yêu tà hoành hành ở thương nguyên giới, loài người chịu đủ tàn phá, nam chính mạnh xuyên từ nhỏ đã lập lời thề phải báo thù cho mẫu thân. lấy đạo viện kính hồ làm khởi điểm, dựa vào tâm chí kiên... thuong nguyen do hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Thương Nguyên Đồ Thuyết Minh: Nói về yêu tà hoành hành ở Thương Nguyên giới, loài người chịu đủ tàn phá, nam chính Mạnh Xuyên từ nhỏ đã lập lời thề phải báo thù cho mẫu thân. Lấy đạo viện Kính Hồ làm khởi điểm, dựa vào tâm chí kiên..."
 }

@@ -276,9 +276,9 @@
                 {
                   "id": "dai-luc-linh-vo--0-20-0",
                   "name": "133(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -289,9 +289,9 @@
                 {
                   "id": "dai-luc-linh-vo--0-21-0",
                   "name": "132(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -302,9 +302,9 @@
                 {
                   "id": "dai-luc-linh-vo--0-22-0",
                   "name": "131(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -315,9 +315,9 @@
                 {
                   "id": "dai-luc-linh-vo--0-23-0",
                   "name": "130(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -328,6 +328,19 @@
                 {
                   "id": "dai-luc-linh-vo--0-24-0",
                   "name": "129(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "dai-luc-linh-vo--0-25",
+              "name": "128(no)",
+              "stream_links": [
+                {
+                  "id": "dai-luc-linh-vo--0-25-0",
+                  "name": "128(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -335,22 +348,67 @@
               ]
             },
             {
-              "id": "dai-luc-linh-vo--0-25",
+              "id": "dai-luc-linh-vo--0-26",
+              "name": "127(no)",
+              "stream_links": [
+                {
+                  "id": "dai-luc-linh-vo--0-26-0",
+                  "name": "127(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-luc-linh-vo--0-27",
+              "name": "126(no)",
+              "stream_links": [
+                {
+                  "id": "dai-luc-linh-vo--0-27-0",
+                  "name": "126(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-luc-linh-vo--0-28",
+              "name": "125(no)",
+              "stream_links": [
+                {
+                  "id": "dai-luc-linh-vo--0-28-0",
+                  "name": "125(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-luc-linh-vo--0-29",
+              "name": "124(no)",
+              "stream_links": [
+                {
+                  "id": "dai-luc-linh-vo--0-29-0",
+                  "name": "124(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "dai-luc-linh-vo--0-30",
               "name": "",
               "stream_links": [
                 {
-                  "id": "dai-luc-linh-vo--0-25-0",
+                  "id": "dai-luc-linh-vo--0-30-0",
                   "name": "Link 1",
                   "type": "mp4",
                   "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQO8IJi-o8Ljpd71rGsjkLgq7ZlqI868Lp-nOB-4gQ6JWDgZjkTe3W0krak7L89WsbjzxAz01-9RKecE66rAIVjRVaZ4o9008yOBlWxB1w.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=9xO9NdxRsxAQ7kNvwEbouHj&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTA2ODMwNjAxODczNTYyNywiYXNzZXRfYWdlX2RheXMiOjEzOSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ3OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=o7XWWPxSVLUEW2tWVS3MoA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEYnabLojgNljOXesWoQcXxJBxF06GWPFG8-04rjwVSmKz24TECsGbuKPunoSn3ernZoL9G92e2&_nc_eui2=AeG3du4eN0DH11rb8eEmIN-Z-PkKFa6OMWj4-QoVro4xaBtWly4B5hGtoPAvvxMcrxnXX6Oz4Fg8VvKRsapqzwsk&oh=00_Af74TFKcedBssC1Ei396hRP0ceV92LTgnIgfPkrfRh-bjQ&oe=69FDD6A4&bitrate=673417&tag=sve_sd"
-                },
-                {
-                  "id": "dai-luc-linh-vo--0-25-1",
-                  "name": "Link 2",
-                  "type": "mp4",
-                  "default": false,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQMTzQAjPVXER_TPI4nOADtBoxZr3HyNp4-x9GVwSe5FdwVmY4gh0VHGT5buYBgtwVcmDU_GSOk1ZHw8xWTOfPsKWgCMPyLHM6YjoIjkPw.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=kZbT-UFdkykQ7kNvwHVkFb7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTMwODEyNjI3ODAxNzM3NywiYXNzZXRfYWdlX2RheXMiOjE0MywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjQ0NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=ethx4Vgeu_NQuICHlpJ87g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEOUp5jK2D9hRsZk5JWZG6C0JC2Z8sBAvFjBpxSxUbt8HG3IJ4PqQMbPDnNcg_e6ORlMhJmDeC9&_nc_eui2=AeGmBBU4Wgy5XtYwB41_IyaiC0EcCSuH4VgLQRwJK4fhWPEeVX91D0_Nmmge-2sXUkrfbr3cuP2p560eSXiizZVw&oh=00_Af7melPlgRaQ1-WgDDTshEFNDPspcLGo6UHDjhUlRh5rXQ&oe=69FEF599&bitrate=626615&tag=sve_sd"
+                  "url": ""
                 }
               ]
             }
@@ -360,12 +418,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "dai-luc-linh-vo cn animation hhkungfu huyền huyễn cổ trang xem phim đại lục linh võ thuyết minh: một thế giới mà linh lực và võ hồn cùng tồn tại, chỉ một ý niệm của linh tu có thể dời non lấp biển, võ giả tay không phá vỡ thiên địa. thiên tài thần thiên, sau 10 tuổi võ hồn không thấy, linh hải khô... dai luc linh vo hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Cổ Trang"
-  ],
+  "search": "dai-luc-linh-vo xem phim đại lục linh võ thuyết minh: một thế giới mà linh lực và võ hồn cùng tồn tại, chỉ một ý niệm của linh tu có thể dời non lấp biển, võ giả tay không phá vỡ thiên địa. thiên tài thần thiên, sau 10 tuổi võ hồn không thấy, linh hải khô... dai luc linh vo hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Đại Lục Linh Võ Thuyết Minh: Một thế giới mà linh lực và võ hồn cùng tồn tại, chỉ một ý niệm của linh tu có thể dời non lấp biển, võ giả tay không phá vỡ thiên địa. Thiên tài Thần Thiên, sau 10 tuổi võ hồn không thấy, linh hải khô..."
 }

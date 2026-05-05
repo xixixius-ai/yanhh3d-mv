@@ -81,9 +81,9 @@
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-5-0",
                   "name": "14(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -94,9 +94,9 @@
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-6-0",
                   "name": "13(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -107,9 +107,9 @@
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-7-0",
                   "name": "12(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -120,9 +120,9 @@
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-8-0",
                   "name": "11(no)",
-                  "type": "error",
+                  "type": "mp4",
                   "default": true,
-                  "url": "error:no_stream"
+                  "url": ""
                 }
               ]
             },
@@ -133,6 +133,71 @@
                 {
                   "id": "de-linh-yeu-mac-thuy-linh-lung--0-9-0",
                   "name": "10(no)",
+                  "type": "mp4",
+                  "default": true,
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-10",
+              "name": "9(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-10-0",
+                  "name": "9(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-11",
+              "name": "8(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-11-0",
+                  "name": "8(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-12",
+              "name": "7(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-12-0",
+                  "name": "7(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-13",
+              "name": "6(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-13-0",
+                  "name": "6(no)",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "de-linh-yeu-mac-thuy-linh-lung--0-14",
+              "name": "5(no)",
+              "stream_links": [
+                {
+                  "id": "de-linh-yeu-mac-thuy-linh-lung--0-14-0",
+                  "name": "5(no)",
                   "type": "error",
                   "default": true,
                   "url": "error:no_stream"
@@ -145,12 +210,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "de-linh-yeu-mac-thuy-linh-lung cn animation hhkungfu huyền huyễn tiên hiệp xem phim đế linh yêu: mặc thuỷ linh lung thuyết minh: tất cả mọi vật trên trần gian đều có những linh hồn và sức mạnh riêng của chúng, thậm chí là chúng đều đã cùng nhau hội tụ thành những tiên tử và đều có ý thức, hiểu biết như là những co... de linh yeu mac thuy linh lung hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp"
-  ],
+  "search": "de-linh-yeu-mac-thuy-linh-lung xem phim đế linh yêu: mặc thuỷ linh lung thuyết minh: tất cả mọi vật trên trần gian đều có những linh hồn và sức mạnh riêng của chúng, thậm chí là chúng đều đã cùng nhau hội tụ thành những tiên tử và đều có ý thức, hiểu biết như là những co... de linh yeu mac thuy linh lung hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Đế Linh Yêu: Mặc Thuỷ Linh Lung Thuyết Minh: Tất cả mọi vật trên trần gian đều có những linh hồn và sức mạnh riêng của chúng, thậm chí là chúng đều đã cùng nhau hội tụ thành những tiên tử và đều có ý thức, hiểu biết như là những co..."
 }
