@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper V5.0
-✅ Bỏ Cookie Sync vô nghĩa (urllib gọi play-fb-v8 không cần cookie yanhh3d)
-✅ Hướng 3: Tăng Batch Cooldown + Sleep 60s khi bị 429 để qua giới hạn 20 link
-✅ Xóa tính năng Search theo yêu cầu
-✅ Clean Syntax
+YanHH3D Scraper → MonPlayer JSON (v3.7 - Steady Drip & Soft-block Recovery)
+✅ Xóa Batch Burst: Gửi request đều đặn 15-20s/request để tránh pattern Bot
+✅ Soft-block Recovery: Phát hiện 3 lỗi liên tiếp → Sleep 120s → Retry → Bỏ qua nếu vẫn fail
+✅ Xóa Cookie Sync & Search như yêu cầu
 """
 
 import argparse
@@ -20,7 +19,7 @@ import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, Browser, BrowserContext, Page
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, BrowserContext, Page
 
 try:
     from playwright_stealth import stealth_sync
@@ -39,19 +38,19 @@ CONFIG = {
     "BASE_URL":     "https://yanhh3d.bz",
     "OUTPUT_DIR":   "ophim",
     "LIST_FILE":    "ophim.json",
-    "MAX_MOVIES":   None,
+    "MAX_MOVIES":   24,
     "MAX_EPISODES": None,
     "TIMEOUT_NAV":  30000,
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
-    "RETRY_COUNT":  2,
+    "RETRY_COUNT":  1,
     "RETRY_DELAY":  1.0,
-    "EP_DELAY_MIN": 3000,    # Tăng nhẹ delay giữa các tập
-    "EP_DELAY_MAX": 5500,
-    "BATCH_SIZE":   5,       # 🔥 Giảm xuống 5 (thay vì 15) để nghỉ ngơi sớm hơn
-    "BATCH_COOLDOWN": 45.0,  # 🔥 Tăng lên 45s để đợi proxy reset limit
-    "CONSECUTIVE_FAIL_LIMIT": 5,
+    # 🔥 LOGIC MỚI: Delay 15-20 giây giữa mỗi tập (Bằng đúng tốc độ con người lướt web)
+    # 20 tập * 17.5 giây = 350 giây (Vượt qua an toàn rào cản 5 phút của Proxy)
+    "EP_DELAY_MIN": 15000, 
+    "EP_DELAY_MAX": 20000, 
+    "CONSECUTIVE_FAIL_LIMIT": 3, # Giảm xuống 3 để kích hoạt Soft-block recovery sớm hơn
 }
 
 EXTRA_HEADERS = {
@@ -67,7 +66,6 @@ EXTRA_HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
-# Header chuẩn cho urllib gọi play-fb-v8 (KHÔNG CẦN COOKIE)
 PLAY_FB_V8_HEADERS = {
     "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -190,7 +188,6 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
 
 
 def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
-    """Gọi urllib SẠCH, không truyền cookie, xử lý 429 bằng sleep dài"""
     if retry_count is None:
         retry_count = CONFIG["RETRY_COUNT"]
     
@@ -248,9 +245,8 @@ def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
                 
         except urllib.error.HTTPError as e:
             if e.code in (429, 403):
-                # 🔥 HƯỚNG 3: Ngủ 1 phút khi bị giới hạn để đặn proxy reset
                 wait_time = random.uniform(55.0, 65.0)
-                logger.warning(f"   🛑 Proxy rate-limited ({e.code}). Sleeping {wait_time:.1f}s để reset limit...")
+                logger.warning(f"   🛑 Proxy HTTP Error ({e.code}). Sleeping {wait_time:.1f}s...")
                 time.sleep(wait_time)
                 continue
             
@@ -263,10 +259,8 @@ def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
             last_error = str(e)
             
         if attempt < retry_count:
-            delay = CONFIG["RETRY_DELAY"] * (2 ** attempt)
-            time.sleep(delay)
+            time.sleep(CONFIG["RETRY_DELAY"])
             
-    logger.warning(f"   resolve_play_fb_v8 failed: {last_error}")
     return None
 
 
@@ -485,22 +479,7 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def _rotate_context(browser: Browser, base_config: dict) -> tuple[BrowserContext, Page]:
-    """Context Rotation: Reset session Playwright để duy trì ổn định trình duyệt ảo"""
-    new_context = browser.new_context(
-        user_agent=base_config["USER_AGENT"],
-        viewport={"width": 1280, "height": 720},
-        locale="vi-VN",
-        timezone_id="Asia/Ho_Chi_Minh",
-        extra_http_headers=EXTRA_HEADERS,
-        java_script_enabled=True
-    )
-    new_page = new_context.new_page()
-    _apply_stealth(new_page)
-    return new_context, new_page
-
-
-def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_info: dict, 
+def scrape_movie(page: Page, movie_info: dict, 
                  max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
@@ -521,38 +500,22 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
     
     if force_all_episodes:
         crawl_limit = len(episodes)
-        logger.info(f"  [EP LIMIT] --all-episodes → crawling ALL {crawl_limit} episodes")
+        logger.info(f"  [EP LIMIT] --all-episodes → crawling ALL {crawl_limit} episodes (Steady Drip: 15-20s/ep)")
     elif max_episodes is not None:
         crawl_limit = min(len(episodes), max_episodes)
         logger.info(f"  [EP LIMIT] --max-episodes={max_episodes} → crawling {crawl_limit}/{len(episodes)} episodes")
     else:
         crawl_limit = len(episodes)
-        logger.info(f"  [EP LIMIT] No limit → crawling ALL {crawl_limit} episodes")
+        logger.info(f"  [EP LIMIT] No limit → crawling ALL {crawl_limit} episodes (Steady Drip: 15-20s/ep)")
     
     consecutive_fails = 0
     
     for i in range(crawl_limit):
         ep = episodes[i]
+        
+        # 🔥 LOGIC MỚI: "Steady Drip" - Chảy rề rề, không tạo đợt (burst)
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
-        # 🔥 HƯỚNG 3: Cooldown lâu hơn sau mỗi batch nhỏ (5 tập)
-        if (i + 1) % CONFIG["BATCH_SIZE"] == 0 and (i + 1) < crawl_limit:
-            logger.info(f"    ⏳ [BATCH {i+1}/{crawl_limit}] Pausing to let Proxy Rate Limit reset...")
-            
-            try:
-                context.close()
-            except Exception:
-                pass
-            
-            context, page = _rotate_context(browser, CONFIG)
-            
-            logger.info(f"    🛑 Cooling down {CONFIG['BATCH_COOLDOWN']}s (Proxy anti-spam)...")
-            time.sleep(CONFIG["BATCH_COOLDOWN"])
-            
-            consecutive_fails = 0
-            logger.info(f"    ✅ Resumed.")
-            
-        # Gọi urllib không truyền cookie (Sạch)
         stream = get_stream_url(page, ep["url"])
         if stream:
             ep_data.append({"name": ep["name"], "stream": stream})
@@ -560,22 +523,26 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
             consecutive_fails = 0
         else:
             consecutive_fails += 1
-            ep_data.append({
-                "name": ep["name"],
-                "stream": [{
-                    "id": f"{slug}--0-{i}-err",
-                    "name": f"{ep['name']}(no stream)",
-                    "type": "error",
-                    "default": False,
-                    "url": "error:no_stream"
-                }]
-            })
             logger.warning(f"    ✗ Tap {ep['name']}: no stream (streak: {consecutive_fails})")
             
-            if consecutive_fails >= CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
-                logger.warning(f"    ⛔ Consecutive fail limit ({consecutive_fails}). Stopping early.")
-                break
-    
+            # 🔥 SOFT-BLOCK RECOVERY
+            if consecutive_fails == CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
+                logger.warning(f"    ⏳ Proxy Soft-Block detected! Sleeping 120s to clear rate limit window...")
+                time.sleep(120)
+                
+                # Thử lại tập vừa lỗi
+                logger.info(f"    🔄 Retrying Tap {ep['name']} after cooldown...")
+                stream = get_stream_url(page, ep["url"])
+                if stream:
+                    ep_data.append({"name": ep["name"], "stream": stream})
+                    logger.info(f"    ✓ Tap {ep['name']}: OK (Recovered!)")
+                    consecutive_fails = 0
+                    continue
+                else:
+                    # Nếu vẫn lỗi, proxy có thể block IP dài hạn (1-24h). Bỏ qua phim này đi phim khác.
+                    logger.error(f"    ⛔ Still blocked after 120s. Skipping movie '{slug}' to save time.")
+                    break
+                    
     detail_json = build_detail_json(slug, ep_data, metadata)
     list_item = build_list_item(movie_info, metadata)
     
@@ -585,7 +552,7 @@ def scrape_movie(page: Page, context: BrowserContext, browser: Browser, movie_in
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.6 (Optimized Proxy Nudge)")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.7 (Steady Drip)")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
     parser.add_argument("--list-all", action="store_true", help="List all movies from category")
@@ -593,18 +560,15 @@ def main():
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
     parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
     parser.add_argument("--all-episodes", action="store_true", help="Crawl ALL episodes (overrides --max-episodes)")
-    parser.add_argument("--batch-size", type=int, default=None, help="Episodes per batch before pause (default: 5)")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     
     args = parser.parse_args()
     CONFIG["OUTPUT_DIR"] = args.output
     CONFIG["MAX_MOVIES"] = args.max_movies
-    if args.batch_size is not None:
-        CONFIG["BATCH_SIZE"] = args.batch_size
     if not args.all_episodes and args.max_episodes is not None:
         CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D Scraper (v3.6 - Hướng 3: Proxy Nudging)...")
+    logger.info(f"Starting YanHH3D Scraper (v3.7 - Steady Drip Mode)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
@@ -625,10 +589,9 @@ def main():
 
         try:
             def process_movie_list(movies):
-                nonlocal page, context
                 for movie in movies[:args.max_movies]:
                     try:
-                        res = scrape_movie(page, context, browser, movie, 
+                        res = scrape_movie(page, movie, 
                                          max_episodes=args.max_episodes, 
                                          force_all_episodes=args.all_episodes)
                         if res:
@@ -641,7 +604,7 @@ def main():
 
             if args.slug:
                 fake_movie = {"slug": args.slug, "title": args.slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, browser, fake_movie, 
+                res = scrape_movie(page, fake_movie, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -652,7 +615,7 @@ def main():
             elif args.url:
                 slug = args.url.rstrip('/').split('/')[-1]
                 fake_movie = {"slug": slug, "title": slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, context, browser, fake_movie, 
+                res = scrape_movie(page, fake_movie, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -692,7 +655,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.6"
+            "version": "3.7"
         }
     }
     
