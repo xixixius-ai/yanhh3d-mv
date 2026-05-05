@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-YanHH3D Scraper → MonPlayer JSON (v3.7 - Steady Drip & Soft-block Recovery)
-✅ Xóa Batch Burst: Gửi request đều đặn 15-20s/request để tránh pattern Bot
-✅ Soft-block Recovery: Phát hiện 3 lỗi liên tiếp → Sleep 120s → Retry → Bỏ qua nếu vẫn fail
-✅ Xóa Cookie Sync & Search như yêu cầu
+YanHH3D Scraper → MonPlayer JSON (v5.0 - Browser Fingerprint Injection)
+✅ Giải quyết triệt để bài toán giới hạn 20 tập/phim
+✅ Dùng Playwright Route Interception: Lấy link MP4 bằng đúng Fingerprint của Chrome
+✅ Bỏ hẳn urllib cho play-fb-v8 -> Không bị nhận diện là Bot Python
+✅ Zero-bandwidth: Bắt link MP4 từ Header Redirect mà không tải video về
+✅ Hiển thị Progress: [Phim 3/24]
 """
 
 import argparse
@@ -12,10 +14,7 @@ import logging
 import os
 import random
 import re
-import sys
 import time
-import urllib.request
-import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -44,13 +43,8 @@ CONFIG = {
     "TIMEOUT_WAIT": 20000,
     "USER_AGENT":   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "RAW_BASE":     os.getenv("RAW_BASE", "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main"),
-    "RETRY_COUNT":  1,
-    "RETRY_DELAY":  1.0,
-    # 🔥 LOGIC MỚI: Delay 15-20 giây giữa mỗi tập (Bằng đúng tốc độ con người lướt web)
-    # 20 tập * 17.5 giây = 350 giây (Vượt qua an toàn rào cản 5 phút của Proxy)
-    "EP_DELAY_MIN": 15000, 
-    "EP_DELAY_MAX": 20000, 
-    "CONSECUTIVE_FAIL_LIMIT": 3, # Giảm xuống 3 để kích hoạt Soft-block recovery sớm hơn
+    "EP_DELAY_MIN": 2000,
+    "EP_DELAY_MAX": 4000,
 }
 
 EXTRA_HEADERS = {
@@ -64,13 +58,6 @@ EXTRA_HEADERS = {
     "Sec-Fetch-Site":            "none",
     "Sec-Fetch-User":            "?1",
     "Upgrade-Insecure-Requests": "1",
-}
-
-PLAY_FB_V8_HEADERS = {
-    "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "vi-VN,vi;q=0.9,en;q=0.8",
-    "Referer":         "https://yanhh3d.bz/",
 }
 
 
@@ -88,18 +75,6 @@ def _apply_stealth(page: Page):
             Object.defineProperty(navigator, 'languages', { get: () => ['vi-VN', 'vi', 'en-US'] });
             window.chrome = { runtime: {} };
         """)
-
-
-def _debug_page(page: Page, label: str):
-    try:
-        title   = page.title()
-        url_now = page.url
-        html    = page.content()[:800].replace('\n', ' ')
-        logger.info(f"   [DEBUG:{label}] title='{title}'")
-        logger.info(f"   [DEBUG:{label}] url='{url_now}'")
-        logger.info(f"   [DEBUG:{label}] html[:800]={html}")
-    except Exception as e:
-        logger.info(f"   [DEBUG:{label}] cannot read page: {e}")
 
 
 def _wait_for_cf(page: Page, selector: str, timeout: int):
@@ -180,88 +155,85 @@ def get_movie_metadata(page: Page, slug: str) -> dict:
             if desc_match:
                 meta["description"] = desc_match.group(1).strip()[:500]
             
-        logger.info(f"   Meta tags={meta['tags'][:3]}..., status={meta['status']}")
         return meta
     except Exception as e:
         logger.warning(f"   Failed to extract metadata for {slug}: {e}")
         return metadata
 
 
-def resolve_play_fb_v8(proxy_url: str, retry_count: int = None) -> str | None:
-    if retry_count is None:
-        retry_count = CONFIG["RETRY_COUNT"]
+def get_stream_url(page: Page, ep_url: str):
+    """
+    🔥 CORE LOGIC V5.0: Browser Fingerprint Injection
+    Thay vì dùng urllib (bị phát hiện là bot và chặn 20 link), 
+    ta dùng Playwright để bắt request, dùng Chrome fingerprint đi lấy link, 
+    đọc header redirect rồi hủy request ngay để không tải video.
+    """
+    intercepted_url = None
     
-    headers = PLAY_FB_V8_HEADERS.copy()
-    last_error = None
-    
-    for attempt in range(retry_count + 1):
+    def handle_proxy_request(route):
+        nonlocal intercepted_url
         try:
-            req = urllib.request.Request(proxy_url, headers=headers, method="GET")
+            # route.fetch() dùng chính TLS fingerprint của trình duyệt Chrome để gọi API
+            response = route.fetch()
             
-            class NoRedirect(urllib.request.HTTPRedirectHandler):
-                def redirect_request(self, req, fp, code, msg, headers, newurl):
-                    return None
-                    
-            opener = urllib.request.build_opener(NoRedirect())
-            
-            with opener.open(req, timeout=20) as resp:
-                if resp.status in (301, 302, 303, 307, 308):
-                    location = resp.headers.get("Location", "")
-                    if location and _is_valid_fb_cdn(location):
-                        return location
+            # Case 1: Server trả về Redirect (302) sang fbcdn.net
+            # response.url sẽ tự động là URL cuối cùng sau khi redirect
+            if _is_valid_fb_cdn(response.url):
+                intercepted_url = response.url
+                route.abort() # Chặn không cho trình duyệt tải file mp4 nặng
+                return
                 
-                if resp.status == 200:
-                    content_type = resp.headers.get('Content-Type', '')
-                    content = resp.read().decode('utf-8', errors='ignore')
+            # Case 2: Server trả về JSON chứa link trực tiếp
+            if response.status == 200 and 'application/json' in response.headers.get('content-type', ''):
+                # response.json() chỉ tải body của JSON (vài KB), không tải video
+                data = response.json()
+                url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
+                if url and _is_valid_fb_cdn(url):
+                    intercepted_url = url
+                    route.abort()
+                    return
                     
-                    if 'application/json' in content_type:
-                        try:
-                            data = json.loads(content)
-                            url = data.get('url') or data.get('video_url') or data.get('stream_url') or data.get('src') or data.get('file')
-                            if url and _is_valid_fb_cdn(url):
-                                return url
-                        except json.JSONDecodeError:
-                            pass
-                    
-                    url_patterns = [
-                        r'"(https?://scontent-[^"]+\.mp4[^"]*)"',
-                        r"'(https?://scontent-[^']+\.mp4[^']*)'",
-                        r'url\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'src\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                        r'file\s*:\s*["\']([^"\']*\.mp4[^"\']*)["\']',
-                    ]
-                    for pattern in url_patterns:
-                        match = re.search(pattern, content, re.IGNORECASE)
-                        if match:
-                            url = match.group(1).replace('\\/', '/')
-                            if _is_valid_fb_cdn(url):
-                                return url
-                    
-                    fallback = re.search(r'(https?://[^\s\'"]+fbcdn[^\s\'"]+\.mp4[^\s\'"]*)', content)
-                    if fallback and _is_valid_fb_cdn(fallback.group(1)):
-                        return fallback.group(1)
-                
-                return None
-                
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 403):
-                wait_time = random.uniform(55.0, 65.0)
-                logger.warning(f"   🛑 Proxy HTTP Error ({e.code}). Sleeping {wait_time:.1f}s...")
-                time.sleep(wait_time)
-                continue
-            
-            if e.code in (301, 302, 303, 307, 308):
-                location = e.headers.get("Location", "")
-                if location and _is_valid_fb_cdn(location):
-                    return location
-            last_error = f"HTTPError {e.code}"
         except Exception as e:
-            last_error = str(e)
+            pass
             
-        if attempt < retry_count:
-            time.sleep(CONFIG["RETRY_DELAY"])
+        # Chặn các request rác khác (ảnh, css) đi kèm để tiết kiệm RAM
+        route.abort()
+
+    try:
+        # Bắt mọi request khớp pattern play-fb-v8
+        page.route("**/play-fb-v8**", handle_proxy_request)
+        
+        _human_delay(200, 500)
+        page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
+        _wait_for_cf(page, "#list_sv", CONFIG["TIMEOUT_WAIT"])
+        
+        # Kích hoạt trình duyệt gọi API (bằng cách click vào nút server)
+        btn = page.query_selector("#list_sv a.btn3dsv[data-src*='play-fb-v8']")
+        if not btn:
+            btn = page.query_selector("#list_sv a.btn3dsv[href*='play-fb-v8']")
             
-    return None
+        if btn:
+            btn.click()
+            page.wait_for_timeout(2000) # Đợi JS thực thi xong request
+        else:
+            page.wait_for_timeout(1000)
+            
+        # Gỡ bộ lọc
+        page.unroute("**/play-fb-v8**")
+        
+        if intercepted_url:
+            return [{"url": intercepted_url, "type": "mp4", "label": "fb-cdn-chrome"}]
+            
+        return None
+        
+    except Exception as e:
+        logger.debug(f"Stream extraction failed: {e}")
+        return None
+    finally:
+        try:
+            page.unroute("**/play-fb-v8**")
+        except:
+            pass
 
 
 def list_all_movies(page: Page, category_url: str = None) -> list[dict]:
@@ -309,7 +281,6 @@ def list_all_movies(page: Page, category_url: str = None) -> list[dict]:
 def get_trending_movies(page: Page, limit: int = 50):
     try:
         page.goto(CONFIG["BASE_URL"], wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, "homepage")
         _wait_for_cf(page, ".flw-item", CONFIG["TIMEOUT_WAIT"])
         return page.evaluate(f"""() => {{
             const results = [];
@@ -339,7 +310,6 @@ def get_latest_ep_url(page: Page, slug: str):
     try:
         _human_delay(300, 700)
         page.goto(detail_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, f"detail-{slug}")
         _wait_for_cf(page, f"a[href*='/{slug}/tap-']", CONFIG["TIMEOUT_WAIT"])
         return page.evaluate(f"""() => {{
             const links = Array.from(document.querySelectorAll('a[href*="/{slug}/tap-"]'))
@@ -360,7 +330,6 @@ def get_episodes(page: Page, slug: str):
     try:
         _human_delay(400, 800)
         page.goto(latest_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _debug_page(page, f"ep-{slug}")
         _wait_for_cf(page, "#episodes-content", CONFIG["TIMEOUT_WAIT"])
         episodes = page.evaluate("""() => {
             const results = [];
@@ -375,40 +344,11 @@ def get_episodes(page: Page, slug: str):
             }
             return results.sort((a, b) => b.num - a.num);
         }""")
-        logger.info(f"   Got {len(episodes)} episodes (sorted: newest first)")
+        logger.info(f"   Found {len(episodes)} episodes")
         return episodes
     except Exception as e:
         logger.warning(f"   Error at {latest_url}: {e}")
         return []
-
-
-def get_stream_url(page: Page, ep_url: str):
-    try:
-        _human_delay(200, 500)
-        page.goto(ep_url, wait_until="domcontentloaded", timeout=CONFIG["TIMEOUT_NAV"])
-        _wait_for_cf(page, "#list_sv", CONFIG["TIMEOUT_WAIT"])
-        raw_buttons = page.evaluate("""() => {
-            const results = [];
-            const btns = document.querySelectorAll('#list_sv a.btn3dsv');
-            for (const btn of btns) {
-                const src = (btn.getAttribute('data-src') || '').trim();
-                const label = (btn.innerText || btn.textContent || '').trim().toLowerCase();
-                if (src) results.push({ src, label });
-            }
-            return results;
-        }""")
-        preferred = [b for b in raw_buttons if any(x in b["label"] for x in ["hd", "1080", "4k"])]
-        candidates = preferred if preferred else raw_buttons
-        
-        for btn in candidates:
-            if "play-fb-v8" in btn["src"]:
-                fb_cdn_url = resolve_play_fb_v8(btn["src"])
-                if fb_cdn_url and _is_valid_fb_cdn(fb_cdn_url):
-                    return [{"url": fb_cdn_url, "type": "mp4", "label": f"fb-cdn-{btn['label']}" if btn['label'] else "fb-cdn"}]
-        return None
-    except Exception as e:
-        logger.debug(f"Stream extraction failed: {e}")
-        return None
 
 
 def build_detail_json(slug: str, episodes: list, metadata: dict = None):
@@ -479,12 +419,14 @@ def build_list_item(movie: dict, metadata: dict = None):
     return item
 
 
-def scrape_movie(page: Page, movie_info: dict, 
+def scrape_movie(page: Page, movie_info: dict, movie_index: int, total_movies: int,
                  max_episodes: int = None, force_all_episodes: bool = False) -> tuple | None:
     if max_episodes is None:
         max_episodes = CONFIG["MAX_EPISODES"]
     slug = movie_info["slug"]
-    logger.info(f"  Processing: {slug}")
+    
+    # 🔥 HIỂN THỊ TIẾN TRÌNH
+    logger.info(f"  [{movie_index}/{total_movies}] Processing: {slug}")
     
     metadata = get_movie_metadata(page, slug)
     metadata["title"] = movie_info.get("title", slug)
@@ -493,73 +435,51 @@ def scrape_movie(page: Page, movie_info: dict,
     
     episodes = get_episodes(page, slug)
     if not episodes:
-        logger.warning(f"  No episodes found for {slug}")
+        logger.warning(f"  [{movie_index}/{total_movies}] Skipped {slug}: No episodes found")
         return None
 
     ep_data = []
+    crawl_limit = len(episodes)
     
     if force_all_episodes:
-        crawl_limit = len(episodes)
-        logger.info(f"  [EP LIMIT] --all-episodes → crawling ALL {crawl_limit} episodes (Steady Drip: 15-20s/ep)")
+        logger.info(f"  [{movie_index}/{total_movies}] {slug}: Crawling ALL {crawl_limit} episodes")
     elif max_episodes is not None:
         crawl_limit = min(len(episodes), max_episodes)
-        logger.info(f"  [EP LIMIT] --max-episodes={max_episodes} → crawling {crawl_limit}/{len(episodes)} episodes")
+        logger.info(f"  [{movie_index}/{total_movies}] {slug}: Custom limit -> {crawl_limit} eps")
     else:
-        crawl_limit = len(episodes)
-        logger.info(f"  [EP LIMIT] No limit → crawling ALL {crawl_limit} episodes (Steady Drip: 15-20s/ep)")
-    
-    consecutive_fails = 0
+        logger.info(f"  [{movie_index}/{total_movies}] {slug}: Crawling ALL {crawl_limit} episodes")
     
     for i in range(crawl_limit):
         ep = episodes[i]
-        
-        # 🔥 LOGIC MỚI: "Steady Drip" - Chảy rề rề, không tạo đợt (burst)
         _human_delay(CONFIG["EP_DELAY_MIN"], CONFIG["EP_DELAY_MAX"])
         
         stream = get_stream_url(page, ep["url"])
         if stream:
             ep_data.append({"name": ep["name"], "stream": stream})
-            logger.info(f"    ✓ Tap {ep['name']}: OK")
-            consecutive_fails = 0
+            logger.info(f"  [{movie_index}/{total_movies}]    ✓ Tap {ep['name']}")
         else:
-            consecutive_fails += 1
-            logger.warning(f"    ✗ Tap {ep['name']}: no stream (streak: {consecutive_fails})")
-            
-            # 🔥 SOFT-BLOCK RECOVERY
-            if consecutive_fails == CONFIG["CONSECUTIVE_FAIL_LIMIT"]:
-                logger.warning(f"    ⏳ Proxy Soft-Block detected! Sleeping 120s to clear rate limit window...")
-                time.sleep(120)
-                
-                # Thử lại tập vừa lỗi
-                logger.info(f"    🔄 Retrying Tap {ep['name']} after cooldown...")
-                stream = get_stream_url(page, ep["url"])
-                if stream:
-                    ep_data.append({"name": ep["name"], "stream": stream})
-                    logger.info(f"    ✓ Tap {ep['name']}: OK (Recovered!)")
-                    consecutive_fails = 0
-                    continue
-                else:
-                    # Nếu vẫn lỗi, proxy có thể block IP dài hạn (1-24h). Bỏ qua phim này đi phim khác.
-                    logger.error(f"    ⛔ Still blocked after 120s. Skipping movie '{slug}' to save time.")
-                    break
+            logger.warning(f"  [{movie_index}/{total_movies}]    ✗ Tap {ep['name']} (Failed to extract, skipping)")
                     
+    if not ep_data:
+        logger.error(f"  [{movie_index}/{total_movies}] Skipped {slug}: 0 playable episodes extracted")
+        return None
+
     detail_json = build_detail_json(slug, ep_data, metadata)
     list_item = build_list_item(movie_info, metadata)
     
-    success_count = sum(1 for ep in ep_data if any(s["type"] != "error" for s in ep["stream"]))
-    logger.info(f"  ✅ Saved {slug}.json ({success_count}/{len(ep_data)} playable)")
+    logger.info(f"  [{movie_index}/{total_movies}] ✅ Saved {slug}.json ({len(ep_data)} playable)")
     return list_item, detail_json
 
 
 def main():
-    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v3.7 (Steady Drip)")
+    parser = argparse.ArgumentParser(description="YanHH3D → MonPlayer Scraper v5.0 (Fingerprint Injection)")
     parser.add_argument("--slug", type=str, help="Scrape specific movie by slug")
     parser.add_argument("--url", type=str, help="Scrape movie from full URL")
     parser.add_argument("--list-all", action="store_true", help="List all movies from category")
     parser.add_argument("--trending", action="store_true", help="Scrape trending (default)")
     parser.add_argument("--max-movies", type=int, default=CONFIG["MAX_MOVIES"])
-    parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = all)")
-    parser.add_argument("--all-episodes", action="store_true", help="Crawl ALL episodes (overrides --max-episodes)")
+    parser.add_argument("--max-episodes", type=int, default=None, help="Max episodes per movie (None = ALL)")
+    parser.add_argument("--all-episodes", action="store_true", help="Crawl ALL episodes")
     parser.add_argument("--output", type=str, default=CONFIG["OUTPUT_DIR"])
     
     args = parser.parse_args()
@@ -568,7 +488,7 @@ def main():
     if not args.all_episodes and args.max_episodes is not None:
         CONFIG["MAX_EPISODES"] = args.max_episodes
     
-    logger.info(f"Starting YanHH3D Scraper (v3.7 - Steady Drip Mode)...")
+    logger.info(f"Starting YanHH3D Scraper (v5.0 - Browser Fingerprint Injection)...")
     detail_dir = Path(CONFIG["OUTPUT_DIR"]) / "detail"
     detail_dir.mkdir(parents=True, exist_ok=True)
     channels = []
@@ -589,9 +509,10 @@ def main():
 
         try:
             def process_movie_list(movies):
-                for movie in movies[:args.max_movies]:
+                total = min(len(movies), args.max_movies)
+                for idx, movie in enumerate(movies[:args.max_movies], start=1):
                     try:
-                        res = scrape_movie(page, movie, 
+                        res = scrape_movie(page, movie, idx, total, 
                                          max_episodes=args.max_episodes, 
                                          force_all_episodes=args.all_episodes)
                         if res:
@@ -600,11 +521,11 @@ def main():
                                 json.dump(dj, f, ensure_ascii=False, indent=2)
                             channels.append(li)
                     except Exception as e:
-                        logger.error(f"  Error processing {movie.get('slug', 'unknown')}: {e}")
+                        logger.error(f"  [{idx}/{total}] Error processing {movie.get('slug', 'unknown')}: {e}")
 
             if args.slug:
                 fake_movie = {"slug": args.slug, "title": args.slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, fake_movie, 
+                res = scrape_movie(page, fake_movie, 1, 1, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -615,7 +536,7 @@ def main():
             elif args.url:
                 slug = args.url.rstrip('/').split('/')[-1]
                 fake_movie = {"slug": slug, "title": slug, "thumb": "", "badge": ""}
-                res = scrape_movie(page, fake_movie, 
+                res = scrape_movie(page, fake_movie, 1, 1, 
                                  max_episodes=args.max_episodes, 
                                  force_all_episodes=args.all_episodes)
                 if res:
@@ -655,7 +576,7 @@ def main():
             "source": CONFIG["BASE_URL"],
             "total_items": len(channels),
             "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "version": "3.7"
+            "version": "5.0"
         }
     }
     
