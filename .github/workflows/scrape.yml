@@ -2,27 +2,31 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Chạy mỗi 4h/lần
+    - cron: '0 */6 * * *'  # Chạy mỗi 6 tiếng (0h, 6h, 12h, 18h timezone: UTC+7)
   workflow_dispatch:
     inputs:
-      max_pages:
-        description: 'Số trang /moi-cap-nhat (default: 5)'
+      max_movies:
+        description: 'Max movies (default: 30)'
         required: false
-        default: '5'
+        default: '30'
+        type: string
+      max_episodes:
+        description: 'Max episodes/movie (ĐỂ TRỐNG = Lấy TẤT CẢ, kích hoạt Hướng 3)'
+        required: false
+        default: '' # ✅ Để trống để áp dụng logic Hướng 3 (nghỉ 45s sau mỗi 5 tập)
         type: string
   push:
     paths:
       - 'scraper.py'
       - 'requirements.txt'
       - '.github/workflows/scrape.yml'
-      - 'progress.json'
 
 jobs:
   scrape:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 200
+    timeout-minutes: 360 # ✅ Tăng lên 6 tiếng vì Hướng 3 có sleep 45s/batch
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -40,28 +44,46 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          # ✅ QUAN TRỌNG: Cài Playwright browser + system deps
           playwright install --with-deps chromium
 
       - name: Run scraper
         run: |
-          MAX_PAGES="${{ inputs.max_pages || '5' }}"
-          echo "▶️ Running: python scraper.py --max-pages $MAX_PAGES"
-          python scraper.py --max-pages $MAX_PAGES
+          CMD="python scraper.py"
+          CMD="$CMD --max-movies ${{ inputs.max_movies || 30 }}"
+          # Nếu để trống max_episodes, script sẽ tự động lấy ALL (tận dụng Hướng 3)
+          if [[ -n "${{ inputs.max_episodes }}" ]]; then
+            CMD="$CMD --max-episodes ${{ inputs.max_episodes }}"
+          fi
+          echo "▶️ Running: $CMD"
+          $CMD
         env:
           PYTHONUNBUFFERED: 1
           RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/refs/heads/main
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-logs-${{ github.run_id }}
+          path: |
+            *.log
+            ophim.json
+            ophim/detail/*.json
+          retention-days: 7
 
       - name: Commit & push changes
         if: success()
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: |
-            🤖 Auto update MonPlayer (v4.1 Pagination + Tags)
+            🤖 Auto update MonPlayer (v3.6 - Proxy Nudge)
             
-            Pages: ${{ inputs.max_pages || 5 }}
+            Movies: ${{ inputs.max_movies || 30 }}
+            Episodes: ${{ inputs.max_episodes || 'ALL (Proxy Nudge)' }}
             Run: ${{ github.run_id }}
-          file_pattern: 'ophim.json ophim/detail/*.json progress.json'
+          file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
           push_options: '--force-with-lease'
-          skip_fetch: false
+          skip_fetch: true
