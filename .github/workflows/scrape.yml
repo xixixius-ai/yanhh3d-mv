@@ -2,7 +2,7 @@ name: Scrape YanHH3D to MonPlayer
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Chạy mỗi 6 tiếng (0h, 6h, 12h, 18h timezone: UTC+7)
+    - cron: '0 3 * * *'  # 1 lần/ngày lúc 3 AM UTC
   workflow_dispatch:
     inputs:
       max_movies:
@@ -11,9 +11,9 @@ on:
         default: '30'
         type: string
       max_episodes:
-        description: 'Max episodes/movie (ĐỂ TRỐNG = Lấy TẤT CẢ, kích hoạt Hướng 3)'
+        description: 'Max episodes/movie (empty = all)'
         required: false
-        default: '' # ✅ Để trống để áp dụng logic Hướng 3 (nghỉ 45s sau mỗi 5 tập)
+        default: '20'
         type: string
   push:
     paths:
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-    timeout-minutes: 360 # ✅ Tăng lên 6 tiếng vì Hướng 3 có sleep 45s/batch
+    timeout-minutes: 90
     concurrency:
       group: scrape-main
       cancel-in-progress: true
@@ -51,7 +51,6 @@ jobs:
         run: |
           CMD="python scraper.py"
           CMD="$CMD --max-movies ${{ inputs.max_movies || 30 }}"
-          # Nếu để trống max_episodes, script sẽ tự động lấy ALL (tận dụng Hướng 3)
           if [[ -n "${{ inputs.max_episodes }}" ]]; then
             CMD="$CMD --max-episodes ${{ inputs.max_episodes }}"
           fi
@@ -77,10 +76,10 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: |
-            🤖 Auto update MonPlayer (v3.6 - Proxy Nudge)
+            🤖 Auto update MonPlayer (Thuyết Minh)
             
             Movies: ${{ inputs.max_movies || 30 }}
-            Episodes: ${{ inputs.max_episodes || 'ALL (Proxy Nudge)' }}
+            Episodes: ${{ inputs.max_episodes || 20 }}
             Run: ${{ github.run_id }}
           file_pattern: 'ophim.json ophim/detail/*.json'
           commit_user_name: github-actions[bot]
