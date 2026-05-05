@@ -11,10 +11,270 @@
           "streams": [
             {
               "id": "kiem-lai-phan-2--0-0",
-              "name": "6",
+              "name": "26",
               "stream_links": [
                 {
                   "id": "kiem-lai-phan-2--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQMlsslHFzA8gZr5cT3NX079jCQPYpPOWbLu5atQEwI5S2mSJqiymrbkBOUl6Wm5GkIqX7Q2J2xzhAGgND1KhUCKVvucEIGiAcKQCudp70P-qQ.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=ZWGq-cReNtAQ7kNvwF5nXox&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNzUxNjcwMDE1ODEzNTcwLCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEyMjksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=db48bbdf534eede6&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC81OTQ1MjRFMUREOUZDMDdCMDAxQkE4MTQ0NEEyNkNBQV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0VCNDFGREM2MkEzRUMxM0NFREMxQTQ3RTNCNDMxM0I5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaEn_PQzsicBhUCKAJDMywXQJM24UeuFHsYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=PBo6JbVyhEYQDxLukBGf3Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEB7yJN1TNyN0Y2rIoJH1kpFvJeUq7rLxy6MfAqhceuOXSCu8l2BALcBQoNFUYTZmqAO1EQ1bQ2&_nc_eui2=AeFRJGjt5O7IZgYoud9vVkm2DfI6MH_aGtQN8jowf9oa1GT7NLuZOfpwxZEaZrJffNBysm6v-hq1Dqi2Io0iUD8M&oh=00_Af5Ds0DOIg20GO_kmH0ARYv39eqYne-iLsDthewUyo73AQ&oe=69FEA8DA&bitrate=1446061&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-1",
+              "name": "25",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQNCXSJJfeUEnWndledQqRzZEzF2JeXIlcs_aBpmmXCEfd4TUejXm1kLqYAdEYyhVvRJCmY4sIKRZ1U140YPfoC1bKtUFskmprOO781JMMhI3g.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=VyUosq7sQsYQ7kNvwHRjxls&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDE1ODk4MTI2OTU2ODk0LCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE1MTcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=402478a982757f96&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wMjQzMDg3RDQwMDFBMEQwM0I3MDFCQjI2MEVFMUJBQ19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0JCNDY0N0M4QjFBRTI5QkE4OTdEQzM2QkNFRTdFNjhCX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa85amOj_CDBRUCKAJDMywXQJe3hR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=QNA5oDidptCDzyi5xifeFQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFa89amToqwwQOsnpWfFvZZN1cJq-jl7fuxIfXhvq5jbQ81ATmueEjuDnOfcRfocKo-HwiZzoLJ&_nc_eui2=AeFUHkG6IgcGMgI_6pO-zof4WgkvFrqDgK5aCS8WuoOArhi0NAicMIR0msb1QJV5L-Uv15u3NOzgLQ04IDaMmu6m&oh=00_Af5o8QzQffVzTQpBp1IrHHJj9cF18DLmP46U-6RSOLdU7w&oe=69FE919F&bitrate=1269810&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-2",
+              "name": "24",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQMdjAzY5yqtY9Oo39OiafgeVt9s-xr8KIm2lP2or3TWVAvKXSTUPB5X25WHS4nZ995cT3m2H5Hilym1b2ECA1ctF_797DtEOMIcGYOldMzj1g.mp4?_nc_cat=107&_nc_sid=5e9851&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=JJNlE4su-1UQ7kNvwEAAoPt&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzIwMjUzOTkwMDE0NzMwLCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEzNzMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=7e3b6f4d7a67a7e0&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC85NzQzODdEQjI2OEQwNjUyQzdEMjIxNzREMzJFRERCNV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzFDNEU0MzIyMEI4NjMwRDVDRjgxQ0FERUMyRjUxRUFBX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaUvLTh8rDYBBUCKAJDMywXQJV0o9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=2cFYKszz2zlYfXUArFrEdg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGCZw7JLSHbmu5JlZs7-vqeIgY5iADmMUx_uXEiewcwK6ain7At558MPUx_1iVKLu_qg6yywkPA&_nc_eui2=AeH--CJ7LorlyxNsi62N8YhCmCaDedMOeQOYJoN50w55AzKK5xBSE6B_LqpqjB9g_KZ1CSBY1mDmGSRivKzSM5QT&oh=00_Af79bU3GiNC4AX1IVdu4FeyXlyPMRzgWIwpY3F2G7YZeBA&oe=69FEA44D&bitrate=1527639&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-3",
+              "name": "23",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQNdRo6qFut8rX3lcmDOdY9z6pKplMvzNhxxqiZcF9JL7EO14YQAlDqVaMwZygiOgrD03A_RicvyvNFRJ3wR2Up8Uex7TDSIJ7b6PVAQFOrDaw.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=mMg1ormTsUkQ7kNvwETSq5n&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NzAyMjI2MDU1MjcyNDgsImFzc2V0X2FnZV9kYXlzIjo5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTM3NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=ba10671a18b5ef4f&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yNDRCMDQ5MkIwMTUxMjYwQUE5RkRCNjg3N0JBRDI4RF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0Q4NDBDNTE1OEY2Q0FBRkMxNzVDRkRBRDI1REZGNDgzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACago4vcsZq5AxUCKAJDMywXQJWBcKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=GpZ5yEZ3xWdIcncB1s-Qlg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHwlqODW7H-oLsaMfcteSlaKGOmlsjw9FCFNj0-tLCKBES6u5H1UAmg2rkKCcGAmrlHppT-7TWA&_nc_eui2=AeGtL_IkxwZJgfx5TiORD_IMPIVlfG0tzDQ8hWV8bS3MNIk9MJ3EEzBQ6WHinEWv0XhxkILG-DgJt57HDaNsoCL4&oh=00_Af5Johntm8nEOOZqQnGyWTEpYaiq0buM6u1xX4R6IM-EoA&oe=69FE8C9B&bitrate=1367109&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-4",
+              "name": "22",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQOSG7t7NGsdilLpnSQkWBeOOQ48ryi7araXbKhcmFv1B0zofQXc1vpleCQA86lUAsoV0YiGF5tdiLPbu8JVu-MFtodWvmzFk7x2-uAOVd9m_w.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=QTCGDjr_VlAQ7kNvwEm_yYu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5NDA2MDU1MTg2ODIyMjMsImFzc2V0X2FnZV9kYXlzIjo5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTMwNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=47df441472d1622a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FNDQ2Mjc0QzAyQjVBRDA2RDQxQjVCMTlFNTAwNzQ4N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzM4NEQ3RTdFRDk1NTc3Njg1MkMyNEU3NjI5QUNCQUE0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbe4YSdud6rAxUCKAJDMywXQJRvrhR64UgYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=FAzy2DkcIoWHKLtBlbX-8Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEaZTUEdwB8_gL2KVJNHljJxtx_kLEmZMaa8oesE-IimUl-ljnB027gU0MVOjwNABXqpzctm1zm&_nc_eui2=AeHW-kr12pX6Nqpn0IDBpJkszDEYU6d0gEXMMRhTp3SARfvUfut-f8SLm_UFggMc3rA9x-rs0GXFEPW6C1EQhHSW&oh=00_Af4PabNUliYgQfwhj-1hQ2ymB2Ojb9-9UhoulXtOCWXmlw&oe=69FE750F&bitrate=1189351&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-5",
+              "name": "21",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-5-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPkWf12QOYoAdPjREEc9QanMGnVQdbj--ohcMrzp-FWEyBmNMkus-V4TAvHmLPHCCgU445grN2b3uWItl5_UYYwf_rSmoAAZSSi7exEz0Q1cQ.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=gBuJTnYfCLoQ7kNvwGZRBUu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTk4Njc2NjM3ODU4NzY3LCJhc3NldF9hZ2VfZGF5cyI6OSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE1NDYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=92633bed1a55740a&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC84MzRCNjNFQzJEMDU4QzBDOEZGMzk5MDBCMjcxRTQ5OF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzY1NDhFOTgyN0I1NUJENjJCMzI5REUxMkFDMTY4ODgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACae7-GRnf_WBRUCKAJDMywXQJgp64UeuFIYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=xvTUHUkplomTLU4MYdjslw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQE9Ao3PrZbHuwRjnQEI7ER-zPDnM6JWU80sOGvOQVRQhs3QReH0sVOZxJebpBc9WlxJzx5jbkSm&_nc_eui2=AeHNFv45yKcYY_mMZ0yb90u6LOs3oQm1L0ss6zehCbUvS3dyTDdZgpI1OZNAsQ_RwH4tZXIpr2brvse32Haf_S1m&oh=00_Af7oeZwFg8I4iSfvdr8BBYACZGLB4jei8y1Mgfl9TRtjoA&oe=69FE8956&bitrate=1603487&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-6",
+              "name": "20",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-6-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQN4TBTPYUCVxqNkedwhZst_RBnCkb5XlUpA9BSuNPKcQXcbMCMSjkHwf0LauIaVZS6Hrex7lQSppxSteKI3RWNIuGcfeskHzXysV-HNK05iyg.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=wj8eBrmiFOEQ7kNvwFLVytW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNTA4ODc1MzMwOTU3MzcwLCJhc3NldF9hZ2VfZGF5cyI6MTIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNzI5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=d2431f37eb14bde6&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9GNzQ3MUIyNjk5NzFGNzdCMzIxNkMwRTdEOUZCQTE5Rl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0QxNDNGNjNERDNGMTk1NTIxOURGRjdGRDhDQzgyNTg4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb0wOWhjZSuBRUCKAJDMywXQJsFcKPXCj0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=iqxnFGL94iixI2jkul9zsg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHHD9SlcopVbswzJgxD_PLBGn3JfRQgo66sBq0Yslt5Mz74EIvxeWZSCL_pCdq11Ft9e69317l0&_nc_eui2=AeE9RrqDGmeH0THnXrBMvlwm2_vCyxW0gzrb-8LLFbSDOkvzkr31MiAvIWkkZe0QNxn6y1DYHC2faRQGDSdhZF7X&oh=00_Af6XlgfcIaMU3UTQ64fNFotbRwDtbYbQKAyzfqPXbJPeLQ&oe=69FEA7CC&bitrate=1456398&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-7",
+              "name": "19",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQP6bZ6ZL1hHUlDLMxk3iuT_XsZJTBiMuuae0O_Nj1nZhwxKTCPlFCFOiPaBpEBBpVnGOvi380_vedEjSAfoXYfQAajXr6LxqeAwK-rfufPSLQ.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=QNqpQyGxRFEQ7kNvwFJKnAn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMjcwMTQ1Njc4MDIyODM5LCJhc3NldF9hZ2VfZGF5cyI6MTksInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNTU0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=47e9b8f34e14230&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wRDQ1QTMzQUM4MUVCRjM5RUJFQUM2MUM0RUE3MEE4Nl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzFBNDhBNDg1REFBNDg2RkNFRDM2OTNFRkEyN0ZGRDkyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbu4pzfmszBBBUCKAJDMywXQJhJwo9cKPYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=XwEKL6usrwxrZPFIUQtPkg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEV9OQ-7aDHn5fupeGW_SWFfDxRVyTP8gijqg0gt0AnUGNrmlVbPWgJuCg6voYcaoT2OR-Ef65V&_nc_eui2=AeH0ICB2jH7KN2OVo2mhEhwAVK-z351fqThUr7PfnV-pOFfkPXqGsqkfsArbV8e-n0g7z_YG68MihoZZy06mUgjA&oh=00_Af6YBFk9whiPYWGEx5wLxQXQdwa81S8-UOBOTG9KD7w-zA&oe=69FE9972&bitrate=1892988&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-8",
+              "name": "18",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-8-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQMDc88qrbRMSf35br8x9bxefk2QjulhJKxgzCXAP40d8BDwuAtu6cZ8SZppkZbEiIywo_X1Ckym_p4xl8fH1fMvtVponfB6A5qZHNW4e5Vs6A.mp4?_nc_cat=105&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=8vbzmtddfsYQ7kNvwFpkMb0&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzE0MzcxNjUwNTM3MTgxLCJhc3NldF9hZ2VfZGF5cyI6MjYsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNjUyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=120ffcb967ede112&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9DNjRBMDIzQTgwODk4RDk0NDRCQUZBQUI5NEM3QzhBOF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzJENDVGMzUzNjk5MkYwNDNFMURFNDRBNjcyNUU4NkFFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa6m6r1v9rVBBUCKAJDMywXQJnQo9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=kn41aK3NDaLkXOcFsIN2rw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEzTDPyeX8t98KNWw9iCpSSz_Df4IefFC5_bUt4oYHfot50v2haSsucjtFHlM8CNtS7y7FOWMRY&_nc_eui2=AeHduBMGbkn5jTHc3epZ0Hq6rGrKzxR5VRKsasrPFHlVEnY9_lFVgslAW_T9tK5v8ONQ9G-ubsw2yrVYFWnojPCC&oh=00_Af7vLcWqU61gUfF0fDHNdEMJVUtZHKFTpfQLoxY-0wZ6ew&oe=69FE8CAB&bitrate=2001265&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-9",
+              "name": "17",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-9-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMfDL-zyFWv4O7DYt6PGjNi7W1nLau6iQBTLSZ1KVZxNVmxQRzZuzyl_xJ-ED5ZvNjCkVGo_eiAbclmVh92btap_ZwV3AUwC6T9x4iNvQ.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=KOBTGFIYj5oQ7kNvwEpWbJy&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzIuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTcyNDcxODExNzgzNDc3LCJhc3NldF9hZ2VfZGF5cyI6MzMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNzAzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=0zySg5aH4swr36kY_OMOrA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHBuFf8rJ57vOq0CUyIFP_pUDZWMCm4I2E92cUTT_JI5IIhQS2ZjIRCQe-ShH2YLrFLfZMBykrF&_nc_eui2=AeGnU0_gUG66stUVO_d4nLGZA9gphWRBqwYD2CmFZEGrBkrGf6q0dEPpT5QayDVLAf7hWcMUxUgkDhOiHK8n6AvS&oh=00_Af6K18C8CoTr3NnZyQg0o8NHA8rryJ-qtMQWOqqVvry_NA&oe=69FEFCC4&bitrate=392248&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-10",
+              "name": "16",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-10-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPrKnaa3rNRNasK8T7U2aGXKYQTGm217i-kjmKHNrXlUUMV1uZHWIOWSBvfoyeLE0V5zoBG1VRhyF6cw9ngNXtnhDa-TI5qsLvju9-swAF_VA.mp4?_nc_cat=100&_nc_sid=5e9851&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=nzweEu21nHEQ7kNvwEFnEAT&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyNDE2MjY4MzA1NTA1MTgxLCJhc3NldF9hZ2VfZGF5cyI6NDAsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNTczLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=fc60111fd2c2220e&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FRDQ4Qzg1RjA5MjU1NjAyQjA0QjZGMTE2OUI4MTE5N19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzQ3NDg1N0NFNTk4NjlGRURFOTkwQjhGRjgwNzM5OThEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACa67sDgqeXKCBUCKAJDMywXQJiUzMzMzM0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=sd7yQjDFW-fUUjp9AteYew&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGTNqigle0o92dBYIhi7BcKOY1lCrwodgFpAvOvzz0IeVkwZpUdXGFaGQlGQFKjo_0J4DLe6agi&_nc_eui2=AeETBKnp5VFGTGZJmPZNEw2br0XGZG5sFqKvRcZkbmwWouVZrFc_yNCEjkmwVkCya5O7LUkqnLen2hS0ECKf299k&oh=00_Af6b0eaK1l-HjplKUNjBazChzodd_Jh3NetCXIr4jYRMWw&oe=69FF2A3C&bitrate=1518566&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-11",
+              "name": "15",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-11-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM8iwyUVPA_1pyyT-BUj-fSwLeyHqrC02rDb9zRlBZjAl0OzVcXJ_cJUK4H7h6O2Enk6Y4nS4F9yGDNkxcNaSfh81ITTV6TQHzgfTAa9Nhejw.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=jftjt3d59PEQ7kNvwHGSUKl&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzY2MDE0MDAyMDAwMjMyLCJhc3NldF9hZ2VfZGF5cyI6NDcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNzE0LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=6b14d0be93576608&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9FMDQ2RTM4OTg1RjA0ODMzNUI5NkQ1MjFDMTU4RUQ4OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzA0NDNGODlFOUZERTBBREVFRkE0QkI2NjJCQzZBQ0E4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbQxce1vZjtBBUCKAJDMywXQJrIzMzMzM0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=7gUTAfK7pU437e1KAkddwg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGNZkh0_CnGDcwqQ8EixR0t_Kp9ipyMYHFINqtowwppJ5WfSz_eAVWNYdG3N4VgrI2N4bI0IFgf&_nc_eui2=AeFpQ5Mp66nuVO7fbo8BWWiYK2_87hW7Dvgrb_zuFbsO-EobXM38E-6Di0vKbvlhJykrzLd7kF3f2pajhCJnz9U-&oh=00_Af4evrsGK204OlbtZ6vbBLp9Uad9YGF-NKg_is2C_6GK7g&oe=69FF56CF&bitrate=1657698&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-12",
+              "name": "14",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-12-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNgv81Yl8-Xpaw9_bNKVpSrT6bdJ3XH9ZJnyogIHRhrSTC7BT3C-tUTqDDfyG8flC8_WLQfl7bERs0HejFiYEpi_av-CdwSbR19BNkS0g.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=video-sin2-1.xx.fbcdn.net&_nc_ohc=af_TfNajVaIQ7kNvwFen1PI&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIxNjU2ODE1MDQ5NTM2MCwiYXNzZXRfYWdlX2RheXMiOjUzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTc1MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=xjNtbeI1DfHqE8nPqTMgmQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGXaUUQ7TdX1Wa93VFQfw1ELyUnmMNt0-NrWk3NSQYIsMAxdmufK29OIK_LkTw04IIJT6VUy2GO&_nc_eui2=AeG55EnQ7JZiUsL8VZ5e6wFTCnKKJHKUDPIKcookcpQM8nh6ho-2M8n5eCIC391TnCuxH7byUCEug9JcXJW4gI7i&oh=00_Af7M7SCa3i0dUg1hTiNN9ROaVnhrXEMf4-mu-V_DB5qMjQ&oe=69FE694A&bitrate=419300&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-13",
+              "name": "13",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-13-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPGQPde3c5oOlL0g9KcouTvzH4ft-d61xWXgW-YRrfX7GwH_mQu6uYF88GaIfrdcVLmviv4eFetUQ5BizBqvondSIkzdRqrLl9tVzf-YQ.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=BxuC2UJ-JyUQ7kNvwEJp_zP&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTQ1ODk3MDg0NTQwNDI0LCJhc3NldF9hZ2VfZGF5cyI6NjAsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNDc5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=pKhUIbUXzuDVEsSnhLFRPQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHwl-Jw3AWRbh_okyWqaJ--IjBUzwbTaHq4A_yvIgd04XofNcJwUCgzJYNu6wEZmzGXkcy1dSqO&_nc_eui2=AeG2DdcQQky_4i_3Zu4hluL-xAtL22weOCDEC0vbbB44IBq620LPKroCRwWjQesbqONQH5n1Nd3FqUgWKlg0Gt2M&oh=00_Af7QSGPTYrnPCxGncUXdD1-rU6rmAzo4rbLZyDrJoce9aA&oe=69FE7EBC&bitrate=495935&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-14",
+              "name": "12",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-14-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQO6c4z4oC815XfmUSI0QJivTbFUSPuErdho5t-gy1tI8Rkl8AtWqHv9sdWkkeSAerp79cZo6TUcMWq95sCkzKO7lFmhfksu4EQs0r0-FA.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=Cvxgjqp6fSUQ7kNvwGoxXpm&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ2MDM3OTEwOTA1NjY1MCwiYXNzZXRfYWdlX2RheXMiOjY4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTU4MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=y923B-IlAPHP3cggscIbwg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHgtOoz1bzhIn2XyvnQVcYOvC0QA6ZmoR12-wcgJadqypodOIwFIlLcpBJyBoHclHjS9fA4A91N&_nc_eui2=AeHVl1m71h-TMhwWRMar7ogpbSxW9326B5FtLFb3fboHkXjwXQQTlaZQpGQJA0PxDZV5key4uw2Y0-aIF8L17Zue&oh=00_Af57Jfv7mgtJTkQQ6R2GJTLA4DOjjMVZ-ESVdA-2k9z1sQ&oe=69FF1A06&bitrate=447783&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-15",
+              "name": "11",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-15-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQPL7pZSob5SXpCdOnmHG5UrTApb2kSvK1tqP_ZYX16IPmllwdwFn3_eqlLnyMOKrAwoAqChUkh1glI5t-rz6QGYVdCYHbqWwIzA64kdVA.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=86sr8fHcZZQQ7kNvwGrtc8Y&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzI1OTkxNDUwNDQ3ODQ2LCJhc3NldF9hZ2VfZGF5cyI6NzUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxNDgzLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=aIQwjLf9CsoCvbUIHQGVcw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG95b3qg_nB-JhSvnwqD6diJN_reIaaTtct1gO80q7KGGIkX-vBrK3V9te2HbBpJ63eNxec3ttI&_nc_eui2=AeHt975iSR5Jb3KmXOHkCp8ik0l_pnieUaaTSX-meJ5RpiYrkfAqz0DlYhOySvuXv6LDZsa1QLl4qmaPpeZsKpjJ&oh=00_Af5R0M0ttTpxFd0G3RaZIPNsw5tBVErqdA3L5eoZP0EzkQ&oe=69FF4C38&bitrate=367451&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-16",
+              "name": "10",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-16-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNZ3FrPGavQXa5mfdT63TjtxCfyejwnKH5zQNiH0RUivcia9vhPPRYKmAzFhlKYOrGIsHrLmQXr57qQrrXYPHW_EWG70ECO6BOsZ-WoSw.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=UZGYLsHphosQ7kNvwELO-OA&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk1MTYxNTYyMjM4MDg2NiwiYXNzZXRfYWdlX2RheXMiOjgyLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTU2MywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Ic-inky46UHMoU7CZ-LFeQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHq3Ibp6RLRdUMe0V_cMcxuZPNnIEFJ6CPiLIBTc4aDgqNUVDJ-0Qeezb6lSeZDVeStLUptCNvU&_nc_eui2=AeGbbqspLK6Tf-dHyT-6RxXmN1I_rjUFSV03Uj-uNQVJXTH_L76HecipqTmNDlgpFpavVN1HuvCr46K8x2kfruO0&oh=00_Af6u4GdnFmR_KR9TAJII_ZPFBTTcsbrvtxj2SfVV_BWRpg&oe=69FF687E&bitrate=377207&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-17",
+              "name": "9",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-17-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQMtYhmDcPKhLrQG9hZCQj2PZfsgSc8k-96UK3-GDObGC_CurXkw0XpkGwwkuEsG0yz7ftXyb5dHmLroPQ2BrJ-a88Xe4wuRHTDjGX5XzA.mp4?_nc_cat=106&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=vkt6_scMHtYQ7kNvwF7oITC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjEyNzgwMjY0NDQyNjg5OSwiYXNzZXRfYWdlX2RheXMiOjg4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTYwNSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=WLykHFuI-ZUIQQAG33HZJQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEsZ_hO-nS0hmnWvCny2CRk72xWsWBcCttqIJCnBCtrmtkCVhuWjUWYiQ0e3rcaBjQ1eJjdKIIM&_nc_eui2=AeGdFR_B_8qj7-YB2bayMn2Yi-MKa1TSP0qL4wprVNI_SqtgkfCqihPO01DCDF2_sMF0ylVh775B1SJhY7xwht5J&oh=00_Af6vQd2ylE8WAkmWGEEMIHnb9WWyxGdYZ-vQ_GYfR0s0mg&oe=69FE3518&bitrate=388092&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-18",
+              "name": "8",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-18-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNPLcJTFLbhGAlHQ5bYUd29L94oSVWaEHkX-GNV6-wTf8Gls1V5TmM_wKDm0bRjSLw7Tzxtws3KEXIRXdH9fonn9wiUUi22lX3PiOJ3Wg.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=snkKovw2Ew0Q7kNvwHmnntC&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTIwOTYyODcxNzk0MTUzMSwiYXNzZXRfYWdlX2RheXMiOjk2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTM1NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=GTeDeA1Amo8dk79A8H3ZkA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFyfOjLsiHr1r2LL5fa0Jp3EF5SKQynfr_pmoRTwABKS3AU7ShMzvhHRCyyY1gIGnXSq3obrJ27&_nc_eui2=AeEW1GRMiBwI__SBfQAHRTv5-ZBCUUo9pN75kEJRSj2k3mJz_9OUsLDEYElbtTdIoKJ9OeXg5jRGVRAigi6cJsdz&oh=00_Af7M70qGicu5opaCBVqRhpF3bKIEpxMyuEbGFCufhgz2Gw&oe=69FF4176&bitrate=398828&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-19",
+              "name": "7",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-19-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOZV00vYY0oWrVAi6qy22OpZSmHqLYl7xSPaLMbDVEh-W0RVQBO98YAHLNhuoizrr2ASlTbwfgRwK2gIPCw39GKqwRUfUyopGokgKeHxQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=nmqEXfFKrpIQ7kNvwEt2oft&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTk3NzU3Nzk5MjgwNDIwNSwiYXNzZXRfYWdlX2RheXMiOjEwMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE1MTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=oETuqRgDDpTC0XZYXdl90Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG6wqpoiX2BQjErGdi_SPQBYAgGwXed9lH6s8qMzYztga5hS_PsjhuR076LCO7-_GxU9aPlRp74&_nc_eui2=AeGRmXq_9C4ibT3SRrNU-UXkfc9vbMjNke19z29syM2R7W7QASw7XzzDsN1Aw7Z3KFcck5lckmv4Op5K9OhQcPcA&oh=00_Af4Wp9omMQ3EZKyL03VM3UG6S6dpULhKWmUwFVRkwdlCTA&oe=69FE35F4&bitrate=341638&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "kiem-lai-phan-2--0-20",
+              "name": "6",
+              "stream_links": [
+                {
+                  "id": "kiem-lai-phan-2--0-20-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -23,11 +283,11 @@
               ]
             },
             {
-              "id": "kiem-lai-phan-2--0-1",
+              "id": "kiem-lai-phan-2--0-21",
               "name": "5",
               "stream_links": [
                 {
-                  "id": "kiem-lai-phan-2--0-1-0",
+                  "id": "kiem-lai-phan-2--0-21-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -36,11 +296,11 @@
               ]
             },
             {
-              "id": "kiem-lai-phan-2--0-2",
+              "id": "kiem-lai-phan-2--0-22",
               "name": "4",
               "stream_links": [
                 {
-                  "id": "kiem-lai-phan-2--0-2-0",
+                  "id": "kiem-lai-phan-2--0-22-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -49,11 +309,11 @@
               ]
             },
             {
-              "id": "kiem-lai-phan-2--0-3",
+              "id": "kiem-lai-phan-2--0-23",
               "name": "3",
               "stream_links": [
                 {
-                  "id": "kiem-lai-phan-2--0-3-0",
+                  "id": "kiem-lai-phan-2--0-23-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -62,11 +322,11 @@
               ]
             },
             {
-              "id": "kiem-lai-phan-2--0-4",
+              "id": "kiem-lai-phan-2--0-24",
               "name": "2",
               "stream_links": [
                 {
-                  "id": "kiem-lai-phan-2--0-4-0",
+                  "id": "kiem-lai-phan-2--0-24-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -75,11 +335,11 @@
               ]
             },
             {
-              "id": "kiem-lai-phan-2--0-5",
+              "id": "kiem-lai-phan-2--0-25",
               "name": "1",
               "stream_links": [
                 {
-                  "id": "kiem-lai-phan-2--0-5-0",
+                  "id": "kiem-lai-phan-2--0-25-0",
                   "name": "fb-cdn-hd",
                   "type": "mp4",
                   "default": true,
@@ -93,20 +353,7 @@
     }
   ],
   "subtitle": "Thuyet Minh",
-  "search": "kiem-lai-phan-2 cn animation hhkungfu huyền huyễn tiên hiệp kiếm hiệp xem phim kiếm lai phần 2 thuyết minh: phần 2 của \"kiếm lai\" - trên đường đến với nhà tùy khi đưa đám người lý bảo bình đến đây để tiếp tục công việc học tập và rèn luyện, bởi lẽ ly châu động thiên đã tan thành mây khói, trần bình an phải ma... kiem lai phan 2 hoạt hình trung quốc thuyết minh anime donghua",
-  "tags": [
-    "CN Animation",
-    "HHKungFu",
-    "Huyền Huyễn",
-    "Tiên Hiệp",
-    "Kiếm Hiệp"
-  ],
-  "genres": [
-    "cn-animation",
-    "hhkungfu",
-    "huyen-huyen",
-    "tien-hiep",
-    "kiem-hiep"
-  ],
+  "search": "kiem-lai-phan-2 xem phim kiếm lai phần 2 thuyết minh: phần 2 của \"kiếm lai\" - trên đường đến với nhà tùy khi đưa đám người lý bảo bình đến đây để tiếp tục công việc học tập và rèn luyện, bởi lẽ ly châu động thiên đã tan thành mây khói, trần bình an phải ma... kiem lai phan 2 hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
   "description": "Xem phim Kiếm Lai Phần 2 Thuyết Minh: Phần 2 Của \"Kiếm Lai\" - Trên đường đến với nhà Tùy khi đưa đám người Lý Bảo Bình đến đây để tiếp tục công việc học tập và rèn luyện, bởi lẽ Ly Châu Động Thiên đã tan thành mây khói, Trần Bình An phải ma..."
 }
