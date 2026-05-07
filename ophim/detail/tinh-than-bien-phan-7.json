@@ -1,0 +1,47 @@
+{
+  "sources": [
+    {
+      "id": "tinh-than-bien-phan-7--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "tinh-than-bien-phan-7--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "tinh-than-bien-phan-7--0-0",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "tinh-than-bien-phan-7--0-0-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQMa1H0eRo3SzNA4ND7gpcqRG6C_wUrNCUhBU2Q4xevEvRRIBjjzxzV6eCGd6i-VeJSnkOuzzhrjH7MDfRMANl38yoV2r7cGHhqWPiFIZ0wy_A.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=iWWuB_jn2qgQ7kNvwF0vyKN&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDY2NzY5Mjk0NDE1MDEwLCJhc3NldF9hZ2VfZGF5cyI6MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEyNjgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=1ef88ed442031bdf&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8wMTREMDg4NjU4OUY4NDE5M0NBOUZCMzYwQkY0Q0U5Q19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzc4NEUzNzc5QzNBNzc0M0NCQTY2MTRFRTlDQkVDMkJDX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbE0pbsmoGbBRUCKAJDMywXQJPSZmZmZmYYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=5kV-zHolhY2zkk0PhFUEpQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFCn0SFNoww83KXdM4EcaPMm1x_Jb-4_R_TV5v43Q8Q6OSNicg17HjgzeDO47YiSFU_RwyXTArr&_nc_eui2=AeHKpwLxkBp_knTTdMEsoXQ47eMt_BK2eAft4y38ErZ4B8yJNw6lS67LRhTPy7p7rNP8xMIXQqOThRxdBjvTmt3B&oh=00_Af7vvKqD7n9gJbmPlcgwG9fgm5AhQ_k4aRFAxtVUMCoySQ&oe=6A01E492&bitrate=1958305&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "tinh-than-bien-phan-7--0-1",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "tinh-than-bien-phan-7--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQML33YCBLA_2ANHRggcDOf_hbjwmt03A8uFoevSDXs6BmZX-rDWe7HBC5vxX3gRBghTFVbP5uh12pCvBG4Fahfb7KzbuLef1fOedtxjgwfgzA.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=QRbRhw1vlPAQ7kNvwGL0EwG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMTE4MTE3MDM1NDAwMDQ1LCJhc3NldF9hZ2VfZGF5cyI6MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE4ODcsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=58373800bf14c599&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8zODQ3MzlBNzE2NTlEQjVBQTE3QTIxMTBDMUVDQzlCMV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0Q2NDVGODYwNzUwMURGMERENUNGNTY0MUE3QTUyODk4X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACba7ebX0ZrDBxUCKAJDMywXQJ19R64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=5yX154ksyTt7Vd7-BAWIuQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQF_bWn8yH5xCaCwHUUeRbo29df1HjRub6hEvY8PHiUS9iUwd_WUugh9aVVgB4jIwD5BIohwb8Sf&_nc_eui2=AeHgR2jDIE45jy8x6F6R7z70-ouDLzAnX5n6i4MvMCdfmTgaSQCai4B5u1icXliLaPEMDKKpvQXYhDabBJbxk-fT&oh=00_Af5ADYWy0obe_E_gessTIqYWGcQU96fnRp15g0-zHs_tRA&oe=6A01CF89&bitrate=1467116&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "tinh-than-bien-phan-7 xem phim tinh thần biến phần cuối thuyết minh: coming soon !!! tinh than bien phan 7 hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Tinh Thần Biến Phần Cuối Thuyết Minh: Coming Soon !!!"
+}

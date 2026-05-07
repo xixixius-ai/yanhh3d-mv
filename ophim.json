@@ -230,7 +230,7 @@
       "type": "playlist",
       "display": "text-below",
       "label": {
-        "text": "151/156 [4K]",
+        "text": "Trailer 152/156 Tối T6",
         "position": "top-left",
         "color": "#35ba8b",
         "text_color": "#ffffff"
@@ -266,6 +266,81 @@
       "enable_detail": true
     },
     {
+      "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet",
+      "name": "Thế Giới Hoàn Mỹ",
+      "search": "thế giới hoàn mỹ xem phim thế giới hoàn mỹ thuyết minh: thế giới hoàn mỹ cải biên từ tiểu thuyết cùng tên. hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử... the gioi hoan my thuyet minh tieng viet hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Thế Giới Hoàn Mỹ Thuyết Minh: Thế Giới Hoàn Mỹ cải biên từ tiểu thuyết cùng tên. Hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. Hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Trailer 268/286 Tối T5",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "tinh-than-bien-phan-7",
+      "name": "Tinh Thần Biến Phần Cuối",
+      "search": "tinh thần biến phần cuối xem phim tinh thần biến phần cuối thuyết minh: coming soon !!! tinh than bien phan 7 hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Tinh Thần Biến Phần Cuối Thuyết Minh: Coming Soon !!!",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tinh-than-bien-phan-7.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "01~02 [4K] Mới",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tinh-than-bien-phan-7.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "nghich-thien-ta-than-3d",
+      "name": "Nghịch Thiên Tà Thần 3D",
+      "search": "nghịch thiên tà thần 3d xem phim nghịch thiên tà thần 3d thuyết minh: trên đại lục thương vân, đại thổ y tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên thần dược thiên không. việc này đã khiến cho cả thiên hạ đều thèm muốn viên thần dược này, dẫn đến cái ch... nghich thien ta than 3d hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Nghịch Thiên Tà Thần 3D Thuyết Minh: Trên đại lục Thương Vân, Đại Thổ Y Tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên Thần Dược Thiên Không. Việc này đã khiến cho cả thiên hạ đều thèm muốn viên Thần Dược này, dẫn đến cái ch...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/nghich-thien-ta-than-3d-1776260879.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "36/... [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/nghich-thien-ta-than-3d.json"
+      },
+      "enable_detail": true
+    },
+    {
       "id": "ban-long",
       "name": "Bàn Long",
       "search": "bàn long xem phim bàn long thuyết minh: ngọc lan đại lục, một thế giới huyền ảo tràn đầy sinh vật kỳ diệu cùng ma pháp rực rỡ. một ngày nọ, thiếu niên quý tộc sa sút xuất thân từ ô sơn trấn — lâm lôi · ba lỗ khắc — bước vào tổ trạch phủ đầy bụi bặm.... ban long hoạt hình trung quốc thuyết minh anime donghua",
@@ -280,13 +355,263 @@
       "type": "playlist",
       "display": "text-below",
       "label": {
-        "text": "Tập 04 - Tối T4",
+        "text": "04/20 [4K] Mới",
         "position": "top-left",
         "color": "#35ba8b",
         "text_color": "#ffffff"
       },
       "remote_data": {
         "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/ban-long.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "than-mo",
+      "name": "Thần Mộ",
+      "search": "thần mộ xem phim thần mộ thuyết minh: thần mộ kể về chàng thiếu niên tên thần nam được hồi sinh sau 1 vạn năm tại thần ma lăng viên. thần ma lăng viên nằm ở chính giữa thiên nguyên đại lục. đây là nơi an táng những nhân vật mạnh nhất trong lịch sử... than mo hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Thần Mộ Thuyết Minh: Thần mộ kể về chàng thiếu niên tên Thần Nam được hồi sinh sau 1 vạn năm tại Thần Ma Lăng Viên. Thần Ma Lăng Viên nằm ở chính giữa Thiên Nguyên đại lục. Đây là nơi an táng những nhân vật mạnh nhất trong lịch sử...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/than-mo-full-1755205821.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "84/85 [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/than-mo.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "tuong-da",
+      "name": "Tương Dạ",
+      "search": "tương dạ xem phim tương dạ thuyết minh: ninh khuyết bất ngờ rơi vào một đại đường nửa thực nửa huyễn, nơi con đường tu hành gắn liền với vô vàn hiểm nguy. từng nghĩ có thể dựa vào cơ hội này để đổi đời, ung dung bước lên đỉnh cao, nhưng sự thật lại... tuong da hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Tương Dạ Thuyết Minh: Ninh Khuyết bất ngờ rơi vào một Đại Đường nửa thực nửa huyễn, nơi con đường tu hành gắn liền với vô vàn hiểm nguy. Từng nghĩ có thể dựa vào cơ hội này để đổi đời, ung dung bước lên đỉnh cao, nhưng sự thật lại...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tuong-da.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "04/19 [4K]",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tuong-da.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "dai-chua-te-3d",
+      "name": "Đại Chúa Tể 3D",
+      "search": "đại chúa tể 3d xem phim đại chúa tể 3d thuyết minh: đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, th... dai chua te 3d hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Đại Chúa Tể 3D Thuyết Minh: Đại thiên thế giới, nơi các vị diện giao nhau, vạn tộc hiện lên như nấm, quần hùng tụ hội, một vị Thiên chi chí tôn đến từ hạ vị diện tại vô tận thế giới diễn lại một truyền kỳ mà mọi người hướng tới, th...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/dai-chua-te-3d-1767935803.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "72/... Trưa T6",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/dai-chua-te-3d.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "thuong-nguyen-do",
+      "name": "Thương Nguyên Đồ",
+      "search": "thương nguyên đồ xem phim thương nguyên đồ thuyết minh: nói về yêu tà hoành hành ở thương nguyên giới, loài người chịu đủ tàn phá, nam chính mạnh xuyên từ nhỏ đã lập lời thề phải báo thù cho mẫu thân. lấy đạo viện kính hồ làm khởi điểm, dựa vào tâm chí kiên... thuong nguyen do hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Thương Nguyên Đồ Thuyết Minh: Nói về yêu tà hoành hành ở Thương Nguyên giới, loài người chịu đủ tàn phá, nam chính Mạnh Xuyên từ nhỏ đã lập lời thề phải báo thù cho mẫu thân. Lấy đạo viện Kính Hồ làm khởi điểm, dựa vào tâm chí kiên...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/thuong-nguyen-do-1775900334.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Trailer 76/... Trưa T6",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/thuong-nguyen-do.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "tham-khong-bi-ngan",
+      "name": "Thâm Không Bỉ Ngạn",
+      "search": "thâm không bỉ ngạn xem phim thâm không bỉ ngạn thuyết minh: thế giới đã đổi chiều, khoa học tu tiên và tân thuật cơ giới bước lên thống trị thời đại, còn cổ thuật tu chân từng truyền thừa từ hàng ngàn năm bị xem như tàn dư quá khứ, dần đi vào quên lãng. giữa... tham khong bi ngan hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Thâm Không Bỉ Ngạn Thuyết Minh: Thế giới đã đổi chiều, khoa học tu tiên và tân thuật cơ giới bước lên thống trị thời đại, còn cổ thuật tu chân từng truyền thừa từ hàng ngàn năm bị xem như tàn dư quá khứ, dần đi vào quên lãng. Giữa...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/tham-khong-bi-ngan-1768545458.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Trailer 19/26 Trưa T6",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tham-khong-bi-ngan.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "vinh-sinh-phan-5",
+      "name": "Vĩnh Sinh Phần 5",
+      "search": "vĩnh sinh phần 5 xem phim vĩnh sinh phần 5 thuyết minh: phần 5 của vĩnh sinh - giữa thế giới tu hành mênh mông, nơi tiên đạo, võ đạo và huyền huyễn đan xen như những vì sao giữa vũ trụ vô tận, vĩnh sinh mở ra hành trình của một thiếu niên bình thường mang t... vinh sinh phan 5 hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Vĩnh Sinh Phần 5 Thuyết Minh: Phần 5 Của Vĩnh Sinh - Giữa thế giới tu hành mênh mông, nơi tiên đạo, võ đạo và huyền huyễn đan xen như những vì sao giữa vũ trụ vô tận, Vĩnh Sinh mở ra hành trình của một thiếu niên bình thường mang t...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/vinh-sinh-phan-5-1766196902.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Trailer 23/... Tối T6",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/vinh-sinh-phan-5.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "dau-la-dai-luc-2-tuyet-the-duong-mon",
+      "name": "Đấu La Đại Lục 2 - Tuyệt Thế Đường Môn",
+      "search": "đấu la đại lục 2 - tuyệt thế đường môn xem phim đấu la đại lục 2 - tuyệt thế đường môn thuyết minh: nơi này không có ma pháp, không có đấu khí, không có võ thuật, lại có võ hồn. đường môn sáng lập vạn năm trên đấu la đại lục, đường môn suy thoái. một đời thiên kiêu hoành không x... dau la dai luc 2 tuyet the duong mon hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Đấu La Đại Lục 2 - Tuyệt Thế Đường Môn Thuyết Minh: Nơi này không có ma pháp, không có đấu khí, không có võ thuật, lại có võ hồn. Đường Môn sáng lập vạn năm trên Đấu La đại lục, Đường Môn suy thoái. Một đời Thiên Kiêu hoành không x...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/dau-la-dai-luc-2-tuyet-the-duong-mon-1775816257.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "Trailer 152/156 Tối T6",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/dau-la-dai-luc-2-tuyet-the-duong-mon.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "dao-yeu-hanh",
+      "name": "Đạo Yêu Hành",
+      "search": "đạo yêu hành xem phim đạo yêu hành thuyết minh: thiều nguyệt thánh nữ của cửu tuyền tông, bị mang ra gả cho giang nguyên thích khách của thái huyền lâu. cả hai người họ tất nhiên là không bằng lòng với hôn sự này, nhưng vì lợi ích của cả hai tông phái n... dao yeu hanh hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Đạo Yêu Hành Thuyết Minh: Thiều Nguyệt thánh nữ của Cửu Tuyền Tông, bị mang ra gả cho Giang Nguyên thích khách của Thái Huyền Lâu. Cả hai người họ tất nhiên là không bằng lòng với hôn sự này, nhưng vì lợi ích của cả hai tông phái n...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/dao-yeu-hanh.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "25/...",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/dao-yeu-hanh.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "dan-dao-chi-ton",
+      "name": "Đan Đạo Chí Tôn",
+      "search": "đan đạo chí tôn xem phim đan đạo chí tôn thuyết minh: lửa thần thiêu đốt, nhập thể hồi sinh, nhưng lại bị truy sát đủ đường. để sống, hắn không ngừng tranh đấu với trời đất, với con người và với đủ loại yêu ma quỷ quái tàn ác, nghịch chuyển vận mệnh, tung... dan dao chi ton hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Đan Đạo Chí Tôn Thuyết Minh: Lửa thần thiêu đốt, nhập thể hồi sinh, nhưng lại bị truy sát đủ đường. Để sống, hắn không ngừng tranh đấu với trời đất, với con người và với đủ loại yêu ma quỷ quái tàn ác, nghịch chuyển vận mệnh, tung...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/2023_22_12_13_08_57-dan-dao-chi-ton.jpg",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "174/...",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/dan-dao-chi-ton.json"
+      },
+      "enable_detail": true
+    },
+    {
+      "id": "long-pha-cuu-thien",
+      "name": "Long Phá Cửu Thiên",
+      "search": "long phá cửu thiên xem phim long phá cửu thiên thuyết minh: lâm thần, một thanh niên đến từ thế giới võ hiệp với đầy rẫy những ước mơ và hoài bão để trở thành một võ hiệp chính hiệu. nhưng cũng phải trả qua vô vàn thách thứ, thứ mà không ai mong đợi, lâm thần... long pha cuu thien hoạt hình trung quốc thuyết minh anime donghua",
+      "keywords": [],
+      "description": "Xem phim Long Phá Cửu Thiên Thuyết Minh: Lâm Thần, một thanh niên đến từ thế giới võ hiệp với đầy rẫy những ước mơ và hoài bão để trở thành một võ hiệp chính hiệu. Nhưng cũng phải trả qua vô vàn thách thứ, thứ mà không ai mong đợi, Lâm Thần...",
+      "image": {
+        "url": "https://yanhh3d.bz/storage/movies/long-pha-cuu-thien.png",
+        "type": "cover",
+        "width": 480,
+        "height": 640
+      },
+      "type": "playlist",
+      "display": "text-below",
+      "label": {
+        "text": "33/40",
+        "position": "top-left",
+        "color": "#35ba8b",
+        "text_color": "#ffffff"
+      },
+      "remote_data": {
+        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/long-pha-cuu-thien.json"
       },
       "enable_detail": true
     },
@@ -416,106 +741,6 @@
       "enable_detail": true
     },
     {
-      "id": "nghich-thien-ta-than-3d",
-      "name": "Nghịch Thiên Tà Thần 3D",
-      "search": "nghịch thiên tà thần 3d xem phim nghịch thiên tà thần 3d thuyết minh: trên đại lục thương vân, đại thổ y tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên thần dược thiên không. việc này đã khiến cho cả thiên hạ đều thèm muốn viên thần dược này, dẫn đến cái ch... nghich thien ta than 3d hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Nghịch Thiên Tà Thần 3D Thuyết Minh: Trên đại lục Thương Vân, Đại Thổ Y Tông đã bị sát hại tàn nhẫn vì giữ một trong bảy viên Thần Dược Thiên Không. Việc này đã khiến cho cả thiên hạ đều thèm muốn viên Thần Dược này, dẫn đến cái ch...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/nghich-thien-ta-than-3d-1776260879.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Trailer 36/... Trưa T5",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/nghich-thien-ta-than-3d.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "tuong-da",
-      "name": "Tương Dạ",
-      "search": "tương dạ xem phim tương dạ thuyết minh: ninh khuyết bất ngờ rơi vào một đại đường nửa thực nửa huyễn, nơi con đường tu hành gắn liền với vô vàn hiểm nguy. từng nghĩ có thể dựa vào cơ hội này để đổi đời, ung dung bước lên đỉnh cao, nhưng sự thật lại... tuong da hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Tương Dạ Thuyết Minh: Ninh Khuyết bất ngờ rơi vào một Đại Đường nửa thực nửa huyễn, nơi con đường tu hành gắn liền với vô vàn hiểm nguy. Từng nghĩ có thể dựa vào cơ hội này để đổi đời, ung dung bước lên đỉnh cao, nhưng sự thật lại...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/tuong-da.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Trailer 04/19 Trưa T5",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tuong-da.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "than-mo",
-      "name": "Thần Mộ",
-      "search": "thần mộ xem phim thần mộ thuyết minh: thần mộ kể về chàng thiếu niên tên thần nam được hồi sinh sau 1 vạn năm tại thần ma lăng viên. thần ma lăng viên nằm ở chính giữa thiên nguyên đại lục. đây là nơi an táng những nhân vật mạnh nhất trong lịch sử... than mo hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Thần Mộ Thuyết Minh: Thần mộ kể về chàng thiếu niên tên Thần Nam được hồi sinh sau 1 vạn năm tại Thần Ma Lăng Viên. Thần Ma Lăng Viên nằm ở chính giữa Thiên Nguyên đại lục. Đây là nơi an táng những nhân vật mạnh nhất trong lịch sử...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/than-mo-full-1755205821.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Trailer 84/85 Trưa T5",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/than-mo.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet",
-      "name": "Thế Giới Hoàn Mỹ",
-      "search": "thế giới hoàn mỹ xem phim thế giới hoàn mỹ thuyết minh: thế giới hoàn mỹ cải biên từ tiểu thuyết cùng tên. hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử... the gioi hoan my thuyet minh tieng viet hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Thế Giới Hoàn Mỹ Thuyết Minh: Thế Giới Hoàn Mỹ cải biên từ tiểu thuyết cùng tên. Hắn vì tu đạo mà sinh, vì ứng kiếp mà đến. Hắn hoá thân thành vô vàn mưa máu, vẩy rơi năm tháng vạn cổ, trải qua vô số tu luyện của thời không và thử...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/the-gioi-hoan-my-1773395561.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "Trailer 268/286 Tối T5",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/the-gioi-hoan-my-thuyet-minh-tieng-viet.json"
-      },
-      "enable_detail": true
-    },
-    {
       "id": "do-thi-co-tien-y",
       "name": "Đô Thị Cổ Tiên Y",
       "search": "đô thị cổ tiên y xem phim đô thị cổ tiên y thuyết minh: diệp bất phàm là một sinh viên năm 3, để kiếm đủ tiền nằm viện cho mẹ mà đi ăn vạ, giả vờ tai nạn để bắt người khác bồi thường. nào ngờ lại gặp phải một cô tài xế không làm theo những gì người ta hay l... do thi co tien y hoạt hình trung quốc thuyết minh anime donghua",
@@ -539,206 +764,6 @@
         "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/do-thi-co-tien-y.json"
       },
       "enable_detail": true
-    },
-    {
-      "id": "thon-phe-tinh-khong",
-      "name": "Thôn Phệ Tinh Không",
-      "search": "thôn phệ tinh không xem phim thôn phệ tinh không thuyết minh: một ngày nọ, thế giới xuất hiện loại virus rr không rõ lai lịch, cuốn thế giới vào thảm hoạ. động vật bị truyền nhiễm đột biến thành quái thú đáng sợ, xâm lược với số lượng lớn. trong lúc loài người... thon phe tinh khong hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Thôn Phệ Tinh Không Thuyết Minh: Một ngày nọ, thế giới xuất hiện loại virus RR không rõ lai lịch, cuốn thế giới vào thảm hoạ. Động vật bị truyền nhiễm đột biến thành quái thú đáng sợ, xâm lược với số lượng lớn. Trong lúc loài người...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/thon-phe-tinh-khong-1762827757.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "222/260 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/thon-phe-tinh-khong.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "tien-kiem-ky-hiep-truyen-phan-3",
-      "name": "Tiên Kiếm Kỳ Hiệp Truyện 3",
-      "search": "tiên kiếm kỳ hiệp truyện 3 xem phim tiên kiếm kỳ hiệp truyện 3 thuyết minh: tiên kiếm kỳ hiệp truyện 3 vốn đã được biết đến rất nhiều qua bộ phim điện ảnh và cả tựa game quen thuộc, nhưng tất cả vẫn chưa thể diễn tả hết được sự sống động vốn có của nó. nhưng lần này... tien kiem ky hiep truyen phan 3 hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Tiên Kiếm Kỳ Hiệp Truyện 3 Thuyết Minh: Tiên Kiếm Kỳ Hiệp Truyện 3 vốn đã được biết đến rất nhiều qua bộ phim điện ảnh và cả tựa game quen thuộc, nhưng tất cả vẫn chưa thể diễn tả hết được sự sống động vốn có của nó. Nhưng lần này...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/tien-kiem-ky-hiep-truyen-phan-3.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "21/26 [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/tien-kiem-ky-hiep-truyen-phan-3.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "bach-luyen-thanh-than-thuyet-minh",
-      "name": "Bách Luyện Thành Thần",
-      "search": "bách luyện thành thần xem phim bách luyện thành thần thuyết minh: gia tộc sa sút, người thân gặp nạn, la chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, la chinh... bach luyen thanh than thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Bách Luyện Thành Thần Thuyết Minh: Gia tộc sa sút, người thân gặp nạn, La Chinh rơi từ trên mây xuống trở thành một gia nô thấp hèn, trong một thế giới được thống trị bởi sức mạnh bí ẩn, các gia tộc không ngừng đấu tranh, La Chinh...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/bach-luyen-thanh-than-1764739370.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "127/... [4K]",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/bach-luyen-thanh-than-thuyet-minh.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "con-ra-the-thong-gi-nua-phan-2",
-      "name": "Còn Ra Thể Thống Gì Nữa? Phần 2",
-      "search": "còn ra thể thống gì nữa? phần 2 xem phim còn ra thể thống gì nữa? phần 2 thuyết minh: sau khi thái hậu ám sát thất bại, hoàng đế và hoàng hậu tạm thời thoát khỏi hiểm. trên đường dữu vãn âm xuất cung, đoan vương giả vờ cứu viện nhưng thực chất lại ra tay ám sát cô. thái h... con ra the thong gi nua phan 2 hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Còn Ra Thể Thống Gì Nữa? Phần 2 Thuyết Minh: Sau khi thái hậu ám sát thất bại, hoàng đế và hoàng hậu tạm thời thoát khỏi hiểm. Trên đường Dữu Vãn Âm xuất cung, Đoan vương giả vờ cứu viện nhưng thực chất lại ra tay ám sát cô. Thái h...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/con-ra-the-thong-gi-nua-phan-2.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "17/24",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/con-ra-the-thong-gi-nua-phan-2.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "luyen-khi-10-van-nam-thuyet-minh",
-      "name": "Luyện Khí Mười Vạn Năm",
-      "search": "luyện khí mười vạn năm xem phim luyện khí mười vạn năm thuyết minh: mười vạn năm trước thiên lam tông vang dội giới tu chân, đệ tử trong tông đều là những đứa con của trời, đánh đâu thắng đó. chỉ có khai sơn đệ tử từ dương vẫn luôn ở luyện khí kỳ, để đột phá tu v... luyen khi 10 van nam thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Luyện Khí Mười Vạn Năm Thuyết Minh: Mười vạn năm trước Thiên Lam Tông vang dội giới tu chân, đệ tử trong tông đều là những đứa con của trời, đánh đâu thắng đó. Chỉ có khai sơn đệ tử Từ Dương vẫn luôn ở Luyện Khí kỳ, để đột phá tu v...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/luyen-khi-muoi-van-nam-1737639036.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "343/360",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/luyen-khi-10-van-nam-thuyet-minh.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "van-gioi-doc-ton",
-      "name": "Vạn Giới Độc Tôn",
-      "search": "vạn giới độc tôn xem phim vạn giới độc tôn thuyết minh: lâm phong vì thức tỉnh võ hồn kiếm ở đẳng cấp cao, đau khổ tu luyện tám năm, nhưng lúc thức tỉnh ra kiếm võ hồn vương giai thì cùng ngày bị cơ mạn yêu(vợ sắp cưới) nhân cơ hội cướp đi kiếm võ hồn, chỉ... van gioi doc ton hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Vạn Giới Độc Tôn Thuyết Minh: Lâm Phong vì thức tỉnh võ hồn Kiếm ở đẳng cấp cao, đau khổ tu luyện tám năm, nhưng lúc thức tỉnh ra kiếm võ hồn vương giai thì cùng ngày bị Cơ Mạn Yêu(vợ sắp cưới) nhân cơ hội cướp đi kiếm võ hồn, chỉ...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/van-gioi-doc-ton-720-1-300x449-1.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "445/498",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/van-gioi-doc-ton.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "vo-than-chua-te-thuyet-minh",
-      "name": "Võ Thần Chúa Tể",
-      "search": "võ thần chúa tể xem phim võ thần chúa tể thuyết minh: thiên vũ đại lục nhất đại truyền kỳ tần trần, bởi vì bạn tốt phản bội bất ngờ ngã xuống võ vực. 300 năm sau, hắn chuyển sinh thành một con riêng ở một vương phủ phải chịu đủ mọi ức hiếp lên người, l... vo than chua te thuyet minh hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Võ Thần Chúa Tể Thuyết Minh: Thiên Vũ đại lục nhất đại truyền kỳ Tần Trần, bởi vì bạn tốt phản bội bất ngờ ngã xuống Võ vực. 300 năm sau, hắn chuyển sinh thành một con riêng ở một vương phủ phải chịu đủ mọi ức hiếp lên người, l...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/vo-than-chua-te-1757937361.jpg",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "654/720",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/vo-than-chua-te-thuyet-minh.json"
-      },
-      "enable_detail": true
-    },
-    {
-      "id": "lao-to-luyen-the-manh-nhat-lich-su",
-      "name": "Lão Tổ Luyện Thể Mạnh Nhất Lịch Sử",
-      "search": "lão tổ luyện thể mạnh nhất lịch sử xem phim lão tổ luyện thể mạnh nhất lịch sử thuyết minh: diệp thương huyền, người mà được tôn thờ là một lão tổ luyện thể mạnh nhất trong lịch sử nhân gian, một mình một sức mạnh tiềm ẩn to lớn, tiến đến thần giới rộng lớn, sánh ngang với c... lao to luyen the manh nhat lich su hoạt hình trung quốc thuyết minh anime donghua",
-      "keywords": [],
-      "description": "Xem phim Lão Tổ Luyện Thể Mạnh Nhất Lịch Sử Thuyết Minh: Diệp Thương Huyền, người mà được tôn thờ là một lão tổ luyện thể mạnh nhất trong lịch sử nhân gian, một mình một sức mạnh tiềm ẩn to lớn, tiến đến Thần giới rộng lớn, sánh ngang với c...",
-      "image": {
-        "url": "https://yanhh3d.bz/storage/movies/lao-to-luyen-the-manh-nhat-lich-su.png",
-        "type": "cover",
-        "width": 480,
-        "height": 640
-      },
-      "type": "playlist",
-      "display": "text-below",
-      "label": {
-        "text": "37/40",
-        "position": "top-left",
-        "color": "#35ba8b",
-        "text_color": "#ffffff"
-      },
-      "remote_data": {
-        "url": "https://raw.githubusercontent.com/xixixius-ai/yanhh3d-mv/refs/heads/main/ophim/detail/lao-to-luyen-the-manh-nhat-lich-su.json"
-      },
-      "enable_detail": true
     }
   ],
   "sorts": [
@@ -750,8 +775,8 @@
   ],
   "meta": {
     "source": "https://yanhh3d.bz",
-    "total_items": 29,
-    "updated_at": "2026-05-06T11:54:51Z",
+    "total_items": 30,
+    "updated_at": "2026-05-07T12:00:23Z",
     "version": "2.2"
   }
 }
