@@ -11,426 +11,62 @@
           "streams": [
             {
               "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0",
-              "name": "272",
+              "name": "274",
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-0-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPByQpirMAfWLn6Aw-fpT5NoQmjkoD7NQuyFYoikHWju17c6fSmEzOR0YS0BeG7LBFXkd1r1jpgUZ1uQo076pRQaNB2MHLledkKf6KbKAzTEw.mp4?_nc_cat=106&_nc_sid=5e9851&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=mXb9Fzt282MQ7kNvwGp4mF6&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMDMwOTY2MDQ5MjY0MzIzLCJhc3NldF9hZ2VfZGF5cyI6MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk3OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=3f3bb33826848690&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8xMDRBNzVCMUQxRkFGMkUwMENCM0Q5NTNBQjMzREI4Ql9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzM1NDFCMDRBQThBQTg2OTk5QUNCNTVDMEY0OTMxNEE3X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaGy6LSj-rUAxUCKAJDMywXQI6ZmZmZmZoYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=rA-OkNoB2zD8n7icLpWrgQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEoJQJztQ69U8ugKl1Y8PW9CckD8kzUvphw7EEBi0-fzLDvsoF0VrY-myHLktwrWDoEhfqdcPeF&_nc_eui2=AeGdc4gvCnHdDEOkvGm4hATZZsuV7qwfZGhmy5XurB9kaEwQwlCiVq2DVrLDvCZwjiTFo-Q8n7iXZRmB1vjR3S4v&oh=00_Af8P5Sf6_MyMaFOgpYN9SbvhHM2oblkR8Qjw1Tow6aeNJA&oe=6A272EEA&bitrate=2498443&tag=dash_h264-basic-gen2_720p"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1",
-              "name": "271",
+              "name": "273",
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-1-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQMOKEtaqUAmrSiup2f90Onc8aWT2usxPbo0sKxpPA5kW5E1cGd_v655SrbjOlWRHVUolH2kisIez5Pp2FiuugTiMthFWk4S_9NUviUFLwOQvQ.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=knxVdfy3ydYQ7kNvwGNn72P&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyOTc1NjY1OTM1OTc1MjMyLCJhc3NldF9hZ2VfZGF5cyI6NywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk4NiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=cf520900da34907&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9CQjQ4MzhDNTBGNUEyMUMzNjk5NDA4OUQ0QjgzRkZBMF9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzFCNDMzQTMyQjYxQjgzOTczNDVCNDExNEQxNkFFMThEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaAjazxxpbJChUCKAJDMywXQI7UzMzMzM0YGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=hkT_UA4_xun9R32Rjx0Epg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHMfQpBEQrRpy02IfmeKBewzcia34VRyazO5n78-9vacOk8fn3jLpfuN0b0_Vn-ODoI7tvXKdtG&_nc_eui2=AeFyxIcAJ222hWNfMgrrKUh9EhRWgiY5W9ISFFaCJjlb0paNAPT0uwrB5g6WIK68scRJcanFTZMMoGSTBzVeG1oV&oh=00_Af9s1TWCFo3HrpHeS18n8ruR6DiNfRyxUKCsV-yeyDXNRA&oe=6A274DE1&bitrate=2063078&tag=dash_h264-basic-gen2_720p"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-2",
-              "name": "270",
+              "name": "272",
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-2-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin2-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQOteI5l9aenAPDpcMhA27_goq0dy0dC4XFB1iZjUrsbhfTAOx0fxFDz7_7j252QKPSxiJbDrWXLuu4oVf8GaDLqekPMJRBf_zd-mz49mdw6eg.mp4?_nc_cat=103&_nc_sid=5e9851&_nc_ht=scontent-sin2-2.xx.fbcdn.net&_nc_ohc=NWauFSxgbNIQ7kNvwHc7J1I&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNDk2MzI1MDI4ODAxMjEzLCJhc3NldF9hZ2VfZGF5cyI6MTQsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDQxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=faee0b525689d685&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9GRDQ3QTVERkE4MTlDRjU2NDY2NEQyQjc5QUZGMTg5Rl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzE0NDZBNzc5NjFFNTBGRDc1MzkyRDlBM0RBN0RGM0IxX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACb6qvucyrmoBRUCKAJDMywXQJBFmZmZmZoYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=avxBTy9EHb15Fi-r-oFD1A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHIF6CKUBU2sMeK55ToxY6a31sB6W-DpvBZvru953SmQ-40p5Mt0sarO-butHiH-6qTM-DkzfpR&_nc_eui2=AeHGxBZ7U1GG0JD0o2F9oblRxE8NXubO7HLETw1e5s7scr6SqYSRgiYrNTasvYg4SSI4b4_4LIiGieTyF1EbGsWv&oh=00_Af-uL82N3ditdqtoR-NgEhLGi1LoCTxDCPaexttio2COfg&oe=6A2744C1&bitrate=2448699&tag=dash_h264-basic-gen2_720p"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-3",
-              "name": "269",
+              "name": "271",
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-3-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
+                  "name": "Link 1",
+                  "type": "error",
                   "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPue-wLcGDlvF9oHKplDXOXjecDlIr2snbQgSCuiopWHXPA7iXtbjswK52ApjnYl-qZ960Pn9sq1Noa1RvAakCtZj-IIiRs_ijn1eCpWYrfcg.mp4?_nc_cat=104&_nc_sid=5e9851&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=1hy_GzkaZkoQ7kNvwEWVz47&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNjQ1NDg5OTE2Njc5NTk1LCJhc3NldF9hZ2VfZGF5cyI6MjEsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDA1LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=c18ab51ea8d4d457&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9CQjRERjY3N0QwMkUxRDJDRjRENUZEMTNBRUVENzVCOV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0QzNEE4MEFDMDlDMkUxNTY5MTRGOEFDOTU5QTAzQjgyX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbW1rifj6TsBRUCKAJDMywXQI9q4UeuFHsYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=Vyrfrhw1CLnIOxHj47GQzA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG52xXjeXutDYqt-Boq3Git7RTmv8kd8_VcbC-WLtcMJQ3SxhhEUoZ6-M6uMkRi3UYqvXr_CCZo&_nc_eui2=AeEMjtVTLYv7Sb9izHJlPbqv23Mlf4lAj1PbcyV_iUCPU4AT9GhFITFfd-zgjE19FhokZNCyckizfIDPdaAVn8Ud&oh=00_Af8kBpYQtG8doRuI8Bft6U5V5QWlFCqUFlJl9g8oXc5g8w&oe=6A274598&bitrate=2227112&tag=dash_h264-basic-gen2_720p"
+                  "url": "error:no_stream"
                 }
               ]
             },
             {
               "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-4",
-              "name": "268",
+              "name": "270",
               "stream_links": [
                 {
                   "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-4-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM1c3ojWC8mNiH6S5xvO4J-JLAnPlX7i1KxpvjnKqUt7nYgQn22E5QKGZeSry4VpNaTTULgqF9N4BduBU_OjxiZ3E6_ZeCdKNFbk7cqyUrEyw.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=nVVPznPTDiYQ7kNvwGqxXZx&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjo5Njk5MjY1NzU0MjEzMjMsImFzc2V0X2FnZV9kYXlzIjoyOCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwMTAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=bdb0e3ad9447fe74&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9BOTQ4RUVCRTAyNTY5NzM1OEM1M0FFOTI1MjBFMDBBNl9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50Lzc1NDU0MjAyMDJFQzQwRkQ5RkZCQTdEMTJGOEIzQUI3X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaW3uOPlIm5AxUCKAJDMywXQI-R64UeuFIYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=UfRSMyII5g9rJt1dwy5jaA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQElXNjuJJ2rSSXTAeRriqO9Cv2TVZKYsmFi5GhcfqjC4sGTI6I3TPOjFPk-cT5tr4jVQUpGawhO&_nc_eui2=AeE9GqHAz56r0DWwrAYwot8pe7__QLPs_CR7v_9As-z8JCzU_IO-pyObZzp3X1pM-eJT0y6_BWjfE7UG_kDJ_uxQ&oh=00_Af_8AXpsLhEchh8oJZTod3AfHfxSQT6eopY2gAiZ6fwopQ&oe=6A281D9F&bitrate=2286123&tag=dash_h264-basic-gen2_720p"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-5",
-              "name": "267",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-5-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOEMQp0TkhS5ExD8uPTPXDcnJ_dNTM_yHPRA8KSt1_pmneAJ6RXXj7k-vKgjv2azGzRrPMo3xjvmZCEi_4AqnFE4KbfHn2SgUKqfb1BnA.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=pPxTnP49OFAQ7kNvwHkwdP6&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI3NDUyMDczNzYzOTI4MSwiYXNzZXRfYWdlX2RheXMiOjM0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAyMiwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=qA48sYEulMRrn85XdJL7WA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQESofdClMSH_4-i9t4UShZcvfjymG-h-fG6p7ABD1LyHFgK2PpG6FDZ7OVWvbHkis8HXp7NG5vV&_nc_eui2=AeFDTEuqvYXY2nLuhXed4ALBGHoEkiRrBJ0YegSSJGsEnZ4dv7a9EbJKasyf2mLNeltC3H0eVJITN2ueJSB4MeoB&oh=00_Af-vh-4Ht8foC5lrJ7IRg4MHiTdJ799RfHNc1oSdL15zog&oe=6A2713F2&bitrate=485023&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-6",
-              "name": "266",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-6-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQM-1mwG2vFYygHwO8tKL98Kc6qKfVOkmiDFCtcdZ59r1EN_-opxUXcPGTYCoOqy78jvYrxozZZUhmGu4OVePhFAwnX5BzQh28b8uCSZoQ.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=zO-sUQxINlMQ7kNvwGI_7_Y&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTUyMDE4Mzk3OTc0MTA5MywiYXNzZXRfYWdlX2RheXMiOjM2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTU3LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=A9g-ri3XF3iNdjJGUmSXOQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG0e0FCs9Y3uaX1FYy_cA3-lJ8pwNRC7B4FvW-WdRbf0CSHT9sbin4IF97Eh0jpbWV18zr5CpHa&_nc_eui2=AeEOJUc5uRA1OCxILQaXhXgR5f3vOg-fPVLl_e86D589Up1uwO9-myQsuv66Hj8-XW6ytQiyiWVCge4cl-z89SI9&oh=00_Af-k_-y0bwJgivox3e1mNOd8hfcABQVIKi58qwZ-ziGF9w&oe=6A272DB3&bitrate=540249&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-7",
-              "name": "265",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-7-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNfR-AlAU9E3rtSlZrIAANDjMOFARnfqlM3k0N8pWR-Cpb5uUEYIyrcRjHgO-s8ic1H8vU5VXI83yzNcbVUH1lKcqKFQBKBti9ToXcQrQ.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=8C0B1wnfm7gQ7kNvwFvz0C7&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA5MTkwMjgxNDc2OTI0NCwiYXNzZXRfYWdlX2RheXMiOjQxLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTA4MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=f38nhCL5CG2OiLeo3Qv9Zw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHCoCXFZcxHSlNQtn-eHIy36zKubbw1IQ6O04XjlJK90u0yBEVAE5oNTlira3m20FzwIVca7G8Y&_nc_eui2=AeEJAo2zO5HcKihvQ30AcDRuMRYz7jncWuAxFjPuOdxa4EW_JUZCVSqPSHqdk05mCRTpxmYHhucg089_SyfvegtA&oh=00_Af9ynGcZ0KR7lKgWEQzmmvxOdJtnhopn5vcwCyQqdrEP9Q&oe=6A273F61&bitrate=483232&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-8",
-              "name": "264",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-8-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPr714yNbhJ7Xz4_NJS_VKy5NszbSYJNtCzRlA64BdELm2XTJ4XmzvtejxDCl4JiUhgVwsHjT3avEZ3BOYrzAa2uzGyfCYimDA6miKGYw.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=WgZztw0Ai94Q7kNvwEyfhKa&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjAwMTI5OTg3NzQwODUwOSwiYXNzZXRfYWdlX2RheXMiOjQ5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTkyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=aA5nxHwTHvmM6l9h5EXMkg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEtIYciQ9dzc8vlbTTGt_QdFCo-7y9JiP45EA8hlmnB2hIehR8I64uejDkAnU83I3jdwOSoxZ3R&_nc_eui2=AeFr3UAaJyvoCLxx45nfpwf3JA0tKbiFjhIkDS0puIWOEqM8QQOmpoUeCZX0Rz5K_nugM1oMSCz82OKR0ggLQjhv&oh=00_Af8vBbptnZJPWib6KSSPkgbwbtrc2dwwYOFZrJZC_wZVdw&oe=6A27394B&bitrate=493220&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-9",
-              "name": "263",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-9-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQO_2f1CsB7zOBCPDuGd0p5rlXuDfoSfWyYg4H80f8TQTl35mbRQFA92hCnmMYNDcPSKSuJbPL73D_UwPPbfq59XVE_JG9jkFm92V4fdDw.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=rOI19TLXA6wQ7kNvwE-fSW5&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ2NjM2ODc1NDk5MzE5NSwiYXNzZXRfYWdlX2RheXMiOjU2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTkwLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=BrfX4bjSxMEDmOEZwxPGhg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFlme4uE04s9bDICgflmWplRgYQUIwQzvNkyzpwon2hcYYbdoqPa3DWuHFOhgWVAiv_6nDD7Kxg&_nc_eui2=AeFuDHz6VAbwloNxANTh4dZbEDir83xFklkQOKvzfEWSWUc4Xl785X9ldiyaqCq_jFpMxbnMEsiFL3vhQbutwchr&oh=00_Af_N8FJ8HN7-juRAoQjYqDPDOlzl0l0-u87ZpYPUohd4hA&oe=6A275888&bitrate=563656&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-10",
-              "name": "262",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-10-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQNCygAN7iLNiPfQPqc18PKAyG1P0njEiDc1JhVizNtNpCjWHPbGEMVHypE9wwXszSEK5Lm_ofRzHDhCBZhSXo6RMQ-yJyet3_pM0sJZfA.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=J1MrDOTi138Q7kNvwED2_AZ&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTQ1MTkwODgxNTc2MTA0LCJhc3NldF9hZ2VfZGF5cyI6NjMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo5NjQsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=ct0-1dLQxEEg3h_VgV51iA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHlKfk_LYPesxCkIShEW0SKL_Ec-Z1dIaHycBiZefWsVhjRQ9vfrFjI6mK8ogjEwOkviqYMrbe-&_nc_eui2=AeHWq5hJonrB6wSPS_NgAhqByGvjrReVORXIa-OtF5U5FfBydxgYFrSHjTwpk4AcQ49SslYIirvluwP9rt7-PNm9&oh=00_Af8MuzzEgenwgciiRWPhu2qfjLGPEJEtdtUe6zHCRdfkRw&oe=6A276C3D&bitrate=510960&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-11",
-              "name": "261",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-11-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://video-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOqtxwfJ_isJFu7ZTxLFzRwSoiZjfsmMbrU89zcaTv1BjHjklVtp8cCUmX0oSwYv4adjoI6gyhdqYIFTPLeuUd-nBqNg_8ZxTQoHdRO-w.mp4?_nc_cat=110&_nc_sid=8bf8fe&_nc_ht=video-sin6-3.xx.fbcdn.net&_nc_ohc=i7Wu1P-Bv9MQ7kNvwGrREIU&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzIuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ5MDc2MTE2NjExMDk1NywiYXNzZXRfYWdlX2RheXMiOjcwLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTc5LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=ao1ylZy_bxDkUQ7iZfHk-A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFiQgWfslBoC_ferqPMjc4zD8BBUvtOh0lUjp80-t1OVPpZI4_rQkYzzH8cKG24eDBDSn29g_8y&_nc_eui2=AeFktQeKFpVMCOdb-US8cxCM2HGNVRB8cJzYcY1VEHxwnNs9OZZ7DXMsFOhgkeXuhDVYUfa7dWl_t3b0u-LxFnjk&oh=00_Af9p_wlck6xUnV4ESSd09EHqzz5w5kULqYYbeucrVfvWmw&oe=6A27DB54&bitrate=490806&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-12",
-              "name": "260",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-12-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPFPpFDDrmoKkpHVaPWRrZq-CgscOBgBBU2DfWLShF_1usfUYPIo9abuAoWUw6zHrO1AIYFfwBGsV42WzNYXzjDRHlg-daJOIxpqtLZZA.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=p_58zckYRbsQ7kNvwF_X9vH&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTM3OTM3MzQyNTE2MzA5LCJhc3NldF9hZ2VfZGF5cyI6NzcsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDA4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=9_-fuaPvL1ezDC5x_nFH5A&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHbkLVta0KvGKhMJFnkuJz9Y14LQbEq9d07HvRYAupPNARI-Xl2y9-hB7mJyNUoEcFoGvidc6_A&_nc_eui2=AeHI0rbG85VSHcMItVSVFGZ0ibYbPspGEv6Jths-ykYS_rQ3itZcjIxpId77eXUzOsXBFM6xFRXi99ieJP0mKwdj&oh=00_Af-n-rQMwT7VGg-lLU0ImgEFqtZJKCZJxu6xNM5FIp37tQ&oe=6A27C630&bitrate=536781&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-13",
-              "name": "259",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-13-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://video-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN3IdWSAtbV3ZtuDK-SLDBLJJgwURzCHY-cABJLt5yH1ylvg841wwAZNODrx4CT_HgdjdXyu2-eUl31g5whoB8JVr5Yj9xC0FNUtzKoWg.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=video-sin11-1.xx.fbcdn.net&_nc_ohc=W1bilSTZxWAQ7kNvwFHvGmG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4OTI3NjkzOTYzNjA4NSwiYXNzZXRfYWdlX2RheXMiOjg0LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQwOSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=vLunS8iNztL-PjmhLhMAsQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQH6VayINj_P-oZdooUJ-nQFwzRkMji7OeDWocUwVxLv3GC4XZHQowZufBxcCY4bkCJdzh-6x1Bx&_nc_eui2=AeEWAPWaBW9wf1Fc1BshTCjgXrjcnfWzIhdeuNyd9bMiF5qh23Cw9As-0kDN4-IQKWV4Bl7F6VWg9reE1_IZdE4D&oh=00_Af-eKp0nfAcNrHyO_1Tf5S6kGercbTtfhyhb7T17TUE5sg&oe=6A27F1F9&bitrate=537987&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-14",
-              "name": "258",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-14-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://video-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQNxUGjiAR7RjghZxdUhhpEBcQq2dF7n3OCqnbEpRZFb8b9xkKNkQpdpbDFyk1JOsOsbft-8YDuK4rqyz6W4tNU65FxXJR9obr8YIpW5IA.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=video-sin6-2.xx.fbcdn.net&_nc_ohc=Z_aIiSkARxMQ7kNvwG_OC0H&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTAzNDI5OTQ5MTM2ODc4LCJhc3NldF9hZ2VfZGF5cyI6OTEsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjo5MjgsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=KsJia8h2KFU7l-7HQlJ65Q&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGqn_6gwSC0g4lHcarjpvVnwVO2lG7XKxpC4KSz2Z9vllIdSa5nT99T4BBiFD2lC25Z2jLraGdk&_nc_eui2=AeG1MtF6gxzKHZqH0aC-cZg-LSJq-PSLhtctImr49IuG1zgxR5EkkZn8xl-uQp70LSdqdzfFlvYD8NoYRB11_4YG&oh=00_Af9jjC8mY3AxCDzu4qgMxZvYJJjY7z3wMdq7nQaJWjEc8A&oe=6A283889&bitrate=494212&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-15",
-              "name": "257",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-15-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOGw4XQ20RWxsE-TIahmqGRerwU3NJ37JJ0N6E9ZXB71oEptAf9C5XJwSmeU1aZKkVe5cKlPI4Pqjr_FPN0gdwrlE_4Z4s5rTqLoFWLzw.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=51DTDinLi4kQ7kNvwF1PV-8&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU1NzYwNDIwODY3NzA5MywiYXNzZXRfYWdlX2RheXMiOjk3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTQxLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=I-mZE9IQLN5MNWwuJVasQQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQG2TKZZ-sjD_pOhjJV0jjyHXZStPa2jrLAHMYPYkgFfwq3DiNsQikUFN3qQwW3-SIN0YBOUJ4VG&_nc_eui2=AeF6f47eYZvlUQeGy0sa6gT1e4boot_WnOV7huii39ac5VM4o0YOjS-FSqlWACYWILLkP2G3BcmpLPgfkYM5Y7WE&oh=00_Af-brnPemQY8HYXv1C5CVgT12aErdF5QjoBILPfMGSbJaA&oe=6A26F272&bitrate=509029&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-16",
-              "name": "256",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-16-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPBOF7WjTEamElKpALqvU4LjBSpldqDbIgcWkLWiMUDuYE19sXF8aRzl4QcoDp1rME5O5J7uzFAVVG8xcIdfMmi7S7kNmvOZuNvbxrjtA.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=zyKqlwaGGY0Q7kNvwGwVYkh&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTY0MzAzNzk5MjgxMjI2LCJhc3NldF9hZ2VfZGF5cyI6NzMsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDUyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=adnYg6_-fY2uc7la_c8dXg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGt6o5AV2ywTay3BITZaSaG8R7Dtdc2yEd9Xmb2OzNOegVigzh9w4MWGVHxOWUFUPo0NYEo8VFK&_nc_eui2=AeF7SCClrjb1FzUk3JD7jI7eiQ0TzqXjQi6JDRPOpeNCLmBc1QLsRTdN5tkhNZjYU_SvIvcLvRjBg_15ZWG_tdUw&oh=00_Af_PD_iVtWjpFzYvjLsKp-YzDvSN1ggbwzEWj-WNrX8hrg&oe=6A270F8A&bitrate=535388&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-17",
-              "name": "255",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-17-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPsDvPsKULRyEOyzQ6j9ZKiW8EnWZP6PiShYdjElZttHOBj-nBO_xe77FOuJkbVTvcZBT8QTcQenKe73vWxuk3jKNl-lugEzTK1FDPusg.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=1ZSxYDFT9rUQ7kNvwHsdMon&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjIzMjAzMjc3Mzk4ODAxNCwiYXNzZXRfYWdlX2RheXMiOjExMSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNjMsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=rUrKi1K2gA-9T8NjH5nSMQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFnh8LpViJzOENWPsLXSjAR50gqYhRf4hr7iqgQXYykgh__cWdXfHqG_16LRdRi73rM0XdiebU6&_nc_eui2=AeFxY1wTwfdudUk2CebKXnYdCTxIZRFOW4sJPEhlEU5biyDmVJWtGL6m9D2F6zvs0xFpd3v-RHXIQdxOfsUzU58z&oh=00_Af_nPijvuB338-jXFjfkofH5HGEfHtp8TG0y1s4zFBoQGQ&oe=6A2724C6&bitrate=396802&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-18",
-              "name": "254",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-18-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOZqnkWk25ov1H-g7kemuYoX9o2utn7boNRVT8ZTirTlFideWABf3UtSApzI7yXpa6CIdCoADVEn7cL8AlyKxlG7SE3zQ_pbC9CdWRIdQ.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=OUtRt_VSXqsQ7kNvwHJGQ3f&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODk4Mzc0Njc2MDEzNjEyLCJhc3NldF9hZ2VfZGF5cyI6MTE4LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAyNywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=fTvoYX6t6L1hiP7xN-oNhQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHR_xQvNdXmUaVG0xlBAk5Lvn26Nw0L1oLVIF2_RLSsWWoToOtkEgnxBaBM3CxbJn7ToIuqkkhe&_nc_eui2=AeH3Ya8Sw7v7E2Ya0dy-P1PmGQaZ8QVIkcEZBpnxBUiRwZS8CBEBpeiEiWb4PlT2HMoCnK8b9DNQNblfJlrZhY1R&oh=00_Af-KN6TTn5z_ZCQX7p6JZBItpa1895MEePSscwH4-MUPjQ&oe=6A26F9AA&bitrate=487057&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-19",
-              "name": "253",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-19-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQM5bH5R4JzRQ1U749dN0pCffPluybLveijf431oXrCMMGi2eD7BRf9qD9AasV729AdILybQ0IY9iqiFq5PqUawwMaMpGo6-vqrOL0CFRQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=Wp-10LqOxSUQ7kNvwHvRIms&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTI4MDAwOTU3NzI5MTYzOCwiYXNzZXRfYWdlX2RheXMiOjEyNSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk1MSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Kc1mKa0zAOjDFo4ukQUiQA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFXK1bYDXpO-kgSfbL5ziQ0mejq9Hd-uBaohMU6eD4TOUOTJea9-GmaFtlO7LZLsOzfLihtjJ-D&_nc_eui2=AeEgVfQCSVvU5H5oN8WYE_WAfaew-bv7-q99p7D5u_v6r-ITZc5T80J7hjYANjUFYtxW6pUZnw7id9x_OypdCo29&oh=00_Af8rs2xl2b1k0YnEy6xt-ApDddMKZjBOzcC4WIP2GtUSyw&oe=6A272672&bitrate=420360&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-20",
-              "name": "252",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-20-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN3FEofkm0K_gvnoKP2YK_JLDGPaESsXGC-CygAFi_NHeYK7S7WWrsMkfHt97oDjcVTFYRbElBpmGO8aarnsi9KNIF8LV25QCxO0MaszQ.mp4?_nc_cat=102&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=amlgpopFacoQ7kNvwGTvHRb&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTQ0NTQ4NjIzMzgwMzczNCwiYXNzZXRfYWdlX2RheXMiOjEzMiwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk2NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=NaK36BQlr9drHWe5mcN6AA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQESCbpwEt0BTo8OYLInRG8hvxTf5-Qc-gGDE5bhZh67IJWCrV9I3PG5yFiA_HudTaiUif75APpX&_nc_eui2=AeG58Ba7D0OsktJeeGdv1M6ySKoz07CVR8pIqjPTsJVHykiTKxXoOjQSJrEmtBcZvgYkvcD8I7gyBAdRFRDIEvu4&oh=00_Af8Q13JIRFaLCCa1NA4lCFzHkMGkD-ZuJfszqkqetyOIIQ&oe=6A270C2C&bitrate=511040&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-21",
-              "name": "251",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-21-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOm8ptmbUZ573YiZfV6AI1tnHLzze615X2pvALV9uZMPcEeMC04Cs_WyVG5QOyHMJV33rpPkrXmO-Hp7jkQvbahuMDzBxt7SCLZBByeig.mp4?_nc_cat=109&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=M4QCEulUrNEQ7kNvwHzq_WY&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6OTA2MjcyMjk1NDg2MjgyLCJhc3NldF9hZ2VfZGF5cyI6MTM5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTkyLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=96SrW0izBh3hlm9Dfk8AqA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGW6VPBNQ9Vdqso1Lgm9A0oacPuAOG1GLpluLMbqeTBPbLuTHLWyb-73XaZHY4Zf2NR9G0vsE63&_nc_eui2=AeFxrYEvVynYx9Br_LKZThnI_YpeiWVyNF_9il6JZXI0X7LsfFoUobweRLu36mzW7Y4QkeQ-V6sRtvlUU8KisLjL&oh=00_Af8o7qZZM_eLXfPK8T341l1_UgDuX6H66EZkSGrGf1HoSQ&oe=6A270155&bitrate=530778&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-22",
-              "name": "250",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-22-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQNdgFGsaqNe4RwvymNjWrtEBRSX2ZCXW4AwUB9wI-0PTf2criSLCfC4RM1SpzrAuAqo2ofBRdAF7nHzV11mVHJIvuIkIts5Pi2mhnNw6w.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=2iSWempbiVwQ7kNvwELw3yF&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6NzM3NTM3NTIyNzM3OTgwLCJhc3NldF9hZ2VfZGF5cyI6MTQ3LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6OTk4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&_nc_gid=Z0f1_dYVAR8ICbrXCE21LQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFsinrr7xerCQI7LzIyIHUry2xxszuwWglRk19lGWEZooe5AGRxI3QAUnRdDdOn7REOXFOy2wvi&_nc_eui2=AeHR-KabB8aFCj9lRdxsU1exQVQGVrRJ6QtBVAZWtEnpC0VPunyLYdIrt_3T_Kyrhj3KSAxnD8BNQfomicNOUuvu&oh=00_Af_6WtgdloEEKJxGl2due79XHwMhj3jhQv5Pxpej9E0dkg&oe=6A283993&bitrate=512590&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-23",
-              "name": "249",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-23-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQOpI778ueZWYuDgyexjLWSYrjr6e9rdFiAPafn2FtMPdpW_QF_TOp3JrQ5y9oZKFFqoLDu8wrAJXzWYpCIOMeSY9jsoipgM2CuFVDldeQ.mp4?_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=dNbcbE0SQ7UQ7kNvwGw06oe&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6ODczNjIzMDEyMjAxMjI4LCJhc3NldF9hZ2VfZGF5cyI6MTUzLCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTAwMywidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=IcuTM7jnqR_EDgtGAQvOHw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQEFBmN21-8_eQkpvgFt1qLu_E9toXEcCTSFbvmbmPJ_3Y5eC0ibTwTK3hHglpvrNd3aQFk_bE83&_nc_eui2=AeEBlsAvK3sIafLZi9ozIxP-YEYwkv5mm7RgRjCS_mabtH5VvhDLYhIm6TMkPJhezzWifFSYnfXFeTHSgRUrpQqc&oh=00_Af9xEj2vuurkJ6ezUBCWe-Ct0XNNDYibwBHZQdeEePsTYA&oe=6A26F64A&bitrate=561984&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-24",
-              "name": "248",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-24-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOCt6YraexIsS-XIRdLOn8r-z3lDxW-yUXAeRm7o_JJPw-brXyM1eprUF-1-_fc1ApCcGGPxlWnzfEwCZDptJbshvqubnRzaE5qNdz4kA.mp4?_nc_cat=104&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=ipeRvkpfA10Q7kNvwFCR91_&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzIuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjA2ODE4MTM3NzM0MDI4MiwiYXNzZXRfYWdlX2RheXMiOjE1NCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNzYsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=qXUsjCTqXK--qOAWwWtbmg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQHk584p3vL9QDoX6dUwFw350VZ93ie9ivAsLvHx619dqGu_fBbR_iuLsQdlT1i3a3ci-Gs0KEqZ&_nc_eui2=AeEyRJyICeohLpjoobjG6Vdb93a9hnjOJov3dr2GeM4miz6k5zXPvk14tp61jsjceFLSPB8BxDmoBcfUqcANEvuA&oh=00_Af_d8lGWUEAzl291g3GOgcrb4P9LxQq4c9XsNRT57qeZTw&oe=6A271FE6&bitrate=466705&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-25",
-              "name": "247",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-25-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin11-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQN5IgvaT4d_K4SnhRiJqvokpXpmClo-ho17IRtlz5ibzpXg_gMHEg2HopjlBhDkUrgPp482pvruswAFlFQguoNizCUNSihFgQ8cQdMnfA.mp4?_nc_cat=105&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-1.xx.fbcdn.net&_nc_ohc=brW-8KxFFzsQ7kNvwG-s-9V&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTU1MjI2MzA0MjQ4MTU1MiwiYXNzZXRfYWdlX2RheXMiOjE2MCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk5NCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=Zl6el7R02O4ImOGRhxGmQw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGDfQN_QKj0tXrfBIDOp2U9TA_FnKfD0_S2KYhUw5Ky6rH49edRWIWdXpyJyLY6hLcRtt98wSqV&_nc_eui2=AeHBz_fkbziEosu4tvoN1Exm0aTp2Ibp3AXRpOnYhuncBb0KVulnuQ7B96Nl_0qYByj1Qqmlmn4OurXUdGrrG5YU&oh=00_Af_U1Ifp48K2DtcPBvO9RcAPyzJM_RswHqks4T0o2mjbHA&oe=6A270591&bitrate=491946&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-26",
-              "name": "246",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-26-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQOWImPF4Nh1Bzj8oOI3KowMYWfYV6LBvdNJv3SxXmbxT5A26GDhFGrW8gUfaRJ52N2EL_ML9LIWd6YtAjltEmKH9muCEtgHksGP5KNFfg.mp4?_nc_cat=111&_nc_sid=8bf8fe&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=GPiA8CxKHg4Q7kNvwGq1lQc&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjIzOTI3NzQ5MzIyNzc5MSwiYXNzZXRfYWdlX2RheXMiOjE2OCwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEwNDIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_gid=LLmpuVfD9HHivKpBXyBVQg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQGPMVFrywFK72rUtKI6fZV_ZS2rgWnDyj3FQFUZfvRAuD7_qkXjohbOGyqmZwdmRK77-mRDhZuA&_nc_eui2=AeGyxBngyo9xAlTASzerULjtBJoLnAiEdk0EmgucCIR2Tc2ElP8DffROnrhggM1obfKC2DkYQWRmgcEGhfKzixqY&oh=00_Af86GYl1Nb2snCL4aP08LbhPDZZyMaclHZC7AqSlU4mw5g&oe=6A275ADB&bitrate=508838&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-27",
-              "name": "245",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-27-0",
-                  "name": "fb-cdn-hd",
-                  "type": "mp4",
-                  "default": true,
-                  "url": "https://scontent-sin2-3.xx.fbcdn.net/o1/v/t2/f2/m412/AQOEG6CH4FEaDXfFH1W52bhUe2e6DLE1fKom2pq5bzLv_1pyoScCR7t3ateGcg34kufczn5-72R7866csa0NlN2SSK8cKdHDQ-34QqEc0g.mp4?_nc_cat=107&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-3.xx.fbcdn.net&_nc_ohc=OYP1bGRk5T4Q7kNvwEd45ky&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MTM4ODk3MjYxNjMwNTUyMiwiYXNzZXRfYWdlX2RheXMiOjE3NSwidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjk4OSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=VK4rOVSV6NpFclQNv9WWxQ&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQFJEfZJiA9ZNZblygkZqHi1otfbuxT1wz1KS9yrnRtzltAHBNoxJzT1EpBE_26-J4P-6Rio1ERN&_nc_eui2=AeE_ZjrtyroVMIjeoxfK4WMQIf0r1uaMHYEh_SvW5owdgSxjrz3ifKtS00LvB_ctfER5WK_htNzSwKgr2Q1tpgR3&oh=00_Af9L7BFWOZUdc79WSe0MdcchPm71K1mX1ZM-PEZBNDvrFw&oe=6A284477&bitrate=478217&tag=sve_sd"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-28",
-              "name": "244",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-28-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-29",
-              "name": "243",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-29-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-30",
-              "name": "242",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-30-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-31",
-              "name": "241",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-31-0",
-                  "name": "Link 1",
-                  "type": "error",
-                  "default": true,
-                  "url": "error:no_stream"
-                }
-              ]
-            },
-            {
-              "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-32",
-              "name": "240",
-              "stream_links": [
-                {
-                  "id": "the-gioi-hoan-my-thuyet-minh-tieng-viet--0-32-0",
                   "name": "Link 1",
                   "type": "error",
                   "default": true,
