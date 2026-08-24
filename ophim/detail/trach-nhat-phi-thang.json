@@ -1,0 +1,125 @@
+{
+  "sources": [
+    {
+      "id": "trach-nhat-phi-thang--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "trach-nhat-phi-thang--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "trach-nhat-phi-thang--0-0",
+              "name": "8",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-0-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-1",
+              "name": "7",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-1-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-2",
+              "name": "6",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://video-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQPAuqYwPWH95h1eJzVT24cxNSrA1RM7-t9lIjlRJImrhhCJeiQBkPyZ7NNCLP2YcQq-cTNi8-X02pptlOcDjTVu6Wf8TILgP7htyf97Na07hw.mp4?_nc_cat=101&_nc_sid=5e9851&_nc_ht=video-sin11-2.xx.fbcdn.net&_nc_ohc=0-WJk3uIvIAQ7kNvwEC9riW&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMzcyNTU4MjkxNzI5NDc3LCJhc3NldF9hZ2VfZGF5cyI6MTUsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDExLCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=9b8f158ad4de12d&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8yNDQyMTA0MEExMjA4OERBRTdEQkI1MzBGM0ZBNjRBM19tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0MwNEI0RERFMTNDQTk3Q0QyRkZCQ0ZGQjdGQjczM0I0X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaK8cuWtJXwBBUCKAJDMywXQI-ceuFHrhQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=krFdBFLA4gk0PTTGhvF-Tw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQI6_B64W-PKsM7I54zCl7uau5FghQhh-ZfY7lvFI913dTyeG6ahslE1ZsvkyuBR3q_bPO5m9syB&oh=00_AQHxygP1sp-GXtJWs6Rh0o9Jum1JcTLI2FxEAxLaj_AeaQ&oe=6A90559F&bitrate=1966795&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-3",
+              "name": "5",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQM64CJm8agW3i1cq1y7INOKX5Uv13tglowLe8qWlwG12_JlFFterdEBwsx1WFfUH2CPw7T9IWOS7RGL0JUgJ4-2NExcEnkxHLdhL60b9UL51Q.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=Oz7JuMzafyoQ7kNvwGCKLJB&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMDYyNzU4NTE2MzI0OTA5LCJhc3NldF9hZ2VfZGF5cyI6MjIsInZpX3VzZWNhc2VfaWQiOjEwMTIyLCJkdXJhdGlvbl9zIjoxMDI4LCJ1cmxnZW5fc291cmNlIjoid3d3In0%3D&ccb=17-1&vs=ac39be71eb06b630&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC9ERjRDN0JFM0ExMEVBOEQxNkUyMzcyQkM3OURDOTc5RV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzhDNDhCRDgyRDIzQUIyQkUzNDYzRkE5N0E4Mzk4MUJEX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACba6Mf916TjAxUCKAJDMywXQJAThR64UewYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=TcrpqVXoDjWUl09XqH3fTg&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQJ1Eu7SZrg5bQGfS4cQ-jkMcrKh8rqCDgzSYOUqHlJ_9tEYNZtsxPVoTjN4ABfWXKZ8b8-7qOvJ&oh=00_AQFKuXgJF8UUqcX50xvnM7vZJPw8bopKEU0ZEZnQz8VbTw&oe=6A903BD7&bitrate=2114437&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-4",
+              "name": "4",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-4-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin11-2.xx.fbcdn.net/o1/v/t2/f2/m412/AQO16XE86qtxLut6HO9iMthbALvNXWFVmnPOblXrGllhYF8re8KsnZ0hUvbVk2uOOGLdLIxDO-jJ7rYtmEStmWmL0Cugf024MO1UalNmmA.mp4?_nc_cat=101&_nc_sid=8bf8fe&_nc_ht=scontent-sin11-2.xx.fbcdn.net&_nc_ohc=a3mrD6BTOewQ7kNvwEiYKQn&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MzI5MjgyNTE5NDIzMDUzOCwiYXNzZXRfYWdlX2RheXMiOjI5LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTE0MCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=m8PDCEVa7KCOxj7EdNk2UA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQI4xMCkl4J5g-HkZ0ZqdHZqKKh0PKwg6k8DRBerRhKNCa8G2d_xiWQScge_QJdFQsNy_fhPlBlv&oh=00_AQFPd24Sq6lbnlka4lcG90Z-gZvOXRoCEkoTlwsPY0CVhA&oe=6A907735&bitrate=524660&tag=sve_sd"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-5",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-5-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-6",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-6-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "trach-nhat-phi-thang--0-7",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "trach-nhat-phi-thang--0-7-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin2-1.xx.fbcdn.net/o1/v/t2/f2/m412/AQPpWBsLpQ7KAYbzu525_4GLBIJnKABnqBYA49EUsGYgfjH5MfcMY9Bx7phQspntrLNwJOhf6FqMUVvMxvWs_Y40Xy0ZjnOKcHR9HDaDWw.mp4?_nc_cat=100&_nc_sid=8bf8fe&_nc_ht=scontent-sin2-1.xx.fbcdn.net&_nc_ohc=2CCpoYyFulYQ7kNvwFJzZwu&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNjQwLnN2ZV9zZCIsInhwdl9hc3NldF9pZCI6MjI5MzU3NDg2MTQxODc5OSwiYXNzZXRfYWdlX2RheXMiOjM2LCJ2aV91c2VjYXNlX2lkIjoxMDEyMiwiZHVyYXRpb25fcyI6MTQ4OCwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&_nc_gid=x-y9qgFRNxWIqSBHfsQvnw&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQLAQScgQaRLRffL2AwBSh3oaCsOXz90DzeoaGT27Q0FG59_axaIovjB2JwqTAxkv7ntC7AjJbD2&oh=00_AQEHvSYDzYdJmy7Gj1KI20PuNWxeu5FsgwgH8jSlzNT6FQ&oe=6A90732A&bitrate=431352&tag=sve_sd"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "trach-nhat-phi-thang xem phim trạch nhật phi thăng thuyết minh: thiên hạ rơi vào thời kỳ đen tối nhất khi yêu ma tác loạn, bá tánh sống trong cảnh lầm than, còn triều đình thì bị những kẻ quyền thế thao túng từ trong bóng tối. chưa dừng lại ở đó, cánh cửa nối l... trach nhat phi thang hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Trạch Nhật Phi Thăng Thuyết Minh: Thiên hạ rơi vào thời kỳ đen tối nhất khi yêu ma tác loạn, bá tánh sống trong cảnh lầm than, còn triều đình thì bị những kẻ quyền thế thao túng từ trong bóng tối. Chưa dừng lại ở đó, cánh cửa nối l..."
+}

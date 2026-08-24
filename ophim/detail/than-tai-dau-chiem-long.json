@@ -1,0 +1,73 @@
+{
+  "sources": [
+    {
+      "id": "than-tai-dau-chiem-long--0",
+      "name": "Thuyet Minh #1",
+      "contents": [
+        {
+          "id": "than-tai-dau-chiem-long--0",
+          "name": "",
+          "grid_number": 3,
+          "streams": [
+            {
+              "id": "than-tai-dau-chiem-long--0-0",
+              "name": "4",
+              "stream_links": [
+                {
+                  "id": "than-tai-dau-chiem-long--0-0-0",
+                  "name": "Link 1",
+                  "type": "error",
+                  "default": true,
+                  "url": "error:no_stream"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-dau-chiem-long--0-1",
+              "name": "3",
+              "stream_links": [
+                {
+                  "id": "than-tai-dau-chiem-long--0-1-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-2.xx.fbcdn.net/o1/v/t2/f2/m366/AQP0sJYJUgVoaH9jc-vDu_Vrxxe5apsOEvo_OfUM9EoI6GjxCKXH8uWinvd1hIJxPkddzqD8aByP0NRu35ADv0r2df7SyuGfT9QqG4RuoBnyXQ.mp4?_nc_cat=109&_nc_sid=5e9851&_nc_ht=scontent-sin6-2.xx.fbcdn.net&_nc_ohc=dJuzJeWdIyAQ7kNvwE2z2mL&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMzUxMTcxNTkyMzU5MTE4LCJhc3NldF9hZ2VfZGF5cyI6NywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjExNjksInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=c15e7001139164f2&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC8zRDQyNzM0ODNBOUQ4MzZCQ0E1MDIzMjUwRjQ4RDA5RV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0FENDEyRjdEOUM4NTE0OEQ2ODczNUM4NkU2NThDMTlFX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACacs4y5mZitCBUCKAJDMywXQJJH1wo9cKQYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=GDYp8ND56m1AXcf8fu9NmA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQL1u80jtSHQ6iqUYznoJPF-E0ncVsx3wWhP4QiQlfywPiBgwgbg82HGxmPEUx9it0wyW9giurLL&oh=00_AQHBR93b62f5f8ZIi6vBAFEWv9qQwGTOVzkb8Uuc0ztM-A&oe=6A904F07&bitrate=1793311&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-dau-chiem-long--0-2",
+              "name": "2",
+              "stream_links": [
+                {
+                  "id": "than-tai-dau-chiem-long--0-2-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-1.xx.fbcdn.net/o1/v/t2/f2/m366/AQPCIkBQzkYsp8TS07Fu8NwFlpmy5IxwD1m1bjk5sd14m_Z8K7nWeIjUkLPZzMkMD-HiZcatvJuIMAd2LGpvBJRFUDvdygTzrz4oXxN4Gwbttg.mp4?_nc_cat=111&_nc_sid=5e9851&_nc_ht=scontent-sin6-1.xx.fbcdn.net&_nc_ohc=00sw4WBTMy0Q7kNvwHnlJ0b&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxNzA1NzI5NDYzOTg3NDk5LCJhc3NldF9hZ2VfZGF5cyI6NywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjEyMTEsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=e2be7fea3dbd7b1f&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC82ODQ1RTRDRDY0QzVGRDE2N0Q1MDNBNjdGMDVEQUZBNV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50LzdDNDE4QTE5NUQ5RDA0Rjg1ODc2RTkzMjhFQzE2Q0EzX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbWtMXswtaHBhUCKAJDMywXQJLtR64UeuEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=65h_atp8Phar3LdFo8EktA&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQKIE42hHfAaKsfTq32bpXWIO1zA13KH_xgK_mX664ABHtcgGCTdkcfE4GfvUyVQCRw5kuwxrUP1&oh=00_AQFPQtjkrpblxFOST9aZg71wYBaG0-WTDwbA6-5TTjuERw&oe=6A904129&bitrate=1577500&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            },
+            {
+              "id": "than-tai-dau-chiem-long--0-3",
+              "name": "1",
+              "stream_links": [
+                {
+                  "id": "than-tai-dau-chiem-long--0-3-0",
+                  "name": "fb-cdn-hd",
+                  "type": "mp4",
+                  "default": true,
+                  "url": "https://scontent-sin6-3.xx.fbcdn.net/o1/v/t2/f2/m366/AQPICe4MHMLG1qKYlH9C3MabWJGxqsdWhFFMR2Cu8uWnOsmduIKaMRUAax0Qi9nVikqNj0FgxW1cMufHXyvnCRupgMkGr3DKLuZsW1KKHUhRrg.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-sin6-3.xx.fbcdn.net&_nc_ohc=4G6LtwlPnY4Q7kNvwExPJav&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuMTI4MC5kYXNoX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoyMTU5NDkwOTc3OTQwNjA4LCJhc3NldF9hZ2VfZGF5cyI6NywidmlfdXNlY2FzZV9pZCI6MTAxMjIsImR1cmF0aW9uX3MiOjE0OTIsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&vs=9b05988008831f4e&_nc_vs=HBksFQIYRWZiX2VwaGVtZXJhbC83QjQ4QjA4MkVCRTA1NjIxMUIxREM3RkIxMzk5RjU4OV9tdF8xX3ZpZGVvX2Rhc2hpbml0Lm1wNBUAAsgBEgAVAhhAZmJfcGVybWFuZW50L0VCNDQyMjJFNDYzQUYwNUZGNzU3ODhDQ0RGQkI2MDlBX2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACaAkpbK9YLWBxUCKAJDMywXQJdQo9cKPXEYGWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHARAHUCZZSeAQA&_nc_gid=HcQDWZ3pR48P0evqlyf6-g&edm=APRAPSkEAAAA&_nc_zt=28&_nc_tpa=Q5bMBQKInazZzLNHqzIO9VgS80slzbk0d1AlSRvk1U2R_dG1P4fD-RBLt3bEOsIZ9crc4Ys2ZyPEqIu9&oh=00_AQFkmPsktmbVxPFLxumVAaqpKxn5zmzE_8oaWmSEczdjsQ&oe=6A903D02&bitrate=1662482&tag=dash_h264-basic-gen2_720p"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subtitle": "Thuyet Minh",
+  "search": "than-tai-dau-chiem-long xem phim thần tài đậu chiêm long thuyết minh: khác với đa số các thể loại hoạt hình 3d, hoặc là tu tiên, hoặc là sử thi, hoặc là đô thị, thần tài đậu chiêm long lại mang đến bối cảnh xã hội trung hoa dân quốc với những nét vừa cũ vừa mới. b... than tai dau chiem long hoạt hình trung quốc thuyết minh anime donghua",
+  "tags": [],
+  "description": "Xem phim Thần Tài Đậu Chiêm Long Thuyết Minh: Khác với đa số các thể loại hoạt hình 3D, hoặc là tu tiên, hoặc là sử thi, hoặc là đô thị, Thần Tài Đậu Chiêm Long lại mang đến bối cảnh xã hội Trung Hoa dân quốc với những nét vừa cũ vừa mới. B..."
+}
